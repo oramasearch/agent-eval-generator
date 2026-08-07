@@ -1,0 +1,105 @@
+{
+  "profile_id": "oyster-farming-management",
+  "industry": "Aquaculture \u2013 Oyster Farming",
+  "situation": "markdown: James is an operations manager at an oyster farming company, responsible for maintaining optimal oyster growth conditions and ensuring timely harvests. His performance is measured on yield optimization, reduction in mortality rates, and efficient supply chain management. He can influence farming schedules, environmental control systems, and workforce allocation for harvesting.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Oversees and optimizes oyster growth and harvesting processes.",
+    "measured_on": [
+      "Yield optimization",
+      "Mortality rate reduction",
+      "Supply chain efficiency"
+    ],
+    "constraints": [
+      "Limited control over weather conditions",
+      "Strict environmental regulations",
+      "Dependency on manual inspections"
+    ]
+  },
+  "connections": [
+    {
+      "name": "oyster_management_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "environmental_data_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "oyster_management_db",
+      "name": "growth_monitoring",
+      "connection": "oyster_management_db",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "oyster_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "growth_rate",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "water_temperature",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "salinity",
+          "type": "float",
+          "null_fraction": 0.07
+        },
+        {
+          "name": "ph_level",
+          "type": "float",
+          "null_fraction": 0.03
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "oyster_management_db",
+      "name": "harvest_schedule",
+      "connection": "oyster_management_db",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "harvest_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "plot_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "expected_yield",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "actual_yield",
+          "type": "int",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "weather",
+          "type": "string",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

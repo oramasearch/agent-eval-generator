@@ -1,0 +1,17 @@
+{
+  "profile": "coal-chemical-processing",
+  "tables": [
+    {
+      "database": "inventory_management",
+      "name": "chemical_inventory",
+      "rows": 10500,
+      "columns": [
+        "chemical_id",
+        "chemical_name",
+        "last_updated",
+        "quantity",
+        "storage_location"
+      ]
+    }
+  ]
+}

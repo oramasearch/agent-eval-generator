@@ -1,0 +1,1 @@
+markdown: A director of technical operations at an astronomical observatory is responsible for ensuring that all observations are conducted without delays. They are measured on minimizing telescope downtime, accelerating equipment repair processes, optimizing resource allocation, and scheduling maintenance to avoid critical observational periods.

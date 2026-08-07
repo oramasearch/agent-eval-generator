@@ -1,0 +1,16 @@
+{
+  "profile": "traditional-handloom-weaving-enterprise",
+  "tables": [
+    {
+      "database": "handloom_inventory",
+      "name": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

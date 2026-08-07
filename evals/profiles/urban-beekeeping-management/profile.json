@@ -1,0 +1,120 @@
+{
+  "profile_id": "urban-beekeeping-management",
+  "industry": "Urban Agriculture - Beekeeping",
+  "situation": "markdown: The operational manager in charge of urban beekeeping operations is responsible for optimizing hive health, honey production, and logistics of maintaining bee colonies across urban locations. They are measured on honey yield, hive health metrics, and compliance with urban environmental regulations. They can act on data-driven insights to schedule maintenance, prevent diseases, and enhance production efficiency.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Managing multiple urban beekeeping sites with varying environmental and production conditions.",
+    "measured_on": [
+      "Honey yield",
+      "Hive health metrics",
+      "Regulatory compliance"
+    ],
+    "constraints": [
+      "Limited budget for maintenance",
+      "Must comply with urban regulations",
+      "Balance between production and bee welfare"
+    ]
+  },
+  "connections": [
+    {
+      "name": "beekeeping-dynamics-db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "weather-forecast-api",
+      "kind": "rest",
+      "state": "discovered"
+    },
+    {
+      "name": "bee-health-monitoring-sensor-data",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "beekeeping-dynamics-db",
+      "name": "hive_inspection_logs",
+      "connection": "beekeeping-dynamics-db",
+      "rows": 25000,
+      "columns": [
+        {
+          "name": "inspection_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "hive_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "health_score",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "mite_count",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "queen_present",
+          "type": "bool",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "honey_yield_kg",
+          "type": "float",
+          "null_fraction": 0.15
+        }
+      ]
+    },
+    {
+      "database": "bee-health-monitoring-sensor-data",
+      "name": "sensor_readings",
+      "connection": "bee-health-monitoring-sensor-data",
+      "rows": 500000,
+      "columns": [
+        {
+          "name": "reading_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "hive_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature_c",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "humidity_percentage",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sound_db",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

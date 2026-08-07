@@ -1,0 +1,100 @@
+{
+  "profile_id": "urban-wildlife-management",
+  "industry": "Urban Wildlife Management",
+  "situation": "markdown: Samuel Green is an ecological data scientist working with the city\u2019s Urban Wildlife Management Department. His primary role is to analyze data from various sources to understand wildlife patterns in urban settings, propose solutions to reduce conflicts between wildlife and human populations, and contribute to the welfare of urban biodiversity. He measures success in reducing wildlife-related incidents and improving stakeholder engagement with urban ecology.",
+  "persona": {
+    "role": "Ecological Data Scientist",
+    "context": "Working with the Urban Wildlife Management Department to balance urban development and wildlife preservation.",
+    "measured_on": [
+      "Reducing wildlife-related incidents",
+      "Improving understanding of urban ecology",
+      "Increasing stakeholder engagement"
+    ],
+    "constraints": [
+      "Data privacy laws regarding GPS tracking",
+      "Limited budget for advanced technologies",
+      "Seasonal variances affecting wildlife behavior"
+    ]
+  },
+  "connections": [
+    {
+      "name": "wildlife_sensor_network",
+      "kind": "iot",
+      "state": "captured"
+    },
+    {
+      "name": "weather_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "urban_wildlife_data",
+      "name": "wildlife_movements",
+      "connection": "wildlife_sensor_network",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "animal_id",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "species",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "activity_type",
+          "type": "string",
+          "null_fraction": 0.07
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "urban_wildlife_data",
+      "name": "incident_reports",
+      "connection": "wildlife_sensor_network",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "report_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "date_reported",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "resolved",
+          "type": "bool",
+          "null_fraction": 0.02
+        }
+      ]
+    }
+  ]
+}

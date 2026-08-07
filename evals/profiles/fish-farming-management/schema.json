@@ -1,0 +1,38 @@
+{
+  "profile": "fish-farming-management",
+  "tables": [
+    {
+      "database": "aquaculture_db",
+      "name": "fish_growth_records",
+      "rows": 50000,
+      "columns": [
+        "date_measured",
+        "fish_id",
+        "species",
+        "weight_kg"
+      ]
+    },
+    {
+      "database": "aquaculture_db",
+      "name": "feed_usage_logs",
+      "rows": 15000,
+      "columns": [
+        "date",
+        "feed_type",
+        "pond_id",
+        "quantity_kg"
+      ]
+    },
+    {
+      "database": "aquaculture_db",
+      "name": "water_quality_monitoring",
+      "rows": 20000,
+      "columns": [
+        "date_collected",
+        "measurement_type",
+        "measurement_value",
+        "pond_id"
+      ]
+    }
+  ]
+}

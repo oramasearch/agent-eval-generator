@@ -1,0 +1,1 @@
+markdown: The Operations Manager at a paintball field complex, responsible for optimizing field usage, managing equipment inventory, and enhancing customer satisfaction. Measured on cost efficiency and customer feedback, the manager must act on scheduling, maintenance, and resource allocation.

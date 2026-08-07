@@ -1,0 +1,104 @@
+{
+  "profile_id": "nuclear_decommissioning_management",
+  "industry": "Nuclear Decommissioning",
+  "situation": "markdown: Julia Chen is the Director of Operations at NuDecom Inc., a company specializing in the decommissioning of nuclear facilities. Her primary role involves overseeing project timelines, adherence to safety regulations, and optimizing resource allocation. Julia is measured on project completion times, compliance with regulatory standards, and cost efficiency.",
+  "persona": {
+    "role": "Operations Director",
+    "context": "Julia operates in a heavily regulated environment where safety and precision are paramount. Her decisions must factor in legal compliance, environmental impact, and resource management.",
+    "measured_on": [
+      "project completion times",
+      "regulatory compliance",
+      "cost efficiency"
+    ],
+    "constraints": [
+      "All data must comply with nuclear safety regulations",
+      "Resources are limited and must be optimized carefully",
+      "Regulatory documentation must be maintained"
+    ]
+  },
+  "connections": [
+    {
+      "name": "Nuclear_Project_DB",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "Operational_Logs",
+      "kind": "s3",
+      "state": "discovered"
+    },
+    {
+      "name": "Safety_Compliance_Database",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "Nuclear_Project_DB",
+      "name": "project_timelines",
+      "connection": "Nuclear_Project_DB",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "project_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "facility_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "completion_status",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "Nuclear_Project_DB",
+      "name": "resource_allocations",
+      "connection": "Nuclear_Project_DB",
+      "rows": 25000,
+      "columns": [
+        {
+          "name": "resource_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "project_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "resource_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_used",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "cost_usd",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+markdown: Julia Chen is the Director of Operations at NuDecom Inc., a company specializing in the decommissioning of nuclear facilities. Her primary role involves overseeing project timelines, adherence to safety regulations, and optimizing resource allocation. Julia is measured on project completion times, compliance with regulatory standards, and cost efficiency.

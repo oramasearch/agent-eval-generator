@@ -1,0 +1,159 @@
+{
+  "profile_id": "rabbit-wool-fiber-farm",
+  "industry": "Agriculture - Rabbit Wool Fiber",
+  "situation": "markdown: A rabbit wool fiber production facility looking to optimize their extraction and production processes. They want to increase efficiency and reduce defects in fiber quality. Their operations manager is responsible for overseeing the production processes, ensuring product quality, and reducing waste.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for managing day-to-day operations, ensuring high-quality wool output, and minimizing defects",
+    "measured_on": [
+      "Production efficiency",
+      "Defect reduction",
+      "Quality improvement"
+    ],
+    "constraints": [
+      "Cannot replace the existing system infrastructure",
+      "Limited budget for new acquisitions"
+    ]
+  },
+  "connections": [
+    {
+      "name": "fiber_logs",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "quality_assessment",
+      "kind": "s3",
+      "state": "discovered"
+    },
+    {
+      "name": "feeding_schedule",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "weather_conditions",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "rabbit_farm",
+      "name": "fiber_logs",
+      "connection": "fiber_logs",
+      "rows": 35000,
+      "columns": [
+        {
+          "name": "fiber_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "extraction_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "wool_weight",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "defects",
+          "type": "string",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "machine_id",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "rabbit_farm",
+      "name": "quality_assessment",
+      "connection": "quality_assessment",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "assessment_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "fiber_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quality_grade",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "assessment_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "rabbit_farm",
+      "name": "feeding_schedule",
+      "connection": "feeding_schedule",
+      "rows": 29000,
+      "columns": [
+        {
+          "name": "rabbit_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "feeding_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "food_type",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "quantity",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "rabbit_farm",
+      "name": "weather_conditions",
+      "connection": "weather_conditions",
+      "rows": 10500,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "humidity",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "precipitation",
+          "type": "float",
+          "null_fraction": 0.2
+        }
+      ]
+    }
+  ]
+}

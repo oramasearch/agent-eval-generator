@@ -1,0 +1,1 @@
+markdown: The company is involved in the production of biofuels from algae, focusing on optimizing yield and efficiency. The production director is tasked with maximizing output while minimizing costs, closely monitoring inventory levels of both raw materials and finished products.

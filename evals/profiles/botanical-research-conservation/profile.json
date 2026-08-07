@@ -1,0 +1,107 @@
+{
+  "profile_id": "botanical-research-conservation",
+  "industry": "Botanical Research and Biodiversity Conservation",
+  "situation": "markdown: Botanists and researchers working in a botanical garden, focusing on plant species conservation and biodiversity research. They are measured on the successful conservation of endangered species and the productivity of research outputs.",
+  "persona": {
+    "role": "Lead Botanist",
+    "context": "Leads a team of researchers in a botanical garden, responsible for plant conservation projects and research publications.",
+    "measured_on": [
+      "Conservation status improvements",
+      "Research publication rate",
+      "Species diversity management"
+    ],
+    "constraints": [
+      "Conservation projects must be data-driven, due to finite resources"
+    ]
+  },
+  "connections": [
+    {
+      "name": "botanical-db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "climate-api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "botanical-db",
+      "name": "species_inventory",
+      "connection": "botanical-db",
+      "rows": 12000,
+      "columns": [
+        {
+          "name": "species_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "species_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "conservation_status",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "last_assessment_date",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "habitat_type",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "native_range",
+          "type": "string",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "botanical-db",
+      "name": "research_projects",
+      "connection": "botanical-db",
+      "rows": 250,
+      "columns": [
+        {
+          "name": "project_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "project_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "lead_researcher",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "start_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_date",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        }
+      ]
+    }
+  ]
+}

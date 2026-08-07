@@ -1,0 +1,1 @@
+markdown: Captain Ed is the operations director at a maritime salvage company. He oversees every operation from initial assessment to completion, ensuring that profit margins are maintained. He is measured on operational efficiency and project success rate, balancing safety and adherence to regulatory protocols.

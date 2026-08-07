@@ -1,0 +1,29 @@
+{
+  "profile": "municipal-water-insurance",
+  "tables": [
+    {
+      "database": "insurance_db",
+      "name": "claims_data",
+      "rows": 12000,
+      "columns": [
+        "claim_amount",
+        "claim_date",
+        "claim_id",
+        "fraud_flag",
+        "policy_id"
+      ]
+    },
+    {
+      "database": "customer_interactions_s3",
+      "name": "interactions",
+      "rows": 45000,
+      "columns": [
+        "customer_id",
+        "interaction_date",
+        "interaction_id",
+        "interaction_type",
+        "outcome"
+      ]
+    }
+  ]
+}

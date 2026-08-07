@@ -1,0 +1,65 @@
+{
+  "profile_id": "marine-biology-hydroacoustics-analysis",
+  "industry": "Marine Biology",
+  "situation": "markdown: A marine biologist working in a government agency is tasked with monitoring fish populations in coastal areas to ensure sustainable fishing practices. They need insights into species distribution and abundance over time, potentially using hydroacoustic survey data to augment manual catch records. Their performance is measured on the accuracy and efficiency of these insights, helping guide policy decisions on sustainable fishing quotas.",
+  "persona": {
+    "role": "Marine Biologist",
+    "context": "Responsible for analyzing marine ecosystems with a focus on fish population dynamics using available datasets.",
+    "measured_on": [
+      "Accuracy of fish population predictions",
+      "Timeliness of research insights for policy-making"
+    ],
+    "constraints": [
+      "Must handle sparse and noisy data",
+      "Some datasets may only be partially captured or near real-time"
+    ]
+  },
+  "connections": [
+    {
+      "name": "hydroacoustics_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "fishing_records_s3",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "fishing_records_s3",
+      "name": "fish_catch_data",
+      "connection": "fishing_records_s3",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "species",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "weight_kg",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "method",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

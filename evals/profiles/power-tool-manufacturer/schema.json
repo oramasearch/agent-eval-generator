@@ -1,0 +1,28 @@
+{
+  "profile": "power-tool-manufacturer",
+  "tables": [
+    {
+      "database": "inventory_management",
+      "name": "product_inventory",
+      "rows": 50000,
+      "columns": [
+        "lead_time",
+        "product_id",
+        "quantity_on_hand",
+        "reorder_level",
+        "warehouse_location"
+      ]
+    },
+    {
+      "database": "inventory_management",
+      "name": "sales_data",
+      "rows": 50000,
+      "columns": [
+        "date",
+        "product_id",
+        "sales_channel",
+        "units_sold"
+      ]
+    }
+  ]
+}

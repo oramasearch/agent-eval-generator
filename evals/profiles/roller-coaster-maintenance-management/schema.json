@@ -1,0 +1,19 @@
+{
+  "profile": "roller-coaster-maintenance-management",
+  "tables": [
+    {
+      "database": "maintenance",
+      "name": "maintenance_records",
+      "rows": 50000,
+      "columns": [
+        "duration_hrs",
+        "issues_found",
+        "maintenance_date",
+        "maintenance_type",
+        "resolution",
+        "ride_id",
+        "technician"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "profile_id": "ginger-beer-manufacturing",
+  "industry": "Beverage Manufacturing",
+  "situation": "markdown: Jane oversees the production and distribution operations at a mid-sized ginger beer manufacturing company. Her role involves ensuring efficient production, minimizing waste, and optimizing the supply chain. Jane is measured on production costs, supply chain efficiency, and meeting demand forecasts. She's focused on leveraging data to predict demand and optimize inventory levels.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Manages production and distribution of ginger beer, with a focus on reducing costs and meeting demand.",
+    "measured_on": [
+      "Production cost",
+      "Supply chain efficiency",
+      "Demand forecast accuracy"
+    ],
+    "constraints": [
+      "Must operate within a tight budget",
+      "Limited storage capacity for raw materials",
+      "Highly seasonal demand"
+    ]
+  },
+  "connections": [
+    {
+      "name": "company-warehouse-db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "supplier-api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "company_warehouse_db",
+      "name": "raw_material_inventory",
+      "connection": "company-warehouse-db",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "material_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "material_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "current_stock",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "reorder_level",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "supplier_id",
+          "type": "string",
+          "null_fraction": 0.02
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "company_warehouse_db",
+      "name": "production_logs",
+      "connection": "company-warehouse-db",
+      "rows": 500000,
+      "columns": [
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "production_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_produced",
+          "type": "int",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "material_used",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "defects",
+          "type": "int",
+          "null_fraction": 0.25
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "company_warehouse_db",
+      "name": "sales_forecast",
+      "connection": "company-warehouse-db",
+      "rows": 365,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "forecasted_sales",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "actual_sales",
+          "type": "int",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

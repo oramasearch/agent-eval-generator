@@ -1,0 +1,99 @@
+{
+  "profile_id": "coffee-shop-inventory-and-sales",
+  "industry": "Coffee Retail",
+  "situation": "markdown: The data scientist at a medium-sized chain of coffee shops has been tasked with optimizing inventory management and sales strategies. The chain is looking to forecast demand for different coffee products, improve inventory turnover rates, and ensure popular products are always in stock. The data scientist's performance is measured by their ability to accurately predict product demand and reduce stockouts and overstock situations. They can act on sales data, inventory levels, and can influence purchasing decisions based on predictive insights.",
+  "persona": {
+    "role": "Data Scientist",
+    "context": "Working at a coffee retail chain focused on optimizing supply chain and sales efficiency.",
+    "measured_on": [
+      "Forecast accuracy",
+      "Reduction in stockouts",
+      "Improvement in inventory turnover"
+    ],
+    "constraints": [
+      "Limited historical data before the last year",
+      "Inconsistent promotional campaign recordings",
+      "Data quality issues with null values in sales records"
+    ]
+  },
+  "connections": [
+    {
+      "name": "coffee",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "coffee",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.3
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.5
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

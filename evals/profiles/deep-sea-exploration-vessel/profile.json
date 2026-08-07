@@ -1,0 +1,110 @@
+{
+  "profile_id": "deep-sea-exploration-vessel",
+  "industry": "Deep-Sea Exploration",
+  "situation": "markdown: The Chief Data Officer of a deep-sea exploration company is responsible for optimizing the operations of their fleet of exploration vessels. They focus on improving the efficiency and success rates of exploration missions, identifying profitable exploration sites, and ensuring the safety and compliance of operations.",
+  "persona": {
+    "role": "Chief Data Officer",
+    "context": "Oversees data-driven decision-making to enhance the efficiency and profitability of deep-sea exploration missions.",
+    "measured_on": [
+      "mission success rate",
+      "operation cost efficiency",
+      "safety compliance"
+    ],
+    "constraints": [
+      "historical data scarcity for new sites",
+      "strict regulatory compliance",
+      "environmental impact considerations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "marine-data-system",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "environmental-regulations-db",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "marine-data-system",
+      "name": "vessel_operations",
+      "connection": "marine-data-system",
+      "rows": 250000,
+      "columns": [
+        {
+          "name": "vessel_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "operation_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "mission_duration",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "crew_size",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "fuel_consumed",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "success_flag",
+          "type": "bool",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "marine-data-system",
+      "name": "exploration_sites",
+      "connection": "marine-data-system",
+      "rows": 6000,
+      "columns": [
+        {
+          "name": "site_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "coordinates",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "discovery_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "resource_estimate",
+          "type": "float",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "environmental_risk",
+          "type": "int",
+          "null_fraction": 0.05
+        }
+      ]
+    }
+  ]
+}

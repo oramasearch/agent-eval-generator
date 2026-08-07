@@ -1,0 +1,17 @@
+{
+  "profile": "antique-artifacts-auction-house",
+  "tables": [
+    {
+      "database": "auction-database",
+      "name": "artifacts",
+      "rows": 1500,
+      "columns": [
+        "appraised_value",
+        "artifact_id",
+        "auction_date",
+        "description",
+        "sale_price"
+      ]
+    }
+  ]
+}

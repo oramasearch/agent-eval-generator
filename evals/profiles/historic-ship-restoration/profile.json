@@ -1,0 +1,110 @@
+{
+  "profile_id": "historic-ship-restoration",
+  "industry": "Historic Ship Restoration",
+  "situation": "markdown: John is the Director of Operations at Restoraship, a company specializing in the restoration and maintenance of historic ships worldwide. He is responsible for optimizing restoration schedules, managing resource allocations, and ensuring project timelines are met. His performance is measured by project completion rates, resource utilization efficiency, and customer satisfaction. John relies on various datasets to monitor project progress, resource availability, and historical restorations' impact on future projects.",
+  "persona": {
+    "role": "Director of Operations",
+    "context": "Responsible for overseeing restoration projects, managing resources, and ensuring projects are completed on time.",
+    "measured_on": [
+      "Project completion rates",
+      "Resource utilization efficiency",
+      "Customer satisfaction"
+    ],
+    "constraints": [
+      "Resource availability limits projects",
+      "Must avoid scheduling conflicts",
+      "Needs to maintain historical accuracy in restorations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "material_supply_chain",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "project_management",
+      "kind": "bigquery",
+      "state": "discovered"
+    },
+    {
+      "name": "historical_references",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "material_supply_chain",
+      "name": "inventory_levels",
+      "connection": "material_supply_chain",
+      "rows": 200000,
+      "columns": [
+        {
+          "name": "item_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "item_name",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "last_restock_date",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "historical_references",
+      "name": "ship_blueprints",
+      "connection": "historical_references",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "blueprint_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ship_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "year_original",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "designer",
+          "type": "string",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "historical_notes",
+          "type": "string",
+          "null_fraction": 0.3
+        }
+      ]
+    }
+  ]
+}

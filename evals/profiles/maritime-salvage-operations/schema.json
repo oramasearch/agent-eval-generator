@@ -1,0 +1,22 @@
+{
+  "profile": "maritime-salvage-operations",
+  "tables": [
+    {
+      "database": "salvage_operations",
+      "name": "operation_logs",
+      "rows": 50000,
+      "columns": [
+        "cost",
+        "crew_members",
+        "end_date",
+        "location",
+        "operation_id",
+        "operation_status",
+        "recovered_items",
+        "start_date",
+        "vessel_name",
+        "weather_conditions"
+      ]
+    }
+  ]
+}

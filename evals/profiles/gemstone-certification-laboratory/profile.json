@@ -1,0 +1,178 @@
+{
+  "profile_id": "gemstone-certification-laboratory",
+  "industry": "Gemstone Certification & Grading",
+  "situation": "markdown: AcademLabs is a leading gemstone grading and certification laboratory known for its precision and trustworthiness in certifying diamonds, rubies, and other precious stones. The lab manages a vast array of data ranging from stone specifications, certifications issued, clients, and operational processes. The data is primarily used for certification, quality analysis, and client reporting. In this role, you are an IT Director tasked with improving the data pipeline for optimized reporting and enhanced certification turnaround. Success is measured through the efficiency of data processing and the accuracy of certification reports.",
+  "persona": {
+    "role": "IT Director",
+    "context": "Leading data operations at a gemstone certification lab.",
+    "measured_on": [
+      "Efficiency of data processing",
+      "Accuracy of final certification reports"
+    ],
+    "constraints": [
+      "Data privacy regulations",
+      "Integration with legacy systems"
+    ]
+  },
+  "connections": [
+    {
+      "name": "churn_results",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "coffee",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "churn_results",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "driver_effect",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "mrr",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rank",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "coffee",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

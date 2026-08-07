@@ -1,0 +1,1 @@
+markdown: The company operates several geothermal energy plants, focusing on harnessing sustainable energy from natural geothermal reservoirs. The operations manager aims to optimize energy output and reduce maintenance costs while ensuring safety and compliance with environmental regulations.

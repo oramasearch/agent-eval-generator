@@ -1,0 +1,18 @@
+{
+  "profile": "university-library-management",
+  "tables": [
+    {
+      "database": "univ_library_db",
+      "name": "borrowed_books",
+      "rows": 47000,
+      "columns": [
+        "book_id",
+        "borrow_id",
+        "checkout_date",
+        "due_date",
+        "return_date",
+        "user_id"
+      ]
+    }
+  ]
+}

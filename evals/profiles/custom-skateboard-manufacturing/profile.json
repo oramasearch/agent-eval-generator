@@ -1,0 +1,114 @@
+{
+  "profile_id": "custom-skateboard-manufacturing",
+  "industry": "Outdoor Sports Equipment Manufacturing",
+  "situation": "markdown: The company specializes in the design and manufacturing of custom skateboards. It has a growing online and retail presence. The operations manager is tasked with optimizing inventory and predicting popular trends to meet demand spikes efficiently. They measure success through increased sales trends, optimal inventory levels, and reduced stockouts.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Oversees inventory management and sales forecasting for custom skateboards. Responsible for ensuring manufacturing meets demand without overproducing.",
+    "measured_on": [
+      "Sales increased compared to past seasons",
+      "Fewer stockouts during peak demand periods",
+      "Reduced inventory holding costs"
+    ],
+    "constraints": [
+      "must not overstock items",
+      "cannot go over budget for raw skateboard materials",
+      "needs accurate forecasting to optimize production schedules"
+    ]
+  },
+  "connections": [
+    {
+      "name": "state-of-production",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "customer-feedback",
+      "kind": "bigquery",
+      "state": "discovered"
+    },
+    {
+      "name": "sales-tracking",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "state-of-production",
+      "name": "inventory_snapshots",
+      "connection": "state-of-production",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "sales-tracking",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

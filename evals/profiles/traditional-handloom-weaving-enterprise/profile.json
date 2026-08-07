@@ -1,0 +1,56 @@
+{
+  "profile_id": "traditional-handloom-weaving-enterprise",
+  "industry": "Traditional Craftsmanship",
+  "situation": "markdown: A traditional handloom weaving enterprise looking to modernize their operations. The head of operations, who has been tasked to improve efficiency and reduce waste, needs insights into inventory management, demand forecasting, and quality assurance. The organization is known for its artisanal woven textiles made from natural fibers, and it aims to sustain craftsmanship while injecting technology for operational excellence.",
+  "persona": {
+    "role": "Head of Operations",
+    "context": "Focused on improving operational efficiency without compromising traditional techniques.",
+    "measured_on": [
+      "Reduction in material waste",
+      "Inventory turnover",
+      "Meeting demand forecasts"
+    ],
+    "constraints": [
+      "Must maintain traditional craftsmanship ethos",
+      "Limited budget for tech adoption",
+      "Sustain fair labor practices"
+    ]
+  },
+  "connections": [
+    {
+      "name": "handloom_inventory",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "handloom_inventory",
+      "name": "inventory_snapshots",
+      "connection": "handloom_inventory",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "profile": "pet-cremation-services",
+  "tables": [
+    {
+      "database": "operations",
+      "name": "service_requests",
+      "rows": 50000,
+      "columns": [
+        "cremation_type",
+        "customer_satisfaction_score",
+        "pet_type",
+        "request_id",
+        "service_date",
+        "weight_kg"
+      ]
+    },
+    {
+      "database": "inventory",
+      "name": "equipment_status",
+      "rows": 6500,
+      "columns": [
+        "equipment_id",
+        "last_maintenance_date",
+        "status"
+      ]
+    }
+  ]
+}

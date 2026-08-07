@@ -1,0 +1,99 @@
+{
+  "profile_id": "cider-brewing-distribution-ops",
+  "industry": "Cider Brewing & Distribution",
+  "situation": "markdown: Sam is the Chief Operations Officer at Crisp Cider Works, a mid-sized cider brewing and distribution company specializing in artisanal apple cider. They aim to optimize operations from production to market delivery. Recently, they've been focused on expanding their market reach while maintaining the quality of their cider. The COO is measured on efficiency in production processes, reduction of delivery times, and customer satisfaction rates. Their actions can significantly impact the supply chain effectiveness and brand reputation.",
+  "persona": {
+    "role": "Chief Operations Officer",
+    "context": "At Crisp Cider Works, there is a growing need to streamline operations in the brewing, bottling, and distribution processes to increase market share and maintain cider quality.",
+    "measured_on": [
+      "Operational efficiency",
+      "Product delivery times",
+      "Customer satisfaction"
+    ],
+    "constraints": [
+      "Currently, no advanced analytics system is in place",
+      "Budget limitations restrict capital expenditure",
+      "Dependence on seasonal apple harvests"
+    ]
+  },
+  "connections": [
+    {
+      "name": "brew_warehouse",
+      "kind": "s3",
+      "state": "discovered"
+    },
+    {
+      "name": "distribution_network",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "brewery",
+      "name": "fermentation_tanks",
+      "connection": "brew_warehouse",
+      "rows": 8000,
+      "columns": [
+        {
+          "name": "tank_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_date",
+          "type": "timestamp",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "end_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "capacity_liters",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "distribution",
+      "name": "delivery_routes",
+      "connection": "distribution_network",
+      "rows": 20000,
+      "columns": [
+        {
+          "name": "route_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_point",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_point",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "estimated_time",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "actual_time",
+          "type": "int",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

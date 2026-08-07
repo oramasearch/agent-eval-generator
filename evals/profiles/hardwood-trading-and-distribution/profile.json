@@ -1,0 +1,123 @@
+{
+  "profile_id": "hardwood-trading-and-distribution",
+  "industry": "Hardwood Trading and Distribution",
+  "situation": "markdown: The person is a Supply Chain Analyst at a leading hardwood trading company. Their role focuses on optimizing trade routes, managing inventory efficiently, and ensuring timely deliveries. They are primarily measured on stock turnover rate, reduction in shipment delays, and overall cost savings. Actions they can undertake involve adjusting order quantities, rerouting shipments, and forecasting demand with greater precision.",
+  "persona": {
+    "role": "Supply Chain Analyst",
+    "context": "Hardwood Trading and Distribution",
+    "measured_on": [
+      "stock turnover",
+      "shipment delay reduction",
+      "cost savings"
+    ],
+    "constraints": [
+      "limited budget for new tech integrations",
+      "strict supplier agreements",
+      "varying international trade regulations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "trade_analytics_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "shipment_data_warehouse",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "vendor_management_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "trade_analytics_db",
+      "name": "regional_sales",
+      "connection": "trade_analytics_db",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "region",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "product_type",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "units_sold",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "sale_date",
+          "type": "timestamp",
+          "null_fraction": 0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "trade_analytics_db",
+      "name": "price_index",
+      "connection": "trade_analytics_db",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "product_type",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "price",
+          "type": "float",
+          "null_fraction": 0
+        },
+        {
+          "name": "index_level",
+          "type": "float",
+          "null_fraction": 0
+        }
+      ]
+    },
+    {
+      "database": "shipment_data_warehouse",
+      "name": "delivery_schedule",
+      "connection": "shipment_data_warehouse",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "shipment_id",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "delivery_date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "region",
+          "type": "string",
+          "null_fraction": 0
+        }
+      ]
+    }
+  ]
+}

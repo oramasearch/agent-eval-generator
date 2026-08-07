@@ -1,0 +1,98 @@
+{
+  "profile_id": "bee-venom-therapy-management",
+  "industry": "Medical & Therapeutic Services",
+  "situation": "markdown: Sarah is a director at a bee venom therapy clinic. The clinic specializes in providing alternative medical treatments using bee venom for conditions like arthritis, chronic injuries, and some autoimmune diseases. Sarah is measured on patient outcomes, therapy effectiveness, and operational efficiency. She can act on both therapy protocols and business operations to improve the clinic's performance.",
+  "persona": {
+    "role": "Director of Therapeutic Services",
+    "context": "Managing and optimizing treatment protocols and clinic operations.",
+    "measured_on": [
+      "patient recovery rates",
+      "therapy success rates",
+      "clinic profitability"
+    ],
+    "constraints": [
+      "Must comply with medical regulations",
+      "Cannot alter patient health records"
+    ]
+  },
+  "connections": [
+    {
+      "name": "bee_therapy_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "procurement_db",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "bee_therapy_db",
+      "name": "patient_treatments",
+      "connection": "bee_therapy_db",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "patient_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "treatment_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "therapy_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dosage",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "outcome",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "complications",
+          "type": "bool",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "bee_therapy_db",
+      "name": "venom_sources",
+      "connection": "bee_therapy_db",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "source_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "harvest_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "purity",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "geographic_origin",
+          "type": "string",
+          "null_fraction": 0.2
+        }
+      ]
+    }
+  ]
+}

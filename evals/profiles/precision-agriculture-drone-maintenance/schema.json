@@ -1,0 +1,40 @@
+{
+  "profile": "precision-agriculture-drone-maintenance",
+  "tables": [
+    {
+      "database": "drone_maintenance",
+      "name": "drone_fleet",
+      "rows": 10000,
+      "columns": [
+        "battery_health",
+        "drone_id",
+        "flight_hours",
+        "last_service_date",
+        "service_status"
+      ]
+    },
+    {
+      "database": "agriculture_monitoring",
+      "name": "field_data",
+      "rows": 50000,
+      "columns": [
+        "capture_date",
+        "crop_health_index",
+        "drone_id",
+        "field_id",
+        "soil_moisture_level"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

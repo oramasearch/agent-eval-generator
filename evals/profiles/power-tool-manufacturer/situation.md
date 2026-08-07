@@ -1,0 +1,1 @@
+markdown: A logistics manager in a power tool manufacturing company, tasked with optimizing the inventory and production schedule based on demand forecasting. They are measured on supply chain efficiency, reduction in stockouts, and production cost management.

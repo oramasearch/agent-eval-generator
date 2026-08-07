@@ -1,0 +1,94 @@
+{
+  "profile_id": "historic-railroad-preservation",
+  "industry": "Historic Railroad Preservation",
+  "situation": "markdown: The historical railways preservation and operation unit focuses on restoring and running historic train lines for tourism and educational exhibits. They need to optimize maintenance schedules, improve visitor engagement strategies, and ensure historical accuracy in restoration projects.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for the logistics and operational management of historic train lines, ensuring efficiency, safety, and visitor satisfaction.",
+    "measured_on": [
+      "on-time maintenance",
+      "visitor ratings",
+      "operational cost efficiency"
+    ],
+    "constraints": [
+      "Each project must not exceed the allocated restoration budget.",
+      "Maintenance schedules must minimize downtime.",
+      "Projects must adhere to historical accuracy and safety standards."
+    ]
+  },
+  "connections": [
+    {
+      "name": "historic_railways_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "visitor_engagement_api",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "historic_railways",
+      "name": "train_maintenance_schedule",
+      "connection": "historic_railways_db",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "train_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "employee_id",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.02
+        }
+      ]
+    },
+    {
+      "database": "visitor_engagement",
+      "name": "visitor_feedback",
+      "connection": "visitor_engagement_api",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "visitor_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "visit_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "experience_rating",
+          "type": "int",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "comments",
+          "type": "string",
+          "null_fraction": 0.4
+        }
+      ]
+    }
+  ]
+}

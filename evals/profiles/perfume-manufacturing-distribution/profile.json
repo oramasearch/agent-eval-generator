@@ -1,0 +1,134 @@
+{
+  "profile_id": "perfume-manufacturing-distribution",
+  "industry": "Perfume Manufacturing and Distribution",
+  "situation": "markdown: PerfumeCo is a leading manufacturer and distributor of luxury perfumes. Their operations include sourcing rare ingredients, manufacturing perfumes, managing inventory, and distributing to various retail outlets worldwide. The Operations Director is tasked with optimizing supply chain efficiency, reducing production costs, and ensuring the availability of top-selling perfumes without overstocking. They are measured on inventory turnover, customer order fulfillment rates, and production costs.",
+  "persona": {
+    "role": "Operations Director",
+    "context": "Oversees the entire supply chain and production process, ensuring timely and cost-effective manufacturing and distribution.",
+    "measured_on": [
+      "Inventory Turnover",
+      "Order Fulfillment Rate",
+      "Production Cost Reduction"
+    ],
+    "constraints": [
+      "Must balance stock levels with demand forecasts",
+      "Must reduce lead times without sacrificing quality",
+      "Must integrate supplier data into inventory forecasts"
+    ]
+  },
+  "connections": [
+    {
+      "name": "perfume_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "supply_chain_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "perfume_db",
+      "name": "production_records",
+      "connection": "perfume_db",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "production_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_produced",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "production_cost",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "perfume_db",
+      "name": "ingredient_inventory",
+      "connection": "perfume_db",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "ingredient_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ingredient_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "stock_level",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "supplier_id",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "reorder_level",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "perfume_db",
+      "name": "sales_orders",
+      "connection": "perfume_db",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "customer_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "order_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "total_amount",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "order_status",
+          "type": "string",
+          "null_fraction": 0.15
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

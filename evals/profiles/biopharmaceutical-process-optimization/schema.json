@@ -1,0 +1,18 @@
+{
+  "profile": "biopharmaceutical-process-optimization",
+  "tables": [
+    {
+      "database": "biopharmaceutical_data_warehouse",
+      "name": "subscriptions",
+      "rows": 47000,
+      "columns": [
+        "cadence_days",
+        "cancelled_at",
+        "pause_until",
+        "sku",
+        "started_at",
+        "sub_id"
+      ]
+    }
+  ]
+}

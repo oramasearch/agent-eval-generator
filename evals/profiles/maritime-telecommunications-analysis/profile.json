@@ -65,7 +65,8 @@
           "type": "float",
           "null_fraction": 0.0
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "maritime_telecom_postgres",

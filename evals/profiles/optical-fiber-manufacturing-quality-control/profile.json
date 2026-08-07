@@ -59,7 +59,8 @@
           "type": "float",
           "null_fraction": 0.01
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "fiber_production_metrics",

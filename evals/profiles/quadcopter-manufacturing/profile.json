@@ -1,0 +1,61 @@
+{
+  "profile_id": "quadcopter-manufacturing",
+  "industry": "Quadcopter Manufacturing",
+  "situation": "markdown: **QuadFly Tech Solutions** is a leading manufacturer of advanced quadcopters and drones designed for a variety of applications including aerial photography, surveillance, and recreational use. Kevin Zhang, the Head of Operations, is tasked with optimizing inventory levels and reducing supply chain delays. He is measured on the efficiency of production schedules and the balance of supply and demand.",
+  "persona": {
+    "role": "Head of Operations",
+    "context": "Oversees the manufacturing operations of QuadFly Tech Solutions, ensuring efficient production and distribution.",
+    "measured_on": [
+      "Supply chain efficiency",
+      "Inventory optimization",
+      "Production schedule adherence"
+    ],
+    "constraints": [
+      "Minimize holding costs",
+      "Ensure timely raw material procurement",
+      "Optimize inventory levels to meet variable demand"
+    ]
+  },
+  "connections": [
+    {
+      "name": "supply_chain_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "internal_inventory_system",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "internal_inventory_system",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "profile_id": "astronomical-research-infrastructure",
+  "industry": "Astronomical Research Infrastructure",
+  "situation": "markdown: A director of technical operations at an astronomical observatory is responsible for ensuring that all observations are conducted without delays. They are measured on minimizing telescope downtime, accelerating equipment repair processes, optimizing resource allocation, and scheduling maintenance to avoid critical observational periods.",
+  "persona": {
+    "role": "Director of Technical Operations",
+    "context": "Oversees maintenance and ensures operational functionality of astronomical equipment.",
+    "measured_on": [
+      "Telescope uptime",
+      "Scheduled maintenance adherence",
+      "Mean time to repair (MTTR)",
+      "Cost optimization of spare parts inventory"
+    ],
+    "constraints": [
+      "Maintenance windows must not interfere with planned astronomical events.",
+      "Budget constraints for spare parts and repairs.",
+      "Limited workforce for performing maintenance tasks."
+    ]
+  },
+  "connections": [
+    {
+      "name": "astro_eq_maintenance",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "equipment_inventory",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "astronomy",
+      "name": "maintenance_logs",
+      "connection": "astro_eq_maintenance",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "telescope_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_type",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "technician_id",
+          "type": "int",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "repair_cost",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "downtime_hours",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "astronomy",
+      "name": "equipment_list",
+      "connection": "equipment_inventory",
+      "rows": 6000,
+      "columns": [
+        {
+          "name": "equipment_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "equipment_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_service_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

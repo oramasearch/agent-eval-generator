@@ -1,0 +1,38 @@
+{
+  "profile": "hardwood-trading-and-distribution",
+  "tables": [
+    {
+      "database": "trade_analytics_db",
+      "name": "regional_sales",
+      "rows": 50000,
+      "columns": [
+        "product_type",
+        "region",
+        "sale_date",
+        "units_sold"
+      ]
+    },
+    {
+      "database": "trade_analytics_db",
+      "name": "price_index",
+      "rows": 10000,
+      "columns": [
+        "date",
+        "index_level",
+        "price",
+        "product_type"
+      ]
+    },
+    {
+      "database": "shipment_data_warehouse",
+      "name": "delivery_schedule",
+      "rows": 50000,
+      "columns": [
+        "delivery_date",
+        "region",
+        "shipment_id",
+        "status"
+      ]
+    }
+  ]
+}

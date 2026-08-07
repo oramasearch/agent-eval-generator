@@ -60,7 +60,8 @@
           "type": "string",
           "null_fraction": 0.02
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "maritime_archives",
@@ -93,7 +94,8 @@
           "type": "int",
           "null_fraction": 0.15
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

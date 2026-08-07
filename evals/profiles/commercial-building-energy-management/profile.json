@@ -58,7 +58,8 @@
           "type": "float",
           "null_fraction": 0.1
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "external_sources",
@@ -86,7 +87,8 @@
           "type": "float",
           "null_fraction": 0.05
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

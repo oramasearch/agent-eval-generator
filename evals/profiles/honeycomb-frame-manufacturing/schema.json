@@ -1,0 +1,42 @@
+{
+  "profile": "honeycomb-frame-manufacturing",
+  "tables": [
+    {
+      "database": "manufacturing_system",
+      "name": "production_efficiency",
+      "rows": 50000,
+      "columns": [
+        "date",
+        "defective_units",
+        "downtime_minutes",
+        "machine_id",
+        "product_type",
+        "shift",
+        "units_produced"
+      ]
+    },
+    {
+      "database": "manufacturing_system",
+      "name": "equipment_maintenance",
+      "rows": 50000,
+      "columns": [
+        "cost",
+        "downtime_minutes",
+        "machine_id",
+        "maintenance_date",
+        "maintenance_type"
+      ]
+    },
+    {
+      "database": "sales_analytics",
+      "name": "sales_forecast",
+      "rows": 50000,
+      "columns": [
+        "actual_sales",
+        "forecast_date",
+        "predicted_sales",
+        "product_type"
+      ]
+    }
+  ]
+}

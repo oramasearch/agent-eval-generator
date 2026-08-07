@@ -1,0 +1,30 @@
+{
+  "profile": "wind-turbine-maintenance",
+  "tables": [
+    {
+      "database": "wind_energy",
+      "name": "turbine_operations",
+      "rows": 50000,
+      "columns": [
+        "power_output",
+        "temperature",
+        "timestamp",
+        "turbine_id",
+        "vibration_level",
+        "wind_speed"
+      ]
+    },
+    {
+      "database": "wind_energy",
+      "name": "maintenance_records",
+      "rows": 10000,
+      "columns": [
+        "duration_hours",
+        "maintenance_date",
+        "maintenance_type",
+        "technician_id",
+        "turbine_id"
+      ]
+    }
+  ]
+}

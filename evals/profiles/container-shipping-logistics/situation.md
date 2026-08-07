@@ -1,0 +1,1 @@
+markdown: Sarah is the Director of Operations at a major container shipping company. She is responsible for optimizing shipping routes and reducing operational costs. Her key performance indicators include on-time delivery rates, fuel efficiency, and reduction in shipping durations. Sarah's decisions can impact route planning, freight pricing, and maintenance schedules.

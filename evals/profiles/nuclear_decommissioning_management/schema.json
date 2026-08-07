@@ -1,0 +1,29 @@
+{
+  "profile": "nuclear_decommissioning_management",
+  "tables": [
+    {
+      "database": "Nuclear_Project_DB",
+      "name": "project_timelines",
+      "rows": 15000,
+      "columns": [
+        "completion_status",
+        "end_date",
+        "facility_name",
+        "project_id",
+        "start_date"
+      ]
+    },
+    {
+      "database": "Nuclear_Project_DB",
+      "name": "resource_allocations",
+      "rows": 25000,
+      "columns": [
+        "cost_usd",
+        "project_id",
+        "quantity_used",
+        "resource_id",
+        "resource_type"
+      ]
+    }
+  ]
+}

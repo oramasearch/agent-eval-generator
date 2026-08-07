@@ -1,0 +1,104 @@
+{
+  "profile_id": "algae-biofuel-production",
+  "industry": "Algae Biofuel Production",
+  "situation": "markdown: The company is involved in the production of biofuels from algae, focusing on optimizing yield and efficiency. The production director is tasked with maximizing output while minimizing costs, closely monitoring inventory levels of both raw materials and finished products.",
+  "persona": {
+    "role": "Production Director",
+    "context": "Overseeing the conversion of algae into biofuels, ensuring high production efficiency, and reducing costs.",
+    "measured_on": [
+      "production efficiency",
+      "cost per unit output",
+      "inventory turnover ratio"
+    ],
+    "constraints": [
+      "Budget limitations for raw materials",
+      "Need to maintain minimum inventory for unexpected demand spikes",
+      "Adherence to regulatory standards for biofuel production"
+    ]
+  },
+  "connections": [
+    {
+      "name": "bio_inventory",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "production_metrics",
+      "kind": "s3",
+      "state": "discovered"
+    },
+    {
+      "name": "transportation_costs",
+      "kind": "rest",
+      "state": "captured"
+    },
+    {
+      "name": "regulatory_compliance",
+      "kind": "kafka",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "bio_inventory",
+      "name": "inventory_snapshots",
+      "connection": "bio_inventory",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "bio_inventory",
+      "name": "orders_daily",
+      "connection": "bio_inventory",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.02
+        }
+      ]
+    }
+  ]
+}

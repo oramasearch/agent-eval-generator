@@ -1,0 +1,100 @@
+{
+  "profile_id": "mushroom-substrate-manufacturing",
+  "industry": "Mushroom Substrate Manufacturing",
+  "situation": "markdown: The mushroom substrate manufacturing company aims to optimize its operations to ensure timely delivery and maintain quality consistency. They want to predict demand for substrate types and identify the best shipment routes to reduce costs. The supply chain manager, Alex, focuses on ensuring the substrate is produced and shipped efficiently while meeting customer demand. The supply chain department is measured by delivery time, shipping costs, and customer satisfaction levels.",
+  "persona": {
+    "role": "Supply Chain Manager",
+    "context": "Oversees production timing, supply chain logistics, and cost management",
+    "measured_on": [
+      "On-time delivery percentage",
+      "Transportation costs",
+      "Customer satisfaction ratings"
+    ],
+    "constraints": [
+      "Must maintain below 10% late delivery rate",
+      "Shipping costs must not exceed budget",
+      "Customer satisfaction should remain above 80%"
+    ]
+  },
+  "connections": [
+    {
+      "name": "mushroom_supply_chain_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "distribution_logistics_db",
+      "kind": "postgres",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "mushroom_supply_chain_db",
+      "name": "substrate_production_schedule",
+      "connection": "mushroom_supply_chain_db",
+      "rows": 60000,
+      "columns": [
+        {
+          "name": "production_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "substrate_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "production_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "completed",
+          "type": "bool",
+          "null_fraction": 0.01
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "distribution_logistics_db",
+      "name": "shipping_routes",
+      "connection": "distribution_logistics_db",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "route_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "distance_km",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "average_travel_time_hours",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cost_usd",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "risk_factor",
+          "type": "string",
+          "null_fraction": 0.3
+        }
+      ]
+    }
+  ]
+}

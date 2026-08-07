@@ -1,0 +1,50 @@
+{
+  "profile": "rabbit-wool-fiber-farm",
+  "tables": [
+    {
+      "database": "rabbit_farm",
+      "name": "fiber_logs",
+      "rows": 35000,
+      "columns": [
+        "defects",
+        "extraction_date",
+        "fiber_id",
+        "machine_id",
+        "wool_weight"
+      ]
+    },
+    {
+      "database": "rabbit_farm",
+      "name": "quality_assessment",
+      "rows": 15000,
+      "columns": [
+        "assessment_date",
+        "assessment_id",
+        "fiber_id",
+        "quality_grade"
+      ]
+    },
+    {
+      "database": "rabbit_farm",
+      "name": "feeding_schedule",
+      "rows": 29000,
+      "columns": [
+        "feeding_time",
+        "food_type",
+        "quantity",
+        "rabbit_id"
+      ]
+    },
+    {
+      "database": "rabbit_farm",
+      "name": "weather_conditions",
+      "rows": 10500,
+      "columns": [
+        "date",
+        "humidity",
+        "precipitation",
+        "temperature"
+      ]
+    }
+  ]
+}

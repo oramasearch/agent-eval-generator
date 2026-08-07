@@ -1,0 +1,32 @@
+{
+  "profile": "urban-beekeeping-management",
+  "tables": [
+    {
+      "database": "beekeeping-dynamics-db",
+      "name": "hive_inspection_logs",
+      "rows": 25000,
+      "columns": [
+        "date",
+        "health_score",
+        "hive_id",
+        "honey_yield_kg",
+        "inspection_id",
+        "mite_count",
+        "queen_present"
+      ]
+    },
+    {
+      "database": "bee-health-monitoring-sensor-data",
+      "name": "sensor_readings",
+      "rows": 50000,
+      "columns": [
+        "hive_id",
+        "humidity_percentage",
+        "reading_id",
+        "sound_db",
+        "temperature_c",
+        "timestamp"
+      ]
+    }
+  ]
+}

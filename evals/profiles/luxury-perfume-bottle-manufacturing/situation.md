@@ -1,0 +1,1 @@
+markdown: The company is a manufacturer of high-end perfume bottles for luxury brands. The production involves precision and artistic craftsmanship where maintaining quality and reducing defects are critical. The company is looking to optimize its production process by leveraging data from its production line and supply chain systems.

@@ -1,0 +1,41 @@
+{
+  "profile": "perfume-manufacturing-distribution",
+  "tables": [
+    {
+      "database": "perfume_db",
+      "name": "production_records",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "product_id",
+        "production_cost",
+        "production_date",
+        "quantity_produced"
+      ]
+    },
+    {
+      "database": "perfume_db",
+      "name": "ingredient_inventory",
+      "rows": 50000,
+      "columns": [
+        "ingredient_id",
+        "ingredient_name",
+        "reorder_level",
+        "stock_level",
+        "supplier_id"
+      ]
+    },
+    {
+      "database": "perfume_db",
+      "name": "sales_orders",
+      "rows": 50000,
+      "columns": [
+        "customer_id",
+        "order_date",
+        "order_id",
+        "order_status",
+        "total_amount"
+      ]
+    }
+  ]
+}

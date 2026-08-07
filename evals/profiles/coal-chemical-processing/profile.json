@@ -1,0 +1,71 @@
+{
+  "profile_id": "coal-chemical-processing",
+  "industry": "Coal-Based Chemical Manufacturing",
+  "situation": "markdown: A coal-based chemical manufacturing company specializes in turning coal into higher-value chemical products, such as methanol, fertilizers, and plastics. The company struggles with optimizing its production processes to reduce costs and increase the yield of valuable final products. They frequently face bottleneck issues and equipment breakdowns, which impede production efficiencies. The Production Optimization Manager is responsible for ensuring optimal plant operations to maximize production efficiency and cost-effectiveness. Primary challenges include equipment maintenance, process bottlenecks, and improving product yield.",
+  "persona": {
+    "role": "Production Optimization Manager",
+    "context": "Responsible for analyzing and improving chemical production processes",
+    "measured_on": [
+      "Reduction in production downtime",
+      "Improvement in chemical yield",
+      "Cost efficiency"
+    ],
+    "constraints": [
+      "Limited budget for major equipment upgrades",
+      "High variance in coal quality affecting processes",
+      "Regulatory constraints on emissions impacting processing methods"
+    ]
+  },
+  "connections": [
+    {
+      "name": "equipment_sensor_data",
+      "kind": "kafka",
+      "state": "discovered"
+    },
+    {
+      "name": "inventory_management",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "production_outputs",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "inventory_management",
+      "name": "chemical_inventory",
+      "connection": "inventory_management",
+      "rows": 10500,
+      "columns": [
+        {
+          "name": "chemical_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "chemical_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "storage_location",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "last_updated",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

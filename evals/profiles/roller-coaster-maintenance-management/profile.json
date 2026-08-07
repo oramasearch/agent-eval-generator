@@ -1,0 +1,75 @@
+{
+  "profile_id": "roller-coaster-maintenance-management",
+  "industry": "Amusement Park \u2013 Roller Coaster Maintenance",
+  "situation": "markdown: John is a Maintenance Supervisor at a large amusement park known for its innovative roller coasters. His primary responsibility is to ensure the safe and efficient operation of all roller coasters by monitoring maintenance schedules, predicting potential failures, and minimizing downtime. John is measured on the reduced frequency of operational failures and the timely completion of maintenance tasks. He faces constraints such as budget limitations and a constant influx of new coaster designs that require different maintenance approaches.",
+  "persona": {
+    "role": "Maintenance Supervisor",
+    "context": "Amusement park with a wide variety of roller coasters",
+    "measured_on": [
+      "Reduced operational failures",
+      "Timely maintenance task completion"
+    ],
+    "constraints": [
+      "Budget limitations",
+      "Variety of roller coasters with different maintenance needs"
+    ]
+  },
+  "connections": [
+    {
+      "name": "maintenance_records",
+      "kind": "odbc",
+      "state": "captured"
+    },
+    {
+      "name": "sensor_data_streams",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "maintenance",
+      "name": "maintenance_records",
+      "connection": "maintenance_records",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "ride_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "technician",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "duration_hrs",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "issues_found",
+          "type": "string",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "resolution",
+          "type": "string",
+          "null_fraction": 0.1
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

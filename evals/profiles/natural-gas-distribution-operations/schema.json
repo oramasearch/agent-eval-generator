@@ -1,0 +1,29 @@
+{
+  "profile": "natural-gas-distribution-operations",
+  "tables": [
+    {
+      "database": "natural_gas_operations",
+      "name": "pipeline_flow_data",
+      "rows": 50000,
+      "columns": [
+        "flow_rate",
+        "pipeline_id",
+        "pressure_level",
+        "temperature_level",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "natural_gas_operations",
+      "name": "maintenance_schedule",
+      "rows": 50000,
+      "columns": [
+        "completed_date",
+        "cost",
+        "maintenance_id",
+        "pipeline_id",
+        "scheduled_date"
+      ]
+    }
+  ]
+}

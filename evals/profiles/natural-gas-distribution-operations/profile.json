@@ -1,0 +1,106 @@
+{
+  "profile_id": "natural-gas-distribution-operations",
+  "industry": "Energy Distribution",
+  "situation": "markdown: The operations manager at a regional natural gas distribution company is responsible for optimizing the pipeline network to ensure reliable and efficient gas delivery to customers. They are evaluated based on the network efficiency, pipeline maintenance costs, and customer satisfaction rates. They can act on scheduling maintenance, investing in infrastructure improvements, and managing emergency response teams during leaks or other unexpected events.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for overseeing natural gas distribution pipeline operations, including monitoring efficiency, scheduling maintenance, and managing infrastructure investment.",
+    "measured_on": [
+      "Network efficiency",
+      "Pipeline maintenance costs",
+      "Customer satisfaction"
+    ],
+    "constraints": [
+      "Budget for infrastructure improvements is limited and needs justification through data",
+      "Maintenance windows are limited to non-peak hours",
+      "Need to coordinate with local authorities for emergency response plans"
+    ]
+  },
+  "connections": [
+    {
+      "name": "scada_system",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "maintenance_records",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "customer_feedback",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "natural_gas_operations",
+      "name": "pipeline_flow_data",
+      "connection": "scada_system",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "pipeline_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "flow_rate",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "pressure_level",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "temperature_level",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "natural_gas_operations",
+      "name": "maintenance_schedule",
+      "connection": "maintenance_records",
+      "rows": 80000,
+      "columns": [
+        {
+          "name": "maintenance_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "pipeline_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "scheduled_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "completed_date",
+          "type": "timestamp",
+          "null_fraction": 0.3
+        },
+        {
+          "name": "cost",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

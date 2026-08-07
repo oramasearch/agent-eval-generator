@@ -1,0 +1,40 @@
+{
+  "profile": "high-end-speaker-manufacturer",
+  "tables": [
+    {
+      "database": "manufacturing_db",
+      "name": "production_stats",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "defect_rate",
+        "end_time",
+        "num_units",
+        "start_time"
+      ]
+    },
+    {
+      "database": "sales_data",
+      "name": "quarterly_sales",
+      "rows": 28500,
+      "columns": [
+        "product_id",
+        "quarter",
+        "region",
+        "revenue",
+        "sales_volume"
+      ]
+    },
+    {
+      "database": "sales_data",
+      "name": "customer_feedback",
+      "rows": 15000,
+      "columns": [
+        "comments",
+        "customer_id",
+        "purchase_date",
+        "rating"
+      ]
+    }
+  ]
+}

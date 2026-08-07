@@ -1,0 +1,65 @@
+{
+  "profile_id": "antique-artifacts-auction-house",
+  "industry": "Arts and Collectibles",
+  "situation": "markdown: The curator and auction director of an antique artifacts auction house is responsible for cataloging and appraising items for upcoming auctions. They are measured on the accuracy of appraisals, the success rate of sales, and the ability to attract high-value items for auctions. Their actions can directly impact the revenue from auctions and the reputation of the auction house.",
+  "persona": {
+    "role": "Curator and Auction Director",
+    "context": "Oversees the valuation and sale of high-value antique artifacts.",
+    "measured_on": [
+      "accuracy of appraisals",
+      "auction sales success rate",
+      "attraction of high-value items"
+    ],
+    "constraints": [
+      "must work within the auction house's appraisal guidelines",
+      "limited by available historical data"
+    ]
+  },
+  "connections": [
+    {
+      "name": "auction-database",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "historical-sales-records",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "auction-database",
+      "name": "artifacts",
+      "connection": "auction-database",
+      "rows": 1500,
+      "columns": [
+        {
+          "name": "artifact_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "appraised_value",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "auction_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sale_price",
+          "type": "float",
+          "null_fraction": 0.4
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "profile": "mineral-water-bottling",
+  "tables": [
+    {
+      "database": "production_metrics",
+      "name": "daily_output",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "date",
+        "energy_consumed",
+        "filled_bottles",
+        "water_waste"
+      ]
+    },
+    {
+      "database": "production_metrics",
+      "name": "equipment_failure_logs",
+      "rows": 25000,
+      "columns": [
+        "downtime_minutes",
+        "equipment_id",
+        "failure_date",
+        "failure_reason"
+      ]
+    }
+  ]
+}

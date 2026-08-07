@@ -1,0 +1,50 @@
+{
+  "profile": "trapeze-safety-management",
+  "tables": [
+    {
+      "database": "trapeze-safety-db",
+      "name": "equipment_checks",
+      "rows": 20000,
+      "columns": [
+        "check_date",
+        "check_id",
+        "equipment_id",
+        "status"
+      ]
+    },
+    {
+      "database": "trapeze-safety-db",
+      "name": "incident_reports",
+      "rows": 3000,
+      "columns": [
+        "date",
+        "description",
+        "incident_id",
+        "resolved",
+        "severity"
+      ]
+    },
+    {
+      "database": "trapeze-safety-db",
+      "name": "performer_training",
+      "rows": 150,
+      "columns": [
+        "completion_date",
+        "performer_id",
+        "training_type"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    }
+  ]
+}

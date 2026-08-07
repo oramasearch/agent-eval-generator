@@ -1,0 +1,1 @@
+markdown: Meet Alex, the Operations Manager at a diamond mining company. Responsible for maximizing output efficiency and minimizing equipment downtime, Alex is measured on overall production volumes and the operational cost-efficiency. Alex can make decisions on equipment procurement, maintenance schedules, and process improvements.

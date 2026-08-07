@@ -1,0 +1,29 @@
+{
+  "profile": "urban-wildlife-management",
+  "tables": [
+    {
+      "database": "urban_wildlife_data",
+      "name": "wildlife_movements",
+      "rows": 50000,
+      "columns": [
+        "activity_type",
+        "animal_id",
+        "location",
+        "species",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "urban_wildlife_data",
+      "name": "incident_reports",
+      "rows": 10000,
+      "columns": [
+        "date_reported",
+        "description",
+        "location",
+        "report_id",
+        "resolved"
+      ]
+    }
+  ]
+}

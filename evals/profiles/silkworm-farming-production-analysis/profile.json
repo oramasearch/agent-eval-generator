@@ -74,7 +74,8 @@
           "type": "string",
           "null_fraction": 0.7
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "silkworm_farm_db",
@@ -112,7 +113,8 @@
           "type": "string",
           "null_fraction": 0.8
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

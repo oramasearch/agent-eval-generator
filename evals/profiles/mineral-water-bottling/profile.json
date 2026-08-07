@@ -1,0 +1,95 @@
+{
+  "profile_id": "mineral-water-bottling",
+  "industry": "Bottled Water Manufacturing",
+  "situation": "markdown: AquaPure is a leading mineral water bottling company with a strong focus on sustainability and efficiency. The company aims to optimize its bottling operations and supply chain logistics. The operations manager is responsible for ensuring high production output while minimizing waste and downtime. They are measured on production efficiency, supply chain effectiveness, and sustainability metrics.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Overseeing the entire bottling process, from raw water sourcing to finished product distribution.",
+    "measured_on": [
+      "Production efficiency",
+      "Supply chain effectiveness",
+      "Sustainability metrics"
+    ],
+    "constraints": [
+      "Emphasis on reducing water waste",
+      "Ensuring compliance with health and safety regulations",
+      "Minimizing energy consumption"
+    ]
+  },
+  "connections": [
+    {
+      "name": "supply_chain_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "production_metrics",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "production_metrics",
+      "name": "daily_output",
+      "connection": "production_metrics",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "filled_bottles",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "water_waste",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "energy_consumed",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "production_metrics",
+      "name": "equipment_failure_logs",
+      "connection": "production_metrics",
+      "rows": 25000,
+      "columns": [
+        {
+          "name": "failure_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "equipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failure_reason",
+          "type": "string",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "downtime_minutes",
+          "type": "int",
+          "null_fraction": 0.01
+        }
+      ]
+    }
+  ]
+}

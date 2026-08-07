@@ -93,7 +93,8 @@
           "type": "float",
           "null_fraction": 0.02
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

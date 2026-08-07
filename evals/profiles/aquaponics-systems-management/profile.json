@@ -1,0 +1,101 @@
+{
+  "profile_id": "aquaponics-systems-management",
+  "industry": "Aquaponics",
+  "situation": "markdown: In a growing aquaponics farm, the operations manager is responsible for overseeing daily activities. Their role involves maintaining optimal conditions for both fish and plants, ensuring a balanced ecosystem and maximizing yield. Success is measured by plant growth rates, fish health, water quality metrics, and system efficiency.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Managing a medium-scale aquaponics facility producing herbs, vegetables, and fish for local markets.",
+    "measured_on": [
+      "Plant yield rate",
+      "Fish growth rate",
+      "Water quality",
+      "System uptime and efficiency"
+    ],
+    "constraints": [
+      "Data must be captured in real-time for proactive decisions.",
+      "Integrated ecosystem parameters require balancing and trade-offs.",
+      "Limited budget for extensive hardware overhauls or upgrades."
+    ]
+  },
+  "connections": [
+    {
+      "name": "aquaponics_sensors",
+      "kind": "rest",
+      "state": "captured"
+    },
+    {
+      "name": "water_quality_reports",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "aquaponics",
+      "name": "sensor_readings",
+      "connection": "aquaponics_sensors",
+      "rows": 60000,
+      "columns": [
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "ph_level",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "dissolved_oxygen",
+          "type": "float",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "nitrate_concentration",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "fish_feed_rate",
+          "type": "float",
+          "null_fraction": 0.05
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "aquaponics",
+      "name": "water_quality_reports",
+      "connection": "water_quality_reports",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "report_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "plant_health_index",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "fish_vitality_score",
+          "type": "float",
+          "null_fraction": 0.07
+        },
+        {
+          "name": "system_feedback",
+          "type": "string",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

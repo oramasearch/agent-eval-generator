@@ -1,0 +1,28 @@
+{
+  "profile": "luxury-perfume-bottle-manufacturing",
+  "tables": [
+    {
+      "database": "supply_chain_management",
+      "name": "raw_materials_inventory",
+      "rows": 32000,
+      "columns": [
+        "lead_time_days",
+        "material_id",
+        "material_name",
+        "quantity_on_hand",
+        "reorder_level"
+      ]
+    },
+    {
+      "database": "supply_chain_management",
+      "name": "supplier_performance",
+      "rows": 1500,
+      "columns": [
+        "defect_rate",
+        "on_time_percentage",
+        "performance_score",
+        "supplier_id"
+      ]
+    }
+  ]
+}

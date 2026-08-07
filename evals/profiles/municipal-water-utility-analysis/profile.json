@@ -80,7 +80,8 @@
           "type": "timestamp",
           "null_fraction": 0.15
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "customer_billing_system",
@@ -118,7 +119,8 @@
           "type": "string",
           "null_fraction": 0.0
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

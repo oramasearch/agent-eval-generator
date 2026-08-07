@@ -1,0 +1,160 @@
+{
+  "profile_id": "skin-graft-manufacturing",
+  "industry": "Medical Device Manufacturing",
+  "situation": "markdown: The company specializes in the production of skin grafts used for medical treatments. The Operations Manager oversees the entire workflow, from raw material procurement through manufacturing, quality testing, and shipping. Their performance is measured based on production efficiency, quality compliance, and timely deliveries. They need insights for improving production schedules, quality control, and reducing waste.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Ensuring efficient production and distribution of skin grafts while maintaining high quality standards.",
+    "measured_on": [
+      "Production efficiency",
+      "Quality compliance",
+      "Timeliness of shipments"
+    ],
+    "constraints": [
+      "All production batches must pass compliance checks before shipping.",
+      "The manufacturing process requires precise environmental controls.",
+      "Shipment routes need to be optimized to prevent delays."
+    ]
+  },
+  "connections": [
+    {
+      "name": "prod_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "quality_warehouse",
+      "kind": "bigquery",
+      "state": "discovered"
+    },
+    {
+      "name": "shipment_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "prod_db",
+      "name": "manufacturing_batches",
+      "connection": "prod_db",
+      "rows": 175000,
+      "columns": [
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "machine_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "operator_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "material_quantity",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "humidity_level",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "prod_db",
+      "name": "quality_checks",
+      "connection": "prod_db",
+      "rows": 82000,
+      "columns": [
+        {
+          "name": "check_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "pass_fail",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "inspector_id",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "check_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "prod_db",
+      "name": "shipments",
+      "connection": "prod_db",
+      "rows": 64000,
+      "columns": [
+        {
+          "name": "shipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "destination",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ship_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "arrival_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "carrier",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "profile_id": "tuna-fishery-vessel-tracking",
+  "industry": "Tuna Fishery",
+  "situation": "markdown: The person in charge is a Fishery Operations Manager who oversees the tracking of vessels and ensures compliance with regulations. The manager is measured on the accuracy of catch records and the efficiency of tracking operations.",
+  "persona": {
+    "role": "Fishery Operations Manager",
+    "context": "Responsible for tracking vessel movements and managing catch data compliance.",
+    "measured_on": [
+      "Accuracy of catch records",
+      "Efficiency of vessel tracking"
+    ],
+    "constraints": [
+      "Limited real-time tracking capabilities",
+      "Compliance data sparsely populated"
+    ]
+  },
+  "connections": [
+    {
+      "name": "vessel_tracking",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "catch_records",
+      "kind": "postgres",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "tuna_operations",
+      "name": "vessel_movements",
+      "connection": "vessel_tracking",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "vessel_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "latitude",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "longitude",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "speed",
+          "type": "float",
+          "null_fraction": 0.05
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "tuna_operations",
+      "name": "catch_data",
+      "connection": "catch_records",
+      "rows": 20000,
+      "columns": [
+        {
+          "name": "vessel_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "catch_date",
+          "type": "date",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "species",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "weight",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "compliance_status",
+          "type": "string",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

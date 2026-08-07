@@ -1,0 +1,95 @@
+{
+  "profile_id": "algae-cultivation-management",
+  "industry": "Industrial Algae Cultivation",
+  "situation": "markdown: This profile involves an algae cultivation company aiming to optimize its production processes and product outputs. The role involves managing several facets of the algae cultivation process, from growth monitoring to output optimization. Key performance indicators include growth rates, harvest yields, and production efficiency. Constraints may include inconsistent environmental data and varying market demands for algae-derived products, such as biofuels and nutraceuticals.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Managing the operational aspects of algae cultivation for optimal productivity.",
+    "measured_on": [
+      "Yield per cultivation cycle",
+      "Energy consumption",
+      "Production cost per unit"
+    ],
+    "constraints": [
+      "Environmental variables",
+      "Market demand fluctuations",
+      "Equipment performance variability"
+    ]
+  },
+  "connections": [
+    {
+      "name": "algae_growth_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "external_environment_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "algae_growth_db",
+      "name": "growth_conditions",
+      "connection": "algae_growth_db",
+      "rows": 200000,
+      "columns": [
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "light_intensity",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "ph_level",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "growth_rate",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "algae_growth_db",
+      "name": "harvest_records",
+      "connection": "algae_growth_db",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "harvest_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "harvest_yield",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "harvest_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

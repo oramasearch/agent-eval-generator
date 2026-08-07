@@ -65,7 +65,8 @@
           "type": "int",
           "null_fraction": 0.15
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "sports_analytics",

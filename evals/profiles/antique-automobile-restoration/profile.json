@@ -1,0 +1,119 @@
+{
+  "profile_id": "antique-automobile-restoration",
+  "industry": "Antique Automobile Restoration",
+  "situation": "markdown: John works as the Data Strategy Manager at Vintage Revivals, a company specializing in restoring antique cars. The company offers subscription services for antique car parts and maintenance, which generates substantial recurring revenue. He's responsible for ensuring customer retention and maximizing operational efficiency. He measures success by analyzing churn rates, optimizing subscription cycles, and forecasting demand for specific car parts.",
+  "persona": {
+    "role": "Data Strategy Manager",
+    "context": "Analyzing data to support business strategies and improve customer retention.",
+    "measured_on": [
+      "Customer retention rates",
+      "Accuracy of demand forecasts",
+      "Efficiency of subscription services"
+    ],
+    "constraints": [
+      "Limited historical data due to periodic system upgrades",
+      "High variability in part availability due to supplier constraints",
+      "Reduced analysis time for immediate strategic decisions"
+    ]
+  },
+  "connections": [
+    {
+      "name": "churn_results",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "coffee",
+      "kind": "bigquery",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "churn_results",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "coffee",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.14
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.12
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

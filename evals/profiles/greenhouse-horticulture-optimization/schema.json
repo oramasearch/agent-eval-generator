@@ -1,0 +1,41 @@
+{
+  "profile": "greenhouse-horticulture-optimization",
+  "tables": [
+    {
+      "database": "greenhouse_db",
+      "name": "climate_control_systems",
+      "rows": 50000,
+      "columns": [
+        "co2_levels",
+        "humidity",
+        "illumination",
+        "temperature",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "greenhouse_db",
+      "name": "plant_health_monitoring",
+      "rows": 50000,
+      "columns": [
+        "disease_flags",
+        "growth_rate",
+        "health_index",
+        "plant_id",
+        "species"
+      ]
+    },
+    {
+      "database": "greenhouse_db",
+      "name": "supply_chain_data",
+      "rows": 50000,
+      "columns": [
+        "item_type",
+        "quantity",
+        "restock_date",
+        "supply_id",
+        "unit_cost"
+      ]
+    }
+  ]
+}

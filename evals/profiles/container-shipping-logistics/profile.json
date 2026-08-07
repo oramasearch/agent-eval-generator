@@ -1,0 +1,164 @@
+{
+  "profile_id": "container-shipping-logistics",
+  "industry": "Container Shipping and Logistics",
+  "situation": "markdown: Sarah is the Director of Operations at a major container shipping company. She is responsible for optimizing shipping routes and reducing operational costs. Her key performance indicators include on-time delivery rates, fuel efficiency, and reduction in shipping durations. Sarah's decisions can impact route planning, freight pricing, and maintenance schedules.",
+  "persona": {
+    "role": "Director of Operations",
+    "context": "Oversees route planning and cost management in a shipping company.",
+    "measured_on": [
+      "on-time deliveries",
+      "cost efficiencies",
+      "fuel consumption"
+    ],
+    "constraints": [
+      "must work within a fixed routing software",
+      "cannot change primary shipping routes significantly"
+    ]
+  },
+  "connections": [
+    {
+      "name": "logistics_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "fleet_data",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "logistics_db",
+      "name": "shipments",
+      "connection": "logistics_db",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "shipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "origin_port",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "destination_port",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "schedule_departure",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "schedule_arrival",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "actual_departure",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "actual_arrival",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "container_count",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cargo_weight",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "fuel_consumption",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "logistics_db",
+      "name": "performance_metrics",
+      "connection": "logistics_db",
+      "rows": 80000,
+      "columns": [
+        {
+          "name": "ship_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "engine_runtime",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "maintenance_cost",
+          "type": "float",
+          "null_fraction": 0.09
+        },
+        {
+          "name": "crew_count",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "average_speed",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_time_performance",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "logistics_db",
+      "name": "port_traffic",
+      "connection": "logistics_db",
+      "rows": 60000,
+      "columns": [
+        {
+          "name": "port_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "arrival_count",
+          "type": "int",
+          "null_fraction": 0.35
+        },
+        {
+          "name": "departure_count",
+          "type": "int",
+          "null_fraction": 0.3
+        },
+        {
+          "name": "congestion_level",
+          "type": "string",
+          "null_fraction": 0.15
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

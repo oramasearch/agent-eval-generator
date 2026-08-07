@@ -1,0 +1,45 @@
+{
+  "profile": "skin-graft-manufacturing",
+  "tables": [
+    {
+      "database": "prod_db",
+      "name": "manufacturing_batches",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "end_time",
+        "humidity_level",
+        "machine_id",
+        "material_quantity",
+        "operator_id",
+        "start_time",
+        "temperature"
+      ]
+    },
+    {
+      "database": "prod_db",
+      "name": "quality_checks",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "check_id",
+        "check_time",
+        "inspector_id",
+        "pass_fail"
+      ]
+    },
+    {
+      "database": "prod_db",
+      "name": "shipments",
+      "rows": 50000,
+      "columns": [
+        "arrival_date",
+        "batch_id",
+        "carrier",
+        "destination",
+        "ship_date",
+        "shipment_id"
+      ]
+    }
+  ]
+}

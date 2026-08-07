@@ -1,0 +1,1 @@
+markdown: A wind energy company needs to improve predictive maintenance for their wind turbines to minimize downtime and extend the lifespan of their equipment. The maintenance manager is responsible for ensuring turbines operate smoothly and safely. They are measured on reducing unplanned outages and increasing turbine uptime percentage.

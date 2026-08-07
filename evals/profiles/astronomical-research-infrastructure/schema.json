@@ -1,0 +1,30 @@
+{
+  "profile": "astronomical-research-infrastructure",
+  "tables": [
+    {
+      "database": "astronomy",
+      "name": "maintenance_logs",
+      "rows": 50000,
+      "columns": [
+        "downtime_hours",
+        "maintenance_date",
+        "maintenance_type",
+        "repair_cost",
+        "technician_id",
+        "telescope_id"
+      ]
+    },
+    {
+      "database": "astronomy",
+      "name": "equipment_list",
+      "rows": 6000,
+      "columns": [
+        "equipment_id",
+        "equipment_type",
+        "last_service_date",
+        "location",
+        "status"
+      ]
+    }
+  ]
+}

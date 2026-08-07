@@ -1,0 +1,31 @@
+{
+  "profile": "bicycle-sharing-system",
+  "tables": [
+    {
+      "database": "bikeshare",
+      "name": "rides",
+      "rows": 50000,
+      "columns": [
+        "bike_id",
+        "end_station",
+        "end_time",
+        "ride_id",
+        "start_station",
+        "start_time",
+        "user_type"
+      ]
+    },
+    {
+      "database": "bikeshare",
+      "name": "bikes",
+      "rows": 5000,
+      "columns": [
+        "bike_id",
+        "last_maintenance_date",
+        "maintenance_status",
+        "model",
+        "purchase_date"
+      ]
+    }
+  ]
+}

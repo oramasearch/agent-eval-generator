@@ -69,7 +69,8 @@
           "type": "float",
           "null_fraction": 0.1
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "streaming_analytics",
@@ -102,7 +103,8 @@
           "type": "string",
           "null_fraction": 0.0
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

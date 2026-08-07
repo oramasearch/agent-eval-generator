@@ -1,0 +1,1 @@
+markdown: An innovative company focusing on urban mushroom farming to tackle food security and sustainable agriculture in urban centers. The operations manager is responsible for optimizing the yield, reducing waste, and ensuring the freshness of produce. The manager's performance is measured on yield optimization, operational costs, and sustainability metrics.

@@ -1,0 +1,95 @@
+{
+  "profile_id": "pet-cremation-services",
+  "industry": "Pet Cremation Services",
+  "situation": "markdown: The role is a Director of Operations for a pet cremation service provider. The director focuses on optimizing the cremation operations and customer satisfaction, tracking operational efficiency, and finding ways to predict resource needs based on upcoming demands. Key performance indicators include turnaround time for cremation service requests, customer satisfaction scores, and operational cost efficiency.",
+  "persona": {
+    "role": "Director of Operations",
+    "context": "Responsible for overseeing the cremation operations, inventory, customer service liaison, and ensuring compliance with state and federal regulations.",
+    "measured_on": [
+      "Operational efficiency",
+      "Customer satisfaction scores",
+      "Cost per service request"
+    ],
+    "constraints": [
+      "Must adhere to stringent environmental and health regulations.",
+      "Limited budget for operational expansions.",
+      "Highly sensitive to customer complaints due to the nature of services."
+    ]
+  },
+  "connections": [
+    {
+      "name": "pet-services-db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "operational-s3-storage",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "operations",
+      "name": "service_requests",
+      "connection": "operational-s3-storage",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "pet_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "weight_kg",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "cremation_type",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "service_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "customer_satisfaction_score",
+          "type": "int",
+          "null_fraction": 0.15
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "inventory",
+      "name": "equipment_status",
+      "connection": "operational-s3-storage",
+      "rows": 6500,
+      "columns": [
+        {
+          "name": "equipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ]
+    }
+  ]
+}

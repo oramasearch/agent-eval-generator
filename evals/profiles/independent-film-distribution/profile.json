@@ -1,0 +1,99 @@
+{
+  "profile_id": "independent-film-distribution",
+  "industry": "Film Distribution",
+  "situation": "markdown: A film distribution company is responsible for the release and promotion of films to theaters, streaming platforms, and physical media outlets. The distribution manager's role involves making strategic decisions on marketing spend, selecting platforms for release, and timing the releases to maximize box office and streaming revenues. They are measured on the success of film releases in terms of revenue and viewer engagement. The primary actions involve scheduling releases, optimizing inventory (physical media), and running targeted marketing campaigns.",
+  "persona": {
+    "role": "Distribution Manager",
+    "context": "Managing film releases across various platforms, optimizing revenue through strategic marketing and scheduling.",
+    "measured_on": [
+      "Box office revenue",
+      "Streaming platform engagement",
+      "Physical media sales"
+    ],
+    "constraints": [
+      "Budget limits for marketing campaigns",
+      "Licensing agreements with platforms",
+      "Content rating and censorship regulations in different regions"
+    ]
+  },
+  "connections": [
+    {
+      "name": "coffee",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "coffee",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.75
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

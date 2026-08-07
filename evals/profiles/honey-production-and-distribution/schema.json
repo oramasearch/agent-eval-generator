@@ -1,0 +1,27 @@
+{
+  "profile": "honey-production-and-distribution",
+  "tables": [
+    {
+      "database": "supply_chain_metrics",
+      "name": "inventory_levels",
+      "rows": 50000,
+      "columns": [
+        "date_recorded",
+        "location_id",
+        "on_hand",
+        "product_id"
+      ]
+    },
+    {
+      "database": "supply_chain_metrics",
+      "name": "delivery_times",
+      "rows": 30000,
+      "columns": [
+        "delivery_date",
+        "lead_time_days",
+        "location_id",
+        "order_id"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "profile_id": "high-altitude-balloon-operations",
+  "industry": "Scientific Research",
+  "situation": "markdown: Dr. Emily Cheng is the Head of Balloon Operations at Stratos Explorations. Her team launches high-altitude balloons for atmospheric data collection. Dr. Cheng is measured on successful data captures from designated altitudes and optimizing launch schedules to minimize weather-related interventions. She can act on operational inefficiencies, predictive launch planning, and anomaly detections in data collection.",
+  "persona": {
+    "role": "Head of Balloon Operations",
+    "context": "Stratos Explorations specializes in launching high-altitude balloons for atmospheric data collection used by research institutions and governmental agencies worldwide.",
+    "measured_on": [
+      "Successful data capture from designated altitudes",
+      "Operational efficiency",
+      "Minimizing weather-related intervention per launch"
+    ],
+    "constraints": [
+      "Launch frequency is limited due to budget constraints",
+      "Data capture success is weather-dependent",
+      "Operates under strict safety regulations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "balloon_operations",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "weather_forecast",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "balloon_operations",
+      "name": "launch_schedules",
+      "connection": "balloon_operations",
+      "rows": 12000,
+      "columns": [
+        {
+          "name": "launch_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "launch_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "altitude_target",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "payload_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "weather_conditions",
+          "type": "string",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "anomalies_detected",
+          "type": "bool",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "balloon_operations",
+      "name": "balloon_data",
+      "connection": "balloon_operations",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "balloon_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "data_timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "altitude",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "pressure",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "humidity",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "anomaly_flag",
+          "type": "bool",
+          "null_fraction": 0.02
+        }
+      ]
+    }
+  ]
+}

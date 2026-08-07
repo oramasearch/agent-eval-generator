@@ -1,0 +1,39 @@
+{
+  "profile": "ginger-beer-manufacturing",
+  "tables": [
+    {
+      "database": "company_warehouse_db",
+      "name": "raw_material_inventory",
+      "rows": 50000,
+      "columns": [
+        "current_stock",
+        "material_id",
+        "material_name",
+        "reorder_level",
+        "supplier_id"
+      ]
+    },
+    {
+      "database": "company_warehouse_db",
+      "name": "production_logs",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "defects",
+        "material_used",
+        "production_date",
+        "quantity_produced"
+      ]
+    },
+    {
+      "database": "company_warehouse_db",
+      "name": "sales_forecast",
+      "rows": 365,
+      "columns": [
+        "actual_sales",
+        "date",
+        "forecasted_sales"
+      ]
+    }
+  ]
+}

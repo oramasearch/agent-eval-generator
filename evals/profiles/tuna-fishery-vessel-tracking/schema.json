@@ -1,0 +1,29 @@
+{
+  "profile": "tuna-fishery-vessel-tracking",
+  "tables": [
+    {
+      "database": "tuna_operations",
+      "name": "vessel_movements",
+      "rows": 50000,
+      "columns": [
+        "latitude",
+        "longitude",
+        "speed",
+        "timestamp",
+        "vessel_id"
+      ]
+    },
+    {
+      "database": "tuna_operations",
+      "name": "catch_data",
+      "rows": 20000,
+      "columns": [
+        "catch_date",
+        "compliance_status",
+        "species",
+        "vessel_id",
+        "weight"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "profile": "deep-sea-exploration-vessel",
+  "tables": [
+    {
+      "database": "marine-data-system",
+      "name": "vessel_operations",
+      "rows": 50000,
+      "columns": [
+        "crew_size",
+        "fuel_consumed",
+        "location",
+        "mission_duration",
+        "operation_date",
+        "success_flag",
+        "vessel_id"
+      ]
+    },
+    {
+      "database": "marine-data-system",
+      "name": "exploration_sites",
+      "rows": 6000,
+      "columns": [
+        "coordinates",
+        "discovery_date",
+        "environmental_risk",
+        "resource_estimate",
+        "site_id"
+      ]
+    }
+  ]
+}

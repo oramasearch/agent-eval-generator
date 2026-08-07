@@ -1,0 +1,28 @@
+{
+  "profile": "urban-mushroom-farming",
+  "tables": [
+    {
+      "database": "urban_farm_data",
+      "name": "sensor_readings",
+      "rows": 50000,
+      "columns": [
+        "co2_levels",
+        "humidity",
+        "light_exposure",
+        "temperature",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "urban_farm_management",
+      "name": "crop_schedule",
+      "rows": 3000,
+      "columns": [
+        "crop_id",
+        "expected_harvest_date",
+        "planting_date",
+        "yield_estimation"
+      ]
+    }
+  ]
+}

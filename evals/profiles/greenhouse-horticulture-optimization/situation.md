@@ -1,0 +1,1 @@
+markdown: A greenhouse operations manager aims to optimize the growth conditions for various crops. They are measured on crop yield, resource utilization efficiency, and minimizing operational costs. The manager acts on data collected from climate control systems, plant health monitoring, and supply chain data.

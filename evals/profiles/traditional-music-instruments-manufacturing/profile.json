@@ -1,0 +1,100 @@
+{
+  "profile_id": "traditional-music-instruments-manufacturing",
+  "industry": "Traditional Musical Instruments Manufacturing",
+  "situation": "markdown: The company specializes in manufacturing traditional musical instruments, particularly targeting professional musicians and high-end markets. The head of operations is keen on optimizing production timelines and minimizing wastages without compromising on quality. The company deals with varied instruments, each with intricate designs that require precision in crafting. The head of operations is measured on reducing production costs and ensuring consistent quality, and can act on enhancing supply chain efficiency and process optimizations.",
+  "persona": {
+    "role": "Head of Operations",
+    "context": "Leads the production team, ensuring timely delivery of high-quality instruments.",
+    "measured_on": [
+      "Reduction in production costs",
+      "Minimization of wastage",
+      "Timeliness of delivery"
+    ],
+    "constraints": [
+      "Must maintain high-quality standards for each instrument",
+      "Limited ability to significantly change suppliers due to specialized raw materials",
+      "High variability in demand based on seasonal trends and product launches",
+      "Must ensure skilled labor retention, given the specialized craft required"
+    ]
+  },
+  "connections": [
+    {
+      "name": "instrument_quality_metrics",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "inventory_management",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "supplier_information",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "order_processing",
+      "kind": "odbc",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "inventory_management",
+      "name": "wood_inventory",
+      "connection": "bigquery",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "wood_type",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "supplier_id",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "quantity",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "quality_grade",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "date_received",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        }
+      ]
+    },
+    {
+      "database": "supplier_information",
+      "name": "supplier_ratings",
+      "connection": "s3",
+      "rows": 500,
+      "columns": [
+        {
+          "name": "supplier_id",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "rating",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "last_rating_date",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        }
+      ]
+    }
+  ]
+}

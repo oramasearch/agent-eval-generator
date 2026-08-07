@@ -1,0 +1,1 @@
+markdown: The company specializes in the design and manufacturing of custom skateboards. It has a growing online and retail presence. The operations manager is tasked with optimizing inventory and predicting popular trends to meet demand spikes efficiently. They measure success through increased sales trends, optimal inventory levels, and reduced stockouts.

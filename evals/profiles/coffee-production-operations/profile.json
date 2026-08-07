@@ -1,0 +1,126 @@
+{
+  "profile_id": "coffee-production-operations",
+  "industry": "Coffee Production and Distribution",
+  "situation": "markdown: The Operations Director at a coffee production and distribution company is responsible for ensuring that the supply chain runs smoothly and efficiently. They are measured on metrics like inventory management, order fulfillment rate, and monthly revenue growth. Their actions can influence production scheduling, distribution logistics, and promotional activities to enhance sales.",
+  "persona": {
+    "role": "Operations Director",
+    "context": "Overseeing the production and distribution processes in the coffee sector",
+    "measured_on": [
+      "inventory accuracy",
+      "order fulfillment rates",
+      "monthly revenue growth"
+    ],
+    "constraints": [
+      "Ensure optimal inventory levels to prevent overstock or stockouts",
+      "Align promotional activities with inventory and production capacity"
+    ]
+  },
+  "connections": [
+    {
+      "name": "coffee",
+      "kind": "bigquery",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "coffee",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        }
+      ]
+    }
+  ]
+}

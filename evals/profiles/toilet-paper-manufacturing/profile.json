@@ -1,0 +1,137 @@
+{
+  "profile_id": "toilet-paper-manufacturing",
+  "industry": "Pulp and Paper",
+  "situation": "markdown: John is the head of operations at a large toilet paper manufacturing company. The company has been facing challenges with optimizing its production schedules and managing inventory levels in response to fluctuating demand. John is evaluated on his ability to ensure that production runs meet market demand without overproducing, and to manage the costs associated with holding excess inventory.",
+  "persona": {
+    "role": "Head of Operations",
+    "context": "John oversees the production processes and is responsible for optimizing resource utilization.",
+    "measured_on": [
+      "Production efficiency",
+      "Inventory management",
+      "Cost control"
+    ],
+    "constraints": [
+      "Must minimize inventory holding costs",
+      "Cannot exceed production capacity",
+      "Should maintain a minimum inventory level to meet demand spikes"
+    ]
+  },
+  "connections": [
+    {
+      "name": "ProductionDB",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "SalesDB",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "LiveMarketFeed",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "SalesDB",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "ProductionDB",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.02
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "ProductionDB",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

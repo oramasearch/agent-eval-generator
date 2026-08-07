@@ -1,0 +1,132 @@
+{
+  "profile_id": "high-end-speaker-manufacturer",
+  "industry": "Audio Equipment Manufacturing",
+  "situation": "markdown: John is the head of Data Analytics at a high-end speaker manufacturing company known for its precision in sound quality. His primary responsibility is to optimize the production process and improve sales forecasting to meet increasing demand. John needs to utilize data from various departments to streamline operations and ensure timely product availability while maintaining the brand's reputation for excellence.",
+  "persona": {
+    "role": "Head of Data Analytics",
+    "context": "Focusing on optimizing production processes and improving sales forecasting for high-quality speaker systems.",
+    "measured_on": [
+      "Production efficiency",
+      "Forecast accuracy",
+      "Supply chain optimization"
+    ],
+    "constraints": [
+      "Ensure data accuracy across different systems",
+      "Integrate new data sources without disrupting current workflows"
+    ]
+  },
+  "connections": [
+    {
+      "name": "manufacturing_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "sales_data",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "supply_chain_info",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "manufacturing_db",
+      "name": "production_stats",
+      "connection": "manufacturing_db",
+      "rows": 203000,
+      "columns": [
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_time",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "num_units",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "defect_rate",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "sales_data",
+      "name": "quarterly_sales",
+      "connection": "sales_data",
+      "rows": 28500,
+      "columns": [
+        {
+          "name": "region",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "product_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quarter",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sales_volume",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "sales_data",
+      "name": "customer_feedback",
+      "connection": "sales_data",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "customer_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "purchase_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rating",
+          "type": "int",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "comments",
+          "type": "string",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

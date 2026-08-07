@@ -1,0 +1,96 @@
+{
+  "profile_id": "power-tool-manufacturer",
+  "industry": "Power Tool Manufacturing",
+  "situation": "markdown: A logistics manager in a power tool manufacturing company, tasked with optimizing the inventory and production schedule based on demand forecasting. They are measured on supply chain efficiency, reduction in stockouts, and production cost management.",
+  "persona": {
+    "role": "Logistics Manager",
+    "context": "Oversees the flow of goods from suppliers through production to customers.",
+    "measured_on": [
+      "On-time delivery rate",
+      "Inventory turnover ratio",
+      "Reduction in manufacturing costs"
+    ],
+    "constraints": [
+      "Require demand forecast accuracy above 85%",
+      "Limited budget for unexpected order surge",
+      "Compatibility with existing supply chain management systems"
+    ]
+  },
+  "connections": [
+    {
+      "name": "erp_system",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "inventory_management",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "inventory_management",
+      "name": "product_inventory",
+      "connection": "inventory_management",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "warehouse_location",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "quantity_on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "reorder_level",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "lead_time",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "inventory_management",
+      "name": "sales_data",
+      "connection": "inventory_management",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "product_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units_sold",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sales_channel",
+          "type": "string",
+          "null_fraction": 0.02
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

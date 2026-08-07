@@ -1,0 +1,29 @@
+{
+  "profile": "aquaponics-systems-management",
+  "tables": [
+    {
+      "database": "aquaponics",
+      "name": "sensor_readings",
+      "rows": 50000,
+      "columns": [
+        "dissolved_oxygen",
+        "fish_feed_rate",
+        "nitrate_concentration",
+        "ph_level",
+        "temperature",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "aquaponics",
+      "name": "water_quality_reports",
+      "rows": 5000,
+      "columns": [
+        "fish_vitality_score",
+        "plant_health_index",
+        "report_date",
+        "system_feedback"
+      ]
+    }
+  ]
+}

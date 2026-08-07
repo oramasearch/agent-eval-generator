@@ -1,0 +1,104 @@
+{
+  "profile_id": "bicycle-sharing-system",
+  "industry": "Urban Transportation",
+  "situation": "markdown: The transport manager at a city's bicycle sharing infrastructure company. The manager is responsible for ensuring efficient operations, reducing downtime of bicycles and docking stations, minimizing repair costs, and maximizing user satisfaction scores. They are measured on the city's contribution to environmental sustainability, cost-efficiency, and user retention.",
+  "persona": {
+    "role": "Transport Manager",
+    "context": "Responsible for ensuring that the bicycle sharing system is efficient and meets user demands while reducing operational costs.",
+    "measured_on": [
+      "Reduction of bike downtimes",
+      "Cost reduction in repairs and maintenance",
+      "Improvements in user retention and satisfaction"
+    ],
+    "constraints": [
+      "Cannot implement system changes without board approval",
+      "Limited budget for upgrades and maintenance"
+    ]
+  },
+  "connections": [
+    {
+      "name": "bikeshare_database",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "bikeshare",
+      "name": "rides",
+      "connection": "bikeshare_database",
+      "rows": 250000,
+      "columns": [
+        {
+          "name": "ride_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_station",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "end_station",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "bike_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "user_type",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "bikeshare",
+      "name": "bikes",
+      "connection": "bikeshare_database",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "bike_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "model",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "purchase_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "maintenance_status",
+          "type": "string",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

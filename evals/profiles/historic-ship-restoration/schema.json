@@ -1,0 +1,30 @@
+{
+  "profile": "historic-ship-restoration",
+  "tables": [
+    {
+      "database": "material_supply_chain",
+      "name": "inventory_levels",
+      "rows": 50000,
+      "columns": [
+        "category",
+        "item_id",
+        "item_name",
+        "last_restock_date",
+        "location",
+        "quantity"
+      ]
+    },
+    {
+      "database": "historical_references",
+      "name": "ship_blueprints",
+      "rows": 50000,
+      "columns": [
+        "blueprint_id",
+        "designer",
+        "historical_notes",
+        "ship_name",
+        "year_original"
+      ]
+    }
+  ]
+}

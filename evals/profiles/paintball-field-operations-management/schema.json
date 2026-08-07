@@ -1,0 +1,56 @@
+{
+  "profile": "paintball-field-operations-management",
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "rows": 24,
+      "columns": [
+        "account",
+        "dominant_driver",
+        "driver_effect",
+        "failed_payments",
+        "mrr",
+        "rank",
+        "risk",
+        "total_events"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "rows": 47000,
+      "columns": [
+        "cadence_days",
+        "cancelled_at",
+        "pause_until",
+        "sku",
+        "started_at",
+        "sub_id"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

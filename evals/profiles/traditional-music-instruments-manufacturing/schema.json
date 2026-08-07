@@ -1,0 +1,27 @@
+{
+  "profile": "traditional-music-instruments-manufacturing",
+  "tables": [
+    {
+      "database": "inventory_management",
+      "name": "wood_inventory",
+      "rows": 10000,
+      "columns": [
+        "date_received",
+        "quality_grade",
+        "quantity",
+        "supplier_id",
+        "wood_type"
+      ]
+    },
+    {
+      "database": "supplier_information",
+      "name": "supplier_ratings",
+      "rows": 500,
+      "columns": [
+        "last_rating_date",
+        "rating",
+        "supplier_id"
+      ]
+    }
+  ]
+}

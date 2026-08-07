@@ -1,0 +1,139 @@
+{
+  "profile_id": "honeycomb-frame-manufacturing",
+  "industry": "Beehive Equipment Manufacturing",
+  "situation": "markdown: The company specializes in manufacturing honeycomb frames that are used in beehives across bee farms globally. The main interest is in optimizing manufacturing processes, predicting equipment maintenance, and forecasting demand to ensure efficient operations and continuous supply to clients. They're seeking to improve process optimization and predictive maintenance, as these are crucial to maximizing uptime and reducing delays in production and supply chains. The manufacturing director is evaluated based on production efficiency, equipment uptime, and the accuracy of production forecasts against actual demand.",
+  "persona": {
+    "role": "Manufacturing Director",
+    "context": "Oversees production processes ensuring efficiency and minimal downtime. Lack of timely equipment maintenance and inaccurate demand forecasts could severely impact operational continuity and client satisfaction.",
+    "measured_on": [
+      "Production efficiency",
+      "Equipment uptime",
+      "Forecast accuracy"
+    ],
+    "constraints": [
+      "Efficiency must be above 90%",
+      "Equipment downtime should not exceed 5% per month",
+      "Forecast error should be less than 10%"
+    ]
+  },
+  "connections": [
+    {
+      "name": "manufacturing_system",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "sales_analytics",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "manufacturing_system",
+      "name": "production_efficiency",
+      "connection": "manufacturing_system",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "shift",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "machine_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "product_type",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "units_produced",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "defective_units",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "downtime_minutes",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "manufacturing_system",
+      "name": "equipment_maintenance",
+      "connection": "manufacturing_system",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "machine_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "downtime_minutes",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cost",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "sales_analytics",
+      "name": "sales_forecast",
+      "connection": "sales_analytics",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "forecast_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "product_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "predicted_sales",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "actual_sales",
+          "type": "int",
+          "null_fraction": 0.1
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

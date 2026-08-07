@@ -1,0 +1,17 @@
+{
+  "profile": "marine-biology-hydroacoustics-analysis",
+  "tables": [
+    {
+      "database": "fishing_records_s3",
+      "name": "fish_catch_data",
+      "rows": 50000,
+      "columns": [
+        "date",
+        "location",
+        "method",
+        "species",
+        "weight_kg"
+      ]
+    }
+  ]
+}

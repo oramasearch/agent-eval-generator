@@ -1,0 +1,149 @@
+{
+  "profile_id": "trapeze-safety-management",
+  "industry": "Circus Arts and Entertainment",
+  "situation": "markdown: The Flying Trapeze Company, famous for their breathtaking aerial performances, holds regular shows at various locations worldwide. Alex, the safety manager, is tasked with ensuring the well-being of performers. He needs to monitor and analyze safety equipment usage, performer training schedules, and incident reports to minimize accidents during performances. Alex is measured on the reduction of incident rates and response time to safety concerns. His swift actions can potentially save lives and enhance the company's reputation for safety.",
+  "persona": {
+    "role": "Safety Manager",
+    "context": "In charge of safety protocols and equipment checks for trapeze performances.",
+    "measured_on": [
+      "Reduction of incident rates",
+      "Quick response to incidents",
+      "Compliance with safety regulations"
+    ],
+    "constraints": [
+      "Data must be up-to-date and comprehensive",
+      "Must ensure all performers have up-to-date safety training"
+    ]
+  },
+  "connections": [
+    {
+      "name": "trapeze-safety-db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "training-schedules",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "trapeze-safety-db",
+      "name": "equipment_checks",
+      "connection": "trapeze-safety-db",
+      "rows": 20000,
+      "columns": [
+        {
+          "name": "check_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "equipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "check_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "trapeze-safety-db",
+      "name": "incident_reports",
+      "connection": "trapeze-safety-db",
+      "rows": 3000,
+      "columns": [
+        {
+          "name": "incident_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "severity",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "resolved",
+          "type": "bool",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "trapeze-safety-db",
+      "name": "performer_training",
+      "connection": "trapeze-safety-db",
+      "rows": 150,
+      "columns": [
+        {
+          "name": "performer_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "training_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "completion_date",
+          "type": "timestamp",
+          "null_fraction": 0.01
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "trapeze-safety-db",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.5
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

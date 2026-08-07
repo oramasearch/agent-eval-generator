@@ -67,7 +67,8 @@
           "type": "int",
           "null_fraction": 0.1
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "mining_operations_db",
@@ -100,7 +101,8 @@
           "type": "string",
           "null_fraction": 0.05
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

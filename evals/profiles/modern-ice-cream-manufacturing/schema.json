@@ -1,0 +1,29 @@
+{
+  "profile": "modern-ice-cream-manufacturing",
+  "tables": [
+    {
+      "database": "ice_cream_inventory_db",
+      "name": "ingredient_inventory",
+      "rows": 25000,
+      "columns": [
+        "ingredient_id",
+        "ingredient_name",
+        "last_ordered_date",
+        "quantity_on_hand",
+        "reorder_level"
+      ]
+    },
+    {
+      "database": "supply_chain_api",
+      "name": "logistics_info",
+      "rows": 5000,
+      "columns": [
+        "arrival_date",
+        "destination",
+        "origin",
+        "shipment_id",
+        "status"
+      ]
+    }
+  ]
+}

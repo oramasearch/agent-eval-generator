@@ -1,0 +1,1 @@
+markdown: This profile revolves around a company that manufactures and maintains drones for precision agriculture. Their main focus is to ensure the drones are in optimal working condition and monitor the agricultural fields efficiently. The performance metrics are heavily reliant on reducing drone downtime and enhancing the efficiency of field monitoring.

@@ -1,0 +1,145 @@
+{
+  "profile_id": "digital-hr-payroll-consultancy",
+  "industry": "Digital HR and Payroll",
+  "situation": "markdown: The consulting firm offers digital transformation services for businesses looking to automate their human resources and payroll processes. They aim to identify inefficiencies in current processes and design tailored digital solutions that reduce processing time and errors.",
+  "persona": {
+    "role": "Digital Transformation Consultant",
+    "context": "Facilitates digital enhancements for HR and payroll systems in various businesses.",
+    "measured_on": [
+      "Client process improvement",
+      "Successful implementation of digital solutions",
+      "Client satisfaction and reduction of processing time"
+    ],
+    "constraints": [
+      "Solutions must be customized for each client",
+      "Must adhere to compliance requirements for payroll",
+      "Budgets are often constrained by client funding"
+    ]
+  },
+  "connections": [
+    {
+      "name": "financial_audits",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "hr_management_system",
+      "kind": "odbc",
+      "state": "captured"
+    },
+    {
+      "name": "client_time_tracking",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "hr_management_system",
+      "name": "employee_details",
+      "connection": "hr_management_system",
+      "rows": 75000,
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "first_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "department",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "hire_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "termination_date",
+          "type": "timestamp",
+          "null_fraction": 0.35
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "hr_management_system",
+      "name": "payroll_details",
+      "connection": "hr_management_system",
+      "rows": 75000,
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "pay_period",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "gross_pay",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "tax_deductions",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "net_pay",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "client_time_tracking",
+      "name": "time_logs",
+      "connection": "client_time_tracking",
+      "rows": 500000,
+      "columns": [
+        {
+          "name": "log_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "employee_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "log_in_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "log_out_time",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "project_code",
+          "type": "string",
+          "null_fraction": 0.01
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

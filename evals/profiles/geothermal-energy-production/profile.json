@@ -1,0 +1,104 @@
+{
+  "profile_id": "geothermal-energy-production",
+  "industry": "Geothermal Energy",
+  "situation": "markdown: The company operates several geothermal energy plants, focusing on harnessing sustainable energy from natural geothermal reservoirs. The operations manager aims to optimize energy output and reduce maintenance costs while ensuring safety and compliance with environmental regulations.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Oversees multiple geothermal plants, responsible for efficiency and safety",
+    "measured_on": [
+      "Energy output efficiency",
+      "Maintenance cost reduction",
+      "Regulatory compliance"
+    ],
+    "constraints": [
+      "Must consider environmental regulations",
+      "Limited budget for automation"
+    ]
+  },
+  "connections": [
+    {
+      "name": "plant_sensors",
+      "kind": "iot",
+      "state": "captured"
+    },
+    {
+      "name": "maintenance_records",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "regulatory_compliance",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "geothermal_operations",
+      "name": "plant_sensors",
+      "connection": "iot",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "plant_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "pressure",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "flow_rate",
+          "type": "float",
+          "null_fraction": 0.05
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "geothermal_operations",
+      "name": "maintenance_records",
+      "connection": "postgres",
+      "rows": 35000,
+      "columns": [
+        {
+          "name": "record_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "plant_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "issue_type",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "cost",
+          "type": "float",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

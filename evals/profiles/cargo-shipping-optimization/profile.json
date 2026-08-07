@@ -80,7 +80,8 @@
           "type": "timestamp",
           "null_fraction": 0.2
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

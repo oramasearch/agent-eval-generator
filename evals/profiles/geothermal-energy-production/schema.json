@@ -1,0 +1,29 @@
+{
+  "profile": "geothermal-energy-production",
+  "tables": [
+    {
+      "database": "geothermal_operations",
+      "name": "plant_sensors",
+      "rows": 50000,
+      "columns": [
+        "flow_rate",
+        "plant_id",
+        "pressure",
+        "temperature",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "geothermal_operations",
+      "name": "maintenance_records",
+      "rows": 35000,
+      "columns": [
+        "cost",
+        "issue_type",
+        "maintenance_date",
+        "plant_id",
+        "record_id"
+      ]
+    }
+  ]
+}

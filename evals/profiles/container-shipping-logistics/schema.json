@@ -1,0 +1,47 @@
+{
+  "profile": "container-shipping-logistics",
+  "tables": [
+    {
+      "database": "logistics_db",
+      "name": "shipments",
+      "rows": 50000,
+      "columns": [
+        "actual_arrival",
+        "actual_departure",
+        "cargo_weight",
+        "container_count",
+        "destination_port",
+        "fuel_consumption",
+        "origin_port",
+        "schedule_arrival",
+        "schedule_departure",
+        "shipment_id"
+      ]
+    },
+    {
+      "database": "logistics_db",
+      "name": "performance_metrics",
+      "rows": 50000,
+      "columns": [
+        "average_speed",
+        "crew_count",
+        "engine_runtime",
+        "maintenance_cost",
+        "on_time_performance",
+        "ship_id"
+      ]
+    },
+    {
+      "database": "logistics_db",
+      "name": "port_traffic",
+      "rows": 50000,
+      "columns": [
+        "arrival_count",
+        "congestion_level",
+        "date",
+        "departure_count",
+        "port_name"
+      ]
+    }
+  ]
+}

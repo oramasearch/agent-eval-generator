@@ -1,0 +1,28 @@
+{
+  "profile": "algae-cultivation-management",
+  "tables": [
+    {
+      "database": "algae_growth_db",
+      "name": "growth_conditions",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "growth_rate",
+        "light_intensity",
+        "ph_level",
+        "temperature"
+      ]
+    },
+    {
+      "database": "algae_growth_db",
+      "name": "harvest_records",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "harvest_date",
+        "harvest_id",
+        "harvest_yield"
+      ]
+    }
+  ]
+}

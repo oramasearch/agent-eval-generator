@@ -1,0 +1,30 @@
+{
+  "profile": "oyster-farming-management",
+  "tables": [
+    {
+      "database": "oyster_management_db",
+      "name": "growth_monitoring",
+      "rows": 50000,
+      "columns": [
+        "date",
+        "growth_rate",
+        "oyster_id",
+        "ph_level",
+        "salinity",
+        "water_temperature"
+      ]
+    },
+    {
+      "database": "oyster_management_db",
+      "name": "harvest_schedule",
+      "rows": 5000,
+      "columns": [
+        "actual_yield",
+        "expected_yield",
+        "harvest_date",
+        "plot_id",
+        "weather"
+      ]
+    }
+  ]
+}

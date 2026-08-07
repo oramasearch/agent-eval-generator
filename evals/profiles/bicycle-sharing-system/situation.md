@@ -1,0 +1,1 @@
+markdown: The transport manager at a city's bicycle sharing infrastructure company. The manager is responsible for ensuring efficient operations, reducing downtime of bicycles and docking stations, minimizing repair costs, and maximizing user satisfaction scores. They are measured on the city's contribution to environmental sustainability, cost-efficiency, and user retention.

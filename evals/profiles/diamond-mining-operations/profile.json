@@ -1,0 +1,121 @@
+{
+  "profile_id": "diamond-mining-operations",
+  "industry": "Diamond Mining and Trading",
+  "situation": "markdown: Meet Alex, the Operations Manager at a diamond mining company. Responsible for maximizing output efficiency and minimizing equipment downtime, Alex is measured on overall production volumes and the operational cost-efficiency. Alex can make decisions on equipment procurement, maintenance schedules, and process improvements.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Overseeing the production and processing of diamonds, Alex aims to ensure efficient mining operations and minimize costs while maintaining quality standards.",
+    "measured_on": [
+      "Production Efficiency",
+      "Downtime Reduction",
+      "Operational Cost-Efficiency"
+    ],
+    "constraints": [
+      "Equipment budgets are capped due to company-wide financial constraints.",
+      "Maintenance decisions should not hamper ongoing production by more than 10%."
+    ]
+  },
+  "connections": [
+    {
+      "name": "diamond_mining_operations",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "diamond_market_data",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "diamond_operations",
+      "name": "mining_equipment",
+      "connection": "diamond_mining_operations",
+      "rows": 3000,
+      "columns": [
+        {
+          "name": "equipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "model",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "purchase_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "operational_hours",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_due_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "diamond_operations",
+      "name": "mining_output",
+      "connection": "diamond_mining_operations",
+      "rows": 45000,
+      "columns": [
+        {
+          "name": "extraction_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quality_grade",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "carat_weight",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "operation_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "diamond_operations",
+      "name": "equipment_failures",
+      "connection": "diamond_mining_operations",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "equipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failure_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failure_reason",
+          "type": "string",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "downtime_hours",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

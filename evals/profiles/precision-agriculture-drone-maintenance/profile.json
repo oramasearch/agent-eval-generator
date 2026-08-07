@@ -1,0 +1,133 @@
+{
+  "profile_id": "precision-agriculture-drone-maintenance",
+  "industry": "Precision Agriculture",
+  "situation": "markdown: This profile revolves around a company that manufactures and maintains drones for precision agriculture. Their main focus is to ensure the drones are in optimal working condition and monitor the agricultural fields efficiently. The performance metrics are heavily reliant on reducing drone downtime and enhancing the efficiency of field monitoring.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for overseeing the drone fleet used in precision agriculture to ensure they operate optimally.",
+    "measured_on": [
+      "Drone uptime",
+      "Field monitoring efficiency",
+      "Maintenance costs"
+    ],
+    "constraints": [
+      "Reduce downtime to less than 5%",
+      "Increase accuracy of field monitoring by 15%",
+      "Optimize maintenance schedules without increasing costs"
+    ]
+  },
+  "connections": [
+    {
+      "name": "drone_fleet_maintenance",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "field_monitoring_data",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "inventory_snapshots",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "drone_maintenance",
+      "name": "drone_fleet",
+      "connection": "drone_fleet_maintenance",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "drone_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_service_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "service_status",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "battery_health",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "flight_hours",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "agriculture_monitoring",
+      "name": "field_data",
+      "connection": "field_monitoring_data",
+      "rows": 500000,
+      "columns": [
+        {
+          "name": "field_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "drone_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "capture_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "crop_health_index",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "soil_moisture_level",
+          "type": "float",
+          "null_fraction": 0.15
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

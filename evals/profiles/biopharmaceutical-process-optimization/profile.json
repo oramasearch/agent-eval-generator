@@ -1,0 +1,69 @@
+{
+  "profile_id": "biopharmaceutical-process-optimization",
+  "industry": "Biopharmaceutical Manufacturing",
+  "situation": "markdown: A process engineer working in a biopharmaceutical manufacturing plant is tasked with improving the efficiency and yield of the manufacturing process. Their role involves monitoring equipment performance, optimizing process parameters, and reducing downtime. They are measured on the efficiency of the production process and the quality of the manufactured product. Their effectiveness depends on analyzing large sets of operational data from various systems to identify process bottlenecks and areas for improvement.",
+  "persona": {
+    "role": "Process Engineer",
+    "context": "Optimizing biopharmaceutical manufacturing processes to enhance efficiency and yield.",
+    "measured_on": [
+      "Efficiency of production processes",
+      "Quality of manufactured products"
+    ],
+    "constraints": [
+      "Must work within compliance guidelines of the biopharmaceutical industry",
+      "Resource constraints for implementing significant equipment upgrades"
+    ]
+  },
+  "connections": [
+    {
+      "name": "biopharma_ops_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "biopharmaceutical_data_warehouse",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "biopharmaceutical_data_warehouse",
+      "name": "subscriptions",
+      "connection": "biopharmaceutical_data_warehouse",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.75
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.8
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

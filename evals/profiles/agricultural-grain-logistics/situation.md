@@ -1,0 +1,1 @@
+markdown: The logistics manager of a large grain co-op is responsible for coordinating the storage and shipment of harvested grains from various farms to central silos and eventually to customers. They must ensure minimal delays and maintain grain quality during transportation and storage.

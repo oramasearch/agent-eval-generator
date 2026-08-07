@@ -1,0 +1,39 @@
+{
+  "profile": "diamond-mining-operations",
+  "tables": [
+    {
+      "database": "diamond_operations",
+      "name": "mining_equipment",
+      "rows": 3000,
+      "columns": [
+        "equipment_id",
+        "maintenance_due_date",
+        "model",
+        "operational_hours",
+        "purchase_date"
+      ]
+    },
+    {
+      "database": "diamond_operations",
+      "name": "mining_output",
+      "rows": 45000,
+      "columns": [
+        "carat_weight",
+        "extraction_date",
+        "operation_id",
+        "quality_grade"
+      ]
+    },
+    {
+      "database": "diamond_operations",
+      "name": "equipment_failures",
+      "rows": 5000,
+      "columns": [
+        "downtime_hours",
+        "equipment_id",
+        "failure_date",
+        "failure_reason"
+      ]
+    }
+  ]
+}

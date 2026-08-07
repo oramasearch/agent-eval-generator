@@ -1,0 +1,127 @@
+{
+  "profile_id": "textile-recycling-optimization",
+  "industry": "Textile Recycling",
+  "situation": "markdown: Anna works as a Supply Chain Director at a textile recycling company, which specializes in transforming waste fabrics into reusable materials. Her primary responsibility is to streamline operations to ensure efficiency and reduce costs. She is measured on the efficacy of cost-reduction initiatives, inventory accuracy, and the optimization of recycling processes. With current challenges including handling fluctuating volumes of textile inputs and managing inventory levels, Anna seeks data-driven insights to improve operations.",
+  "persona": {
+    "role": "Supply Chain Director",
+    "context": "Anna works in a textile recycling company where efficiency and cost reduction are crucial. She manages operations involving large quantities of waste textiles.",
+    "measured_on": [
+      "cost reduction",
+      "inventory accuracy",
+      "optimization of recycling processes"
+    ],
+    "constraints": [
+      "must enhance process efficiency",
+      "must optimize recycling operations",
+      "must manage inventory effectively"
+    ]
+  },
+  "connections": [
+    {
+      "name": "Inventory Management System",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "Inventory Management System",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "Inventory Management System",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "Inventory Management System",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

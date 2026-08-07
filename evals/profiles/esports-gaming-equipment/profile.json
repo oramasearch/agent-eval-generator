@@ -1,0 +1,119 @@
+{
+  "profile_id": "esports-gaming-equipment",
+  "industry": "eSports and Gaming Equipment",
+  "situation": "markdown: Jake Daniels is the Chief Operations Officer (COO) of a major eSports and gaming equipment manufacturer, specializing in gaming chairs, desks, and peripherals. His role revolves around optimizing supply chain efficiency, ensuring product quality, and increasing direct-to-consumer sales. He is measured on the success of product launches, inventory turnover, and overall customer satisfaction rates. With the eSports industry booming, Jake must align operations to meet increasing demand while reducing turnaround times.",
+  "persona": {
+    "role": "Chief Operations Officer",
+    "context": "Oversees manufacturing, logistics, and sales operations in a rapidly growing and competitive market.",
+    "measured_on": [
+      "Product launch success rates",
+      "Inventory turnover",
+      "Customer satisfaction indices"
+    ],
+    "constraints": [
+      "Orders must be fulfilled within a 48-hour window",
+      "Seasonal demand surges must be anticipated with 90% accuracy",
+      "Inventory holding costs must be minimized"
+    ]
+  },
+  "connections": [
+    {
+      "name": "supply-chain-systems",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "customer-feedback",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "supply-chain-systems",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "supply-chain-systems",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.3
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

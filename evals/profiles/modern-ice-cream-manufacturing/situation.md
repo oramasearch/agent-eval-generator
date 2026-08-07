@@ -1,0 +1,1 @@
+markdown: The operation manager of an ice cream factory is focused on optimizing production efficiency and minimizing waste. The key measure of success is reducing the production downtime due to equipment failures and improving supply chain efficiency for raw materials.

@@ -1,0 +1,1 @@
+markdown: A rabbit wool fiber production facility looking to optimize their extraction and production processes. They want to increase efficiency and reduce defects in fiber quality. Their operations manager is responsible for overseeing the production processes, ensuring product quality, and reducing waste.

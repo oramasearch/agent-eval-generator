@@ -1,0 +1,28 @@
+{
+  "profile": "historic-railroad-preservation",
+  "tables": [
+    {
+      "database": "historic_railways",
+      "name": "train_maintenance_schedule",
+      "rows": 10000,
+      "columns": [
+        "employee_id",
+        "maintenance_date",
+        "maintenance_type",
+        "status",
+        "train_id"
+      ]
+    },
+    {
+      "database": "visitor_engagement",
+      "name": "visitor_feedback",
+      "rows": 5000,
+      "columns": [
+        "comments",
+        "experience_rating",
+        "visit_date",
+        "visitor_id"
+      ]
+    }
+  ]
+}

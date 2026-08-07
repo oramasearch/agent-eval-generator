@@ -1,0 +1,29 @@
+{
+  "profile": "cider-brewing-distribution-ops",
+  "tables": [
+    {
+      "database": "brewery",
+      "name": "fermentation_tanks",
+      "rows": 8000,
+      "columns": [
+        "capacity_liters",
+        "end_date",
+        "start_date",
+        "status",
+        "tank_id"
+      ]
+    },
+    {
+      "database": "distribution",
+      "name": "delivery_routes",
+      "rows": 20000,
+      "columns": [
+        "actual_time",
+        "end_point",
+        "estimated_time",
+        "route_id",
+        "start_point"
+      ]
+    }
+  ]
+}

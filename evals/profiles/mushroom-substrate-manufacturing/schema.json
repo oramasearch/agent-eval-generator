@@ -1,0 +1,29 @@
+{
+  "profile": "mushroom-substrate-manufacturing",
+  "tables": [
+    {
+      "database": "mushroom_supply_chain_db",
+      "name": "substrate_production_schedule",
+      "rows": 50000,
+      "columns": [
+        "completed",
+        "production_date",
+        "production_id",
+        "quantity",
+        "substrate_type"
+      ]
+    },
+    {
+      "database": "distribution_logistics_db",
+      "name": "shipping_routes",
+      "rows": 15000,
+      "columns": [
+        "average_travel_time_hours",
+        "cost_usd",
+        "distance_km",
+        "risk_factor",
+        "route_id"
+      ]
+    }
+  ]
+}

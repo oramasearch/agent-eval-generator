@@ -1,0 +1,74 @@
+{
+  "profile_id": "cruise-operations-management",
+  "industry": "Cruise Ship Management",
+  "situation": "markdown: Jill is a Data Analyst working for a major cruise line. Her primary role is to optimize operations by analyzing passenger preferences, booking patterns, and onboard spending. She's measured on how effectively she can reduce operational costs and improve passenger satisfaction ratings. Jill can act on historical booking data, onboard service usage, and customer feedback to propose enhancements in scheduling and resource allocation.",
+  "persona": {
+    "role": "Data Analyst",
+    "context": "Major Cruise Line",
+    "measured_on": [
+      "Operational cost reduction",
+      "Passenger satisfaction improvement"
+    ],
+    "constraints": [
+      "Limited direct access to passenger data",
+      "Relies on aggregated spending and feedback data"
+    ]
+  },
+  "connections": [
+    {
+      "name": "passenger_bookings",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "onboard_sales",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "crew_availability",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "onboard_sales",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.7
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.75
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

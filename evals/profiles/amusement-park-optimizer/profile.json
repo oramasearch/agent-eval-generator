@@ -65,7 +65,8 @@
           "type": "float",
           "null_fraction": 0.1
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "MarketingDB",

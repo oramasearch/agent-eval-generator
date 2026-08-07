@@ -1,0 +1,65 @@
+{
+  "profile_id": "university-library-management",
+  "industry": "Library Services",
+  "situation": "markdown: The head of the library management team at a major university, responsible for optimizing book lending operations and enhancing user engagement. Their performance is measured on the efficient circulation of books, user satisfaction, and minimizing the overdue book rate.",
+  "persona": {
+    "role": "Library Operations Director",
+    "context": "Overseeing the library management system and ensuring efficient service delivery.",
+    "measured_on": [
+      "Book circulation rates",
+      "User satisfaction",
+      "Overdue book rates"
+    ],
+    "constraints": [
+      "Cannot implement solutions that require additional budget approval.",
+      "Must adhere to university data privacy regulations."
+    ]
+  },
+  "connections": [
+    {
+      "name": "univ_library_db",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "univ_library_db",
+      "name": "borrowed_books",
+      "connection": "univ_library_db",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "borrow_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "user_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "book_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "checkout_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "return_date",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "due_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

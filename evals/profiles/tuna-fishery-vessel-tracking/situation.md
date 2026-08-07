@@ -1,0 +1,1 @@
+markdown: The person in charge is a Fishery Operations Manager who oversees the tracking of vessels and ensures compliance with regulations. The manager is measured on the accuracy of catch records and the efficiency of tracking operations.

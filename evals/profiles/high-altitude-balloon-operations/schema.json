@@ -1,0 +1,32 @@
+{
+  "profile": "high-altitude-balloon-operations",
+  "tables": [
+    {
+      "database": "balloon_operations",
+      "name": "launch_schedules",
+      "rows": 12000,
+      "columns": [
+        "altitude_target",
+        "anomalies_detected",
+        "launch_date",
+        "launch_id",
+        "payload_type",
+        "weather_conditions"
+      ]
+    },
+    {
+      "database": "balloon_operations",
+      "name": "balloon_data",
+      "rows": 50000,
+      "columns": [
+        "altitude",
+        "anomaly_flag",
+        "balloon_id",
+        "data_timestamp",
+        "humidity",
+        "pressure",
+        "temperature"
+      ]
+    }
+  ]
+}

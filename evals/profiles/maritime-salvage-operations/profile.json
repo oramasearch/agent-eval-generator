@@ -1,0 +1,97 @@
+{
+  "profile_id": "maritime-salvage-operations",
+  "industry": "Maritime Salvage",
+  "situation": "markdown: Captain Ed is the operations director at a maritime salvage company. He oversees every operation from initial assessment to completion, ensuring that profit margins are maintained. He is measured on operational efficiency and project success rate, balancing safety and adherence to regulatory protocols.",
+  "persona": {
+    "role": "Operations Director",
+    "context": "Responsible for planning and executing salvage operations, often working with incomplete or inaccurate data.",
+    "measured_on": [
+      "project success rate",
+      "average recovery time",
+      "cost efficiency"
+    ],
+    "constraints": [
+      "limited access to real-time data",
+      "inter-department coordination challenges",
+      "regulatory compliance"
+    ]
+  },
+  "connections": [
+    {
+      "name": "maritime_weather_service",
+      "kind": "rest",
+      "state": "discovered"
+    },
+    {
+      "name": "salvage_operations",
+      "kind": "postgresql",
+      "state": "captured"
+    },
+    {
+      "name": "ship_registry",
+      "kind": "kafka",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "salvage_operations",
+      "name": "operation_logs",
+      "connection": "salvage_operations",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "operation_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "vessel_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cost",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "recovered_items",
+          "type": "string",
+          "null_fraction": 0.3
+        },
+        {
+          "name": "weather_conditions",
+          "type": "string",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "crew_members",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "operation_status",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

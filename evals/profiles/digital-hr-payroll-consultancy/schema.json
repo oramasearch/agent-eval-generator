@@ -1,0 +1,42 @@
+{
+  "profile": "digital-hr-payroll-consultancy",
+  "tables": [
+    {
+      "database": "hr_management_system",
+      "name": "employee_details",
+      "rows": 50000,
+      "columns": [
+        "department",
+        "employee_id",
+        "first_name",
+        "hire_date",
+        "last_name",
+        "termination_date"
+      ]
+    },
+    {
+      "database": "hr_management_system",
+      "name": "payroll_details",
+      "rows": 50000,
+      "columns": [
+        "employee_id",
+        "gross_pay",
+        "net_pay",
+        "pay_period",
+        "tax_deductions"
+      ]
+    },
+    {
+      "database": "client_time_tracking",
+      "name": "time_logs",
+      "rows": 50000,
+      "columns": [
+        "employee_id",
+        "log_id",
+        "log_in_time",
+        "log_out_time",
+        "project_code"
+      ]
+    }
+  ]
+}

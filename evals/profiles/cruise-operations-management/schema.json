@@ -1,0 +1,18 @@
+{
+  "profile": "cruise-operations-management",
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "rows": 47000,
+      "columns": [
+        "cadence_days",
+        "cancelled_at",
+        "pause_until",
+        "sku",
+        "started_at",
+        "sub_id"
+      ]
+    }
+  ]
+}

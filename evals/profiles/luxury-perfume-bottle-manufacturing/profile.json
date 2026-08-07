@@ -1,0 +1,94 @@
+{
+  "profile_id": "luxury-perfume-bottle-manufacturing",
+  "industry": "Luxury Goods Manufacturing",
+  "situation": "markdown: The company is a manufacturer of high-end perfume bottles for luxury brands. The production involves precision and artistic craftsmanship where maintaining quality and reducing defects are critical. The company is looking to optimize its production process by leveraging data from its production line and supply chain systems.",
+  "persona": {
+    "role": "Production Manager",
+    "context": "Oversees the quality control and efficiency of the perfume bottle manufacturing process.",
+    "measured_on": [
+      "Defect rate reduction",
+      "Production efficiency",
+      "Quality assurance"
+    ],
+    "constraints": [
+      "Must maintain high aesthetic standards",
+      "Adhere to sustainability and ethical sourcing guidelines",
+      "Manage production costs within budget"
+    ]
+  },
+  "connections": [
+    {
+      "name": "production_line_data",
+      "kind": "odbc",
+      "state": "discovered"
+    },
+    {
+      "name": "supply_chain_management",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "supply_chain_management",
+      "name": "raw_materials_inventory",
+      "connection": "supply_chain_management",
+      "rows": 32000,
+      "columns": [
+        {
+          "name": "material_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "material_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "reorder_level",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "lead_time_days",
+          "type": "int",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "supply_chain_management",
+      "name": "supplier_performance",
+      "connection": "supply_chain_management",
+      "rows": 1500,
+      "columns": [
+        {
+          "name": "supplier_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "performance_score",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_time_percentage",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "defect_rate",
+          "type": "float",
+          "null_fraction": 0.06
+        }
+      ]
+    }
+  ]
+}

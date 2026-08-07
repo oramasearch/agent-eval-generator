@@ -60,7 +60,8 @@
           "type": "int",
           "null_fraction": 0.05
         }
-      ]
+      ],
+      "records_sampled": 50000
     },
     {
       "database": "oracle_erp",
@@ -83,7 +84,8 @@
           "type": "timestamp",
           "null_fraction": 0.0
         }
-      ]
+      ],
+      "records_sampled": 50000
     }
   ]
 }

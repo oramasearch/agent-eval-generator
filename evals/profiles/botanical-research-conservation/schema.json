@@ -1,0 +1,31 @@
+{
+  "profile": "botanical-research-conservation",
+  "tables": [
+    {
+      "database": "botanical-db",
+      "name": "species_inventory",
+      "rows": 12000,
+      "columns": [
+        "conservation_status",
+        "habitat_type",
+        "last_assessment_date",
+        "native_range",
+        "species_id",
+        "species_name"
+      ]
+    },
+    {
+      "database": "botanical-db",
+      "name": "research_projects",
+      "rows": 250,
+      "columns": [
+        "end_date",
+        "lead_researcher",
+        "project_id",
+        "project_name",
+        "start_date",
+        "status"
+      ]
+    }
+  ]
+}

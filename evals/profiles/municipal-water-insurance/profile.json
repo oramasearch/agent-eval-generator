@@ -1,0 +1,99 @@
+{
+  "profile_id": "municipal-water-insurance",
+  "industry": "Insurance",
+  "situation": "markdown: The insurance company provides coverage to municipal water utilities across various regions. The data science team is tasked with improving claims processing efficiency, detecting fraudulent claims, and enhancing customer service. They're measured based on the reduction in claim processing time, fraud detection accuracy, and customer satisfaction scores. They have access to several datasets related to claims, policies, customers, and interactions but face constraints due to data sparsity and format inconsistencies between discovered and captured data.",
+  "persona": {
+    "role": "Data Scientist",
+    "context": "Works within the Data Analytics division focusing on insurance claims and customer data.",
+    "measured_on": [
+      "Reduction in claim processing time",
+      "Fraud detection accuracy",
+      "Customer satisfaction scores"
+    ],
+    "constraints": [
+      "Data tables are inconsistent in format",
+      "Limited historical data for some tables",
+      "Certain critical data fields are sparsely populated"
+    ]
+  },
+  "connections": [
+    {
+      "name": "insurance_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "customer_interactions_s3",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "insurance_db",
+      "name": "claims_data",
+      "connection": "insurance_db",
+      "rows": 12000,
+      "columns": [
+        {
+          "name": "claim_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "policy_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "claim_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "claim_amount",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "fraud_flag",
+          "type": "bool",
+          "null_fraction": 0.8
+        }
+      ]
+    },
+    {
+      "database": "customer_interactions_s3",
+      "name": "interactions",
+      "connection": "customer_interactions_s3",
+      "rows": 45000,
+      "columns": [
+        {
+          "name": "interaction_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "customer_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "interaction_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "interaction_type",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "outcome",
+          "type": "string",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

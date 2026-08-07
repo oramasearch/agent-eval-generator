@@ -1,0 +1,29 @@
+{
+  "profile": "bee-venom-therapy-management",
+  "tables": [
+    {
+      "database": "bee_therapy_db",
+      "name": "patient_treatments",
+      "rows": 10000,
+      "columns": [
+        "complications",
+        "dosage",
+        "outcome",
+        "patient_id",
+        "therapy_type",
+        "treatment_date"
+      ]
+    },
+    {
+      "database": "bee_therapy_db",
+      "name": "venom_sources",
+      "rows": 5000,
+      "columns": [
+        "geographic_origin",
+        "harvest_date",
+        "purity",
+        "source_id"
+      ]
+    }
+  ]
+}

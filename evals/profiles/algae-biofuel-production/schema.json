@@ -1,0 +1,28 @@
+{
+  "profile": "algae-biofuel-production",
+  "tables": [
+    {
+      "database": "bio_inventory",
+      "name": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    },
+    {
+      "database": "bio_inventory",
+      "name": "orders_daily",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    }
+  ]
+}
