@@ -1,0 +1,70 @@
+{
+  "profile_id": "demand-forecasting-head-of-function-smb",
+  "version": 1,
+  "solution": "S-5",
+  "industry": "DTC subscription",
+  "persona": {
+    "role": "Head of Function",
+    "context": "Third hire; two people including them.",
+    "measured_on": [
+      "stockouts",
+      "waste"
+    ],
+    "constraints": [
+      "Orders are placed weekly on a fixed day and cannot be changed once placed."
+    ]
+  },
+  "connections": [
+    {
+      "name": "shopify_bq",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "ga4_bq",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "rows": 9400,
+      "records": "records/coffee.subscriptions.jsonl",
+      "columns": [
+        "cadence_days",
+        "cancelled_at",
+        "pause_until",
+        "sku",
+        "started_at",
+        "sub_id"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 1090,
+      "records": "records/coffee.orders_daily.jsonl",
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 1090,
+      "records": "records/coffee.inventory_snapshots.jsonl",
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

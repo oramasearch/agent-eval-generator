@@ -1,0 +1,59 @@
+{
+  "profile_id": "churn-senior-analyst-enterprise",
+  "version": 1,
+  "solution": "S-1",
+  "industry": "B2B SaaS",
+  "persona": {
+    "role": "Senior Analyst",
+    "context": "Reports to Finance; writes SQL daily.",
+    "measured_on": [
+      "forecast accuracy",
+      "month-end close time"
+    ],
+    "constraints": [
+      "Anything shipped must be reproducible by a colleague from the query alone."
+    ]
+  },
+  "connections": [
+    {
+      "name": "sfdc_pg",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "zendesk_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "crm",
+      "name": "accounts",
+      "rows": 30000,
+      "records": "records/crm.accounts.jsonl",
+      "columns": [
+        "account_id",
+        "churn_date",
+        "last_churn_reason",
+        "mrr",
+        "segment",
+        "signed_at"
+      ]
+    },
+    {
+      "database": "crm",
+      "name": "comm_events",
+      "rows": 350000,
+      "records": "records/crm.comm_events.jsonl",
+      "columns": [
+        "channel",
+        "event_id",
+        "event_updated_datetime_pt",
+        "occurred_at",
+        "sentiment",
+        "sfdc_account_id"
+      ]
+    }
+  ]
+}

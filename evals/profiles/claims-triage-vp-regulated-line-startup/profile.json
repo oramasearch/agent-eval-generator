@@ -1,0 +1,62 @@
+{
+  "profile_id": "claims-triage-vp-regulated-line-startup",
+  "version": 1,
+  "solution": "S-12",
+  "industry": "specialty insurance",
+  "persona": {
+    "role": "VP, regulated line",
+    "context": "Answers to a regulator and a reinsurer.",
+    "measured_on": [
+      "cycle time",
+      "leakage"
+    ],
+    "constraints": [
+      "Must be able to explain any individual decision on request.",
+      "No decision may be taken without a named human approving that instance."
+    ]
+  },
+  "connections": [
+    {
+      "name": "guidewire_replica",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "nicb_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "claims",
+      "name": "claims",
+      "rows": 5500,
+      "records": "records/claims.claims.jsonl",
+      "columns": [
+        "claim_id",
+        "closed_at",
+        "line_of_business",
+        "loss_date",
+        "policy_id",
+        "reported_at",
+        "reserve_amount",
+        "siu_referred",
+        "total_paid"
+      ]
+    },
+    {
+      "database": "claims",
+      "name": "policies",
+      "rows": 950,
+      "records": "records/claims.policies.jsonl",
+      "columns": [
+        "expiry",
+        "inception",
+        "policy_id",
+        "premium",
+        "state"
+      ]
+    }
+  ]
+}

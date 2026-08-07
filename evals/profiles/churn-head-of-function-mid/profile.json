@@ -1,0 +1,59 @@
+{
+  "profile_id": "churn-head-of-function-mid",
+  "version": 1,
+  "solution": "S-1",
+  "industry": "B2B SaaS",
+  "persona": {
+    "role": "Head of Function",
+    "context": "Third hire; two people including them.",
+    "measured_on": [
+      "stockouts",
+      "waste"
+    ],
+    "constraints": [
+      "Orders are placed weekly on a fixed day and cannot be changed once placed."
+    ]
+  },
+  "connections": [
+    {
+      "name": "sfdc_pg",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "zendesk_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "crm",
+      "name": "accounts",
+      "rows": 7200,
+      "records": "records/crm.accounts.jsonl",
+      "columns": [
+        "account_id",
+        "churn_date",
+        "last_churn_reason",
+        "mrr",
+        "segment",
+        "signed_at"
+      ]
+    },
+    {
+      "database": "crm",
+      "name": "comm_events",
+      "rows": 84000,
+      "records": "records/crm.comm_events.jsonl",
+      "columns": [
+        "channel",
+        "event_id",
+        "event_updated_datetime_pt",
+        "occurred_at",
+        "sentiment",
+        "sfdc_account_id"
+      ]
+    }
+  ]
+}

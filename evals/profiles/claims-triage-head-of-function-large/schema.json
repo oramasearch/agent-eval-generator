@@ -1,0 +1,33 @@
+{
+  "profile": "claims-triage-head-of-function-large",
+  "tables": [
+    {
+      "database": "claims",
+      "name": "claims",
+      "rows": 132000,
+      "columns": [
+        "claim_id",
+        "closed_at",
+        "line_of_business",
+        "loss_date",
+        "policy_id",
+        "reported_at",
+        "reserve_amount",
+        "siu_referred",
+        "total_paid"
+      ]
+    },
+    {
+      "database": "claims",
+      "name": "policies",
+      "rows": 22800,
+      "columns": [
+        "expiry",
+        "inception",
+        "policy_id",
+        "premium",
+        "state"
+      ]
+    }
+  ]
+}

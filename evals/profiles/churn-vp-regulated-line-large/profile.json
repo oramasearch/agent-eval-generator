@@ -1,0 +1,60 @@
+{
+  "profile_id": "churn-vp-regulated-line-large",
+  "version": 1,
+  "solution": "S-1",
+  "industry": "B2B SaaS",
+  "persona": {
+    "role": "VP, regulated line",
+    "context": "Answers to a regulator and a reinsurer.",
+    "measured_on": [
+      "cycle time",
+      "leakage"
+    ],
+    "constraints": [
+      "Must be able to explain any individual decision on request.",
+      "No decision may be taken without a named human approving that instance."
+    ]
+  },
+  "connections": [
+    {
+      "name": "sfdc_pg",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "zendesk_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "crm",
+      "name": "accounts",
+      "rows": 14400,
+      "records": "records/crm.accounts.jsonl",
+      "columns": [
+        "account_id",
+        "churn_date",
+        "last_churn_reason",
+        "mrr",
+        "segment",
+        "signed_at"
+      ]
+    },
+    {
+      "database": "crm",
+      "name": "comm_events",
+      "rows": 168000,
+      "records": "records/crm.comm_events.jsonl",
+      "columns": [
+        "channel",
+        "event_id",
+        "event_updated_datetime_pt",
+        "occurred_at",
+        "sentiment",
+        "sfdc_account_id"
+      ]
+    }
+  ]
+}

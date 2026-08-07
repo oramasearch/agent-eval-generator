@@ -1,0 +1,120 @@
+{
+  "profile_id": "multi-source-vp-regulated-line-mid",
+  "version": 1,
+  "solution": "S-1/S-4/S-11",
+  "industry": "B2B SaaS with several systems",
+  "persona": {
+    "role": "VP, regulated line",
+    "context": "Answers to a regulator and a reinsurer.",
+    "measured_on": [
+      "cycle time",
+      "leakage"
+    ],
+    "constraints": [
+      "Must be able to explain any individual decision on request.",
+      "No decision may be taken without a named human approving that instance."
+    ]
+  },
+  "connections": [
+    {
+      "name": "sfdc_pg",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "netsuite_billing",
+      "kind": "rest",
+      "state": "captured"
+    },
+    {
+      "name": "zendesk_pg",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "ga4_bq",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "product_kafka",
+      "kind": "kafka",
+      "state": "discovered"
+    },
+    {
+      "name": "hubspot_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "crm",
+      "name": "accounts",
+      "rows": 5400,
+      "records": "records/crm.accounts.jsonl",
+      "columns": [
+        "account_id",
+        "churn_date",
+        "company_name",
+        "mrr",
+        "segment",
+        "signed_at"
+      ]
+    },
+    {
+      "database": "billing",
+      "name": "invoices",
+      "rows": 5400,
+      "records": "records/billing.invoices.jsonl",
+      "columns": [
+        "amount",
+        "billing_customer_id",
+        "customer_name",
+        "days_late",
+        "invoice_id",
+        "issued_at",
+        "written_off"
+      ]
+    },
+    {
+      "database": "support",
+      "name": "tickets",
+      "rows": 28800,
+      "records": "records/support.tickets.jsonl",
+      "columns": [
+        "account_id",
+        "csat",
+        "opened_at",
+        "priority",
+        "resolved_hours",
+        "ticket_id"
+      ]
+    },
+    {
+      "database": "web",
+      "name": "sessions",
+      "rows": 72000,
+      "records": "records/web.sessions.jsonl",
+      "columns": [
+        "account_id",
+        "duration_s",
+        "pages",
+        "session_id",
+        "started_at"
+      ]
+    },
+    {
+      "database": "product",
+      "name": "telemetry",
+      "rows": 12000,
+      "records": "records/product.telemetry.jsonl",
+      "columns": [
+        "account_id",
+        "event_id",
+        "feature",
+        "used_at"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "profile": "multi-source-senior-analyst-smb",
+  "tables": [
+    {
+      "database": "crm",
+      "name": "accounts",
+      "rows": 1800,
+      "columns": [
+        "account_id",
+        "churn_date",
+        "company_name",
+        "mrr",
+        "segment",
+        "signed_at"
+      ]
+    },
+    {
+      "database": "billing",
+      "name": "invoices",
+      "rows": 1800,
+      "columns": [
+        "amount",
+        "billing_customer_id",
+        "customer_name",
+        "days_late",
+        "invoice_id",
+        "issued_at",
+        "written_off"
+      ]
+    },
+    {
+      "database": "support",
+      "name": "tickets",
+      "rows": 9600,
+      "columns": [
+        "account_id",
+        "csat",
+        "opened_at",
+        "priority",
+        "resolved_hours",
+        "ticket_id"
+      ]
+    },
+    {
+      "database": "web",
+      "name": "sessions",
+      "rows": 24000,
+      "columns": [
+        "account_id",
+        "duration_s",
+        "pages",
+        "session_id",
+        "started_at"
+      ]
+    },
+    {
+      "database": "product",
+      "name": "telemetry",
+      "rows": 4000,
+      "columns": [
+        "account_id",
+        "event_id",
+        "feature",
+        "used_at"
+      ]
+    }
+  ]
+}

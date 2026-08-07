@@ -48,7 +48,7 @@ class Table:
         return path
 
 
-def coffee_subscription(seed: int = 7) -> list[Table]:
+def coffee_subscription(seed: int = 7, scale: float = 1.0) -> list[Table]:
     """Profile C — Dana, DTC coffee subscription.
 
     The structure that matters: subscriptions largely DETERMINE daily orders. An agent that reads
@@ -60,7 +60,7 @@ def coffee_subscription(seed: int = 7) -> list[Table]:
     skus = ["ETH-YIRG", "COL-HUILA", "BRZ-CERR", "KEN-AA", "GUA-ANTI"]
 
     subscriptions: list[dict[str, Any]] = []
-    for index in range(47_000):
+    for index in range(max(1, int(47_000 * scale))):
         started = rng.randint(0, 1_000)
         cadence = rng.choice([7, 14, 28])
         # ~18% churn, and a few paused rather than cancelled — a null cancelled_at does not mean
@@ -77,7 +77,7 @@ def coffee_subscription(seed: int = 7) -> list[Table]:
 
     # Daily orders: the deterministic subscription base, plus a modest one-off tail and promos.
     orders: list[dict[str, Any]] = []
-    for day in range(1_090):
+    for day in range(max(30, int(1_090 * min(scale, 3.0)))):
         for sku in skus:
             due = sum(
                 1
@@ -100,7 +100,7 @@ def coffee_subscription(seed: int = 7) -> list[Table]:
             })
 
     inventory = []
-    for day in range(1_090):
+    for day in range(max(30, int(1_090 * min(scale, 3.0)))):
         for sku in skus:
             inventory.append({
                 "date": day,

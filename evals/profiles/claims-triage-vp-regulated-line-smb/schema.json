@@ -1,0 +1,33 @@
+{
+  "profile": "claims-triage-vp-regulated-line-smb",
+  "tables": [
+    {
+      "database": "claims",
+      "name": "claims",
+      "rows": 22000,
+      "columns": [
+        "claim_id",
+        "closed_at",
+        "line_of_business",
+        "loss_date",
+        "policy_id",
+        "reported_at",
+        "reserve_amount",
+        "siu_referred",
+        "total_paid"
+      ]
+    },
+    {
+      "database": "claims",
+      "name": "policies",
+      "rows": 3800,
+      "columns": [
+        "expiry",
+        "inception",
+        "policy_id",
+        "premium",
+        "state"
+      ]
+    }
+  ]
+}

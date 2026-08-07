@@ -1,0 +1,41 @@
+{
+  "profile": "demand-forecasting-head-of-function-enterprise",
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "rows": 117500,
+      "columns": [
+        "cadence_days",
+        "cancelled_at",
+        "pause_until",
+        "sku",
+        "started_at",
+        "sub_id"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 13625,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 13625,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

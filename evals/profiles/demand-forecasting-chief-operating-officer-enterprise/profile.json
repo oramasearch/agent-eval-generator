@@ -1,0 +1,70 @@
+{
+  "profile_id": "demand-forecasting-chief-operating-officer-enterprise",
+  "version": 1,
+  "solution": "S-5",
+  "industry": "DTC subscription",
+  "persona": {
+    "role": "Chief Operating Officer",
+    "context": "Reads one number a week; delegates the rest.",
+    "measured_on": [
+      "margin",
+      "on-time delivery"
+    ],
+    "constraints": [
+      "Will only act on something that names the single account or asset to touch."
+    ]
+  },
+  "connections": [
+    {
+      "name": "shopify_bq",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "ga4_bq",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "rows": 117500,
+      "records": "records/coffee.subscriptions.jsonl",
+      "columns": [
+        "cadence_days",
+        "cancelled_at",
+        "pause_until",
+        "sku",
+        "started_at",
+        "sub_id"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 13625,
+      "records": "records/coffee.orders_daily.jsonl",
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 13625,
+      "records": "records/coffee.inventory_snapshots.jsonl",
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

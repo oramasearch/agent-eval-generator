@@ -1,0 +1,41 @@
+{
+  "profile": "demand-forecasting-vp-regulated-line-mid",
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "rows": 28200,
+      "columns": [
+        "cadence_days",
+        "cancelled_at",
+        "pause_until",
+        "sku",
+        "started_at",
+        "sub_id"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 3270,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 3270,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

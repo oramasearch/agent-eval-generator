@@ -1,0 +1,61 @@
+{
+  "profile_id": "claims-triage-head-of-function-enterprise",
+  "version": 1,
+  "solution": "S-12",
+  "industry": "specialty insurance",
+  "persona": {
+    "role": "Head of Function",
+    "context": "Third hire; two people including them.",
+    "measured_on": [
+      "stockouts",
+      "waste"
+    ],
+    "constraints": [
+      "Orders are placed weekly on a fixed day and cannot be changed once placed."
+    ]
+  },
+  "connections": [
+    {
+      "name": "guidewire_replica",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "nicb_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "claims",
+      "name": "claims",
+      "rows": 275000,
+      "records": "records/claims.claims.jsonl",
+      "columns": [
+        "claim_id",
+        "closed_at",
+        "line_of_business",
+        "loss_date",
+        "policy_id",
+        "reported_at",
+        "reserve_amount",
+        "siu_referred",
+        "total_paid"
+      ]
+    },
+    {
+      "database": "claims",
+      "name": "policies",
+      "rows": 47500,
+      "records": "records/claims.policies.jsonl",
+      "columns": [
+        "expiry",
+        "inception",
+        "policy_id",
+        "premium",
+        "state"
+      ]
+    }
+  ]
+}

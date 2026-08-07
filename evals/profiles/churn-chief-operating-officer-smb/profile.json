@@ -1,0 +1,59 @@
+{
+  "profile_id": "churn-chief-operating-officer-smb",
+  "version": 1,
+  "solution": "S-1",
+  "industry": "B2B SaaS",
+  "persona": {
+    "role": "Chief Operating Officer",
+    "context": "Reads one number a week; delegates the rest.",
+    "measured_on": [
+      "margin",
+      "on-time delivery"
+    ],
+    "constraints": [
+      "Will only act on something that names the single account or asset to touch."
+    ]
+  },
+  "connections": [
+    {
+      "name": "sfdc_pg",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "zendesk_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "crm",
+      "name": "accounts",
+      "rows": 2400,
+      "records": "records/crm.accounts.jsonl",
+      "columns": [
+        "account_id",
+        "churn_date",
+        "last_churn_reason",
+        "mrr",
+        "segment",
+        "signed_at"
+      ]
+    },
+    {
+      "database": "crm",
+      "name": "comm_events",
+      "rows": 28000,
+      "records": "records/crm.comm_events.jsonl",
+      "columns": [
+        "channel",
+        "event_id",
+        "event_updated_datetime_pt",
+        "occurred_at",
+        "sentiment",
+        "sfdc_account_id"
+      ]
+    }
+  ]
+}

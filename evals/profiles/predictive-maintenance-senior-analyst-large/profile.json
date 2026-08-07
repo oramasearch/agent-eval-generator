@@ -1,0 +1,59 @@
+{
+  "profile_id": "predictive-maintenance-senior-analyst-large",
+  "version": 1,
+  "solution": "S-8",
+  "industry": "equipment rental",
+  "persona": {
+    "role": "Senior Analyst",
+    "context": "Reports to Finance; writes SQL daily.",
+    "measured_on": [
+      "forecast accuracy",
+      "month-end close time"
+    ],
+    "constraints": [
+      "Anything shipped must be reproducible by a colleague from the query alone."
+    ]
+  },
+  "connections": [
+    {
+      "name": "fleet_pg",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "telemetry_s3",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "fleet",
+      "name": "assets",
+      "rows": 10080,
+      "records": "records/fleet.assets.jsonl",
+      "columns": [
+        "acquired_at",
+        "asset_id",
+        "depot_id",
+        "model",
+        "year"
+      ]
+    },
+    {
+      "database": "fleet",
+      "name": "work_orders",
+      "rows": 73200,
+      "records": "records/fleet.work_orders.jsonl",
+      "columns": [
+        "asset_id",
+        "closed_at",
+        "fault_code",
+        "is_breakdown",
+        "labour_hours",
+        "opened_at",
+        "work_order_id"
+      ]
+    }
+  ]
+}
