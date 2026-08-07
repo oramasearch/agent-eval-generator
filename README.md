@@ -78,8 +78,28 @@ uv run agent-eval-generator --profiles 5
 whether the platform supports the job — which is the whole question this bootstrap exists to
 answer.
 
+## First runs — what actually happened
+
+**Run 1 failed a tool call and the model carried on anyway.** `get_dataset` returned 400 because
+this repo's hand-written tool spec named the parameter `name` when the capability requires
+`dataset`. That is exactly the failure the "render from source, never retype" rule exists to
+prevent, made on the first attempt.
+
+Worse than the bug was the response to it: the model wrote *"Since the list of datasets indicates
+its availability, I can still provide an eval case based on the description"* and **invented the
+schema** from the listing. A generator that fabricates when a tool fails produces cases that grade
+an agent against imagined data.
+
+**Fixed by deriving the tool surface from the node's own OpenAPI** (`derive_tool_specs`). The
+static table survives only as a fallback when no node is reachable. Run 2: both calls succeeded.
+
 ## Known limitations
 
-Nothing has been generated or scored yet. This README will carry the eval numbers and the failure
-modes once it has run; a README listing only intentions is the thing the cards rule exists to
-prevent.
+- **No grading yet.** Traces record `graded: false`. Until the generated case is scored by Zetta's
+  graders it is a document, not an eval.
+- **The model claims "supportable since data is captured" with no evidence.** There is no
+  capability that reports capture state, so the discovery/capture distinction is stated in the
+  prompt and unverifiable by the agent. That needs a capability before the distinction can be
+  graded rather than asserted.
+- **The only dataset on the test node is a 24-row scoring output**, not a training source. Cases
+  generated against it are shallow by construction.

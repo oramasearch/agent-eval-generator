@@ -15,14 +15,15 @@ from typing import Any
 
 from openai import OpenAI
 
-from agent_eval_generator.tools import TOOL_SPECS, ZettaClient, dispatch
+from agent_eval_generator.tools import ZettaClient, derive_tool_specs, dispatch
 from agent_eval_generator.trace import Trace
 
 PROMPT_VERSION = "v1"
 PROMPTS = Path(__file__).parent / "prompts"
 
 
-def run_once(zetta: ZettaClient, client: OpenAI, model: str, max_rounds: int = 8) -> Trace:
+def run_once(zetta: ZettaClient, client: OpenAI, model: str, tools: list[Any],
+             max_rounds: int = 8) -> Trace:
     """One generation: prompt -> tool calls -> observations -> a case."""
     system = (PROMPTS / f"{PROMPT_VERSION}.md").read_text()
     trace = Trace.start("eval-generator", model, PROMPT_VERSION, "generate one eval case")
@@ -33,7 +34,7 @@ def run_once(zetta: ZettaClient, client: OpenAI, model: str, max_rounds: int = 8
 
     for _ in range(max_rounds):
         response = client.chat.completions.create(
-            model=model, messages=messages, tools=TOOL_SPECS
+            model=model, messages=messages, tools=tools
         )
         choice = response.choices[0].message
         messages.append(choice.model_dump(exclude_none=True))
@@ -73,9 +74,11 @@ def main() -> int:
 
     zetta = ZettaClient()
     client = OpenAI()
+    # Read the tool surface from the node rather than trusting a hand-written table.
+    tools = derive_tool_specs(zetta)
     try:
         for index in range(args.cases):
-            trace = run_once(zetta, client, args.model)
+            trace = run_once(zetta, client, args.model, tools)
             path = trace.write(args.traces)
             state = "no output" if trace.output is None else "generated"
             print(f"[{index + 1}/{args.cases}] {state}, {len(trace.calls)} tool calls -> {path}")

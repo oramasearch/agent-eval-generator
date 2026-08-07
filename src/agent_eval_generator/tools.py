@@ -46,8 +46,13 @@ class ZettaClient:
         self._client.close()
 
 
-# The tool surface offered to the frontier model. Rendered from the capabilities the node actually
-# exposes rather than retyped — a hand-maintained list is wrong the day someone adds a capability.
+# The tool surface offered to the frontier model.
+#
+# HAND-WRITTEN TODAY, AND THAT IS A KNOWN DEFECT. The first run failed on `get_dataset` because
+# this list said the parameter was `name` when the capability requires `dataset` — precisely the
+# failure the repo's "render from source, never retype" rule exists to prevent, made on the first
+# attempt. `derive_tool_specs()` below reads the node's own OpenAPI so the list cannot drift; the
+# static table remains only as the fallback when a node is unreachable.
 TOOL_SPECS: list[dict[str, Any]] = [
     {
         "type": "function",
@@ -64,8 +69,8 @@ TOOL_SPECS: list[dict[str, Any]] = [
             "description": "Read one dataset's schema: column names, types, null rates.",
             "parameters": {
                 "type": "object",
-                "properties": {"name": {"type": "string"}},
-                "required": ["name"],
+                "properties": {"dataset": {"type": "string"}},
+                "required": ["dataset"],
             },
         },
     },
@@ -95,6 +100,39 @@ TOOL_SPECS: list[dict[str, Any]] = [
 ]
 
 READ_CAPABILITIES = {spec["function"]["name"] for spec in TOOL_SPECS}
+
+
+def derive_tool_specs(client: ZettaClient, allow: set[str] | None = None) -> list[dict[str, Any]]:
+    """Build the tool list from the node's OWN OpenAPI spec.
+
+    The node is the source of truth for its capabilities. A retyped list is wrong the day someone
+    adds a capability or renames a parameter, and it was wrong on the very first run here.
+    """
+    spec = client._client.get("/v1/openapi.json").json()
+    wanted = allow or READ_CAPABILITIES
+    derived: list[dict[str, Any]] = []
+    for path, methods in spec.get("paths", {}).items():
+        capability = path.rsplit("/", 1)[-1]
+        if capability not in wanted or "get" not in methods:
+            continue
+        operation = methods["get"]
+        properties: dict[str, Any] = {}
+        required: list[str] = []
+        for parameter in operation.get("parameters", []):
+            properties[parameter["name"]] = parameter.get("schema", {"type": "string"})
+            if parameter.get("required"):
+                required.append(parameter["name"])
+        derived.append({
+            "type": "function",
+            "function": {
+                "name": capability,
+                "description": operation.get("summary") or operation.get("description", ""),
+                "parameters": {
+                    "type": "object", "properties": properties, "required": required,
+                },
+            },
+        })
+    return derived or TOOL_SPECS
 
 
 def dispatch(client: ZettaClient, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
