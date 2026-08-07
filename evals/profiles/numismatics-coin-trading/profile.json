@@ -1,0 +1,75 @@
+{
+  "profile_id": "numismatics-coin-trading",
+  "industry": "Numismatics - Coin Collecting and Trading",
+  "situation": "markdown: A leading national coin collection society wants to leverage its data to enhance engagement with members and improve trading outcomes. This involves analyzing trade data for pricing trends, predicting which coins will appreciate, and scouting for anomalies in coin valuations. The organization also wants to build new predictive models to assist members in making informed buying and selling decisions.",
+  "persona": {
+    "role": "Data Analyst",
+    "context": "The analyst works for the numismatic society, and their role is to improve decision-making processes for the coin collecting membership market. They have access to databases recording vast historical and current data on auctions, coin prices, and member collections.",
+    "measured_on": [
+      "Trading accuracy for members",
+      "Engagement metrics on new predictive insights",
+      "Success of anomaly detection in valuations"
+    ],
+    "constraints": [
+      "Models must adhere to strict accuracy requirements to ensure trustworthiness",
+      "All outputs should be verifiable against external market data"
+    ]
+  },
+  "connections": [
+    {
+      "name": "postgres-coin-market-db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "s3-coin-collection-archive",
+      "kind": "s3",
+      "state": "discovered"
+    },
+    {
+      "name": "rest-auction-price-feed",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coin_market_data",
+      "name": "auction_results",
+      "connection": "rest-auction-price-feed",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "auction_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "coin_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "final_price",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "estimated_price",
+          "type": "float",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "condition_grade",
+          "type": "string",
+          "null_fraction": 0.02
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "profile": "satellite-launch-services",
+  "tables": [
+    {
+      "database": "launch_operations",
+      "name": "launch_schedules",
+      "rows": 35000,
+      "columns": [
+        "cost",
+        "launch_date",
+        "launch_id",
+        "launch_site",
+        "payload_mass",
+        "vehicle"
+      ]
+    },
+    {
+      "database": "launch_operations",
+      "name": "rocket_maintenance",
+      "rows": 15000,
+      "columns": [
+        "engine_hours",
+        "last_serviced",
+        "rocket_id",
+        "service_type"
+      ]
+    }
+  ]
+}

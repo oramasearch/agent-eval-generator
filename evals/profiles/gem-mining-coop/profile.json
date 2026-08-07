@@ -1,0 +1,99 @@
+{
+  "profile_id": "gem-mining-coop",
+  "industry": "Gem Mining and Trading",
+  "situation": "markdown: An emerging gem mining co-op is using data to improve its gemstone valuation processes and optimize its sales strategies. Their primary goal is to enhance the profitability of operations by accurately forecasting gem market trends and managing inventory. The co-op also seeks to reduce operational risks by analyzing past mining operations data. The data analyst is measured on the ability to extract actionable insights that lead to reduced costs and increased revenue.",
+  "persona": {
+    "role": "Data Analyst",
+    "context": "Responsible for interpreting mining and sales data to improve valuation processes and optimize sales.",
+    "measured_on": [
+      "Reduced costs in gem extraction processes",
+      "Increased revenue from gem sales",
+      "Accuracy in forecasting market trends for mined gems"
+    ],
+    "constraints": [
+      "Data must be extracted from diverse and partially captured sources.",
+      "Insights need to provide clear ROI within a quarter.",
+      "Limited computational resources for running complex models."
+    ]
+  },
+  "connections": [
+    {
+      "name": "gem_mining_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "gem_sales_api",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "gem_sales",
+      "name": "gem_sales_records",
+      "connection": "gem_sales_api",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "sale_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "gem_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "weight_carat",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "sale_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sale_amount",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "gem_mining_db",
+      "name": "mining_operations",
+      "connection": "gem_mining_db",
+      "rows": 25000,
+      "columns": [
+        {
+          "name": "operation_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "gem_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "extracted_carat",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "operation_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ]
+    }
+  ]
+}

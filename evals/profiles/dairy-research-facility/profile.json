@@ -1,0 +1,119 @@
+{
+  "profile_id": "dairy-research-facility",
+  "industry": "Dairy Farming",
+  "situation": "markdown: As part of a cutting-edge dairy research facility, a data scientist is tasked to optimize the dairy yield and improve animal health monitoring. The scientist needs to leverage existing livestock and milk production data to develop predictive models. The key performance indicators (KPIs) include improved milk yield prediction, timely identification of cows at risk of health issues, and enhanced herd management efficiency.",
+  "persona": {
+    "role": "Data Scientist",
+    "context": "Working in a dairy research facility focused on animal husbandry and yield optimization.",
+    "measured_on": [
+      "Accuracy of yield predictions",
+      "Precision in identifying cows with health risks",
+      "Efficiency of data-driven herd management strategies"
+    ],
+    "constraints": [
+      "Data must be managed within the bounds of ethical animal research guidelines",
+      "Models should offer actionable insights for farm operations",
+      "Data privacy related to farm operations and livestock treatment compliance"
+    ]
+  },
+  "connections": [
+    {
+      "name": "dairy_analytics",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "livestock_monitoring",
+      "kind": "odbc",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "dairy_analytics",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "dairy_analytics",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.3
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.4
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

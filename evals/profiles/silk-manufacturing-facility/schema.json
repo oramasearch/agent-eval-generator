@@ -1,0 +1,16 @@
+{
+  "profile": "silk-manufacturing-facility",
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

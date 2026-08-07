@@ -1,0 +1,18 @@
+{
+  "profile": "outdoor-advertising-agency",
+  "tables": [
+    {
+      "database": "ad_campaigns",
+      "name": "campaign_inventory",
+      "rows": 47000,
+      "columns": [
+        "billboard_location",
+        "campaign_id",
+        "daily_price",
+        "end_date",
+        "impressions",
+        "start_date"
+      ]
+    }
+  ]
+}

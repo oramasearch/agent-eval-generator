@@ -1,0 +1,1 @@
+markdown: A maintenance operations manager at a wind energy utility company tracks turbine uptime and performance, focusing on predictive maintenance to reduce downtime. Their success is assessed based on minimizing operational costs and maximizing turbine efficiency.

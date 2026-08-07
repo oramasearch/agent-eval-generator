@@ -1,0 +1,31 @@
+{
+  "profile": "space-weather-observatory-analytics",
+  "tables": [
+    {
+      "database": "space_weather_db",
+      "name": "solar_flare_events",
+      "rows": 50000,
+      "columns": [
+        "end_time",
+        "event_id",
+        "observatory",
+        "peak_flux",
+        "start_time",
+        "x_ray_class"
+      ]
+    },
+    {
+      "database": "space_weather_db",
+      "name": "geomagnetic_storms",
+      "rows": 50000,
+      "columns": [
+        "end_time",
+        "impact_level",
+        "k_index",
+        "location",
+        "start_time",
+        "storm_id"
+      ]
+    }
+  ]
+}

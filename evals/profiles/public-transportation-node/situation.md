@@ -1,0 +1,1 @@
+markdown: Alex is a data scientist at a public transportation agency responsible for optimizing bus schedules and reducing transit times. Alex is measured on improving route efficiency, reducing delays, and enhancing passenger satisfaction. They have the authority to suggest schedule changes, propose new routes, and implement predictive maintenance on vehicles.

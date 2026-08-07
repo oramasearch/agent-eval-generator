@@ -1,0 +1,1 @@
+markdown: The owner of a traditional blacksmithing workshop that creates custom metalworks. The owner wants to enhance production efficiency and optimize material utilization to maximize craftsmanship and reduce wastage. Measured on metal usage efficiency, timely delivery of orders, and customer satisfaction.

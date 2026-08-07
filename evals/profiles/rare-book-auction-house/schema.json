@@ -1,0 +1,30 @@
+{
+  "profile": "rare-book-auction-house",
+  "tables": [
+    {
+      "database": "book_sales_db",
+      "name": "book_inventory",
+      "rows": 3000,
+      "columns": [
+        "author",
+        "book_id",
+        "publication_year",
+        "title",
+        "value_estimate"
+      ]
+    },
+    {
+      "database": "book_sales_db",
+      "name": "past_auctions",
+      "rows": 1500,
+      "columns": [
+        "auction_date",
+        "auction_id",
+        "bidder_id",
+        "book_id",
+        "final_bid",
+        "winning_bid"
+      ]
+    }
+  ]
+}

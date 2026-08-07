@@ -1,0 +1,75 @@
+{
+  "profile_id": "musical-instrument-restoration",
+  "industry": "Historical Musical Instrument Restoration",
+  "situation": "markdown: The restoration workshop specializes in preserving historical instruments for museums and private collectors. The task is to optimize inventory management and predict trends in restoration requests based on historical data.",
+  "persona": {
+    "role": "Workshop Manager",
+    "context": "Oversees daily operations, including managing inventory and scheduling restoration projects.",
+    "measured_on": [
+      "project completion rates",
+      "customer satisfaction",
+      "inventory efficiency"
+    ],
+    "constraints": [
+      "Budgets are tight; decisions must be cost-effective.",
+      "Projects have strict deadlines set by clients."
+    ]
+  },
+  "connections": [
+    {
+      "name": "instruments_database",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "instruments",
+      "name": "instruments_overview",
+      "connection": "instruments_database",
+      "rows": 3000,
+      "columns": [
+        {
+          "name": "instrument_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "instrument_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "restoration_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "condition_quality",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "estimated_value",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "materials_used",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "restoration_technique",
+          "type": "string",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "client_id",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

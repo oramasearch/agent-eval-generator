@@ -1,0 +1,1 @@
+markdown: The organization deals with appraising, auctioning, and trading rare books. Their operations involve valuations, historical sales analysis, and customer relationship management for bidders and sellers.

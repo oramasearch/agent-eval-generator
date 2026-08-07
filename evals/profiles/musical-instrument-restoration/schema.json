@@ -1,0 +1,20 @@
+{
+  "profile": "musical-instrument-restoration",
+  "tables": [
+    {
+      "database": "instruments",
+      "name": "instruments_overview",
+      "rows": 3000,
+      "columns": [
+        "client_id",
+        "condition_quality",
+        "estimated_value",
+        "instrument_id",
+        "instrument_name",
+        "materials_used",
+        "restoration_date",
+        "restoration_technique"
+      ]
+    }
+  ]
+}

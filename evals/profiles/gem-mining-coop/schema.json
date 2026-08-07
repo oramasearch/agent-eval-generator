@@ -1,0 +1,29 @@
+{
+  "profile": "gem-mining-coop",
+  "tables": [
+    {
+      "database": "gem_sales",
+      "name": "gem_sales_records",
+      "rows": 50000,
+      "columns": [
+        "gem_type",
+        "sale_amount",
+        "sale_date",
+        "sale_id",
+        "weight_carat"
+      ]
+    },
+    {
+      "database": "gem_mining_db",
+      "name": "mining_operations",
+      "rows": 25000,
+      "columns": [
+        "extracted_carat",
+        "gem_type",
+        "location",
+        "operation_date",
+        "operation_id"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+markdown: The rental manager oversees the availability and maintenance of vintage equipment for period-related film production. They aim to optimize equipment usage, ensure maintenance to prevent breakdowns during use, and need insights on customer requests to maintain stock relevance.

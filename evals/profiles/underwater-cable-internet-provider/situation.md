@@ -1,0 +1,1 @@
+markdown: An operations manager at an underwater cable internet provider is tasked with ensuring optimal network performance and minimizing downtime. They need to predict maintenance needs to prevent outages and improve customer satisfaction. The manager is measured on network uptime percentages and customer satisfaction scores.

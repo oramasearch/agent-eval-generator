@@ -1,0 +1,44 @@
+{
+  "profile": "rooftop-solar-installation-maintenance",
+  "tables": [
+    {
+      "database": "solar_database",
+      "name": "installations",
+      "rows": 15000,
+      "columns": [
+        "efficiency_rating",
+        "inspector_notes",
+        "installation_date",
+        "installation_id",
+        "last_maintenance_date",
+        "panel_type",
+        "site_location"
+      ]
+    },
+    {
+      "database": "solar_database",
+      "name": "maintenance_schedule",
+      "rows": 5000,
+      "columns": [
+        "completion_date",
+        "installation_id",
+        "maintenance_id",
+        "maintenance_type",
+        "scheduled_date",
+        "status"
+      ]
+    },
+    {
+      "database": "solar_database",
+      "name": "panel_failures",
+      "rows": 2000,
+      "columns": [
+        "failure_date",
+        "failure_id",
+        "failure_reason",
+        "installation_id",
+        "resolution_time_hours"
+      ]
+    }
+  ]
+}

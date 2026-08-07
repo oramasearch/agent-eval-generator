@@ -1,0 +1,29 @@
+{
+  "profile": "traditional-blacksmithing-workshop",
+  "tables": [
+    {
+      "database": "blacksmith_inventory_db",
+      "name": "metal_inventory",
+      "rows": 8000,
+      "columns": [
+        "last_restocked",
+        "metal_type",
+        "quantity_on_hand",
+        "reorder_threshold"
+      ]
+    },
+    {
+      "database": "blacksmith_orders_db",
+      "name": "orders",
+      "rows": 1500,
+      "columns": [
+        "customer_name",
+        "delivery_date",
+        "metal_type",
+        "order_id",
+        "ordered_quantity",
+        "status"
+      ]
+    }
+  ]
+}

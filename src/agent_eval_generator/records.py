@@ -128,6 +128,11 @@ def package(profile: str, situation: str, tables: list[Table], out: Path) -> Pat
     node running — a model being evaluated on it should need nothing but the files.
     """
     directory = out / profile
+    # Clear records first. Without this a previous profile's files persist in a reused directory
+    # and get uploaded under the new name — which put `coffee.inventory_snapshots.jsonl` inside an
+    # agricultural-equipment-rental profile on the Hub.
+    import shutil
+    shutil.rmtree(directory / "records", ignore_errors=True)
     directory.mkdir(parents=True, exist_ok=True)
     (directory / "situation.md").write_text(situation)
 

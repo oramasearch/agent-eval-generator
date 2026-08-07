@@ -1,0 +1,126 @@
+{
+  "profile_id": "subscription-coffee-roastery",
+  "industry": "Specialty Coffee Roastery",
+  "situation": "markdown: **David** is the Operations Manager at a specialty coffee roastery offering subscription services. David oversees supply chain effectiveness, ensuring inventory aligns with subscriber demand, and is measured on minimizing out-of-stock incidents while maintaining optimal stock levels to reduce holding costs.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "David must ensure the roastery\u2019s stock levels align with the fluctuating demand patterns influenced by subscriptions.",
+    "measured_on": [
+      "Out-of-stock frequency",
+      "Inventory holding costs"
+    ],
+    "constraints": [
+      "Require improved forecasting to adjust procurement proactively.",
+      "Align subscription plans with available inventory and sales trends.",
+      "Manage the impact of promotional campaigns on stock levels."
+    ]
+  },
+  "connections": [
+    {
+      "name": "coffee",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "coffee",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.45
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.5
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        }
+      ]
+    }
+  ]
+}

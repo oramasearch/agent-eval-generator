@@ -1,0 +1,54 @@
+{
+  "profile_id": "agricultural-equipment-rental",
+  "industry": "Agricultural Equipment Rental",
+  "situation": "markdown: John is the COO of a company that specializes in renting large agricultural equipment to farms across the Midwest. His role involves ensuring equipment availability and maximizing rental uptime. John's performance is measured by equipment utilization rates and customer satisfaction scores. Ensuring predictive maintenance to minimize downtime and optimizing inventory levels of spare parts is crucial for operational success.",
+  "persona": {
+    "role": "Chief Operating Officer",
+    "context": "Agricultural equipment rental services focusing on large machinery like tractors and combine harvesters.",
+    "measured_on": [
+      "equipment utilization rate",
+      "customer satisfaction"
+    ],
+    "constraints": [
+      "data must be actionable in real-time",
+      "maintenance schedules must consider seasonal demand"
+    ]
+  },
+  "connections": [
+    {
+      "name": "agri_db",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "agri_db",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

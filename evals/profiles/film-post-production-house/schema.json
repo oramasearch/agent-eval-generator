@@ -1,0 +1,30 @@
+{
+  "profile": "film-post-production-house",
+  "tables": [
+    {
+      "database": "post_production",
+      "name": "raw_video_footage",
+      "rows": 50000,
+      "columns": [
+        "clip_id",
+        "created_at",
+        "duration_sec",
+        "project_id",
+        "resolution",
+        "source_format"
+      ]
+    },
+    {
+      "database": "post_production",
+      "name": "editor_assignments",
+      "rows": 10000,
+      "columns": [
+        "assigned_on",
+        "due_on",
+        "editor_id",
+        "project_id",
+        "status"
+      ]
+    }
+  ]
+}

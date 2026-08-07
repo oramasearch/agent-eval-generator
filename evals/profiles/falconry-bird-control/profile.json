@@ -1,0 +1,93 @@
+{
+  "profile_id": "falconry-bird-control",
+  "industry": "Falconry and Bird Control Services",
+  "situation": "markdown: The business operates in providing bird control solutions using trained birds of prey. The falconers provide services primarily at airports and agricultural sites to prevent damages caused by pest birds. They are interested in improving their service scheduling and understanding the effectiveness of different birds at different locations.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "responsible for optimizing the allocation of falconers and birds to various sites based on demand and effectiveness; collaborates with the client relationship team to ensure customer satisfaction.",
+    "measured_on": [
+      "service efficiency",
+      "customer satisfaction",
+      "cost management"
+    ],
+    "constraints": [
+      "Limited budget for operational expenses",
+      "Compliance with environmental and wildlife protection regulations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "operations_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "weather_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "operations_db",
+      "name": "falconry_deployments",
+      "connection": "operations_db",
+      "rows": 12000,
+      "columns": [
+        {
+          "name": "deployment_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "falconer_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "bird_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "site_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "deployment_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "success_rate",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "operations_db",
+      "name": "sites_information",
+      "connection": "operations_db",
+      "rows": 250,
+      "columns": [
+        {
+          "name": "site_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "site_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "coordinates",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

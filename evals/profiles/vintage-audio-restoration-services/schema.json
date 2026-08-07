@@ -1,0 +1,28 @@
+{
+  "profile": "vintage-audio-restoration-services",
+  "tables": [
+    {
+      "database": "vintage_audio_inventory_system",
+      "name": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    },
+    {
+      "database": "vintage_audio_inventory_system",
+      "name": "orders_daily",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    }
+  ]
+}

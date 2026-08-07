@@ -1,0 +1,1 @@
+markdown: The restoration workshop specializes in preserving historical instruments for museums and private collectors. The task is to optimize inventory management and predict trends in restoration requests based on historical data.

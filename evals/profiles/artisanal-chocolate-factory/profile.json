@@ -1,0 +1,66 @@
+{
+  "profile_id": "artisanal-chocolate-factory",
+  "industry": "Confectionery Manufacturing",
+  "situation": "markdown: Jane, a product manager at a boutique artisanal chocolate company, is tasked with optimizing inventory levels and sales strategies for their subscription-based chocolate delivery service. She needs accurate demand forecasting and inventory management to ensure no stockouts or overstocks. Her performance is measured by sales growth, customer satisfaction, and minimal waste.",
+  "persona": {
+    "role": "Product Manager",
+    "context": "Managing product offerings and ensuring smooth operations of a subscription chocolate delivery service.",
+    "measured_on": [
+      "sales growth",
+      "customer satisfaction",
+      "inventory optimization"
+    ],
+    "constraints": [
+      "Limited storage capacity",
+      "Fluctuating seasonal demand",
+      "Perishable products"
+    ]
+  },
+  "connections": [
+    {
+      "name": "coffee",
+      "kind": "bigquery",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "coffee",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.25
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

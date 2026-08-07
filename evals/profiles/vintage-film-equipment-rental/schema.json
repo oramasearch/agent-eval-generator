@@ -1,0 +1,19 @@
+{
+  "profile": "vintage-film-equipment-rental",
+  "tables": [
+    {
+      "database": "film_production_data",
+      "name": "rental_requests",
+      "rows": 5000,
+      "columns": [
+        "customer_id",
+        "equipment_id",
+        "rental_end_date",
+        "rental_start_date",
+        "request_date",
+        "request_id",
+        "request_status"
+      ]
+    }
+  ]
+}

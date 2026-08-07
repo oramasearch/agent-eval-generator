@@ -1,0 +1,89 @@
+{
+  "profile_id": "vineyard-operations-analyzer",
+  "industry": "Viniculture",
+  "situation": "markdown: A vineyard operations manager who oversees the quality of grapes in various vineyards. Their primary role is to optimize grape production and ensure quality standards are met. They focus on monitoring and improving vine health, optimizing harvest timings and enhancing grape quality. They are measured on the yield of grapes, quality ratings, and overall vineyard productivity.",
+  "persona": {
+    "role": "Vineyard Operations Manager",
+    "context": "Overseeing vineyard operations to ensure optimum yield and quality.",
+    "measured_on": [
+      "Grape yield",
+      "Quality ratings",
+      "Vineyard productivity"
+    ],
+    "constraints": [
+      "Budget constraints on new technology implementations",
+      "Seasonal variability affecting grape growth",
+      "Limited access to precision farming data"
+    ]
+  },
+  "connections": [
+    {
+      "name": "vineyard_data",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "weather_data",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "vineyard_db",
+      "name": "grape_growth",
+      "connection": "vineyard_data",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "vineyard_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "growth_stage",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "health_score",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "yield",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "quality_rating",
+          "type": "string",
+          "null_fraction": 0.15
+        }
+      ]
+    },
+    {
+      "database": "vineyard_db",
+      "name": "soil_composition",
+      "connection": "vineyard_data",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "vineyard_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "soil_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "nutrient_levels",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

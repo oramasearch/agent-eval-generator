@@ -1,0 +1,104 @@
+{
+  "profile_id": "film-post-production-house",
+  "industry": "Film Post-Production",
+  "situation": "markdown: This film post-production house specializes in editing, CGI, and video effects. They utilize post-production software and manage workflows across various projects concurrently. Their ability to meet deadlines and produce high-quality edits is crucial for client retention and satisfaction.",
+  "persona": {
+    "role": "Head of Post-Production",
+    "context": "The role involves supervising the editing and CGI team, ensuring the projects are delivered on time while maintaining quality. The post-production timelines often shift, and flexibility along with precision is essential.",
+    "measured_on": [
+      "project delivery time",
+      "quality of edits",
+      "client satisfaction"
+    ],
+    "constraints": [
+      "Must consider data processing times",
+      "Ensure data privacy and licensing for film assets",
+      "Manage compute resources efficiently"
+    ]
+  },
+  "connections": [
+    {
+      "name": "asset-management-db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "project-tracking-system",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "post_production",
+      "name": "raw_video_footage",
+      "connection": "asset-management-db",
+      "rows": 500000,
+      "columns": [
+        {
+          "name": "clip_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "project_id",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "duration_sec",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "resolution",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "source_format",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "post_production",
+      "name": "editor_assignments",
+      "connection": "project-tracking-system",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "editor_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "project_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "assigned_on",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "due_on",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+markdown: An auction manager for a digital art auction platform is responsible for optimizing auction operations. They ensure effective bid tracking, manage digital art listings, and are measured on auction success rates and bidder satisfaction. Their action scope includes increasing auction participation through data analysis and enhancing bidder engagement.

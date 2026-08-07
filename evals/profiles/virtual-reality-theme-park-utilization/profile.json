@@ -1,0 +1,78 @@
+{
+  "profile_id": "virtual-reality-theme-park-utilization",
+  "industry": "Virtual Reality Theme Park",
+  "situation": "markdown: The operations manager at a cutting-edge virtual reality theme park is responsible for optimizing visitor experiences and park operations, ensuring rides and attractions are running smoothly and downtime is minimized. They are measured on visitor satisfaction, ride efficiency, and park throughput.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Ensures efficient operation and scheduling of attractions to minimize downtime and maximize visitor satisfaction.",
+    "measured_on": [
+      "Visitor satisfaction rate",
+      "Ride uptime",
+      "Average visitor throughput"
+    ],
+    "constraints": [
+      "Each attraction downtime must be under 5% per month",
+      "Visitor complaints need to be minimized to under 2% of total visits"
+    ]
+  },
+  "connections": [
+    {
+      "name": "theme_park_operations",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "theme_park_operations",
+      "name": "ride_utilization",
+      "connection": "theme_park_operations",
+      "rows": 30000,
+      "columns": [
+        {
+          "name": "ride_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "utilization_percentage",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "theme_park_operations",
+      "name": "visitor_feedback",
+      "connection": "theme_park_operations",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "feedback_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ride_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "satisfaction_score",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "null_fraction": 0.5
+        }
+      ]
+    }
+  ]
+}

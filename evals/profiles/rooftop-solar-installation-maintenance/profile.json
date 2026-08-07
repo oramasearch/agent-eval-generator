@@ -1,0 +1,141 @@
+{
+  "profile_id": "rooftop-solar-installation-maintenance",
+  "industry": "Rooftop Solar Panel Installation and Maintenance",
+  "situation": "markdown: Sarah is a data analyst at a company that installs and maintains rooftop solar panels. Her role involves optimizing the maintenance schedule, monitoring panel efficiency, and predicting potential failures to ensure maximum energy output. Her performance is measured by the accuracy of predictions made about the panel's performances and efficiency improvements over time. Constraints include variability in panel types and installation environments.",
+  "persona": {
+    "role": "Data Analyst",
+    "context": "Working in the solar energy sector, focusing on installation and maintenance data.",
+    "measured_on": [
+      "Prediction accuracy of solar panel failures",
+      "Efficiency improvement rates"
+    ],
+    "constraints": [
+      "Multiple panel types",
+      "Diverse installation environments",
+      "Variable data collection intervals"
+    ]
+  },
+  "connections": [
+    {
+      "name": "solar_database",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "solar_database",
+      "name": "installations",
+      "connection": "solar_database",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "installation_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "site_location",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "panel_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "installation_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "inspector_notes",
+          "type": "string",
+          "null_fraction": 0.4
+        },
+        {
+          "name": "efficiency_rating",
+          "type": "float",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "solar_database",
+      "name": "maintenance_schedule",
+      "connection": "solar_database",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "maintenance_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "installation_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "scheduled_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "completion_date",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "maintenance_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.03
+        }
+      ]
+    },
+    {
+      "database": "solar_database",
+      "name": "panel_failures",
+      "connection": "solar_database",
+      "rows": 2000,
+      "columns": [
+        {
+          "name": "failure_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "installation_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failure_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failure_reason",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "resolution_time_hours",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

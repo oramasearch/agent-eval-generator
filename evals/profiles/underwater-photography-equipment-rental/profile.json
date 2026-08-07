@@ -1,0 +1,109 @@
+{
+  "profile_id": "underwater-photography-equipment-rental",
+  "industry": "Underwater Photography",
+  "situation": "markdown: An equipment rental service specializing in underwater photography gear aims to optimize inventory and predict equipment utilization trends in order to maintain high customer satisfaction and minimize downtime.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Oversees equipment rental operations, including inventory management, customer satisfaction, and utilization forecasting.",
+    "measured_on": [
+      "equipment turn-around time",
+      "inventory utilization",
+      "customer satisfaction ratings"
+    ],
+    "constraints": [
+      "Budget constraints on new equipment purchases",
+      "Limited storage space",
+      "Seasonal fluctuations in demand based on tourism and underwater photography events"
+    ]
+  },
+  "connections": [
+    {
+      "name": "rental_management_system",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "customer_feedback",
+      "kind": "bigquery",
+      "state": "discovered"
+    },
+    {
+      "name": "weather_forecast_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "rental_management_system",
+      "name": "equipment_inventory",
+      "connection": "rental_management_system",
+      "rows": 150,
+      "columns": [
+        {
+          "name": "equipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "equipment_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "condition_status",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "last_service_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "rental_status",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "rental_management_system",
+      "name": "rental_transactions",
+      "connection": "rental_management_system",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "equipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rental_start_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rental_end_date",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "customer_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "revenue_generated",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

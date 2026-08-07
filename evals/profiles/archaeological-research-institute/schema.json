@@ -1,0 +1,41 @@
+{
+  "profile": "archaeological-research-institute",
+  "tables": [
+    {
+      "database": "archaeo_research",
+      "name": "artifact_catalog",
+      "rows": 15000,
+      "columns": [
+        "artifact_id",
+        "discovery_date",
+        "estimated_age",
+        "material",
+        "preservation_status",
+        "site_location"
+      ]
+    },
+    {
+      "database": "archaeo_research",
+      "name": "dig_sites",
+      "rows": 300,
+      "columns": [
+        "excavation_start",
+        "found_artifacts_count",
+        "ongoing",
+        "region",
+        "site_id"
+      ]
+    },
+    {
+      "database": "archaeo_research",
+      "name": "site_characteristics",
+      "rows": 500,
+      "columns": [
+        "historical_significance_score",
+        "proximity_to_water",
+        "site_id",
+        "soil_composition"
+      ]
+    }
+  ]
+}

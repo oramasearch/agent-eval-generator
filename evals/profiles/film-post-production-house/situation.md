@@ -1,0 +1,1 @@
+markdown: This film post-production house specializes in editing, CGI, and video effects. They utilize post-production software and manage workflows across various projects concurrently. Their ability to meet deadlines and produce high-quality edits is crucial for client retention and satisfaction.

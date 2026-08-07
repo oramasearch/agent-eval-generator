@@ -1,0 +1,98 @@
+{
+  "profile_id": "underwater-cable-internet-provider",
+  "industry": "Underwater Cable Internet Provider",
+  "situation": "markdown: An operations manager at an underwater cable internet provider is tasked with ensuring optimal network performance and minimizing downtime. They need to predict maintenance needs to prevent outages and improve customer satisfaction. The manager is measured on network uptime percentages and customer satisfaction scores.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for maintaining the network infrastructure and preemptively addressing any potential disruptions in service.",
+    "measured_on": [
+      "Network uptime percentages",
+      "Customer satisfaction scores"
+    ],
+    "constraints": [
+      "Predict maintenance needs accurately",
+      "Minimize unexpected downtime",
+      "Improve overall customer experience"
+    ]
+  },
+  "connections": [
+    {
+      "name": "cable_performance",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "customer_data",
+      "kind": "postgres",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "cable_networks",
+      "name": "performance_metrics",
+      "connection": "cable_performance",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cable_id",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "signal_strength",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "latency",
+          "type": "int",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "packet_loss",
+          "type": "float",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "recorded_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "cable_networks",
+      "name": "customer_complaints",
+      "connection": "customer_data",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "complaint_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cable_id",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "complaint_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "complaint_description",
+          "type": "string",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "reported_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

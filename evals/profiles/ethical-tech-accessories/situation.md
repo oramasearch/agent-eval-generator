@@ -1,0 +1,1 @@
+markdown: A small company producing ethically-sourced tech accessories must optimize its supply chain while maintaining high sustainability standards. The operations manager is responsible for inventory levels, supply chain efficiency, and ensuring timely deliveries to customers, which affects customer satisfaction and company profitability.

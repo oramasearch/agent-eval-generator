@@ -1,0 +1,29 @@
+{
+  "profile": "fossil-dating-laboratory",
+  "tables": [
+    {
+      "database": "paleontology-database",
+      "name": "fossil_analyses",
+      "rows": 34000,
+      "columns": [
+        "analysis_date",
+        "carbon_dating_result",
+        "location_lat",
+        "location_lon",
+        "sample_id",
+        "species"
+      ]
+    },
+    {
+      "database": "paleontology-database",
+      "name": "species_catalog",
+      "rows": 1200,
+      "columns": [
+        "discovery_period",
+        "endangered_status",
+        "species_id",
+        "species_name"
+      ]
+    }
+  ]
+}

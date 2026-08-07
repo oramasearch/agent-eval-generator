@@ -1,0 +1,94 @@
+{
+  "profile_id": "vintage-audio-restoration-services",
+  "industry": "Audio Equipment Restoration",
+  "situation": "markdown: A company that specializes in the restoration and repair of vintage audio equipment has recently expanded its operations. The company restores collectible audio devices, such as gramophones and tube amplifiers, for audiophiles and collectors. The restoration process involves intricate work that demands precision and a deep understanding of audio electronics. As they expand, they need to improve inventory management of spare parts and restoration components, as well as track the effectiveness of promotional discounts on service packages.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Overseeing the supply chain and inventory management of rare and vintage audio components.",
+    "measured_on": [
+      "Efficiency of inventory management",
+      "Cost savings from optimized purchasing",
+      "Effectiveness of discount strategies in boosting sales"
+    ],
+    "constraints": [
+      "Budget constraints for inventory purchases",
+      "Long lead times for rare components",
+      "Ensuring quality while maximizing savings"
+    ]
+  },
+  "connections": [
+    {
+      "name": "vintage_audio_inventory_system",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "vintage_audio_sales_record",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "vintage_audio_inventory_system",
+      "name": "inventory_snapshots",
+      "connection": "vintage_audio_inventory_system",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "vintage_audio_inventory_system",
+      "name": "orders_daily",
+      "connection": "vintage_audio_sales_record",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

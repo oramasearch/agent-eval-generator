@@ -13,6 +13,25 @@ from typing import Any
 from agent_eval_generator.records import Table
 
 
+# Plausible value pools by column name. Not exhaustive — the fallback derives a value from the
+# column's own name, which is still meaningful where this table is not.
+_DOMAINS: dict[str, list[str]] = {
+    "sku": ["SKU-1042", "SKU-2277", "SKU-3391", "SKU-4820", "SKU-5163"],
+    "status": ["active", "pending", "suspended", "closed"],
+    "state": ["CA", "TX", "NY", "IL", "FL", "WA", "OH"],
+    "segment": ["smb", "mid-market", "enterprise", "strategic"],
+    "channel": ["email", "phone", "chat", "field", "partner"],
+    "priority": ["p1", "p2", "p3", "p4"],
+    "region": ["emea", "amer", "apac", "latam"],
+    "currency": ["USD", "EUR", "GBP", "JPY"],
+    "reason": ["price", "support", "product fit", "consolidation", "budget"],
+    "type": ["standard", "expedited", "recurring", "one-off"],
+    "model": ["EX-210", "EX-330", "LD-90", "CT-450"],
+    "email": ["ops@example.com", "billing@example.com", "支持@example.com"],
+    "name": ["Northwind Trading", "Acme Logistics", "Harbor Foods", "Vertex Mining"],
+}
+
+
 def _value(column: dict[str, Any], rng: random.Random, row: int) -> Any:
     name = column.get("name", "").lower()
     kind = str(column.get("type", "string")).lower()
@@ -28,7 +47,15 @@ def _value(column: dict[str, Any], rng: random.Random, row: int) -> Any:
         return rng.random() < 0.2
     if "geo" in kind:
         return [round(rng.uniform(-90, 90), 4), round(rng.uniform(-180, 180), 4)]
-    return rng.choice(["alpha", "beta", "gamma", "delta", "epsilon"])
+
+    # A string column gets a value that PLAUSIBLY belongs to it. The first version returned
+    # alpha/beta/gamma for everything, which produced `"sku": "alpha"` — random noise shaped like a
+    # schema, the exact thing the profile rules say teaches nothing. A model cannot learn to read
+    # data that carries no meaning.
+    for key, pool in _DOMAINS.items():
+        if key in name:
+            return rng.choice(pool)
+    return f"{name.replace('_', '-')}-{rng.randrange(1000):03d}"
 
 
 def synthesize(profile: dict[str, Any], seed: int = 11) -> list[Table]:

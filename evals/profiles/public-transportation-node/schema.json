@@ -1,0 +1,28 @@
+{
+  "profile": "public-transportation-node",
+  "tables": [
+    {
+      "database": "PublicTransitDB",
+      "name": "bus_schedule",
+      "rows": 50000,
+      "columns": [
+        "arrival_time",
+        "bus_id",
+        "departure_time",
+        "passenger_count",
+        "route_id"
+      ]
+    },
+    {
+      "database": "PublicTransitDB",
+      "name": "vehicle_maintenance",
+      "rows": 20000,
+      "columns": [
+        "bus_id",
+        "issue_reported",
+        "last_maintenance_date",
+        "resolved"
+      ]
+    }
+  ]
+}

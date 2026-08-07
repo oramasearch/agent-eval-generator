@@ -1,0 +1,75 @@
+{
+  "profile_id": "digital-art-auction-management",
+  "industry": "Digital Art Auction",
+  "situation": "markdown: An auction manager for a digital art auction platform is responsible for optimizing auction operations. They ensure effective bid tracking, manage digital art listings, and are measured on auction success rates and bidder satisfaction. Their action scope includes increasing auction participation through data analysis and enhancing bidder engagement.",
+  "persona": {
+    "role": "Auction Manager",
+    "context": "Oversees digital art auctions on a leading platform. Focuses on maintaining bidder satisfaction and optimizing auction outcomes.",
+    "measured_on": [
+      "Auction success rate",
+      "Bidder satisfaction"
+    ],
+    "constraints": [
+      "Must not leak bidder information",
+      "Complies with digital rights management regulations",
+      "Operates within auction platform\u2019s technical infrastructure"
+    ]
+  },
+  "connections": [
+    {
+      "name": "churn_results",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "churn_results",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.05
+        }
+      ]
+    }
+  ]
+}

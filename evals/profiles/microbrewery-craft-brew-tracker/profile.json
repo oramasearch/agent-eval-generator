@@ -1,0 +1,99 @@
+{
+  "profile_id": "microbrewery-craft-brew-tracker",
+  "industry": "Microbrewery",
+  "situation": "markdown: Craft Brew Co. is a small microbrewery looking to optimize its operations. The brewmaster, Alex, is responsible for ensuring consistent quality and timely production. Alex wants to make data-driven decisions to forecast demand and optimize the brew cycle to minimize wastage and maximize customer satisfaction.",
+  "persona": {
+    "role": "Brewmaster",
+    "context": "Runs the brewing operations, ensures quality and supply meet demand.",
+    "measured_on": [
+      "Consistency of brew quality",
+      "Adherence to production timelines",
+      "Minimized wastage"
+    ],
+    "constraints": [
+      "Limited storage capacity",
+      "Fluctuating ingredient availability",
+      "Demand forecasting is challenging due to seasonal variations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "craft_brew_db",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "craft_brew_db",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "craft_brew_db",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "date",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "profile_id": "fossil-dating-laboratory",
+  "industry": "Paleontology",
+  "situation": "markdown: The laboratory specializes in dating and analyzing fossil samples to understand ancient ecosystems and species evolution. The lab's director, Dr. Emily Carter, oversees operations, ensures data accuracy, and collaborates with international research teams. Her work is measured on timely delivery of reliable analytical results, expansion of research capabilities, and maintaining partnerships with academic institutions.",
+  "persona": {
+    "role": "Director",
+    "context": "Leads the Fossil Dating Laboratory and Project Collaborations.",
+    "measured_on": [
+      "timely and accurate results",
+      "research innovation",
+      "collaboration expansion"
+    ],
+    "constraints": [
+      "must comply with international research standards",
+      "limited budget for software tools",
+      "data must be shared securely with partners"
+    ]
+  },
+  "connections": [
+    {
+      "name": "paleontology-database",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "fossil-sample-records",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "paleontology-database",
+      "name": "fossil_analyses",
+      "connection": "paleontology-database",
+      "rows": 34000,
+      "columns": [
+        {
+          "name": "sample_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "analysis_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "species",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "carbon_dating_result",
+          "type": "float",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "location_lat",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "location_lon",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "paleontology-database",
+      "name": "species_catalog",
+      "connection": "paleontology-database",
+      "rows": 1200,
+      "columns": [
+        {
+          "name": "species_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "species_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "discovery_period",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "endangered_status",
+          "type": "string",
+          "null_fraction": 0.3
+        }
+      ]
+    }
+  ]
+}

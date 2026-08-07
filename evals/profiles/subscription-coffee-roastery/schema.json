@@ -1,0 +1,41 @@
+{
+  "profile": "subscription-coffee-roastery",
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "rows": 47000,
+      "columns": [
+        "cadence_days",
+        "cancelled_at",
+        "pause_until",
+        "sku",
+        "started_at",
+        "sub_id"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

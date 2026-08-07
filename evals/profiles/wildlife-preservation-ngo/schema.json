@@ -1,0 +1,17 @@
+{
+  "profile": "wildlife-preservation-ngo",
+  "tables": [
+    {
+      "database": "conservation_results",
+      "name": "animal_sightings",
+      "rows": 12500,
+      "columns": [
+        "count",
+        "observer_id",
+        "region",
+        "sighting_date",
+        "species"
+      ]
+    }
+  ]
+}

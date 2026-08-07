@@ -1,0 +1,99 @@
+{
+  "profile_id": "taxidermy-workshop",
+  "industry": "Taxidermy",
+  "situation": "markdown: Jon Doe is the operations manager at a prominent taxidermy workshop. His primary role involves optimizing inventory levels for different preservation materials and scheduling orders to meet seasonal demand variations. He is measured on his ability to reduce material waste and timely completion of orders, ensuring customer satisfaction while maintaining operational costs.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Oversees the procurement and usage of preservation materials and manages order fulfillment cycles.",
+    "measured_on": [
+      "Reduction in material waste",
+      "On-time order completion",
+      "Inventory turnover rates"
+    ],
+    "constraints": [
+      "Demand fluctuations due to seasonality",
+      "Limited storage capacity for materials",
+      "Varied preservation needs based on specimen type"
+    ]
+  },
+  "connections": [
+    {
+      "name": "taxidermy-orders-db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "taxidermy-inventory-db",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "taxidermy-orders-db",
+      "name": "order_details",
+      "connection": "taxidermy-orders-db",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "specimen_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "order_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "completion_due_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "taxidermy-inventory-db",
+      "name": "material_inventory",
+      "connection": "taxidermy-inventory-db",
+      "rows": 2000,
+      "columns": [
+        {
+          "name": "material_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "material_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "reorder_level",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_updated",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

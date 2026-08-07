@@ -1,0 +1,28 @@
+{
+  "profile": "falconry-bird-control",
+  "tables": [
+    {
+      "database": "operations_db",
+      "name": "falconry_deployments",
+      "rows": 12000,
+      "columns": [
+        "bird_id",
+        "deployment_date",
+        "deployment_id",
+        "falconer_id",
+        "site_id",
+        "success_rate"
+      ]
+    },
+    {
+      "database": "operations_db",
+      "name": "sites_information",
+      "rows": 250,
+      "columns": [
+        "coordinates",
+        "site_id",
+        "site_type"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "profile_id": "rare-book-auction-house",
+  "industry": "Rare Book Trading",
+  "situation": "markdown: The organization deals with appraising, auctioning, and trading rare books. Their operations involve valuations, historical sales analysis, and customer relationship management for bidders and sellers.",
+  "persona": {
+    "role": "Data Analyst",
+    "context": "The analyst is responsible for providing insights into sales trends, customer bidding patterns, and valuation accuracy of rare books to support strategic decisions.",
+    "measured_on": [
+      "Accuracy of valuation models",
+      "Identification of sales and bidding trends",
+      "Timeliness in reporting insights"
+    ],
+    "constraints": [
+      "Data must be processed quickly to influence auction outcomes",
+      "Valuation models must comply with industry standards",
+      "Customer privacy must be preserved"
+    ]
+  },
+  "connections": [
+    {
+      "name": "book_sales_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "auction_records",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "book_sales_db",
+      "name": "book_inventory",
+      "connection": "book_sales_db",
+      "rows": 3000,
+      "columns": [
+        {
+          "name": "book_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "author",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "publication_year",
+          "type": "int",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "value_estimate",
+          "type": "float",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "book_sales_db",
+      "name": "past_auctions",
+      "connection": "book_sales_db",
+      "rows": 1500,
+      "columns": [
+        {
+          "name": "auction_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "book_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "final_bid",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "bidder_id",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "auction_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "winning_bid",
+          "type": "bool",
+          "null_fraction": 0.01
+        }
+      ]
+    }
+  ]
+}

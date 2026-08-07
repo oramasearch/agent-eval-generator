@@ -1,0 +1,65 @@
+{
+  "profile_id": "outdoor-advertising-agency",
+  "industry": "Outdoor Advertising",
+  "situation": "markdown: The agency manager is responsible for overseeing ad campaigns and maximizing revenue from billboard advertising spaces. Measured on campaign success rates, inventory utilization, and budgeting efficiency, they can act on data-driven insights to adjust pricing strategies, target ad placements, and plan future campaigns.",
+  "persona": {
+    "role": "Agency Manager",
+    "context": "Manages campaign logistics and revenue maximization strategies.",
+    "measured_on": [
+      "campaign success rates",
+      "inventory utilization",
+      "budgeting efficiency"
+    ],
+    "constraints": [
+      "Each suggested strategy must align with quarterly budget plans.",
+      "Changes in inventory pricing are capped at 10% per quarter."
+    ]
+  },
+  "connections": [
+    {
+      "name": "ad_campaigns",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "ad_campaigns",
+      "name": "campaign_inventory",
+      "connection": "ad_campaigns",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "campaign_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "billboard_location",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "daily_price",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "impressions",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

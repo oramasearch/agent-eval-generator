@@ -1,0 +1,1 @@
+markdown: Jane Doe is a Supply Chain Manager at a company that manufactures and distributes specialized bee keeping equipment. She's measured on her ability to maintain optimal inventory levels across various retail markets and ensure timely availability of products to meet demand fluctuations and promotions.

@@ -1,0 +1,1 @@
+markdown: The agency manager is responsible for overseeing ad campaigns and maximizing revenue from billboard advertising spaces. Measured on campaign success rates, inventory utilization, and budgeting efficiency, they can act on data-driven insights to adjust pricing strategies, target ad placements, and plan future campaigns.

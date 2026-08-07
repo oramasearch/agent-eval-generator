@@ -1,0 +1,1 @@
+markdown: An equipment rental service specializing in underwater photography gear aims to optimize inventory and predict equipment utilization trends in order to maintain high customer satisfaction and minimize downtime.

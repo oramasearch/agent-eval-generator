@@ -1,0 +1,30 @@
+{
+  "profile": "underwater-photography-equipment-rental",
+  "tables": [
+    {
+      "database": "rental_management_system",
+      "name": "equipment_inventory",
+      "rows": 150,
+      "columns": [
+        "condition_status",
+        "equipment_id",
+        "equipment_type",
+        "last_service_date",
+        "rental_status"
+      ]
+    },
+    {
+      "database": "rental_management_system",
+      "name": "rental_transactions",
+      "rows": 5000,
+      "columns": [
+        "customer_id",
+        "equipment_id",
+        "rental_end_date",
+        "rental_start_date",
+        "revenue_generated",
+        "transaction_id"
+      ]
+    }
+  ]
+}

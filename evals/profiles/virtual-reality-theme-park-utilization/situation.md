@@ -1,0 +1,1 @@
+markdown: The operations manager at a cutting-edge virtual reality theme park is responsible for optimizing visitor experiences and park operations, ensuring rides and attractions are running smoothly and downtime is minimized. They are measured on visitor satisfaction, ride efficiency, and park throughput.

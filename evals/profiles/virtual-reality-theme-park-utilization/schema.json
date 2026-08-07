@@ -1,0 +1,26 @@
+{
+  "profile": "virtual-reality-theme-park-utilization",
+  "tables": [
+    {
+      "database": "theme_park_operations",
+      "name": "ride_utilization",
+      "rows": 30000,
+      "columns": [
+        "date",
+        "ride_id",
+        "utilization_percentage"
+      ]
+    },
+    {
+      "database": "theme_park_operations",
+      "name": "visitor_feedback",
+      "rows": 15000,
+      "columns": [
+        "comment",
+        "feedback_id",
+        "ride_id",
+        "satisfaction_score"
+      ]
+    }
+  ]
+}

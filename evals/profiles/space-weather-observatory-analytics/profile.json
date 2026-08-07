@@ -1,0 +1,107 @@
+{
+  "profile_id": "space-weather-observatory-analytics",
+  "industry": "Space Weather Research",
+  "situation": "markdown: Dr. Elena Martinez, a lead researcher at the Solar and Space Physics Observatory, aims to improve the prediction models for solar storms. The observatory collects vast amounts of data from various satellites and ground-based sensors. Dr. Martinez needs to enhance the observatory's predictive capabilities by building models that utilize the captured data to forecast solar flare events and their impact on Earth's geomagnetic environment.",
+  "persona": {
+    "role": "Lead Researcher",
+    "context": "Improving predictive models for space weather events.",
+    "measured_on": [
+      "Accuracy of solar storm predictions",
+      "Timeliness of forecasts"
+    ],
+    "constraints": [
+      "Models must run in near real-time using captured datasets",
+      "Data capture from live satellites must be synchronized"
+    ]
+  },
+  "connections": [
+    {
+      "name": "satellite_sensor",
+      "kind": "rest",
+      "state": "discovered"
+    },
+    {
+      "name": "ground_station_db",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "space_weather_db",
+      "name": "solar_flare_events",
+      "connection": "ground_station_db",
+      "rows": 300000,
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "peak_flux",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "end_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "observatory",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "x_ray_class",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "space_weather_db",
+      "name": "geomagnetic_storms",
+      "connection": "ground_station_db",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "storm_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "k_index",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "impact_level",
+          "type": "string",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

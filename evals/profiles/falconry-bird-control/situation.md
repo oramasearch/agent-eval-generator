@@ -1,0 +1,1 @@
+markdown: The business operates in providing bird control solutions using trained birds of prey. The falconers provide services primarily at airports and agricultural sites to prevent damages caused by pest birds. They are interested in improving their service scheduling and understanding the effectiveness of different birds at different locations.

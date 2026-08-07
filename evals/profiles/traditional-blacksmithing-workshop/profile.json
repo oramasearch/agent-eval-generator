@@ -1,0 +1,99 @@
+{
+  "profile_id": "traditional-blacksmithing-workshop",
+  "industry": "Blacksmith Manufacturing",
+  "situation": "markdown: The owner of a traditional blacksmithing workshop that creates custom metalworks. The owner wants to enhance production efficiency and optimize material utilization to maximize craftsmanship and reduce wastage. Measured on metal usage efficiency, timely delivery of orders, and customer satisfaction.",
+  "persona": {
+    "role": "Workshop Owner",
+    "context": "The owner manages a team of smiths, tracks raw material stock, and oversees order fulfillment.",
+    "measured_on": [
+      "Efficiency in material usage",
+      "Timeliness of delivery",
+      "Quality of craftsmanship"
+    ],
+    "constraints": [
+      "Maintain traditional methods",
+      "Operate within a limited production capacity",
+      "Ensure high quality despite variations in material"
+    ]
+  },
+  "connections": [
+    {
+      "name": "blacksmith_inventory_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "blacksmith_orders_db",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "blacksmith_inventory_db",
+      "name": "metal_inventory",
+      "connection": "blacksmith_inventory_db",
+      "rows": 8000,
+      "columns": [
+        {
+          "name": "metal_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "reorder_threshold",
+          "type": "int",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "last_restocked",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "blacksmith_orders_db",
+      "name": "orders",
+      "connection": "blacksmith_orders_db",
+      "rows": 1500,
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "customer_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "metal_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ordered_quantity",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "delivery_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.02
+        }
+      ]
+    }
+  ]
+}

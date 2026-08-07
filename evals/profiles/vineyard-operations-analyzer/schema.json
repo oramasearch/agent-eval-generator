@@ -1,0 +1,27 @@
+{
+  "profile": "vineyard-operations-analyzer",
+  "tables": [
+    {
+      "database": "vineyard_db",
+      "name": "grape_growth",
+      "rows": 50000,
+      "columns": [
+        "growth_stage",
+        "health_score",
+        "quality_rating",
+        "vineyard_id",
+        "yield"
+      ]
+    },
+    {
+      "database": "vineyard_db",
+      "name": "soil_composition",
+      "rows": 5000,
+      "columns": [
+        "nutrient_levels",
+        "soil_type",
+        "vineyard_id"
+      ]
+    }
+  ]
+}

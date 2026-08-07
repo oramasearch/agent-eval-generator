@@ -1,0 +1,55 @@
+{
+  "profile_id": "silk-manufacturing-facility",
+  "industry": "Textile Manufacturing",
+  "situation": "markdown: A silk manufacturing facility focused on efficient inventory management and supply chain optimization. The facility uses advanced logistics and supply chain systems to streamline operations. The supply chain manager is responsible for overseeing the supply levels, ensuring timely procurement of raw materials, and optimizing the supply chain process to reduce costs and increase efficiency. They are measured on their ability to maintain optimal inventory levels, reduce lead times, and improve supply chain cost efficiencies. They need to have insights into inventory turnover, stock outs, and potential supply chain disruptions.",
+  "persona": {
+    "role": "Supply Chain Manager",
+    "context": "Responsible for ensuring the seamless flow of materials from suppliers with an emphasis on maintaining optimal stock levels.",
+    "measured_on": [
+      "inventory turnover",
+      "lead time reduction",
+      "cost efficiencies in supply chain"
+    ],
+    "constraints": [
+      "focus on optimizing inventory without overstocking",
+      "reducing supply lead times"
+    ]
+  },
+  "connections": [
+    {
+      "name": "coffee",
+      "kind": "bigquery",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        }
+      ]
+    }
+  ]
+}

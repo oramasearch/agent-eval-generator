@@ -1,0 +1,88 @@
+{
+  "profile_id": "marine-biology-research-institute",
+  "industry": "Marine Biology",
+  "situation": "markdown: Dr. Samira Bloom, a lead marine biologist, is tasked with analyzing species population dynamics and ecosystem health indicators. She is measured on long-term sustainability reports and successful conservation strategies. Samira's team can act on population forecasts to allocate resources effectively.",
+  "persona": {
+    "role": "Lead Marine Biologist",
+    "context": "Marine Biology Research Institute focusing on oceanic ecosystems",
+    "measured_on": [
+      "sustainability reports",
+      "conservation strategy success"
+    ],
+    "constraints": [
+      "analyses must be statistically significant",
+      "species population data must be reliable",
+      "conservation actions must be documented"
+    ]
+  },
+  "connections": [
+    {
+      "name": "marine_bio_db",
+      "kind": "bigquery",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "marine_bio_db",
+      "name": "species_population",
+      "connection": "marine_bio_db",
+      "rows": 30000,
+      "columns": [
+        {
+          "name": "species_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date_observed",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "population_count",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "region",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "marine_bio_db",
+      "name": "ecosystem_health",
+      "connection": "marine_bio_db",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "region",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date_collected",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ph_level",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "oxygen_level",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "pollution_index",
+          "type": "float",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

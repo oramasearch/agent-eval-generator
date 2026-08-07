@@ -1,0 +1,1 @@
+markdown: **David** is the Operations Manager at a specialty coffee roastery offering subscription services. David oversees supply chain effectiveness, ensuring inventory aligns with subscriber demand, and is measured on minimizing out-of-stock incidents while maintaining optimal stock levels to reduce holding costs.

@@ -1,0 +1,29 @@
+{
+  "profile": "taxidermy-workshop",
+  "tables": [
+    {
+      "database": "taxidermy-orders-db",
+      "name": "order_details",
+      "rows": 10000,
+      "columns": [
+        "completion_due_date",
+        "order_date",
+        "order_id",
+        "specimen_type",
+        "status"
+      ]
+    },
+    {
+      "database": "taxidermy-inventory-db",
+      "name": "material_inventory",
+      "rows": 2000,
+      "columns": [
+        "last_updated",
+        "material_id",
+        "material_type",
+        "quantity_on_hand",
+        "reorder_level"
+      ]
+    }
+  ]
+}

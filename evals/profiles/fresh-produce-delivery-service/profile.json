@@ -1,0 +1,60 @@
+{
+  "profile_id": "fresh-produce-delivery-service",
+  "industry": "Delivery Service",
+  "situation": "markdown: Olivia is the Operations Manager for a growing fresh-produce delivery service. Her role involves optimizing delivery routes, managing delivery schedules, and improving operational efficiency. She is evaluated based on on-time delivery rates, customer satisfaction, and overall delivery cost savings. Olivia can implement changes by altering delivery schedules, redesigning routes, and adjusting staffing based on data-driven insights.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Olivia manages a fleet of delivery vehicles and drivers to ensure timely delivery of fresh produce to customers. The service uses electric delivery vans to align with sustainability goals.",
+    "measured_on": [
+      "on-time delivery rate",
+      "customer satisfaction",
+      "delivery cost savings"
+    ],
+    "constraints": [
+      "Must optimize for minimal mileage to save on fuel costs",
+      "Must maintain freshness of produce upon delivery"
+    ]
+  },
+  "connections": [
+    {
+      "name": "coffee",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "profile_id": "public-transportation-node",
+  "industry": "Public Transportation",
+  "situation": "markdown: Alex is a data scientist at a public transportation agency responsible for optimizing bus schedules and reducing transit times. Alex is measured on improving route efficiency, reducing delays, and enhancing passenger satisfaction. They have the authority to suggest schedule changes, propose new routes, and implement predictive maintenance on vehicles.",
+  "persona": {
+    "role": "Data Scientist",
+    "context": "Alex works primarily with transit operation data and collaborates closely with the logistics and maintenance teams. Their insights directly impact operational improvements.",
+    "measured_on": [
+      "Route efficiency",
+      "Passenger satisfaction",
+      "Reduction in transit delays"
+    ],
+    "constraints": [
+      "Ensure data privacy when analyzing passenger data",
+      "Adhere to transit authority regulations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "PublicTransitDB",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "CityWeatherAPI",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "PublicTransitDB",
+      "name": "bus_schedule",
+      "connection": "PublicTransitDB",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "route_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "departure_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "arrival_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "bus_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "passenger_count",
+          "type": "int",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "PublicTransitDB",
+      "name": "vehicle_maintenance",
+      "connection": "PublicTransitDB",
+      "rows": 20000,
+      "columns": [
+        {
+          "name": "bus_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "issue_reported",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "resolved",
+          "type": "bool",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

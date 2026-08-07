@@ -1,0 +1,131 @@
+{
+  "profile_id": "archaeological-research-institute",
+  "industry": "Archaeology",
+  "situation": "markdown: An archaeologist involved in the excavation and analysis of ancient artifacts, responsible for cataloging findings, predicting potential excavation sites, and optimizing the resource allocation for ongoing digs.",
+  "persona": {
+    "role": "Lead Archaeologist",
+    "context": "Overseeing excavation projects, artifact preservation, and research publishing.",
+    "measured_on": [
+      "Project success rates",
+      "Publication in scientific journals",
+      "Efficient resource usage"
+    ],
+    "constraints": [
+      "Data must be compliant with preservation policies",
+      "Collaboration with international teams"
+    ]
+  },
+  "connections": [
+    {
+      "name": "artifact_database",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "site_characteristics",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "archaeo_research",
+      "name": "artifact_catalog",
+      "connection": "artifact_database",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "artifact_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "discovery_date",
+          "type": "timestamp",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "material",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "site_location",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "estimated_age",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "preservation_status",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "archaeo_research",
+      "name": "dig_sites",
+      "connection": "artifact_database",
+      "rows": 300,
+      "columns": [
+        {
+          "name": "site_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "region",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "excavation_start",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "ongoing",
+          "type": "bool",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "found_artifacts_count",
+          "type": "int",
+          "null_fraction": 0.15
+        }
+      ]
+    },
+    {
+      "database": "archaeo_research",
+      "name": "site_characteristics",
+      "connection": "site_characteristics",
+      "rows": 500,
+      "columns": [
+        {
+          "name": "site_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "soil_composition",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "proximity_to_water",
+          "type": "float",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "historical_significance_score",
+          "type": "float",
+          "null_fraction": 0.2
+        }
+      ]
+    }
+  ]
+}

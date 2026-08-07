@@ -1,0 +1,79 @@
+{
+  "profile_id": "wind-turbine-utility-company",
+  "industry": "Renewable Energy - Wind Power",
+  "situation": "markdown: A maintenance operations manager at a wind energy utility company tracks turbine uptime and performance, focusing on predictive maintenance to reduce downtime. Their success is assessed based on minimizing operational costs and maximizing turbine efficiency.",
+  "persona": {
+    "role": "Maintenance Operations Manager",
+    "context": "Responsible for scheduling and optimizing maintenance for a fleet of wind turbines across multiple sites.",
+    "measured_on": [
+      "Operational efficiency",
+      "Cost reduction in maintenance",
+      "Turbine uptime"
+    ],
+    "constraints": [
+      "Maintenance scheduling must avoid peak energy demand periods and adhere to safety regulations."
+    ]
+  },
+  "connections": [
+    {
+      "name": "wind-farm-sensors",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "historical-energy-output",
+      "kind": "postgres",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "wind-farm-sensors",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rank",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

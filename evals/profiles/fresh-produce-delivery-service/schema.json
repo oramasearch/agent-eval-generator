@@ -1,0 +1,17 @@
+{
+  "profile": "fresh-produce-delivery-service",
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    }
+  ]
+}

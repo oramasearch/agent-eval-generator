@@ -1,0 +1,1 @@
+markdown: Craft Brew Co. is a small microbrewery looking to optimize its operations. The brewmaster, Alex, is responsible for ensuring consistent quality and timely production. Alex wants to make data-driven decisions to forecast demand and optimize the brew cycle to minimize wastage and maximize customer satisfaction.

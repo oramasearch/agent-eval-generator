@@ -1,0 +1,1 @@
+markdown: An archaeologist involved in the excavation and analysis of ancient artifacts, responsible for cataloging findings, predicting potential excavation sites, and optimizing the resource allocation for ongoing digs.

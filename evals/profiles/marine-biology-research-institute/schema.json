@@ -1,0 +1,28 @@
+{
+  "profile": "marine-biology-research-institute",
+  "tables": [
+    {
+      "database": "marine_bio_db",
+      "name": "species_population",
+      "rows": 30000,
+      "columns": [
+        "date_observed",
+        "population_count",
+        "region",
+        "species_id"
+      ]
+    },
+    {
+      "database": "marine_bio_db",
+      "name": "ecosystem_health",
+      "rows": 15000,
+      "columns": [
+        "date_collected",
+        "oxygen_level",
+        "ph_level",
+        "pollution_index",
+        "region"
+      ]
+    }
+  ]
+}

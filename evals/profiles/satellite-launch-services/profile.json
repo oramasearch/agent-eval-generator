@@ -1,0 +1,99 @@
+{
+  "profile_id": "satellite-launch-services",
+  "industry": "Satellite Launch Services",
+  "situation": "markdown: OrbitaX is a startup offering satellite launch services. The CTO is focused on optimizing launch schedules to minimize cost and maximize satellite uptime. They are measured by successful launches, satellite operational efficiency, and adherence to launch timelines. They can act on improving logistics, coordinating with satellite manufacturers, and optimizing fuel consumption.",
+  "persona": {
+    "role": "Chief Technology Officer",
+    "context": "OrbitaX is a startup focused on providing efficient satellite launch services for small to medium-sized satellites. The company recently started operations and is trying to carve out market share in the highly competitive aerospace industry.",
+    "measured_on": [
+      "Successful launches",
+      "Satellite uptime",
+      "Launch schedule adherence"
+    ],
+    "constraints": [
+      "Budget limitations",
+      "Regulatory compliance",
+      "Innovating within a fledgling company structure"
+    ]
+  },
+  "connections": [
+    {
+      "name": "satellite_telemetry_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "launch_operations",
+      "kind": "bigquery",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "launch_operations",
+      "name": "launch_schedules",
+      "connection": "launch_operations",
+      "rows": 35000,
+      "columns": [
+        {
+          "name": "launch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "vehicle",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "launch_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "launch_site",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "payload_mass",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "cost",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ]
+    },
+    {
+      "database": "launch_operations",
+      "name": "rocket_maintenance",
+      "connection": "launch_operations",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "rocket_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_serviced",
+          "type": "timestamp",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "service_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "engine_hours",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

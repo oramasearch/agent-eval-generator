@@ -1,0 +1,29 @@
+{
+  "profile": "underwater-cable-internet-provider",
+  "tables": [
+    {
+      "database": "cable_networks",
+      "name": "performance_metrics",
+      "rows": 47000,
+      "columns": [
+        "cable_id",
+        "latency",
+        "packet_loss",
+        "recorded_at",
+        "signal_strength"
+      ]
+    },
+    {
+      "database": "cable_networks",
+      "name": "customer_complaints",
+      "rows": 5450,
+      "columns": [
+        "cable_id",
+        "complaint_description",
+        "complaint_id",
+        "complaint_type",
+        "reported_at"
+      ]
+    }
+  ]
+}
