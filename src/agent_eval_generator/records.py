@@ -1,9 +1,13 @@
-"""Generate the RECORDS a profile comes with, and land them in Zetta.
+"""Generate the RECORDS a profile comes with, and package it as a portable eval dataset.
 
-A profile is not a description of data that exists elsewhere — it comes with its data. Downstream
-agents have to query real tables, and a profile whose tables cannot be queried cannot grade
-anything. Generating them also exercises the capture path, which is part of what this bootstrap
-exists to prove.
+A profile is not a description of data that exists elsewhere — it comes with its data. And it is
+an **eval artifact published to HuggingFace**, not a fixture for an engine: its job is to evaluate
+Auto-Suggest (does it propose the right tasks for this situation?) and then project creation (is
+the Pipeline it builds correct for this data?). Both must be scoreable **without a running Zetta
+node**, so a profile has to be self-contained and portable.
+
+`land()` remains for the case where someone wants the tables queryable in Zetta, but that is a
+convenience, not what a profile is for.
 
 Two rules the generators here follow, and both were learned the hard way:
 
@@ -117,8 +121,40 @@ PROFILES: dict[str, Callable[[], list[Table]]] = {
 }
 
 
+def package(profile: str, situation: str, tables: list[Table], out: Path) -> Path:
+    """Write a self-contained profile: the situation, the schemas, and the records.
+
+    This is the artifact that goes to HuggingFace. It must be readable and scoreable with no Zetta
+    node running — a model being evaluated on it should need nothing but the files.
+    """
+    directory = out / profile
+    directory.mkdir(parents=True, exist_ok=True)
+    (directory / "situation.md").write_text(situation)
+
+    schema = {
+        "profile": profile,
+        "tables": [
+            {
+                "database": table.database,
+                "name": table.name,
+                "rows": len(table.rows),
+                "columns": sorted({key for row in table.rows[:200] for key in row}),
+            }
+            for table in tables
+        ],
+    }
+    (directory / "schema.json").write_text(json.dumps(schema, indent=2))
+    for table in tables:
+        table.write_jsonl(directory / "records")
+    return directory
+
+
 def land(client: ZettaClient, tables: list[Table], staging: Path) -> list[dict[str, Any]]:
-    """Write each table and load it into Zetta as a partitioned dataset."""
+    """Optionally load the tables into Zetta as partitioned datasets.
+
+    A convenience for working against a live node. NOT what a profile is for — the profile is the
+    portable artifact written by `package()`.
+    """
     landed = []
     for table in tables:
         path = table.write_jsonl(staging)

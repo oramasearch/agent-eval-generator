@@ -32,6 +32,19 @@ training on a discovered-but-uncaptured table proposes something that cannot run
 agent for the wrong thing. "Discovered but not captured" is a real reason a task is *not yet*
 supportable — and the correct answer is "capture it first", not "cannot be done".
 
+## Profiles are an eval dataset, published to HuggingFace
+
+`OramaSearch/agent-eval-profiles` (private). A profile is a **tool for evaluating models**, not a
+fixture for an engine — it must be scoreable without a running Zetta node.
+
+```
+profile  ──►  Auto-Suggest  ──►  candidate TASKS
+profile + chosen intent  ──►  project creation  ──►  a Pipeline
+```
+
+Loading a profile into Zetta (`records.land`) is a convenience for working against a live node.
+Building that loader first, and treating it as the deliverable, was a wrong turn.
+
 ## What it produces
 
 Per [zetta#986](https://github.com/oramasearch/zetta/issues/986):
