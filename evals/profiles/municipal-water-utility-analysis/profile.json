@@ -1,0 +1,124 @@
+{
+  "profile_id": "municipal-water-utility-analysis",
+  "industry": "Municipal Water Utility",
+  "situation": "markdown: A water utility company managing the treatment and distribution of water resources for a mid-sized city. The company is tasked with ensuring reliable water supply, maintaining infrastructure, managing customer billing and service, and meeting regulatory compliance. The Operations Manager at the utility is focused on optimizing resource allocation, reducing water losses in the supply network, and enhancing service delivery.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for overseeing daily operations including resource management, water distribution network maintenance, and regulatory compliance.",
+    "measured_on": [
+      "Reduction in water losses",
+      "Efficiency of resource allocation",
+      "Service delivery metrics"
+    ],
+    "constraints": [
+      "Budget limitations affecting infrastructure upgrades",
+      "Regulatory compliance requirements",
+      "High volume of manual tasks"
+    ]
+  },
+  "connections": [
+    {
+      "name": "water_resource_management",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "customer_billing_system",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "regulatory_reports",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "water_resource_management",
+      "name": "distribution_network",
+      "connection": "water_resource_management",
+      "rows": 75000,
+      "columns": [
+        {
+          "name": "pipe_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "location_start",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "location_end",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "length_km",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "diameter_mm",
+          "type": "int",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "flow_rate_cubic_m",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "installation_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        }
+      ]
+    },
+    {
+      "database": "customer_billing_system",
+      "name": "billing_records",
+      "connection": "customer_billing_system",
+      "rows": 200000,
+      "columns": [
+        {
+          "name": "account_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "billing_period",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "amount_due",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "amount_paid",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "payment_date",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "payment_status",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

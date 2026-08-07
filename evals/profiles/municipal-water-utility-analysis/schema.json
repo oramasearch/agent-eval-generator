@@ -1,0 +1,33 @@
+{
+  "profile": "municipal-water-utility-analysis",
+  "tables": [
+    {
+      "database": "water_resource_management",
+      "name": "distribution_network",
+      "rows": 50000,
+      "columns": [
+        "diameter_mm",
+        "flow_rate_cubic_m",
+        "installation_date",
+        "last_maintenance_date",
+        "length_km",
+        "location_end",
+        "location_start",
+        "pipe_id"
+      ]
+    },
+    {
+      "database": "customer_billing_system",
+      "name": "billing_records",
+      "rows": 50000,
+      "columns": [
+        "account_id",
+        "amount_due",
+        "amount_paid",
+        "billing_period",
+        "payment_date",
+        "payment_status"
+      ]
+    }
+  ]
+}

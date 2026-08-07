@@ -1,0 +1,29 @@
+{
+  "profile": "marine-archaeology-discovery",
+  "tables": [
+    {
+      "database": "maritime_archives",
+      "name": "arch_site_metadata",
+      "rows": 50000,
+      "columns": [
+        "artifact_count",
+        "discovery_date",
+        "location_coordinates",
+        "preservation_status",
+        "site_id"
+      ]
+    },
+    {
+      "database": "maritime_archives",
+      "name": "artifact_details",
+      "rows": 50000,
+      "columns": [
+        "artifact_id",
+        "estimated_age",
+        "material",
+        "site_id",
+        "type"
+      ]
+    }
+  ]
+}

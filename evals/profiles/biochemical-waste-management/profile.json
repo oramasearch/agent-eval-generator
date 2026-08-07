@@ -1,0 +1,121 @@
+{
+  "profile_id": "biochemical-waste-management",
+  "industry": "Biochemical Waste Disposal",
+  "situation": "markdown: An Environmental Safety Officer in a biochemical waste disposal company is responsible for ensuring that all waste is disposed of in compliance with regulatory standards. They are measured on metrics like compliance rate, disposal efficiency, and incident response time. They can initiate process optimizations and enforce improvements based on waste disposal analytics.",
+  "persona": {
+    "role": "Environmental Safety Officer",
+    "context": "Responsible for managing and optimizing the disposal of biochemical waste efficiently and safely.",
+    "measured_on": [
+      "compliance rate",
+      "disposal efficiency",
+      "incident response time"
+    ],
+    "constraints": [
+      "All processes must comply with environmental regulations.",
+      "Budget constraints require optimization for cost-efficiency."
+    ]
+  },
+  "connections": [
+    {
+      "name": "bio_waste_database",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "chemical_inventory_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "bio_waste_database",
+      "name": "disposal_records",
+      "connection": "bio_waste_database",
+      "rows": 60000,
+      "columns": [
+        {
+          "name": "disposal_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "material_type",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "quantity",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "disposal_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "disposal_method",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "compliance_flag",
+          "type": "bool",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "bio_waste_database",
+      "name": "incidents",
+      "connection": "bio_waste_database",
+      "rows": 12000,
+      "columns": [
+        {
+          "name": "incident_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date_reported",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "severity",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "resolved",
+          "type": "bool",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "bio_waste_database",
+      "name": "regulations",
+      "connection": "bio_waste_database",
+      "rows": 50,
+      "columns": [
+        {
+          "name": "regulation_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "active",
+          "type": "bool",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "profile_id": "industrial-glass-manufacturing",
+  "industry": "Industrial Glass Manufacturing",
+  "situation": "markdown: John Doe is a Supply Chain Manager at GlassTech Industries, a large manufacturer of industrial glass products. His primary responsibility is ensuring the timely delivery of glass sheets to various clients while minimizing transportation and storage costs. He's evaluated on reducing the average delivery time and optimizing inventory levels without causing stockouts.",
+  "persona": {
+    "role": "Supply Chain Manager",
+    "context": "Managing supply chain operations for industrial glass manufacturing.",
+    "measured_on": [
+      "delivery timeliness",
+      "inventory optimization"
+    ],
+    "constraints": [
+      "Need to use existing ERP and SCM systems for data.",
+      "Must adhere to budget constraints for supply chain operations."
+    ]
+  },
+  "connections": [
+    {
+      "name": "erp_glasstech",
+      "kind": "odbc",
+      "state": "captured"
+    },
+    {
+      "name": "scm_bluyonder",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "erp_glasstech",
+      "name": "inventory_levels",
+      "connection": "erp_glasstech",
+      "rows": 200000,
+      "columns": [
+        {
+          "name": "glass_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_on_hand",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "reorder_level",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_order_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        }
+      ],
+      "records_sampled": 50000
+    },
+    {
+      "database": "erp_glasstech",
+      "name": "orders",
+      "connection": "erp_glasstech",
+      "rows": 500000,
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "client_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "order_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "delivery_date",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.01
+        }
+      ],
+      "records_sampled": 50000
+    }
+  ]
+}

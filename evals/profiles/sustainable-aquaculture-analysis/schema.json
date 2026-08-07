@@ -1,0 +1,43 @@
+{
+  "profile": "sustainable-aquaculture-analysis",
+  "tables": [
+    {
+      "database": "aquaculture",
+      "name": "water_quality_sensors",
+      "rows": 50000,
+      "columns": [
+        "dissolved_oxygen",
+        "pH_level",
+        "sensor_id",
+        "temperature",
+        "timestamp",
+        "turbidity"
+      ]
+    },
+    {
+      "database": "aquaculture",
+      "name": "fish_growth_records",
+      "rows": 50000,
+      "columns": [
+        "fish_id",
+        "length",
+        "measurement_date",
+        "pond_id",
+        "species",
+        "weight"
+      ]
+    },
+    {
+      "database": "aquaculture",
+      "name": "feeding_records",
+      "rows": 50000,
+      "columns": [
+        "feed_type",
+        "feeding_date",
+        "feeding_id",
+        "pond_id",
+        "quantity"
+      ]
+    }
+  ]
+}

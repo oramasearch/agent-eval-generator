@@ -1,0 +1,99 @@
+{
+  "profile_id": "marine-archaeology-discovery",
+  "industry": "Marine Archaeology",
+  "situation": "markdown: The individual is an Archaeological Data Analyst working with a marine archaeology agency focused on identifying and preserving underwater cultural heritage. They are responsible for ensuring accurate data analysis that assists in anomaly detection and site management. Their performance is measured by their ability to support site preservation efforts and improve detection methods.",
+  "persona": {
+    "role": "Archaeological Data Analyst",
+    "context": "Analyzing sonar and photogrammetry data to identify archaeological sites underwater.",
+    "measured_on": [
+      "Accuracy of archaeological site detection",
+      "Efficiency of data processing",
+      "Quality of preservation recommendations"
+    ],
+    "constraints": [
+      "Limited by data collected via seasonal expeditions",
+      "Must work with diverse sets of data types including sonar scans and images",
+      "Analysis should aid in heritage conservation efforts"
+    ]
+  },
+  "connections": [
+    {
+      "name": "maritime_archives_postgres",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "underwater_sonar_bq",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "maritime_archives",
+      "name": "arch_site_metadata",
+      "connection": "maritime_archives_postgres",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "site_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "discovery_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "location_coordinates",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "artifact_count",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "preservation_status",
+          "type": "string",
+          "null_fraction": 0.02
+        }
+      ]
+    },
+    {
+      "database": "maritime_archives",
+      "name": "artifact_details",
+      "connection": "maritime_archives_postgres",
+      "rows": 75000,
+      "columns": [
+        {
+          "name": "artifact_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "site_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "material",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "estimated_age",
+          "type": "int",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

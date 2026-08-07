@@ -1,0 +1,137 @@
+{
+  "profile_id": "reinsurance-brokerage-risk-analysis",
+  "industry": "Reinsurance Brokerage",
+  "situation": "markdown: The reinsurance broker is responsible for evaluating risk exposure, enhancing the stability of insurance companies by sharing of risk across multiple insurers. They help determine premium levels and the feasibility of underwriting additional coverage. They are measured on correctly assessing risk and optimizing profitability through appropriate client selections and policy structuring.",
+  "persona": {
+    "role": "Risk Analyst",
+    "context": "Working in a reinsurance corporate environment with a focus on optimizing the risk pool composition.",
+    "measured_on": [
+      "Accuracy of risk assessments",
+      "Profitability of reinsurance agreements",
+      "Client satisfaction"
+    ],
+    "constraints": [
+      "Limited access to client financial information",
+      "Compliance with international insurance regulations",
+      "Dependency on legacy systems for historical data"
+    ]
+  },
+  "connections": [
+    {
+      "name": "risk-database",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "legacy-claims-system",
+      "kind": "odbc",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "risk_database",
+      "name": "contracts",
+      "connection": "risk-database",
+      "rows": 42000,
+      "columns": [
+        {
+          "name": "contract_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "effective_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "expiry_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "premium",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "coverage_limit",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "client_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "loss_ratio",
+          "type": "float",
+          "null_fraction": 0.2
+        }
+      ]
+    },
+    {
+      "database": "risk_database",
+      "name": "premiums",
+      "connection": "risk-database",
+      "rows": 36000,
+      "columns": [
+        {
+          "name": "premium_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "contract_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "paid_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "amount",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "risk_database",
+      "name": "claims",
+      "connection": "legacy-claims-system",
+      "rows": 51000,
+      "columns": [
+        {
+          "name": "claim_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "contract_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "claim_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "claim_amount",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "settled",
+          "type": "bool",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

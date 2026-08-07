@@ -1,0 +1,1 @@
+markdown: The manager of an oyster farm is responsible for optimizing the growth and health of oysters while maximizing yield and minimizing environmental impact. They are measured on the productivity of the farm, oyster size and health metrics, and sustainability practices.

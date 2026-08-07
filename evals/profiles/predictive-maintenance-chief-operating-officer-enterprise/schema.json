@@ -4,7 +4,7 @@
     {
       "database": "fleet",
       "name": "assets",
-      "rows": 21000,
+      "rows": 134400,
       "columns": [
         "acquired_at",
         "asset_id",
@@ -16,7 +16,7 @@
     {
       "database": "fleet",
       "name": "work_orders",
-      "rows": 152500,
+      "rows": 976000,
       "columns": [
         "asset_id",
         "closed_at",

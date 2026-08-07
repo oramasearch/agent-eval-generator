@@ -64,7 +64,14 @@ def synthesize(profile: dict[str, Any], seed: int = 11) -> list[Table]:
     tables: list[Table] = []
     for spec in profile.get("tables", []):
         columns = spec.get("columns") or []
-        count = min(int(spec.get("rows") or 5_000), 50_000)
+        declared = int(spec.get("rows") or 5_000)
+        count = min(declared, 50_000)
+        # Record the sampling ON the spec. A profile that declares 876,000 rows beside a
+        # 50,000-line file misstates the artifact, and a model told a table is 876,000 rows may
+        # reason differently about sampling and partitioning than one told it has 50,000. Both
+        # numbers are true; the artifact has to carry both.
+        if count < declared:
+            spec["records_sampled"] = count
         rows = []
         for index in range(count):
             row: dict[str, Any] = {}

@@ -1,0 +1,109 @@
+{
+  "profile_id": "maritime-telecommunications-analysis",
+  "industry": "Maritime Telecommunications",
+  "situation": "markdown: Julian is the Head of Analytics at a maritime telecommunications company specializing in providing connectivity solutions for vehicles at sea, including cargo ships, cruise liners, and private yachts. The organization aims to optimize bandwidth usage, predict maintenance for telecom equipment, and enhance the customer experience by reducing downtime. Julian is measured on KPIs such as customer retention, SLA compliance, and optimizing operational costs.",
+  "persona": {
+    "role": "Head of Analytics",
+    "context": "Julian leads a team responsible for the analysis and optimization of telecommunications products delivered to maritime clients. This includes data analysis, predictive maintenance schedules, and customer relationship management.",
+    "measured_on": [
+      "customer retention rates",
+      "SLA compliance",
+      "operational cost optimization"
+    ],
+    "constraints": [
+      "Solutions must predict equipment failures to maintain uninterrupted service.",
+      "Ensure optimization does not exceed budget constraints.",
+      "Develop insights that lead to actionable customer experience improvements."
+    ]
+  },
+  "connections": [
+    {
+      "name": "maritime_telecom_postgres",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "maritime_telecom_postgres",
+      "name": "equipment_status_logs",
+      "connection": "maritime_telecom_postgres",
+      "rows": 500000,
+      "columns": [
+        {
+          "name": "equipment_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "vessel_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "error_code",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "signal_strength",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "maritime_telecom_postgres",
+      "name": "customer_complaints",
+      "connection": "maritime_telecom_postgres",
+      "rows": 25000,
+      "columns": [
+        {
+          "name": "complaint_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "vessel_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "complaint_type",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "resolved",
+          "type": "bool",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "resolution_time",
+          "type": "int",
+          "null_fraction": 0.02
+        }
+      ]
+    }
+  ]
+}

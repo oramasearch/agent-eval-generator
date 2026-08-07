@@ -1,0 +1,1 @@
+markdown: The profile is for an operations manager at an indoor vertical farming company, responsible for optimizing crop yield, managing resource allocation, and ensuring inventory levels are efficiently maintained. The manager is measured on crop yield performance, sustainable use of resources, and successful inventory management to prevent both stock-outs and overproduction.

@@ -4,7 +4,7 @@
     {
       "database": "crm",
       "name": "accounts",
-      "rows": 7200,
+      "rows": 12000,
       "columns": [
         "account_id",
         "churn_date",
@@ -17,7 +17,7 @@
     {
       "database": "crm",
       "name": "comm_events",
-      "rows": 84000,
+      "rows": 140000,
       "columns": [
         "channel",
         "event_id",

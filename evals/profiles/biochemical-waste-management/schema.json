@@ -1,0 +1,39 @@
+{
+  "profile": "biochemical-waste-management",
+  "tables": [
+    {
+      "database": "bio_waste_database",
+      "name": "disposal_records",
+      "rows": 50000,
+      "columns": [
+        "compliance_flag",
+        "disposal_date",
+        "disposal_id",
+        "disposal_method",
+        "material_type",
+        "quantity"
+      ]
+    },
+    {
+      "database": "bio_waste_database",
+      "name": "incidents",
+      "rows": 12000,
+      "columns": [
+        "date_reported",
+        "incident_id",
+        "resolved",
+        "severity"
+      ]
+    },
+    {
+      "database": "bio_waste_database",
+      "name": "regulations",
+      "rows": 50,
+      "columns": [
+        "active",
+        "description",
+        "regulation_id"
+      ]
+    }
+  ]
+}

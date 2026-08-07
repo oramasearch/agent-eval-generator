@@ -1,0 +1,94 @@
+{
+  "profile_id": "zoos-animal-welfare",
+  "industry": "Zoo Management and Animal Welfare",
+  "situation": "markdown: A leading zoo in North America is focusing on improving animal welfare and visitor satisfaction. The director of animal welfare is responsible for monitoring animal behavior and health, ensuring all species are thriving in their environment, and generating insights to enhance visitors' educational experiences. They report to the board on metrics such as animal health indicators, visitor engagement, and educational outcomes.",
+  "persona": {
+    "role": "Director of Animal Welfare",
+    "context": "This role involves overseeing the health and well-being of over 300 species, working alongside veterinarians, keepers, and educational staff.",
+    "measured_on": [
+      "animal health improvements",
+      "visitor engagement metrics",
+      "successful implementation of educational programs"
+    ],
+    "constraints": [
+      "Data accuracy must be verified by animal health experts",
+      "Initiatives must align with conservation goals",
+      "Educational content must be scientifically accurate"
+    ]
+  },
+  "connections": [
+    {
+      "name": "animal_welfare_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "visitor_engagement_db",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "animal_welfare_db",
+      "name": "animal_health_metrics",
+      "connection": "animal_welfare_db",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "animal_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "species",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "health_score",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "enrichment_activities",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "last_checkup_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "visitor_engagement_db",
+      "name": "visitor_tracks",
+      "connection": "visitor_engagement_db",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "visitor_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "visit_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "time_spent",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "favorite_exhibit",
+          "type": "string",
+          "null_fraction": 0.2
+        }
+      ]
+    }
+  ]
+}

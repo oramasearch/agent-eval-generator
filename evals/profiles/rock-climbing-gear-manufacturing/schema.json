@@ -1,0 +1,26 @@
+{
+  "profile": "rock-climbing-gear-manufacturing",
+  "tables": [
+    {
+      "database": "oracle_erp",
+      "name": "manufacturing_detail",
+      "rows": 50000,
+      "columns": [
+        "defects_detected",
+        "product_type",
+        "production_id",
+        "quantity_produced"
+      ]
+    },
+    {
+      "database": "oracle_erp",
+      "name": "supply_schedule",
+      "rows": 50000,
+      "columns": [
+        "expected_date",
+        "resource",
+        "supply_id"
+      ]
+    }
+  ]
+}

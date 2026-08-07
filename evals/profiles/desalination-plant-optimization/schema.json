@@ -1,0 +1,28 @@
+{
+  "profile": "desalination-plant-optimization",
+  "tables": [
+    {
+      "database": "desalination_ops",
+      "name": "maintenance_schedule",
+      "rows": 15000,
+      "columns": [
+        "component",
+        "downtime_hours",
+        "last_service_date",
+        "maintenance_id",
+        "next_service_due",
+        "technician_notes"
+      ]
+    },
+    {
+      "database": "energy_management",
+      "name": "hourly_energy_usage",
+      "rows": 50000,
+      "columns": [
+        "energy_consumed_kwh",
+        "energy_cost_usd",
+        "timestamp"
+      ]
+    }
+  ]
+}

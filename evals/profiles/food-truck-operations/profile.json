@@ -1,0 +1,94 @@
+{
+  "profile_id": "food-truck-operations",
+  "industry": "Food Truck Industry",
+  "situation": "markdown: A food truck entrepreneur expanding their fleet across multiple urban locations. They need to optimize operations based on location-specific sales data, ensure efficient inventory management, and identify high-potential areas for new truck deployments. They're measured on revenue growth, cost reduction, and market expansion success.",
+  "persona": {
+    "role": "Operations Director",
+    "context": "Responsible for overseeing day-to-day operations, deciding strategic expansions, and maintaining optimal stock levels for a multi-location food truck business.",
+    "measured_on": [
+      "Revenue growth",
+      "Operational efficiency",
+      "Market expansion"
+    ],
+    "constraints": [
+      "Data must be timely to make decisions on fleet movements.",
+      "Budget constraints limit the number of new trucks and marketing efforts.",
+      "Require insights into peak sales times and bestselling products."
+    ]
+  },
+  "connections": [
+    {
+      "name": "food_truck_db",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "food_truck_db",
+      "name": "location_sales",
+      "connection": "food_truck_db",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "location_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "total_sales",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "units_sold",
+          "type": "int",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "bestseller_item",
+          "type": "string",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "food_truck_db",
+      "name": "inventory_levels",
+      "connection": "food_truck_db",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "location_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_on_hand",
+          "type": "int",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "quantity_on_order",
+          "type": "int",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

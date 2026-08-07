@@ -4,7 +4,7 @@
     {
       "database": "crm",
       "name": "accounts",
-      "rows": 450,
+      "rows": 720,
       "columns": [
         "account_id",
         "churn_date",
@@ -17,7 +17,7 @@
     {
       "database": "billing",
       "name": "invoices",
-      "rows": 450,
+      "rows": 720,
       "columns": [
         "amount",
         "billing_customer_id",
@@ -31,7 +31,7 @@
     {
       "database": "support",
       "name": "tickets",
-      "rows": 2400,
+      "rows": 3840,
       "columns": [
         "account_id",
         "csat",
@@ -44,7 +44,7 @@
     {
       "database": "web",
       "name": "sessions",
-      "rows": 6000,
+      "rows": 9600,
       "columns": [
         "account_id",
         "duration_s",
@@ -56,7 +56,7 @@
     {
       "database": "product",
       "name": "telemetry",
-      "rows": 1000,
+      "rows": 1600,
       "columns": [
         "account_id",
         "event_id",

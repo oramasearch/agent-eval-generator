@@ -1,0 +1,1 @@
+markdown: This company is a leading provider of geothermal energy solutions. The Director of Operations, Alex Greenwood, is responsible for ensuring optimal energy production, identifying system maintenance needs, and improving operational efficiency. They are measured on the efficient allocation of resources and maintaining high system uptime.

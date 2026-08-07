@@ -1,0 +1,29 @@
+{
+  "profile": "amusement-park-optimizer",
+  "tables": [
+    {
+      "database": "CustomerDB",
+      "name": "visitor_counts",
+      "rows": 50000,
+      "columns": [
+        "amount_spent",
+        "ride_id",
+        "time_spent",
+        "visit_date",
+        "visitor_id"
+      ]
+    },
+    {
+      "database": "MarketingDB",
+      "name": "promotion_effects",
+      "rows": 25000,
+      "columns": [
+        "end_date",
+        "promo_id",
+        "revenue_generated",
+        "start_date",
+        "visitor_response"
+      ]
+    }
+  ]
+}

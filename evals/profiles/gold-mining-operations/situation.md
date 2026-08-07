@@ -1,0 +1,1 @@
+markdown: In a gold mining company, the Operations Manager is tasked with optimizing mineral extraction processes and ensuring efficient use of resources. They are measured on the production rates, operational costs, and environmental impact compliance.

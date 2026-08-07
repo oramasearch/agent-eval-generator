@@ -1,0 +1,1 @@
+markdown: Operations manager at a parachute manufacturing facility, responsible for overseeing the production line, ensuring quality control, managing inventory, and optimizing resource usage. Measured on production quality rates and stock levels.

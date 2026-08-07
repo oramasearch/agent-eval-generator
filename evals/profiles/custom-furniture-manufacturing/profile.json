@@ -1,0 +1,94 @@
+{
+  "profile_id": "custom-furniture-manufacturing",
+  "industry": "Custom Furniture Manufacturing",
+  "situation": "markdown: A mid-sized custom furniture manufacturer is aiming to streamline operations and optimize their supply chain to improve profitability. The production manager, Alex, is responsible for ensuring timely delivery of custom orders while maintaining cost-effectiveness. Alexs' key performance indicators (KPIs) include reducing lead times, minimizing stockouts, and keeping production costs under control.",
+  "persona": {
+    "role": "Production Manager",
+    "context": "Oversees the manufacturing process and supply chain for custom furniture orders. Responsible for balancing inventory levels and ensuring the timely delivery of customer orders while maintaining cost-efficiency.",
+    "measured_on": [
+      "Lead times reduction",
+      "Minimization of stockouts",
+      "Cost efficiency improvements"
+    ],
+    "constraints": [
+      "Must ensure orders are delivered on time to retain customer satisfaction",
+      "Inventory should not exceed storage capacity to prevent additional costs",
+      "Production adjustments must not compromise the quality of custom furniture pieces"
+    ]
+  },
+  "connections": [
+    {
+      "name": "production_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "supply_chain_sys",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "production_db",
+      "name": "inventory",
+      "connection": "production_db",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "item_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "current_stock",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "reorder_level",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "lead_time_days",
+          "type": "int",
+          "null_fraction": 0.01
+        }
+      ]
+    },
+    {
+      "database": "production_db",
+      "name": "orders",
+      "connection": "production_db",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "client_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "furniture_type",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "order_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "delivery_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

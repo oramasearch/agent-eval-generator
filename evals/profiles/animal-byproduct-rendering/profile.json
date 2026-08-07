@@ -1,0 +1,103 @@
+{
+  "profile_id": "animal-byproduct-rendering",
+  "industry": "Animal By-Product Rendering",
+  "situation": "markdown: John is the operations manager at a mid-sized animal by-product rendering plant. The plant processes various animal by-products from slaughterhouses into materials for animal feed and biofuels. John is responsible for ensuring efficient production schedules, minimizing wastage, and ensuring compliance with health and safety regulations. He needs data-driven insights to optimize production and minimize waste, and he can act on insights related to inventory management and operational efficiency.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Manages the transformation processes within the rendering plant, overseeing efficiency and regulatory compliance.",
+    "measured_on": [
+      "Production efficiency",
+      "Waste reduction",
+      "Regulatory compliance"
+    ],
+    "constraints": [
+      "Data must come from varied sources like supplier logs and production databases.",
+      "Ensure compliance data is accurate to avoid regulatory fines."
+    ]
+  },
+  "connections": [
+    {
+      "name": "supplier_logs",
+      "kind": "odbc",
+      "state": "discovered"
+    },
+    {
+      "name": "production_data",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "compliance_registry",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "production_data",
+      "name": "input_materials",
+      "connection": "production_data",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "arrival_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "material_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "weight_kg",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "source_location",
+          "type": "string",
+          "null_fraction": 0.01
+        }
+      ]
+    },
+    {
+      "database": "production_data",
+      "name": "production_output",
+      "connection": "production_data",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "batch_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_time",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "end_time",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "product_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "output_kg",
+          "type": "float",
+          "null_fraction": 0.03
+        }
+      ]
+    }
+  ]
+}

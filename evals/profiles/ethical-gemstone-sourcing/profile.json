@@ -1,0 +1,99 @@
+{
+  "profile_id": "ethical-gemstone-sourcing",
+  "industry": "Gemstone Sourcing and Trading",
+  "situation": "markdown: The company specializes in sourcing ethically mined gemstones. Their data includes transaction records, origin and certification details, and supplier information. The chief data officer's role is to ensure the data-driven certification of stones' origin and ethical mining practices. They are measured by the accuracy of traceability and the reliability of eco-score reports for the gems.",
+  "persona": {
+    "role": "Chief Data Officer",
+    "context": "Responsible for supplying verified data on gemstone origins and ensuring compliance with fair trade and sustainability standards.",
+    "measured_on": [
+      "Accuracy of gemstone traceability reports",
+      "Timeliness of data updates regarding mining practices",
+      "Reduction in non-compliance incidents"
+    ],
+    "constraints": [
+      "Data must be certified by at least two independent audits",
+      "Frequent updates necessary as mining reports are sporadic",
+      "Strict privacy regulations for supplier data"
+    ]
+  },
+  "connections": [
+    {
+      "name": "Gemstone_Origins",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "Market_Transactions",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "Supplier_Eco_Scores",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "Gemstone_Origins",
+      "name": "gem_certifications",
+      "connection": "Gemstone_Origins",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "gem_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "origin_country",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "certification_date",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "mining_practice_rating",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "audit_count",
+          "type": "int",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "Supplier_Eco_Scores",
+      "name": "eco_scores",
+      "connection": "Supplier_Eco_Scores",
+      "rows": 70000,
+      "columns": [
+        {
+          "name": "supplier_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "eco_score",
+          "type": "float",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "last_audit_date",
+          "type": "timestamp",
+          "null_fraction": 0.06
+        },
+        {
+          "name": "region",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ]
+    }
+  ]
+}

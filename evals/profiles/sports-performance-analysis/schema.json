@@ -1,0 +1,32 @@
+{
+  "profile": "sports-performance-analysis",
+  "tables": [
+    {
+      "database": "sports_analytics",
+      "name": "player_performance",
+      "rows": 50000,
+      "columns": [
+        "assists",
+        "goals_scored",
+        "injuries_sustained",
+        "match_id",
+        "minutes_played",
+        "passes_completed",
+        "player_id"
+      ]
+    },
+    {
+      "database": "sports_analytics",
+      "name": "match_statistics",
+      "rows": 30000,
+      "columns": [
+        "attendance",
+        "away_team_score",
+        "date",
+        "home_team_score",
+        "match_id",
+        "stadium"
+      ]
+    }
+  ]
+}

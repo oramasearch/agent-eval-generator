@@ -1,0 +1,104 @@
+{
+  "profile_id": "custom-drum-manufacturing",
+  "industry": "Musical Instruments Manufacturing",
+  "situation": "markdown: The company crafts custom drums using traditional techniques combined with modern technology. Its primary goal is to optimize production efficiency, predict inventory needs for rare materials, and enhance customer satisfaction by minimizing order turnaround time.",
+  "persona": {
+    "role": "Production Manager",
+    "context": "Oversees the drum production process and aligns inventory with production schedules.",
+    "measured_on": [
+      "production efficiency",
+      "inventory management",
+      "customer satisfaction"
+    ],
+    "constraints": [
+      "Limited rare material availability",
+      "Variable custom orders",
+      "Need to reduce waste"
+    ]
+  },
+  "connections": [
+    {
+      "name": "orders_management_system",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "production_schedule_db",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "music_production",
+      "name": "custom_orders",
+      "connection": "orders_management_system",
+      "rows": 30000,
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "customer_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "order_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "delivery_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "drum_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "material_code",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "quantity",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "music_production",
+      "name": "inventory_levels",
+      "connection": "orders_management_system",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "material_code",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_hand_qty",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "on_order_qty",
+          "type": "int",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "last_updated",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "profile": "aviary-management-optimization",
+  "tables": [
+    {
+      "database": "zoo_wildlife_tracking",
+      "name": "bird_population_stats",
+      "rows": 12000,
+      "columns": [
+        "age",
+        "bird_id",
+        "last_vet_checkup",
+        "species",
+        "weight"
+      ]
+    },
+    {
+      "database": "zoo_wildlife_tracking",
+      "name": "aviary_conditions",
+      "rows": 5000,
+      "columns": [
+        "aviary_id",
+        "humidity",
+        "maintenance_date",
+        "temperature"
+      ]
+    }
+  ]
+}

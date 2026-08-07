@@ -1,0 +1,30 @@
+{
+  "profile": "geothermal-energy-analysis",
+  "tables": [
+    {
+      "database": "geothermal_db",
+      "name": "plant_performance",
+      "rows": 50000,
+      "columns": [
+        "energy_output",
+        "location_id",
+        "pressure",
+        "status",
+        "temperature",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "geothermal_db",
+      "name": "maintenance_schedule",
+      "rows": 50000,
+      "columns": [
+        "equipment_id",
+        "last_maintenance",
+        "next_due",
+        "status",
+        "technician_id"
+      ]
+    }
+  ]
+}

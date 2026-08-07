@@ -1,0 +1,89 @@
+{
+  "profile_id": "indoor-vertical-farming-analysis",
+  "industry": "Indoor Vertical Farming",
+  "situation": "markdown: The profile is for an operations manager at an indoor vertical farming company, responsible for optimizing crop yield, managing resource allocation, and ensuring inventory levels are efficiently maintained. The manager is measured on crop yield performance, sustainable use of resources, and successful inventory management to prevent both stock-outs and overproduction.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "In charge of optimizing farming operations and inventory management to ensure sustainable and efficient food production.",
+    "measured_on": [
+      "Improved crop yield",
+      "Efficient resource management",
+      "Optimal inventory levels"
+    ],
+    "constraints": [
+      "Data accuracy affects yield predictions",
+      "Inventory data must be current with at most a 5% error rate",
+      "Systems must integrate across planning and operational stages"
+    ]
+  },
+  "connections": [
+    {
+      "name": "coffee",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "promo_flag",
+          "type": "bool",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "units",
+          "type": "int",
+          "null_fraction": 0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "connection": "coffee",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "on_hand",
+          "type": "int",
+          "null_fraction": 0
+        },
+        {
+          "name": "on_order",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0
+        }
+      ]
+    }
+  ]
+}

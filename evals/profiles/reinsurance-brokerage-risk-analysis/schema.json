@@ -1,0 +1,42 @@
+{
+  "profile": "reinsurance-brokerage-risk-analysis",
+  "tables": [
+    {
+      "database": "risk_database",
+      "name": "contracts",
+      "rows": 42000,
+      "columns": [
+        "client_name",
+        "contract_id",
+        "coverage_limit",
+        "effective_date",
+        "expiry_date",
+        "loss_ratio",
+        "premium"
+      ]
+    },
+    {
+      "database": "risk_database",
+      "name": "premiums",
+      "rows": 36000,
+      "columns": [
+        "amount",
+        "contract_id",
+        "paid_date",
+        "premium_id"
+      ]
+    },
+    {
+      "database": "risk_database",
+      "name": "claims",
+      "rows": 50000,
+      "columns": [
+        "claim_amount",
+        "claim_date",
+        "claim_id",
+        "contract_id",
+        "settled"
+      ]
+    }
+  ]
+}

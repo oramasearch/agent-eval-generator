@@ -30,7 +30,7 @@
     {
       "database": "coffee",
       "name": "subscriptions",
-      "rows": 28200,
+      "rows": 47000,
       "records": "records/coffee.subscriptions.jsonl",
       "columns": [
         "cadence_days",
@@ -44,7 +44,7 @@
     {
       "database": "coffee",
       "name": "orders_daily",
-      "rows": 3270,
+      "rows": 5450,
       "records": "records/coffee.orders_daily.jsonl",
       "columns": [
         "date",
@@ -57,7 +57,7 @@
     {
       "database": "coffee",
       "name": "inventory_snapshots",
-      "rows": 3270,
+      "rows": 5450,
       "records": "records/coffee.inventory_snapshots.jsonl",
       "columns": [
         "date",

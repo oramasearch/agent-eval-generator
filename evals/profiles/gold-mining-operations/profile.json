@@ -1,0 +1,106 @@
+{
+  "profile_id": "gold-mining-operations",
+  "industry": "Mining",
+  "situation": "markdown: In a gold mining company, the Operations Manager is tasked with optimizing mineral extraction processes and ensuring efficient use of resources. They are measured on the production rates, operational costs, and environmental impact compliance.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for overseeing daily operations, optimizing processes, and meeting production targets in the mines.",
+    "measured_on": [
+      "Production output",
+      "Operational efficiency",
+      "Cost control",
+      "Compliance with safety and environmental regulations"
+    ],
+    "constraints": [
+      "Budget limitations",
+      "Regulatory compliance",
+      "Sustainable resource management",
+      "Worker safety"
+    ]
+  },
+  "connections": [
+    {
+      "name": "mining_operations_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "equipment_sensor_data",
+      "kind": "kafka",
+      "state": "discovered"
+    },
+    {
+      "name": "commodity_market_prices",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "mining_operations_db",
+      "name": "extraction_sites",
+      "connection": "mining_operations_db",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "site_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ore_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "extraction_method",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "daily_output",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "active_sensors",
+          "type": "int",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "mining_operations_db",
+      "name": "employee_shift_logs",
+      "connection": "mining_operations_db",
+      "rows": 500000,
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "shift_start",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "shift_end",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "site_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "operations",
+          "type": "string",
+          "null_fraction": 0.05
+        }
+      ]
+    }
+  ]
+}

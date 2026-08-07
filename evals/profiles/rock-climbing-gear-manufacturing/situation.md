@@ -1,0 +1,1 @@
+markdown: John is the Head of Operations at a company that manufactures rock-climbing gear. He is responsible for ensuring optimal manufacturing processes, maintaining stock levels, and improving the quality of the products. His performance is measured based on the production efficiency, inventory turnover, and reduction in defective products.

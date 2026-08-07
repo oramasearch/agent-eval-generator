@@ -1,0 +1,1 @@
+markdown: The studio is a mid-sized film post-production company that handles editing, sound mixing, and visual effects for different projects. The team's goal is to optimize project timelines and resource allocation while ensuring high-quality output. They are measured on project delivery timelines, budget adherence, and client satisfaction.

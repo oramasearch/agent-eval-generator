@@ -31,7 +31,7 @@
     {
       "database": "crm",
       "name": "accounts",
-      "rows": 14400,
+      "rows": 48000,
       "records": "records/crm.accounts.jsonl",
       "columns": [
         "account_id",
@@ -45,7 +45,7 @@
     {
       "database": "crm",
       "name": "comm_events",
-      "rows": 168000,
+      "rows": 560000,
       "records": "records/crm.comm_events.jsonl",
       "columns": [
         "channel",

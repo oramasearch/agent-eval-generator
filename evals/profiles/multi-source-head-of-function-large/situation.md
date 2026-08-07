@@ -20,8 +20,8 @@ Constraints:
 
 ## Tables
 
-- `crm.accounts` — 10,800 rows · account_id, churn_date, company_name, mrr, segment, signed_at
-- `billing.invoices` — 10,800 rows · amount, billing_customer_id, customer_name, days_late, invoice_id, issued_at, written_off
-- `support.tickets` — 57,600 rows · account_id, csat, opened_at, priority, resolved_hours, ticket_id
-- `web.sessions` — 144,000 rows · account_id, duration_s, pages, session_id, started_at
-- `product.telemetry` — 24,000 rows · account_id, event_id, feature, used_at
+- `crm.accounts` — 36,000 rows · account_id, churn_date, company_name, mrr, segment, signed_at
+- `billing.invoices` — 36,000 rows · amount, billing_customer_id, customer_name, days_late, invoice_id, issued_at, written_off
+- `support.tickets` — 192,000 rows · account_id, csat, opened_at, priority, resolved_hours, ticket_id
+- `web.sessions` — 480,000 rows · account_id, duration_s, pages, session_id, started_at
+- `product.telemetry` — 80,000 rows · account_id, event_id, feature, used_at

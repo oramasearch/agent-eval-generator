@@ -1,0 +1,99 @@
+{
+  "profile_id": "firework-manufacturing-operations",
+  "industry": "Pyrotechnics and Firework Manufacturing",
+  "situation": "markdown: John Doe is the Operations Manager at BrightSky Pyrotechnics, which is focused on efficient production and coordination for pyrotechnic events. Measured on production efficiency, cost management, compliance with safety protocols, and successful event execution.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Overseeing pyrotechnic production and logistics to meet demand and safety regulations.",
+    "measured_on": [
+      "Efficiency of production lines",
+      "Compliance with safety regulations",
+      "Successful execution of pyrotechnic events"
+    ],
+    "constraints": [
+      "Strict safety adherence",
+      "Seasonal fluctuations in demand",
+      "Logistical optimization for timely delivery"
+    ]
+  },
+  "connections": [
+    {
+      "name": "fireworks_production_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "event_planning_db",
+      "kind": "bigquery",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "fireworks_production_db",
+      "name": "production_line_efficiency",
+      "connection": "fireworks_production_db",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "line_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "efficiency_percentage",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "safety_incidents",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "date_recorded",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "fireworks_production_db",
+      "name": "safety_audit_results",
+      "connection": "fireworks_production_db",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "audit_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "line_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "findings",
+          "type": "string",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "resolved",
+          "type": "bool",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "audit_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

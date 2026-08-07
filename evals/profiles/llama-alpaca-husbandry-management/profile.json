@@ -1,0 +1,127 @@
+{
+  "profile_id": "llama-alpaca-husbandry-management",
+  "industry": "Llama and Alpaca Farming",
+  "situation": "markdown: The profile centers around a mid-sized llama and alpaca farm that focuses on wool production and breeding. The farm seeks to enhance its production efficiency and optimize breeding cycles. The farm manager is responsible for wool yield and quality, animal health, and breeding success rates. This requires precise monitoring of animal metrics, genetic records, and environmental conditions.",
+  "persona": {
+    "role": "Farm Operations Manager",
+    "context": "Responsible for overall farm operations including breeding and wool production management.",
+    "measured_on": [
+      "Wool yield improvement",
+      "Animal health metrics",
+      "Breeding success rate"
+    ],
+    "constraints": [
+      "Budget limitations for new infrastructure",
+      "Environmental sensitivity of animals",
+      "Focus on sustainable practices"
+    ]
+  },
+  "connections": [
+    {
+      "name": "VeterinaryRecords",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "WoolProductionMetrics",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "VeterinaryRecords",
+      "name": "animal_health",
+      "connection": "VeterinaryRecords",
+      "rows": 1200,
+      "columns": [
+        {
+          "name": "animal_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "checkup_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "health_status",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "vaccination_status",
+          "type": "bool",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "weight_kg",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ]
+    },
+    {
+      "database": "GeneticRecords",
+      "name": "breeding_cycles",
+      "connection": "VeterinaryRecords",
+      "rows": 400,
+      "columns": [
+        {
+          "name": "breeding_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sire_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dam_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "breeding_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "offspring_count",
+          "type": "int",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "WoolProductionMetrics",
+      "name": "wool_yield",
+      "connection": "WoolProductionMetrics",
+      "rows": 1500,
+      "columns": [
+        {
+          "name": "shearing_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "animal_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "yield_kg",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "fiber_quality_score",
+          "type": "int",
+          "null_fraction": 0.03
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "profile_id": "amusement-park-optimizer",
+  "industry": "Amusement Park Management",
+  "situation": "markdown: The business manager at a leading amusement park chain is tasked with optimizing visitor experiences while managing operational costs. They must surface insights to determine peak times, optimize staffing, enhance ride maintainability, and improve marketing strategies via targeted campaigns. Success is measured by increased customer satisfaction, reduced downtime, and improved revenue.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Oversees daily park operations, scheduling, and customer satisfaction metrics.",
+    "measured_on": [
+      "customer satisfaction levels",
+      "operational efficiency",
+      "sales revenue"
+    ],
+    "constraints": [
+      "Data capture must be carried out regularly",
+      "Models should adapt to seasonal variabilities",
+      "Solutions must integrate with mobile app"
+    ]
+  },
+  "connections": [
+    {
+      "name": "AmusementParkDB",
+      "kind": "bigquery",
+      "state": "discovered"
+    },
+    {
+      "name": "CustomerFeedbackAPI",
+      "kind": "rest",
+      "state": "captured"
+    },
+    {
+      "name": "OperationsDataS3",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "CustomerDB",
+      "name": "visitor_counts",
+      "connection": "AmusementParkDB",
+      "rows": 1500000,
+      "columns": [
+        {
+          "name": "visitor_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "visit_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ride_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "time_spent",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "amount_spent",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "MarketingDB",
+      "name": "promotion_effects",
+      "connection": "CustomerFeedbackAPI",
+      "rows": 25000,
+      "columns": [
+        {
+          "name": "promo_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "visitor_response",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "revenue_generated",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

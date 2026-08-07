@@ -1,0 +1,29 @@
+{
+  "profile": "optical-fiber-manufacturing-quality-control",
+  "tables": [
+    {
+      "database": "fiber_production_metrics",
+      "name": "defect_log",
+      "rows": 50000,
+      "columns": [
+        "defect_type",
+        "fiber_length",
+        "machine_id",
+        "severity",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "fiber_production_metrics",
+      "name": "production_line_efficiency",
+      "rows": 50000,
+      "columns": [
+        "downtime_minutes",
+        "line_id",
+        "output_units",
+        "timestamp",
+        "utilization_rate"
+      ]
+    }
+  ]
+}

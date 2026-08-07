@@ -1,0 +1,1 @@
+markdown: The Optical Fiber Manufacturing Quality Control Manager oversees the consistency and reliability of produced fiber optics, focusing on defect reduction and process optimization. They are measured on defect rates and yield efficiency, aiming to minimize loss and ensure high-quality production. Decisions made must consider machine performance and material consistency.

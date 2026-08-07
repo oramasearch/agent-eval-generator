@@ -17,5 +17,5 @@ Constraints:
 
 ## Tables
 
-- `fleet.assets` — 21,000 rows · acquired_at, asset_id, depot_id, model, year
-- `fleet.work_orders` — 152,500 rows · asset_id, closed_at, fault_code, is_breakdown, labour_hours, opened_at, work_order_id
+- `fleet.assets` — 134,400 rows · acquired_at, asset_id, depot_id, model, year
+- `fleet.work_orders` — 976,000 rows · asset_id, closed_at, fault_code, is_breakdown, labour_hours, opened_at, work_order_id

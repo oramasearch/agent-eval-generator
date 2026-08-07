@@ -30,7 +30,7 @@
     {
       "database": "claims",
       "name": "claims",
-      "rows": 22000,
+      "rows": 33000,
       "records": "records/claims.claims.jsonl",
       "columns": [
         "claim_id",
@@ -47,7 +47,7 @@
     {
       "database": "claims",
       "name": "policies",
-      "rows": 3800,
+      "rows": 5700,
       "records": "records/claims.policies.jsonl",
       "columns": [
         "expiry",

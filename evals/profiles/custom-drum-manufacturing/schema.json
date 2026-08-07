@@ -1,0 +1,30 @@
+{
+  "profile": "custom-drum-manufacturing",
+  "tables": [
+    {
+      "database": "music_production",
+      "name": "custom_orders",
+      "rows": 30000,
+      "columns": [
+        "customer_id",
+        "delivery_date",
+        "drum_type",
+        "material_code",
+        "order_date",
+        "order_id",
+        "quantity"
+      ]
+    },
+    {
+      "database": "music_production",
+      "name": "inventory_levels",
+      "rows": 15000,
+      "columns": [
+        "last_updated",
+        "material_code",
+        "on_hand_qty",
+        "on_order_qty"
+      ]
+    }
+  ]
+}

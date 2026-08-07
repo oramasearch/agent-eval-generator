@@ -50,7 +50,7 @@
     {
       "database": "crm",
       "name": "accounts",
-      "rows": 10800,
+      "rows": 36000,
       "records": "records/crm.accounts.jsonl",
       "columns": [
         "account_id",
@@ -64,7 +64,7 @@
     {
       "database": "billing",
       "name": "invoices",
-      "rows": 10800,
+      "rows": 36000,
       "records": "records/billing.invoices.jsonl",
       "columns": [
         "amount",
@@ -79,7 +79,7 @@
     {
       "database": "support",
       "name": "tickets",
-      "rows": 57600,
+      "rows": 192000,
       "records": "records/support.tickets.jsonl",
       "columns": [
         "account_id",
@@ -93,7 +93,7 @@
     {
       "database": "web",
       "name": "sessions",
-      "rows": 144000,
+      "rows": 480000,
       "records": "records/web.sessions.jsonl",
       "columns": [
         "account_id",
@@ -106,7 +106,7 @@
     {
       "database": "product",
       "name": "telemetry",
-      "rows": 24000,
+      "rows": 80000,
       "records": "records/product.telemetry.jsonl",
       "columns": [
         "account_id",

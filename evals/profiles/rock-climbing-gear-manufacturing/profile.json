@@ -1,0 +1,89 @@
+{
+  "profile_id": "rock-climbing-gear-manufacturing",
+  "industry": "Rock-Climbing Gear Manufacturing",
+  "situation": "markdown: John is the Head of Operations at a company that manufactures rock-climbing gear. He is responsible for ensuring optimal manufacturing processes, maintaining stock levels, and improving the quality of the products. His performance is measured based on the production efficiency, inventory turnover, and reduction in defective products.",
+  "persona": {
+    "role": "Head of Operations",
+    "context": "John oversees the manufacturing plant, supply chain management, and quality control departments.",
+    "measured_on": [
+      "production efficiency",
+      "inventory turnover",
+      "quality of products"
+    ],
+    "constraints": [
+      "must ensure zero stockouts",
+      "must reduce production costs",
+      "must decrease defect rate"
+    ]
+  },
+  "connections": [
+    {
+      "name": "oracle-erp-system",
+      "kind": "odbc",
+      "state": "captured"
+    },
+    {
+      "name": "warehouse-management-system",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "supply-chain-monitor",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "oracle_erp",
+      "name": "manufacturing_detail",
+      "connection": "oracle-erp-system",
+      "rows": 120000,
+      "columns": [
+        {
+          "name": "production_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "product_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity_produced",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "defects_detected",
+          "type": "int",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "oracle_erp",
+      "name": "supply_schedule",
+      "connection": "oracle-erp-system",
+      "rows": 80000,
+      "columns": [
+        {
+          "name": "supply_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "resource",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "expected_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

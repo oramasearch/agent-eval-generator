@@ -1,0 +1,99 @@
+{
+  "profile_id": "oyster-farming-optimization",
+  "industry": "Aquaculture - Oyster Farming",
+  "situation": "markdown: The manager of an oyster farm is responsible for optimizing the growth and health of oysters while maximizing yield and minimizing environmental impact. They are measured on the productivity of the farm, oyster size and health metrics, and sustainability practices.",
+  "persona": {
+    "role": "Farm Manager",
+    "context": "Oversees operations of an oyster farm, ensuring optimal growth conditions and meeting regulatory sustainability standards.",
+    "measured_on": [
+      "Oyster yield quality and quantity",
+      "Sustainability metrics",
+      "Resource optimization"
+    ],
+    "constraints": [
+      "Limited water quality data",
+      "Seasonal variations",
+      "Strict environmental regulations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "churn_results",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "coffee",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "oyster_farming",
+      "name": "oyster_health_metrics",
+      "connection": "s3",
+      "rows": 60000,
+      "columns": [
+        {
+          "name": "oyster_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "growth_rate",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "water_temperature",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "salinity",
+          "type": "float",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "harvest_ready",
+          "type": "bool",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "environment_monitoring",
+      "name": "water_quality",
+      "connection": "s3",
+      "rows": 30000,
+      "columns": [
+        {
+          "name": "measurement_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "ph_level",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "dissolved_oxygen",
+          "type": "float",
+          "null_fraction": 0.07
+        },
+        {
+          "name": "nitrates",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "measurement_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

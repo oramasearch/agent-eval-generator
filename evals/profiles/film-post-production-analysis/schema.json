@@ -1,0 +1,29 @@
+{
+  "profile": "film-post-production-analysis",
+  "tables": [
+    {
+      "database": "project_db",
+      "name": "projects",
+      "rows": 1000,
+      "columns": [
+        "budget",
+        "end_date",
+        "project_id",
+        "project_name",
+        "start_date",
+        "status"
+      ]
+    },
+    {
+      "database": "project_db",
+      "name": "resources",
+      "rows": 5000,
+      "columns": [
+        "availability",
+        "name",
+        "resource_id",
+        "role"
+      ]
+    }
+  ]
+}

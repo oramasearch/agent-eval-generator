@@ -1,0 +1,1 @@
+markdown: The Head Coach of a professional football team is responsible for enhancing team performance using data-driven insights. They are measured on team performance metrics like win/loss ratio, player efficiencies, and injury management. They must act on player data, match analytics, and training results to make informed decisions.

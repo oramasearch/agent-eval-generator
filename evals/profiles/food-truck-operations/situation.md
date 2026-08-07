@@ -1,0 +1,1 @@
+markdown: A food truck entrepreneur expanding their fleet across multiple urban locations. They need to optimize operations based on location-specific sales data, ensure efficient inventory management, and identify high-potential areas for new truck deployments. They're measured on revenue growth, cost reduction, and market expansion success.

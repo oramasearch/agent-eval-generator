@@ -1,0 +1,1 @@
+markdown: A Product Manager at a coffee subscription service company, responsible for optimizing subscription offerings and enhancing customer experience. They aim to boost customer retention and tailor promotional strategies based on subscription behaviors. Measured on churn rate reduction and increase in lifetime value.

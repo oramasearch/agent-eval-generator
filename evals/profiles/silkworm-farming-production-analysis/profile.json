@@ -1,0 +1,118 @@
+{
+  "profile_id": "silkworm-farming-production-analysis",
+  "industry": "Silkworm Farming and Silk Production",
+  "situation": "markdown: A silk farm operations manager is responsible for optimizing silkworm breeding and silk production processes. They are measured on the total silk yield per farm and the cycle time from egg to silk extraction. Their goal is to increase yield, reduce waste, and identify potential disease outbreaks early to prevent loss of silkworms.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "The manager oversees multiple silk-producing farms, managing resources and ensuring the highest efficiency in silkworm breeding and silk extraction.",
+    "measured_on": [
+      "Total silk yield per farm",
+      "Cycle time from egg to silk extraction"
+    ],
+    "constraints": [
+      "Must adhere to sustainable farming practices",
+      "Limited budget for operational improvements",
+      "Data-driven decision-making is crucial"
+    ]
+  },
+  "connections": [
+    {
+      "name": "silkworm_farm_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "environmental_monitoring",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "silkworm_farm_db",
+      "name": "silkworm_batches",
+      "connection": "postgres",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "batch_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "hatch_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "harvest_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "initial_cocoon_count",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "yield_kg",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "avg_temperature",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "avg_humidity",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "batch_issues",
+          "type": "string",
+          "null_fraction": 0.7
+        }
+      ]
+    },
+    {
+      "database": "silkworm_farm_db",
+      "name": "silkworm_health_logs",
+      "connection": "postgres",
+      "rows": 75000,
+      "columns": [
+        {
+          "name": "entry_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "batch_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "observation_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "health_status",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "reported_issues",
+          "type": "string",
+          "null_fraction": 0.6
+        },
+        {
+          "name": "recommended_action",
+          "type": "string",
+          "null_fraction": 0.8
+        }
+      ]
+    }
+  ]
+}

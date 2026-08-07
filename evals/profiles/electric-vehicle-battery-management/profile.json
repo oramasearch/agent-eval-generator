@@ -1,0 +1,117 @@
+{
+  "profile_id": "electric-vehicle-battery-management",
+  "industry": "Electric Vehicle Battery Management Systems",
+  "situation": "markdown: The persona is an Operations Manager at an electric vehicle manufacturing company. Their role involves overseeing the battery management systems team, ensuring the batteries' efficiency, safety, and lifespan. They are measured on the reduction of battery-related failures and cost-effective solutions for battery usage and maintenance. Key decisions involve determining optimal maintenance schedules and predicting potential failures.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Oversees the battery management systems team to optimize battery performance and lifespan.",
+    "measured_on": [
+      "Reduction in battery failures",
+      "Cost-effective battery management"
+    ],
+    "constraints": [
+      "Limited budget for new technology",
+      "Compliance with safety regulations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "churn_results",
+      "kind": "rest",
+      "state": "captured"
+    },
+    {
+      "name": "coffee",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "churn_results",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "subscriptions",
+      "connection": "coffee",
+      "rows": 47000,
+      "columns": [
+        {
+          "name": "cadence_days",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "cancelled_at",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "pause_until",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "sku",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "started_at",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "sub_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

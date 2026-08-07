@@ -16,6 +16,6 @@ Constraints:
 
 ## Tables
 
-- `coffee.subscriptions` — 117,500 rows · cadence_days, cancelled_at, pause_until, sku, started_at, sub_id
-- `coffee.orders_daily` — 13,625 rows · date, promo_flag, revenue, sku, units
-- `coffee.inventory_snapshots` — 13,625 rows · date, on_hand, on_order, sku
+- `coffee.subscriptions` — 752,000 rows · cadence_days, cancelled_at, pause_until, sku, started_at, sub_id
+- `coffee.orders_daily` — 16,350 rows · date, promo_flag, revenue, sku, units
+- `coffee.inventory_snapshots` — 16,350 rows · date, on_hand, on_order, sku

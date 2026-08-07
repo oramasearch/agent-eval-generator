@@ -1,0 +1,108 @@
+{
+  "profile_id": "film-rights-management",
+  "industry": "Film Distribution and Intellectual Property Management",
+  "situation": "markdown: Kate is the Director of Digital Rights Management at a global film distribution company. She is responsible for ensuring that intellectual property rights are correctly managed across different regions, maximizing revenue from film sales and streaming agreements, and preventing unauthorized distribution. She works closely with legal and sales teams, requiring accurate and up-to-date data on rights, revenue, and viewership patterns.",
+  "persona": {
+    "role": "Director of Digital Rights Management",
+    "context": "Kate ensures proper management of film rights across different territories and platforms, optimizing revenue and minimizing piracy.",
+    "measured_on": [
+      "Revenue from licensing and sales",
+      "Reduction in piracy incidents",
+      "Timely renewal of rights"
+    ],
+    "constraints": [
+      "Data must be consolidated from multiple regions",
+      "Must adhere to local distribution laws and contractual agreements"
+    ]
+  },
+  "connections": [
+    {
+      "name": "ip_management_system",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "streaming_analytics",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "ip_management_system",
+      "name": "film_rights",
+      "connection": "ip_management_system",
+      "rows": 250000,
+      "columns": [
+        {
+          "name": "film_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "territory",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "rights_start_date",
+          "type": "timestamp",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "rights_end_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "licensor",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "licensee",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "revenue",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "streaming_analytics",
+      "name": "viewership_data",
+      "connection": "streaming_analytics",
+      "rows": 1000000,
+      "columns": [
+        {
+          "name": "streaming_platform",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "film_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "view_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "view_count",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "territory",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

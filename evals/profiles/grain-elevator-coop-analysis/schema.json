@@ -1,0 +1,41 @@
+{
+  "profile": "grain-elevator-coop-analysis",
+  "tables": [
+    {
+      "database": "grain_coop",
+      "name": "grain_storage",
+      "rows": 24000,
+      "columns": [
+        "current_volume",
+        "grain_type",
+        "last_inspection_date",
+        "storage_bin_id",
+        "storage_capacity"
+      ]
+    },
+    {
+      "database": "grain_coop",
+      "name": "delivery_schedule",
+      "rows": 8000,
+      "columns": [
+        "delivery_id",
+        "destination",
+        "grain_type",
+        "quantity",
+        "scheduled_delivery_date"
+      ]
+    },
+    {
+      "database": "grain_coop",
+      "name": "weather_forecast",
+      "rows": 1500,
+      "columns": [
+        "date",
+        "grain_spoilage_risk",
+        "precipitation",
+        "temperature",
+        "wind_speed"
+      ]
+    }
+  ]
+}

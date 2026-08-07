@@ -1,0 +1,29 @@
+{
+  "profile": "hydroelectric-plant-management",
+  "tables": [
+    {
+      "database": "hydro",
+      "name": "operational_data",
+      "rows": 50000,
+      "columns": [
+        "efficiency",
+        "power_output_mw",
+        "timestamp",
+        "turbine_id",
+        "water_flow_rate"
+      ]
+    },
+    {
+      "database": "hydro",
+      "name": "maintenance_records",
+      "rows": 12000,
+      "columns": [
+        "downtime_hours",
+        "maintenance_date",
+        "maintenance_type",
+        "record_id",
+        "turbine_id"
+      ]
+    }
+  ]
+}

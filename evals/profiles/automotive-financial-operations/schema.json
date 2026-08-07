@@ -1,0 +1,31 @@
+{
+  "profile": "automotive-financial-operations",
+  "tables": [
+    {
+      "database": "manufacturing_db",
+      "name": "production_schedule",
+      "rows": 50000,
+      "columns": [
+        "defects_detected",
+        "plant_id",
+        "schedule_id",
+        "shift_end",
+        "shift_start",
+        "units_produced"
+      ]
+    },
+    {
+      "database": "manufacturing_db",
+      "name": "machine_maintenance_records",
+      "rows": 50000,
+      "columns": [
+        "downtime_hours",
+        "issues_found",
+        "last_serviced",
+        "machine_id",
+        "maintenance_id",
+        "next_due_date"
+      ]
+    }
+  ]
+}

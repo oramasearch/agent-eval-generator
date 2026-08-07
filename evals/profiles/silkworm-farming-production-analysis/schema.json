@@ -1,0 +1,33 @@
+{
+  "profile": "silkworm-farming-production-analysis",
+  "tables": [
+    {
+      "database": "silkworm_farm_db",
+      "name": "silkworm_batches",
+      "rows": 50000,
+      "columns": [
+        "avg_humidity",
+        "avg_temperature",
+        "batch_id",
+        "batch_issues",
+        "harvest_date",
+        "hatch_date",
+        "initial_cocoon_count",
+        "yield_kg"
+      ]
+    },
+    {
+      "database": "silkworm_farm_db",
+      "name": "silkworm_health_logs",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "entry_id",
+        "health_status",
+        "observation_date",
+        "recommended_action",
+        "reported_issues"
+      ]
+    }
+  ]
+}

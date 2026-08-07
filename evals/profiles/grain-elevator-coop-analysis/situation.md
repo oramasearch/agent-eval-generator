@@ -1,0 +1,1 @@
+markdown: An operations manager at a grain elevator co-op is looking to optimize grain storage and delivery operations. They are measured on the efficiency of storage utilization, minimization of grain spoilage, and timely delivery to customers. They can act on scheduling deliveries and rotating grain stock.

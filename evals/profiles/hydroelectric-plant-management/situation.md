@@ -1,0 +1,1 @@
+markdown: A hydroelectric plant manager is responsible for optimizing power generation efficiency, predicting maintenance schedules, and ensuring minimal downtime. They must closely track energy production metrics and maintenance logs while being heavily measured on the plant's operational efficiency, compliance with regulations, and responsiveness to fluctuating energy demands.

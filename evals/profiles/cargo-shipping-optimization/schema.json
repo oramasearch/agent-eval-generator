@@ -1,0 +1,21 @@
+{
+  "profile": "cargo-shipping-optimization",
+  "tables": [
+    {
+      "database": "logistics_db",
+      "name": "route_optimization",
+      "rows": 50000,
+      "columns": [
+        "actual_delivery_time",
+        "cargo_capacity",
+        "current_load",
+        "destination_port",
+        "distance",
+        "expected_delivery_time",
+        "fuel_cost",
+        "origin_port",
+        "route_id"
+      ]
+    }
+  ]
+}

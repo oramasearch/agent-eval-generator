@@ -1,0 +1,99 @@
+{
+  "profile_id": "desalination-plant-optimization",
+  "industry": "Desalination Plant Management",
+  "situation": "markdown: The plant manager at a large-scale desalination facility is responsible for ensuring maximum water output efficiency while minimizing operational costs. They are measured on the plant's water production efficiency, maintenance downtime, and energy consumption metrics. The manager can act on predictive maintenance alerts, efficiency optimization recommendations, and real-time operational adjustments.",
+  "persona": {
+    "role": "Plant Manager",
+    "context": "Oversees daily operations and maintenance of the desalination plant, focusing on improving efficiency and reducing costs.",
+    "measured_on": [
+      "Water output per energy unit",
+      "Maintenance schedule adherence",
+      "Operational cost reduction"
+    ],
+    "constraints": [
+      "Must comply with environmental regulations",
+      "Budgetary constraints for unexpected maintenance",
+      "Dependency on external suppliers for parts"
+    ]
+  },
+  "connections": [
+    {
+      "name": "plant_maintenance_records",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "energy_usage_logs",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "water_quality_reports",
+      "kind": "odbc",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "desalination_ops",
+      "name": "maintenance_schedule",
+      "connection": "plant_maintenance_records",
+      "rows": 15000,
+      "columns": [
+        {
+          "name": "maintenance_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "component",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_service_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "next_service_due",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "downtime_hours",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "technician_notes",
+          "type": "string",
+          "null_fraction": 0.25
+        }
+      ]
+    },
+    {
+      "database": "energy_management",
+      "name": "hourly_energy_usage",
+      "connection": "energy_usage_logs",
+      "rows": 876000,
+      "columns": [
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "energy_consumed_kwh",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "energy_cost_usd",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ]
+    }
+  ]
+}

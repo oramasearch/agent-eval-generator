@@ -1,0 +1,98 @@
+{
+  "profile_id": "film-post-production-analysis",
+  "industry": "Film Post-production",
+  "situation": "markdown: The studio is a mid-sized film post-production company that handles editing, sound mixing, and visual effects for different projects. The team's goal is to optimize project timelines and resource allocation while ensuring high-quality output. They are measured on project delivery timelines, budget adherence, and client satisfaction.",
+  "persona": {
+    "role": "Head of Studio Operations",
+    "context": "The persona oversees multiple departments such as editing, sound, and VFX, and is responsible for ensuring projects meet deadlines while remaining within budget.",
+    "measured_on": [
+      "Project delivery timelines",
+      "Budget adherence",
+      "Client satisfaction"
+    ],
+    "constraints": [
+      "Ensure minimal downtime during editing process",
+      "Maintain project quality standards"
+    ]
+  },
+  "connections": [
+    {
+      "name": "project_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "time_tracking",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "project_db",
+      "name": "projects",
+      "connection": "project_db",
+      "rows": 1000,
+      "columns": [
+        {
+          "name": "project_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "project_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "start_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "end_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "budget",
+          "type": "float",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "project_db",
+      "name": "resources",
+      "connection": "project_db",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "resource_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "role",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "availability",
+          "type": "float",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

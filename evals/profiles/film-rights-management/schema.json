@@ -1,0 +1,31 @@
+{
+  "profile": "film-rights-management",
+  "tables": [
+    {
+      "database": "ip_management_system",
+      "name": "film_rights",
+      "rows": 50000,
+      "columns": [
+        "film_id",
+        "licensee",
+        "licensor",
+        "revenue",
+        "rights_end_date",
+        "rights_start_date",
+        "territory"
+      ]
+    },
+    {
+      "database": "streaming_analytics",
+      "name": "viewership_data",
+      "rows": 50000,
+      "columns": [
+        "film_id",
+        "streaming_platform",
+        "territory",
+        "view_count",
+        "view_date"
+      ]
+    }
+  ]
+}

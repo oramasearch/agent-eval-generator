@@ -1,0 +1,126 @@
+{
+  "profile_id": "grain-elevator-coop-analysis",
+  "industry": "Agricultural Grain Elevator Co-op",
+  "situation": "markdown: An operations manager at a grain elevator co-op is looking to optimize grain storage and delivery operations. They are measured on the efficiency of storage utilization, minimization of grain spoilage, and timely delivery to customers. They can act on scheduling deliveries and rotating grain stock.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Managing daily operations at a grain elevator co-op, dealing with storage and delivery logistics.",
+    "measured_on": [
+      "Efficiency of storage utilization",
+      "Minimization of spoilage",
+      "Timely delivery to customers"
+    ],
+    "constraints": [
+      "Decisions must align with weather forecasts",
+      "Cost control must be maintained"
+    ]
+  },
+  "connections": [
+    {
+      "name": "grain_coop_database",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "grain_coop",
+      "name": "grain_storage",
+      "connection": "grain_coop_database",
+      "rows": 24000,
+      "columns": [
+        {
+          "name": "storage_bin_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "grain_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "storage_capacity",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "current_volume",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "last_inspection_date",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        }
+      ]
+    },
+    {
+      "database": "grain_coop",
+      "name": "delivery_schedule",
+      "connection": "grain_coop_database",
+      "rows": 8000,
+      "columns": [
+        {
+          "name": "delivery_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "destination",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "scheduled_delivery_date",
+          "type": "timestamp",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "grain_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "quantity",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ]
+    },
+    {
+      "database": "grain_coop",
+      "name": "weather_forecast",
+      "connection": "grain_coop_database",
+      "rows": 1500,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "precipitation",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "wind_speed",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "grain_spoilage_risk",
+          "type": "float",
+          "null_fraction": 0.2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "profile_id": "hydroelectric-plant-management",
+  "industry": "Utilities - Hydroelectric Power",
+  "situation": "markdown: A hydroelectric plant manager is responsible for optimizing power generation efficiency, predicting maintenance schedules, and ensuring minimal downtime. They must closely track energy production metrics and maintenance logs while being heavily measured on the plant's operational efficiency, compliance with regulations, and responsiveness to fluctuating energy demands.",
+  "persona": {
+    "role": "Hydroelectric Plant Manager",
+    "context": "Overseeing operations at a major hydroelectric facility, ensuring smooth coordination between equipment maintenance and energy production to integrate within a larger energy grid.",
+    "measured_on": [
+      "Operational efficiency metrics",
+      "Power generation consistency",
+      "Regulatory compliance"
+    ],
+    "constraints": [
+      "Maintenance data must be comprehensive and up to date",
+      "Power generation logs should not have high null rates",
+      "Demand forecast accuracy depends on historical patterns and external factors"
+    ]
+  },
+  "connections": [
+    {
+      "name": "SCADA_system",
+      "kind": "odbc",
+      "state": "captured"
+    },
+    {
+      "name": "maintenance_logs",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "energy_market_data",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "hydro",
+      "name": "operational_data",
+      "connection": "SCADA_system",
+      "rows": 365000,
+      "columns": [
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "turbine_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "power_output_mw",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "water_flow_rate",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "efficiency",
+          "type": "float",
+          "null_fraction": 0.02
+        }
+      ]
+    },
+    {
+      "database": "hydro",
+      "name": "maintenance_records",
+      "connection": "maintenance_logs",
+      "rows": 12000,
+      "columns": [
+        {
+          "name": "record_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "turbine_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "maintenance_type",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "downtime_hours",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

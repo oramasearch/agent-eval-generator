@@ -17,5 +17,5 @@ Constraints:
 
 ## Tables
 
-- `claims.claims` — 22,000 rows · claim_id, closed_at, line_of_business, loss_date, policy_id, reported_at, reserve_amount, siu_referred, total_paid
-- `claims.policies` — 3,800 rows · expiry, inception, policy_id, premium, state
+- `claims.claims` — 33,000 rows · claim_id, closed_at, line_of_business, loss_date, policy_id, reported_at, reserve_amount, siu_referred, total_paid
+- `claims.policies` — 5,700 rows · expiry, inception, policy_id, premium, state

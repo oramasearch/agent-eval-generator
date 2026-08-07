@@ -1,0 +1,94 @@
+{
+  "profile_id": "aviary-management-optimization",
+  "industry": "Aviary Management",
+  "situation": "markdown: An aviary manager is responsible for optimizing the health, reproduction, and wellbeing of various bird species within a controlled environment. They are measured on metrics like bird survival rates, reproduction success, and resource utilization efficiency. They can act on feed schedules, breeding pair management, and habitat environment adjustments.",
+  "persona": {
+    "role": "Aviary Manager",
+    "context": "The aviary manager oversees the care and welfare of birds in a zoo or sanctuary, ensuring optimal living conditions carry out a species conservation program.",
+    "measured_on": [
+      "Survival rates",
+      "Reproductive success rates",
+      "Feed utilization efficiency"
+    ],
+    "constraints": [
+      "Must adhere to conservation laws",
+      "Limited budget for supplements",
+      "Space constraints within enclosures"
+    ]
+  },
+  "connections": [
+    {
+      "name": "zoo_animal_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "weather_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "zoo_wildlife_tracking",
+      "name": "bird_population_stats",
+      "connection": "zoo_animal_db",
+      "rows": 12000,
+      "columns": [
+        {
+          "name": "bird_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "species",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "age",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "weight",
+          "type": "float",
+          "null_fraction": 0.07
+        },
+        {
+          "name": "last_vet_checkup",
+          "type": "timestamp",
+          "null_fraction": 0.15
+        }
+      ]
+    },
+    {
+      "database": "zoo_wildlife_tracking",
+      "name": "aviary_conditions",
+      "connection": "zoo_animal_db",
+      "rows": 5000,
+      "columns": [
+        {
+          "name": "aviary_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "humidity",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "maintenance_date",
+          "type": "timestamp",
+          "null_fraction": 0.3
+        }
+      ]
+    }
+  ]
+}

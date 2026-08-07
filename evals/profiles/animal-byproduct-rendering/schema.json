@@ -1,0 +1,29 @@
+{
+  "profile": "animal-byproduct-rendering",
+  "tables": [
+    {
+      "database": "production_data",
+      "name": "input_materials",
+      "rows": 50000,
+      "columns": [
+        "arrival_date",
+        "batch_id",
+        "material_type",
+        "source_location",
+        "weight_kg"
+      ]
+    },
+    {
+      "database": "production_data",
+      "name": "production_output",
+      "rows": 50000,
+      "columns": [
+        "batch_id",
+        "end_time",
+        "output_kg",
+        "product_type",
+        "start_time"
+      ]
+    }
+  ]
+}

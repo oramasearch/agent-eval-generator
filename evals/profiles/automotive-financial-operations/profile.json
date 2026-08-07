@@ -1,0 +1,108 @@
+{
+  "profile_id": "automotive-financial-operations",
+  "industry": "Automotive Manufacturing",
+  "situation": "markdown: An Operations Manager at a leading automotive manufacturer is responsible for optimizing financial and operational performance across multiple manufacturing plants. Their role involves tracking production efficiency, identifying cost-saving opportunities, and ensuring the maintenance of high-quality standards. The manager's performance is measured on production uptime, cost efficiency, and successful implementation of financial strategies.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Managing financial and operational performance across multiple plants.",
+    "measured_on": [
+      "Production uptime",
+      "Cost efficiency",
+      "Successful financial strategy implementation"
+    ],
+    "constraints": [
+      "Must optimize diverse data sources with high variance",
+      "Must integrate operational data with financial metrics"
+    ]
+  },
+  "connections": [
+    {
+      "name": "manufacturing_db",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "financial_reports",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "manufacturing_db",
+      "name": "production_schedule",
+      "connection": "manufacturing_db",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "schedule_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "plant_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "shift_start",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "shift_end",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "units_produced",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "defects_detected",
+          "type": "int",
+          "null_fraction": 0.15
+        }
+      ]
+    },
+    {
+      "database": "manufacturing_db",
+      "name": "machine_maintenance_records",
+      "connection": "manufacturing_db",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "maintenance_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "machine_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_serviced",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "next_due_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "downtime_hours",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "issues_found",
+          "type": "string",
+          "null_fraction": 0.25
+        }
+      ]
+    }
+  ]
+}

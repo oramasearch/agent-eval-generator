@@ -1,0 +1,1 @@
+markdown: John Doe is the Operations Manager at BrightSky Pyrotechnics, which is focused on efficient production and coordination for pyrotechnic events. Measured on production efficiency, cost management, compliance with safety protocols, and successful event execution.

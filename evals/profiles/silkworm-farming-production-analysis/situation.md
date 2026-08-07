@@ -1,0 +1,1 @@
+markdown: A silk farm operations manager is responsible for optimizing silkworm breeding and silk production processes. They are measured on the total silk yield per farm and the cycle time from egg to silk extraction. Their goal is to increase yield, reduce waste, and identify potential disease outbreaks early to prevent loss of silkworms.

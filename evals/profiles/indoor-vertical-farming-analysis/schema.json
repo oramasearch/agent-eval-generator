@@ -1,0 +1,28 @@
+{
+  "profile": "indoor-vertical-farming-analysis",
+  "tables": [
+    {
+      "database": "coffee",
+      "name": "orders_daily",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "promo_flag",
+        "revenue",
+        "sku",
+        "units"
+      ]
+    },
+    {
+      "database": "coffee",
+      "name": "inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "on_hand",
+        "on_order",
+        "sku"
+      ]
+    }
+  ]
+}

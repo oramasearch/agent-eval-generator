@@ -1,0 +1,99 @@
+{
+  "profile_id": "heritage-site-management",
+  "industry": "Historical and Cultural Heritage Management",
+  "situation": "markdown: The heritage site management team at the Royal Heritage Site oversees the preservation of artifacts, management of museum displays, and the coordination of visitor experiences. The director of heritage operations is tasked with optimizing visitor engagement, ensuring artifact preservation, and boosting revenue generated from site visits and souvenir sales. Her performance is measured by the site's annual visitor statistics, visitor satisfaction ratings, and annual revenue growth. The director has authority to implement data-driven decisions to drive improvements in visitor experience and operational efficiency.",
+  "persona": {
+    "role": "Director of Heritage Operations",
+    "context": "Overseeing the preservation, management, and customer engagement strategies of a major historical site and museum.",
+    "measured_on": [
+      "annual visitor statistics",
+      "visitor satisfaction ratings",
+      "annual revenue growth"
+    ],
+    "constraints": [
+      "Limited budget for new projects",
+      "Need to align with cultural preservation standards",
+      "Operational changes must not disrupt the visitor experience"
+    ]
+  },
+  "connections": [
+    {
+      "name": "heritage_site_management_system",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "heritage_site_management",
+      "name": "visitor_data",
+      "connection": "heritage_site_management_system",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "visit_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "visit_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "visitor_age_group",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "ticket_type",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "is_member",
+          "type": "bool",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "visit_duration_minutes",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "satisfaction_score",
+          "type": "float",
+          "null_fraction": 0.2
+        }
+      ]
+    },
+    {
+      "database": "heritage_site_management",
+      "name": "artifact_preservation",
+      "connection": "heritage_site_management_system",
+      "rows": 30000,
+      "columns": [
+        {
+          "name": "artifact_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "last_preservation_date",
+          "type": "timestamp",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "preservation_status",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "is_exhibited",
+          "type": "bool",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

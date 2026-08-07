@@ -1,0 +1,122 @@
+{
+  "profile_id": "parachute-manufacturing-analysis",
+  "industry": "Parachute Manufacturing",
+  "situation": "markdown: Operations manager at a parachute manufacturing facility, responsible for overseeing the production line, ensuring quality control, managing inventory, and optimizing resource usage. Measured on production quality rates and stock levels.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for overseeing and optimizing the parachute production process, resource management, and enhancing quality control measures.",
+    "measured_on": [
+      "production quality",
+      "inventory turnover",
+      "resource optimization"
+    ],
+    "constraints": [
+      "adherence to quality standards",
+      "efficient resource utilization",
+      "maintaining an optimal inventory level"
+    ]
+  },
+  "connections": [
+    {
+      "name": "manufacturing_db",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "inventory_s3",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "supply_chain_odbc",
+      "kind": "odbc",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "inventory",
+      "name": "raw_materials",
+      "connection": "inventory_s3",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "material_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "stock_level",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "reorder_level",
+          "type": "int",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "supplier_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "inventory",
+      "name": "finished_products",
+      "connection": "inventory_s3",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "batch_number",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "quality_score",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "production_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "inventory",
+      "name": "manufacturing_stage",
+      "connection": "inventory_s3",
+      "rows": 30000,
+      "columns": [
+        {
+          "name": "stage_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "stage_name",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "completion_time",
+          "type": "float",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "errors_reported",
+          "type": "int",
+          "null_fraction": 0.15
+        }
+      ]
+    }
+  ]
+}

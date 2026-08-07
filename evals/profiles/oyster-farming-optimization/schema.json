@@ -1,0 +1,29 @@
+{
+  "profile": "oyster-farming-optimization",
+  "tables": [
+    {
+      "database": "oyster_farming",
+      "name": "oyster_health_metrics",
+      "rows": 50000,
+      "columns": [
+        "growth_rate",
+        "harvest_ready",
+        "oyster_id",
+        "salinity",
+        "water_temperature"
+      ]
+    },
+    {
+      "database": "environment_monitoring",
+      "name": "water_quality",
+      "rows": 30000,
+      "columns": [
+        "dissolved_oxygen",
+        "measurement_date",
+        "measurement_id",
+        "nitrates",
+        "ph_level"
+      ]
+    }
+  ]
+}

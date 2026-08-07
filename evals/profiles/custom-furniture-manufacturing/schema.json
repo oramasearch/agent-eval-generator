@@ -1,0 +1,28 @@
+{
+  "profile": "custom-furniture-manufacturing",
+  "tables": [
+    {
+      "database": "production_db",
+      "name": "inventory",
+      "rows": 50000,
+      "columns": [
+        "current_stock",
+        "item_id",
+        "lead_time_days",
+        "reorder_level"
+      ]
+    },
+    {
+      "database": "production_db",
+      "name": "orders",
+      "rows": 47000,
+      "columns": [
+        "client_name",
+        "delivery_date",
+        "furniture_type",
+        "order_date",
+        "order_id"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "profile": "llama-alpaca-husbandry-management",
+  "tables": [
+    {
+      "database": "VeterinaryRecords",
+      "name": "animal_health",
+      "rows": 1200,
+      "columns": [
+        "animal_id",
+        "checkup_date",
+        "health_status",
+        "vaccination_status",
+        "weight_kg"
+      ]
+    },
+    {
+      "database": "GeneticRecords",
+      "name": "breeding_cycles",
+      "rows": 400,
+      "columns": [
+        "breeding_date",
+        "breeding_id",
+        "dam_id",
+        "offspring_count",
+        "sire_id"
+      ]
+    },
+    {
+      "database": "WoolProductionMetrics",
+      "name": "wool_yield",
+      "rows": 1500,
+      "columns": [
+        "animal_id",
+        "fiber_quality_score",
+        "shearing_date",
+        "yield_kg"
+      ]
+    }
+  ]
+}

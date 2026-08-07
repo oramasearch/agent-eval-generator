@@ -1,0 +1,80 @@
+{
+  "profile_id": "marine-conservation-data-analysis",
+  "industry": "Marine Conservation",
+  "situation": "markdown: Ellen, a data scientist at a marine conservation NGO, is tasked with maximizing the effectiveness of their conservation efforts through data-driven insights. Her performance is measured by her ability to predict environmental risks and showcase the impact of interventions in marine biodiversity. Ellen can analyze data from various marine studies and propose strategies to reduce threats like overfishing, pollution, and climate change effects on marine life.",
+  "persona": {
+    "role": "Data Scientist",
+    "context": "Ellen works with a team of marine biologists and conservationists to protect marine ecosystems. She translates complex data into actionable insights, often contributing to policy-making and conservation strategies.",
+    "measured_on": [
+      "Accuracy of risk predictions",
+      "Impact of suggested interventions on conservation outcomes"
+    ],
+    "constraints": [
+      "Limited historical data",
+      "High data variability due to natural changes",
+      "Need for rapid analysis for timely interventions"
+    ]
+  },
+  "connections": [
+    {
+      "name": "MarineBiologyDB",
+      "kind": "postgres",
+      "state": "discovered"
+    },
+    {
+      "name": "OceanPollutionAPI",
+      "kind": "rest",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "OceanPollutionAPI",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "risk",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.08
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "profile_id": "sustainable-aquaculture-analysis",
+  "industry": "Aquaculture",
+  "situation": "markdown: An aquaculture company focusing on sustainable fish farming is looking to optimize its operations. The company monitors water quality, fish growth, and feeding patterns across several locations. The operations manager is responsible for improving fish growth rates, optimizing feed usage, and reducing mortality rates. The manager is incentivized to enhance profitability while maintaining sustainability certifications. Data-driven insights are crucial for adjusting feeding routines, maintaining water quality, and predicting harvest yields.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Overseeing multiple fish farming locations, responsible for operations efficiency and sustainability compliance.",
+    "measured_on": [
+      "Fish growth rates",
+      "Feed conversion ratio",
+      "Mortality rates"
+    ],
+    "constraints": [
+      "Maintain sustainability certifications",
+      "Optimize operations across diverse geographical locations",
+      "Limited budget for new infrastructure investments"
+    ]
+  },
+  "connections": [
+    {
+      "name": "fish_farming_analytics",
+      "kind": "s3",
+      "state": "captured"
+    },
+    {
+      "name": "global_fish_markets",
+      "kind": "kafka",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "aquaculture",
+      "name": "water_quality_sensors",
+      "connection": "fish_farming_analytics",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "sensor_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dissolved_oxygen",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "pH_level",
+          "type": "float",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "turbidity",
+          "type": "float",
+          "null_fraction": 0.05
+        }
+      ]
+    },
+    {
+      "database": "aquaculture",
+      "name": "fish_growth_records",
+      "connection": "fish_farming_analytics",
+      "rows": 50000,
+      "columns": [
+        {
+          "name": "fish_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "species",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "measurement_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "weight",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "pond_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "database": "aquaculture",
+      "name": "feeding_records",
+      "connection": "fish_farming_analytics",
+      "rows": 75000,
+      "columns": [
+        {
+          "name": "feeding_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "feeding_date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "feed_type",
+          "type": "string",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "quantity",
+          "type": "float",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "pond_id",
+          "type": "string",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

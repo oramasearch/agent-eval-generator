@@ -1,0 +1,28 @@
+{
+  "profile": "zoos-animal-welfare",
+  "tables": [
+    {
+      "database": "animal_welfare_db",
+      "name": "animal_health_metrics",
+      "rows": 10000,
+      "columns": [
+        "animal_id",
+        "enrichment_activities",
+        "health_score",
+        "last_checkup_date",
+        "species"
+      ]
+    },
+    {
+      "database": "visitor_engagement_db",
+      "name": "visitor_tracks",
+      "rows": 50000,
+      "columns": [
+        "favorite_exhibit",
+        "time_spent",
+        "visit_date",
+        "visitor_id"
+      ]
+    }
+  ]
+}

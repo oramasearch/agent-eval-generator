@@ -1,0 +1,86 @@
+{
+  "profile_id": "cargo-shipping-optimization",
+  "industry": "Shipping and Logistics",
+  "situation": "markdown: A leading cargo shipping company looking to optimize its routes and ensure timely deliveries. The company measures success by reducing shipping costs, improving delivery times, and maximizing cargo load efficiency.",
+  "persona": {
+    "role": "Logistics Manager",
+    "context": "Responsible for planning, optimizing, and managing shipping routes and schedules.",
+    "measured_on": [
+      "Cost efficiency of shipping routes",
+      "On-time delivery rate",
+      "Cargo load efficiency"
+    ],
+    "constraints": [
+      "Must adhere to international trade regulations",
+      "Limited by the capacity of cargo ships",
+      "Sensitive to fuel cost fluctuations"
+    ]
+  },
+  "connections": [
+    {
+      "name": "cargo_routes",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "weather_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "logistics_db",
+      "name": "route_optimization",
+      "connection": "cargo_routes",
+      "rows": 150000,
+      "columns": [
+        {
+          "name": "route_id",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "origin_port",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "destination_port",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "distance",
+          "type": "float",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "fuel_cost",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "cargo_capacity",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "current_load",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "expected_delivery_time",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "actual_delivery_time",
+          "type": "timestamp",
+          "null_fraction": 0.2
+        }
+      ]
+    }
+  ]
+}

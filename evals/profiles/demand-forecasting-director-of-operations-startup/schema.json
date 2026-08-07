@@ -4,7 +4,7 @@
     {
       "database": "coffee",
       "name": "subscriptions",
-      "rows": 2350,
+      "rows": 3760,
       "columns": [
         "cadence_days",
         "cancelled_at",
@@ -17,7 +17,7 @@
     {
       "database": "coffee",
       "name": "orders_daily",
-      "rows": 270,
+      "rows": 435,
       "columns": [
         "date",
         "promo_flag",
@@ -29,7 +29,7 @@
     {
       "database": "coffee",
       "name": "inventory_snapshots",
-      "rows": 270,
+      "rows": 435,
       "columns": [
         "date",
         "on_hand",

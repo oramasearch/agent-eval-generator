@@ -1,0 +1,76 @@
+{
+  "profile_id": "spaceport-operations-management",
+  "industry": "Commercial Spaceport Operations",
+  "situation": "markdown: As the Operations Manager of a leading commercial spaceport, you are responsible for ensuring the efficient scheduling and management of spacecraft launches. Success is measured by timely launches, minimizing ground time, ensuring customer satisfaction, and adhering to stringent safety regulations. You leverage data to predict maintenance needs, streamline launch schedules, and optimize resource allocation.",
+  "persona": {
+    "role": "Operations Manager",
+    "context": "Responsible for daily operations, ensuring spacecraft are launched on time while minimizing costs and maintaining high safety standards.",
+    "measured_on": [
+      "On-time launches",
+      "Safety compliance",
+      "Operational efficiency"
+    ],
+    "constraints": [
+      "Must adhere to international space safety standards",
+      "Limited budget for operational enhancements",
+      "Variable launch demand due to seasonality and market conditions"
+    ]
+  },
+  "connections": [
+    {
+      "name": "churn_results",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "connection": "postgres",
+      "rows": 24,
+      "columns": [
+        {
+          "name": "account",
+          "type": "string",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "dominant_driver",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "driver_effect",
+          "type": "float",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "failed_payments",
+          "type": "int",
+          "null_fraction": 0.15
+        },
+        {
+          "name": "mrr",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "risk",
+          "type": "string",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "total_events",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

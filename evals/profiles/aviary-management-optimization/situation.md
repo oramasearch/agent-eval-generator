@@ -1,0 +1,1 @@
+markdown: An aviary manager is responsible for optimizing the health, reproduction, and wellbeing of various bird species within a controlled environment. They are measured on metrics like bird survival rates, reproduction success, and resource utilization efficiency. They can act on feed schedules, breeding pair management, and habitat environment adjustments.

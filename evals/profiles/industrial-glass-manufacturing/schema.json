@@ -1,0 +1,28 @@
+{
+  "profile": "industrial-glass-manufacturing",
+  "tables": [
+    {
+      "database": "erp_glasstech",
+      "name": "inventory_levels",
+      "rows": 50000,
+      "columns": [
+        "glass_type",
+        "last_order_date",
+        "quantity_on_hand",
+        "reorder_level"
+      ]
+    },
+    {
+      "database": "erp_glasstech",
+      "name": "orders",
+      "rows": 50000,
+      "columns": [
+        "client_id",
+        "delivery_date",
+        "order_date",
+        "order_id",
+        "status"
+      ]
+    }
+  ]
+}

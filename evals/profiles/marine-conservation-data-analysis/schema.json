@@ -1,0 +1,20 @@
+{
+  "profile": "marine-conservation-data-analysis",
+  "tables": [
+    {
+      "database": "churn_results",
+      "name": "at_risk_167416aa",
+      "rows": 24,
+      "columns": [
+        "account",
+        "dominant_driver",
+        "driver_effect",
+        "failed_payments",
+        "mrr",
+        "rank",
+        "risk",
+        "total_events"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "profile_id": "sports-performance-analysis",
+  "industry": "Professional Sports Management",
+  "situation": "markdown: The Head Coach of a professional football team is responsible for enhancing team performance using data-driven insights. They are measured on team performance metrics like win/loss ratio, player efficiencies, and injury management. They must act on player data, match analytics, and training results to make informed decisions.",
+  "persona": {
+    "role": "Head Coach",
+    "context": "Professional football team needing to optimize player performance and game strategies.",
+    "measured_on": [
+      "Team win/loss record",
+      "Player efficiency ratings",
+      "Injury prevention and management"
+    ],
+    "constraints": [
+      "Limited data capturing for live match events",
+      "High turnover rate of player rosters",
+      "Budget constraints for hiring data analysts"
+    ]
+  },
+  "connections": [
+    {
+      "name": "sports_analytics_postgresql",
+      "kind": "postgres",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "sports_analytics",
+      "name": "player_performance",
+      "connection": "sports_analytics_postgresql",
+      "rows": 75000,
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "match_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "goals_scored",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "assists",
+          "type": "int",
+          "null_fraction": 0.2
+        },
+        {
+          "name": "minutes_played",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "injuries_sustained",
+          "type": "int",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "passes_completed",
+          "type": "int",
+          "null_fraction": 0.15
+        }
+      ]
+    },
+    {
+      "database": "sports_analytics",
+      "name": "match_statistics",
+      "connection": "sports_analytics_postgresql",
+      "rows": 30000,
+      "columns": [
+        {
+          "name": "match_id",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "stadium",
+          "type": "string",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "attendance",
+          "type": "int",
+          "null_fraction": 0.1
+        },
+        {
+          "name": "home_team_score",
+          "type": "int",
+          "null_fraction": 0.0
+        },
+        {
+          "name": "away_team_score",
+          "type": "int",
+          "null_fraction": 0.0
+        }
+      ]
+    }
+  ]
+}

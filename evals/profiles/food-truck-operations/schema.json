@@ -1,0 +1,29 @@
+{
+  "profile": "food-truck-operations",
+  "tables": [
+    {
+      "database": "food_truck_db",
+      "name": "location_sales",
+      "rows": 50000,
+      "columns": [
+        "bestseller_item",
+        "date",
+        "location_id",
+        "total_sales",
+        "units_sold"
+      ]
+    },
+    {
+      "database": "food_truck_db",
+      "name": "inventory_levels",
+      "rows": 50000,
+      "columns": [
+        "date",
+        "location_id",
+        "quantity_on_hand",
+        "quantity_on_order",
+        "sku"
+      ]
+    }
+  ]
+}

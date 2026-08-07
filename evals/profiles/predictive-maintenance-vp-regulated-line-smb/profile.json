@@ -31,7 +31,7 @@
     {
       "database": "fleet",
       "name": "assets",
-      "rows": 1680,
+      "rows": 2520,
       "records": "records/fleet.assets.jsonl",
       "columns": [
         "acquired_at",
@@ -44,7 +44,7 @@
     {
       "database": "fleet",
       "name": "work_orders",
-      "rows": 12200,
+      "rows": 18300,
       "records": "records/fleet.work_orders.jsonl",
       "columns": [
         "asset_id",

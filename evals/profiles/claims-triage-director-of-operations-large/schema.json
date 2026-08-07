@@ -4,7 +4,7 @@
     {
       "database": "claims",
       "name": "claims",
-      "rows": 132000,
+      "rows": 440000,
       "columns": [
         "claim_id",
         "closed_at",
@@ -20,7 +20,7 @@
     {
       "database": "claims",
       "name": "policies",
-      "rows": 22800,
+      "rows": 76000,
       "columns": [
         "expiry",
         "inception",

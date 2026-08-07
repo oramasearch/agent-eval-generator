@@ -1,0 +1,29 @@
+{
+  "profile": "firework-manufacturing-operations",
+  "tables": [
+    {
+      "database": "fireworks_production_db",
+      "name": "production_line_efficiency",
+      "rows": 50000,
+      "columns": [
+        "date_recorded",
+        "efficiency_percentage",
+        "line_id",
+        "product_id",
+        "safety_incidents"
+      ]
+    },
+    {
+      "database": "fireworks_production_db",
+      "name": "safety_audit_results",
+      "rows": 15000,
+      "columns": [
+        "audit_date",
+        "audit_id",
+        "findings",
+        "line_id",
+        "resolved"
+      ]
+    }
+  ]
+}

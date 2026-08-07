@@ -1,0 +1,32 @@
+{
+  "profile": "maritime-telecommunications-analysis",
+  "tables": [
+    {
+      "database": "maritime_telecom_postgres",
+      "name": "equipment_status_logs",
+      "rows": 50000,
+      "columns": [
+        "equipment_id",
+        "error_code",
+        "signal_strength",
+        "status",
+        "temperature",
+        "timestamp",
+        "vessel_id"
+      ]
+    },
+    {
+      "database": "maritime_telecom_postgres",
+      "name": "customer_complaints",
+      "rows": 25000,
+      "columns": [
+        "complaint_id",
+        "complaint_type",
+        "resolution_time",
+        "resolved",
+        "timestamp",
+        "vessel_id"
+      ]
+    }
+  ]
+}

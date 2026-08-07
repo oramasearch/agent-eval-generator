@@ -1,0 +1,28 @@
+{
+  "profile": "ethical-gemstone-sourcing",
+  "tables": [
+    {
+      "database": "Gemstone_Origins",
+      "name": "gem_certifications",
+      "rows": 50000,
+      "columns": [
+        "audit_count",
+        "certification_date",
+        "gem_id",
+        "mining_practice_rating",
+        "origin_country"
+      ]
+    },
+    {
+      "database": "Supplier_Eco_Scores",
+      "name": "eco_scores",
+      "rows": 50000,
+      "columns": [
+        "eco_score",
+        "last_audit_date",
+        "region",
+        "supplier_id"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "profile_id": "commercial-building-energy-management",
+  "industry": "Real Estate",
+  "situation": "markdown: Jennifer is an energy manager working for a large property management firm that specializes in commercial buildings across multiple regions. Her role involves optimizing energy consumption across all buildings to reduce costs and improve sustainability metrics. She is measured on the percentage reduction in energy costs and the successful implementation of energy-saving projects. With a rise in energy prices, her key constraint is to identify savings without compromising tenant comfort or regulatory compliance.",
+  "persona": {
+    "role": "Energy Manager",
+    "context": "Oversees energy optimization for commercial buildings.",
+    "measured_on": [
+      "Percent reduction in energy costs",
+      "Project implementation efficiency"
+    ],
+    "constraints": [
+      "Must maintain tenant comfort",
+      "Compliance with energy regulations is mandatory"
+    ]
+  },
+  "connections": [
+    {
+      "name": "building_energy_metrics",
+      "kind": "bigquery",
+      "state": "captured"
+    },
+    {
+      "name": "external_weather_data",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "building_data",
+      "name": "energy_consumption",
+      "connection": "building_energy_metrics",
+      "rows": 100000,
+      "columns": [
+        {
+          "name": "building_id",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "energy_use_kwh",
+          "type": "float",
+          "null_fraction": 0
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "null_fraction": 0.05
+        },
+        {
+          "name": "humidity",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    },
+    {
+      "database": "external_sources",
+      "name": "weather_forecast",
+      "connection": "external_weather_data",
+      "rows": 73000,
+      "columns": [
+        {
+          "name": "location",
+          "type": "string",
+          "null_fraction": 0.01
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "predicted_temperature",
+          "type": "float",
+          "null_fraction": 0.03
+        },
+        {
+          "name": "predicted_humidity",
+          "type": "float",
+          "null_fraction": 0.05
+        }
+      ]
+    }
+  ]
+}

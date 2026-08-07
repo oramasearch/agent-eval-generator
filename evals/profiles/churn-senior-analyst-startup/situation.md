@@ -16,5 +16,5 @@ Constraints:
 
 ## Tables
 
-- `crm.accounts` — 600 rows · account_id, churn_date, last_churn_reason, mrr, segment, signed_at
-- `crm.comm_events` — 7,000 rows · channel, event_id, event_updated_datetime_pt, occurred_at, sentiment, sfdc_account_id
+- `crm.accounts` — 960 rows · account_id, churn_date, last_churn_reason, mrr, segment, signed_at
+- `crm.comm_events` — 11,200 rows · channel, event_id, event_updated_datetime_pt, occurred_at, sentiment, sfdc_account_id

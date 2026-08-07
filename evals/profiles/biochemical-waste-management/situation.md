@@ -1,0 +1,1 @@
+markdown: An Environmental Safety Officer in a biochemical waste disposal company is responsible for ensuring that all waste is disposed of in compliance with regulatory standards. They are measured on metrics like compliance rate, disposal efficiency, and incident response time. They can initiate process optimizations and enforce improvements based on waste disposal analytics.

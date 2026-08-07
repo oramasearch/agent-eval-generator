@@ -1,0 +1,38 @@
+{
+  "profile": "parachute-manufacturing-analysis",
+  "tables": [
+    {
+      "database": "inventory",
+      "name": "raw_materials",
+      "rows": 50000,
+      "columns": [
+        "material_id",
+        "reorder_level",
+        "stock_level",
+        "supplier_id"
+      ]
+    },
+    {
+      "database": "inventory",
+      "name": "finished_products",
+      "rows": 50000,
+      "columns": [
+        "batch_number",
+        "product_id",
+        "production_date",
+        "quality_score"
+      ]
+    },
+    {
+      "database": "inventory",
+      "name": "manufacturing_stage",
+      "rows": 30000,
+      "columns": [
+        "completion_time",
+        "errors_reported",
+        "stage_id",
+        "stage_name"
+      ]
+    }
+  ]
+}

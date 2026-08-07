@@ -1,0 +1,28 @@
+{
+  "profile": "commercial-building-energy-management",
+  "tables": [
+    {
+      "database": "building_data",
+      "name": "energy_consumption",
+      "rows": 50000,
+      "columns": [
+        "building_id",
+        "energy_use_kwh",
+        "humidity",
+        "temperature",
+        "timestamp"
+      ]
+    },
+    {
+      "database": "external_sources",
+      "name": "weather_forecast",
+      "rows": 50000,
+      "columns": [
+        "location",
+        "predicted_humidity",
+        "predicted_temperature",
+        "timestamp"
+      ]
+    }
+  ]
+}

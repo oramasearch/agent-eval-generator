@@ -1,0 +1,29 @@
+{
+  "profile": "gold-mining-operations",
+  "tables": [
+    {
+      "database": "mining_operations_db",
+      "name": "extraction_sites",
+      "rows": 50000,
+      "columns": [
+        "active_sensors",
+        "daily_output",
+        "extraction_method",
+        "ore_type",
+        "site_id"
+      ]
+    },
+    {
+      "database": "mining_operations_db",
+      "name": "employee_shift_logs",
+      "rows": 50000,
+      "columns": [
+        "employee_id",
+        "operations",
+        "shift_end",
+        "shift_start",
+        "site_id"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "profile": "heritage-site-management",
+  "tables": [
+    {
+      "database": "heritage_site_management",
+      "name": "visitor_data",
+      "rows": 50000,
+      "columns": [
+        "is_member",
+        "satisfaction_score",
+        "ticket_type",
+        "visit_date",
+        "visit_duration_minutes",
+        "visit_id",
+        "visitor_age_group"
+      ]
+    },
+    {
+      "database": "heritage_site_management",
+      "name": "artifact_preservation",
+      "rows": 30000,
+      "columns": [
+        "artifact_id",
+        "is_exhibited",
+        "last_preservation_date",
+        "preservation_status"
+      ]
+    }
+  ]
+}
