@@ -20,6 +20,7 @@ from openai import OpenAI
 from agent_eval_generator.tools import ZettaClient, derive_tool_specs, dispatch
 from agent_eval_generator.records import package
 from agent_eval_generator.synth import synthesize
+from agent_eval_generator.validate import validate
 from agent_eval_generator.trace import Trace
 
 def _parse(output: str | None) -> dict[str, Any] | None:
@@ -138,6 +139,16 @@ def main() -> int:
             directory = package(profile["profile_id"], profile.get("situation", ""), tables, out)
             (directory / "profile.json").write_text(json.dumps(profile, indent=2))
             rows = sum(len(table.rows) for table in tables)
+
+            # Validate BEFORE publishing. Two defects reached the Hub without this — a stale
+            # coffee table inside an agricultural profile, and `"sku": "alpha"` — and neither was
+            # caught because nothing looked. A generator that cannot check its own output
+            # publishes its mistakes at the speed it makes them.
+            problems = validate(directory)
+            if problems:
+                print(f"[{index + 1}/{args.cases}] {profile['profile_id']} REJECTED · "
+                      f"{problems[0][:100]}", flush=True)
+                continue
 
             # Upload EACH profile as it finishes. A run that dies at profile 90 should leave 89
             # published, not nothing — one upload at the end is a single failure away from losing
