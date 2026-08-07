@@ -1,0 +1,31 @@
+{
+  "profile": "churn-senior-analyst",
+  "tables": [
+    {
+      "database": "crm",
+      "name": "accounts",
+      "rows": 12000,
+      "columns": [
+        "account_id",
+        "churn_date",
+        "last_churn_reason",
+        "mrr",
+        "segment",
+        "signed_at"
+      ]
+    },
+    {
+      "database": "crm",
+      "name": "comm_events",
+      "rows": 140000,
+      "columns": [
+        "channel",
+        "event_id",
+        "event_updated_datetime_pt",
+        "occurred_at",
+        "sentiment",
+        "sfdc_account_id"
+      ]
+    }
+  ]
+}

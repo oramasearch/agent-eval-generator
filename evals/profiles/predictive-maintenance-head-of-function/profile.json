@@ -1,0 +1,59 @@
+{
+  "profile_id": "predictive-maintenance-head-of-function",
+  "version": 1,
+  "solution": "S-8",
+  "industry": "equipment rental",
+  "persona": {
+    "role": "Head of Function",
+    "context": "Third hire; two people including them.",
+    "measured_on": [
+      "stockouts",
+      "waste"
+    ],
+    "constraints": [
+      "Orders are placed weekly on a fixed day and cannot be changed once placed."
+    ]
+  },
+  "connections": [
+    {
+      "name": "fleet_pg",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "telemetry_s3",
+      "kind": "s3",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "fleet",
+      "name": "assets",
+      "rows": 8400,
+      "records": "records/fleet.assets.jsonl",
+      "columns": [
+        "acquired_at",
+        "asset_id",
+        "depot_id",
+        "model",
+        "year"
+      ]
+    },
+    {
+      "database": "fleet",
+      "name": "work_orders",
+      "rows": 61000,
+      "records": "records/fleet.work_orders.jsonl",
+      "columns": [
+        "asset_id",
+        "closed_at",
+        "fault_code",
+        "is_breakdown",
+        "labour_hours",
+        "opened_at",
+        "work_order_id"
+      ]
+    }
+  ]
+}

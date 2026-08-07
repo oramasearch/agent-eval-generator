@@ -45,14 +45,38 @@ profile tests recall of the ask rather than reading of the data.
 
 ## Profiles
 
-| Profile | Situation | Structure that matters |
+**17 profiles · 1.69M records.** Four catalogue solutions × four personas, plus the original
+hand-built one.
+
+**Variation comes from situations over real schemas, not from inventing tables.** Random noise
+shaped like a schema teaches nothing, so each solution contributes one schema family with genuine
+structure, and the personas vary what actually changes the correct answer: authority, capacity,
+obligation, cadence. **The same tables under a different situation are a different eval** — that is
+the point rather than a shortcut.
+
+| Solution | Slug | The structure a model must read |
 |---|---|---|
-| `coffee-subscription` | Dana, Head of Supply Chain, DTC coffee, 2 people, roasting orders lock every Tuesday | Subscriptions largely **determine** daily orders. A model that reads the subscription table predicts most of `orders_daily` from cadence alone; one that forecasts the aggregate produces a backtest a spreadsheet beats. |
+| **S-1** churn | `churn-*` | The label lives in `accounts.churn_date`, not the events table — the join is the job. `comm_events.sfdc_account_id` is null on 11.4% of rows, and `event_updated_datetime_pt` is the pipeline load date rather than the source change date. |
+| **S-8** predictive maintenance | `predictive-maintenance-*` | `work_orders.closed_at` is null on 31% of rows. Using it as a label window silently drops every currently-failing asset. |
+| **S-12** claims triage | `claims-triage-*` | `total_paid` is only populated after `closed_at`. Training on it leaks the outcome into a decision made at FNOL. The honest target is `siu_referred`, 2.3% positive. |
+| **S-5** demand forecasting | `demand-forecasting-*` | Subscriptions largely **determine** daily orders. A model that reads the subscription table predicts most of `orders_daily` from cadence alone; one that forecasts the aggregate produces a backtest a spreadsheet beats. |
+
+| Persona | The constraint that changes the answer |
+|---|---|
+| Director of Operations | Can action ~40 items a month and no more. |
+| Senior Analyst | Anything shipped must be reproducible by a colleague from the query alone. |
+| VP, regulated line | Must explain any individual decision; no decision without a named human approving that instance. |
+| Head of Function | Orders placed weekly on a fixed day, unchangeable once placed. |
+
+None of this is stated in the data. **Whether a model notices is what is being measured.**
 
 ## Limitations — read before using
 
-- **One profile so far.** Two more (fleet maintenance, insurance claims triage) are drafted as
-  situations but their records are not generated.
+- **Four schema families, not twelve.** The catalogue has twelve Band-A modules; eight have no
+  profile yet. Generating shallow ones to reach a number would violate the rule that makes these
+  worth running.
+- **The personas are archetypes, not researched roles.** They vary the right axis (what changes the
+  answer) but were not drawn from real job descriptions.
 - **Nothing has been scored against these yet.** No model has been evaluated, so there is no
   baseline and no evidence the profiles discriminate. Until then this is a dataset, not a benchmark.
 - **Synthetic.** The structure is deliberate and the schemas are plausible, but no profile is drawn

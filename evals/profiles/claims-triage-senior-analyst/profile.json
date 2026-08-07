@@ -1,0 +1,61 @@
+{
+  "profile_id": "claims-triage-senior-analyst",
+  "version": 1,
+  "solution": "S-12",
+  "industry": "specialty insurance",
+  "persona": {
+    "role": "Senior Analyst",
+    "context": "Reports to Finance; writes SQL daily.",
+    "measured_on": [
+      "forecast accuracy",
+      "month-end close time"
+    ],
+    "constraints": [
+      "Anything shipped must be reproducible by a colleague from the query alone."
+    ]
+  },
+  "connections": [
+    {
+      "name": "guidewire_replica",
+      "kind": "postgres",
+      "state": "captured"
+    },
+    {
+      "name": "nicb_api",
+      "kind": "rest",
+      "state": "discovered"
+    }
+  ],
+  "tables": [
+    {
+      "database": "claims",
+      "name": "claims",
+      "rows": 110000,
+      "records": "records/claims.claims.jsonl",
+      "columns": [
+        "claim_id",
+        "closed_at",
+        "line_of_business",
+        "loss_date",
+        "policy_id",
+        "reported_at",
+        "reserve_amount",
+        "siu_referred",
+        "total_paid"
+      ]
+    },
+    {
+      "database": "claims",
+      "name": "policies",
+      "rows": 19000,
+      "records": "records/claims.policies.jsonl",
+      "columns": [
+        "expiry",
+        "inception",
+        "policy_id",
+        "premium",
+        "state"
+      ]
+    }
+  ]
+}
