@@ -1,0 +1,61 @@
+{
+  "profile_id": "grain-elevator-co-op",
+  "industry": "Agriculture - Grain Elevator Co-op",
+  "situation": "markdown: A grain elevator co-op manager who oversees operations. They are responsible for optimizing grain storage, keeping track of inventory levels, and coordinating with logistics for distribution. The co-op is measured on efficient grain turnover, minimized spoilage, and optimized storage space.",
+  "persona": {
+    "role": "Grain Elevator Manager",
+    "context": "Overseeing a grain elevator co-op, managing storage and distribution of grains.",
+    "measured_on": [
+      "Grain turnover rate",
+      "Inventory accuracy",
+      "Spoilage reduction"
+    ],
+    "constraints": [
+      "Efficiently manage seasonal surges",
+      "Minimize grain spoilage",
+      "Coordinate with transportation for timely dispatch"
+    ]
+  },
+  "connections": [
+    {
+      "name": "grain_inventory",
+      "kind": "s3",
+      "state": "captured"
+    }
+  ],
+  "tables": [
+    {
+      "database": "agriculture",
+      "name": "grain_inventory_snapshots",
+      "connection": "grain_inventory",
+      "rows": 5450,
+      "columns": [
+        {
+          "name": "date",
+          "type": "timestamp",
+          "null_fraction": 0
+        },
+        {
+          "name": "grain_type",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "storage_bin",
+          "type": "string",
+          "null_fraction": 0
+        },
+        {
+          "name": "inventory_level",
+          "type": "float",
+          "null_fraction": 0.02
+        },
+        {
+          "name": "on_order",
+          "type": "float",
+          "null_fraction": 0.1
+        }
+      ]
+    }
+  ]
+}

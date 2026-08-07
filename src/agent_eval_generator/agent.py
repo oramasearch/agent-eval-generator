@@ -10,13 +10,38 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
+import subprocess
 from pathlib import Path
 from typing import Any
 
 from openai import OpenAI
 
 from agent_eval_generator.tools import ZettaClient, derive_tool_specs, dispatch
+from agent_eval_generator.records import package
+from agent_eval_generator.synth import synthesize
 from agent_eval_generator.trace import Trace
+
+def _parse(output: str | None) -> dict[str, Any] | None:
+    """Pull the JSON object out of the reply. Returns None rather than guessing — a profile we
+    cannot parse must not become a half-built artifact."""
+    if not output:
+        return None
+    text = output.strip()
+    fence = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.S)
+    if fence:
+        text = fence.group(1)
+    else:
+        start, end = text.find("{"), text.rfind("}")
+        if start < 0 or end <= start:
+            return None
+        text = text[start:end + 1]
+    try:
+        profile = json.loads(text)
+    except json.JSONDecodeError:
+        return None
+    return profile if profile.get("profile_id") and profile.get("tables") else None
+
 
 PROMPT_VERSION = "v1"
 PROMPTS = Path(__file__).parent / "prompts"
@@ -98,13 +123,33 @@ def main() -> int:
     tools = derive_tool_specs(zetta)
     try:
         seen: list[str] = []
+        out = Path("evals/profiles")
         for index in range(args.cases):
             trace = run_once(zetta, client, args.model, tools, seen)
-            if trace.output:
-                seen.append(trace.output.strip().split("\n")[0][:120])
-            path = trace.write(args.traces)
-            state = "no output" if trace.output is None else "generated"
-            print(f"[{index + 1}/{args.cases}] {state}, {len(trace.calls)} tool calls -> {path}")
+            trace.write(args.traces)
+
+            profile = _parse(trace.output)
+            if profile is None:
+                print(f"[{index + 1}/{args.cases}] no parseable profile — skipped")
+                continue
+            seen.append(f"{profile.get('profile_id')} ({profile.get('industry')})")
+
+            tables = synthesize(profile)
+            directory = package(profile["profile_id"], profile.get("situation", ""), tables, out)
+            (directory / "profile.json").write_text(json.dumps(profile, indent=2))
+            rows = sum(len(table.rows) for table in tables)
+
+            # Upload EACH profile as it finishes. A run that dies at profile 90 should leave 89
+            # published, not nothing — one upload at the end is a single failure away from losing
+            # the whole batch.
+            upload = subprocess.run(
+                ["hf", "upload", "OramaSearch/agent-eval-profiles", str(directory),
+                 profile["profile_id"], "--repo-type=dataset",
+                 f"--commit-message={profile['profile_id']}: {rows} records"],
+                capture_output=True, text=True)
+            state = "uploaded" if upload.returncode == 0 else f"UPLOAD FAILED {upload.stderr[-120:]}"
+            print(f"[{index + 1}/{args.cases}] {profile['profile_id']} · "
+                  f"{profile.get('industry')} · {rows:,} records · {state}", flush=True)
     finally:
         zetta.close()
     return 0

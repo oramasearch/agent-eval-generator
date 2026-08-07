@@ -1,0 +1,1 @@
+markdown: A grain elevator co-op manager who oversees operations. They are responsible for optimizing grain storage, keeping track of inventory levels, and coordinating with logistics for distribution. The co-op is measured on efficient grain turnover, minimized spoilage, and optimized storage space.

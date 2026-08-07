@@ -1,0 +1,17 @@
+{
+  "profile": "grain-elevator-co-op",
+  "tables": [
+    {
+      "database": "agriculture",
+      "name": "grain_inventory_snapshots",
+      "rows": 5450,
+      "columns": [
+        "date",
+        "grain_type",
+        "inventory_level",
+        "on_order",
+        "storage_bin"
+      ]
+    }
+  ]
+}
