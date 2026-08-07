@@ -18,6 +18,20 @@ Both were caught by reading outputs, not by the tests. Without generated evals t
 agents have no honest measure — which is exactly where the previous attempt failed: the engine work
 was fine, and unmeasurable model work consumed the effort.
 
+## Discovery and capture are different states
+
+A profile is built in two parts, and the eval cases have to distinguish them:
+
+- **Discovery** — connect to a source and introspect schema, types, null rates. Tells you what
+  *could* be used.
+- **Capture** — fully download the source into Zetta **parquet partitions**. After capture the
+  connection is no longer needed to train.
+
+**A pipeline that trains needs captured data, not a live connection.** A case that proposes
+training on a discovered-but-uncaptured table proposes something that cannot run, and grades the
+agent for the wrong thing. "Discovered but not captured" is a real reason a task is *not yet*
+supportable — and the correct answer is "capture it first", not "cannot be done".
+
 ## What it produces
 
 Per [zetta#986](https://github.com/oramasearch/zetta/issues/986):
