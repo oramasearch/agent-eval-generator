@@ -106,6 +106,16 @@ an agent against imagined data.
 **Fixed by deriving the tool surface from the node's own OpenAPI** (`derive_tool_specs`). The
 static table survives only as a fallback when no node is reachable. Run 2: both calls succeeded.
 
+**Run 3 exposed a deeper version of the same thing.** Under a prompt explicitly demanding invented
+industries and structural diversity, three consecutive runs produced **coffee subscriptions** — the
+only data on the node. The prose said *invent from scratch*; the tools said `list_datasets`. **The
+agent obeys its tools, not the prose above them.**
+
+Fixed by not anchoring profile invention to the node at all: the solutions catalogue is injected as
+context, and each run is told what has already been generated so *"pick something further away"* is
+actionable rather than aspirational. The next four runs produced undersea cable maintenance, urban
+apiculture, and two others with nothing in common.
+
 ## Known limitations
 
 - **No grading yet.** Traces record `graded: false`. Until the generated case is scored by Zetta's

@@ -22,14 +22,34 @@ PROMPT_VERSION = "v1"
 PROMPTS = Path(__file__).parent / "prompts"
 
 
+# The solutions catalogue, as context rather than as a tool. A profile is INVENTED from an
+# industry, not read off a node — and giving the agent `list_datasets` anchored it completely: the
+# first three runs under the curiosity prompt all produced coffee subscriptions, because that is
+# what happened to be on the node. The agent obeys its tools, not the prose above them.
+CATALOGUE = """Band-A solution modules (inspiration, not a menu to copy):
+S-1 churn & retention · S-2 lead & opportunity scoring · S-3 customer lifetime value
+S-4 collections prioritization · S-5 demand forecasting · S-6 replenishment & inventory action
+S-7 KPI anomaly & driver analysis · S-8 predictive maintenance · S-9 automated outbound
+S-10 fraud & financial-crime decisioning · S-11 next-best-action · S-12 claims triage"""
+
+
 def run_once(zetta: ZettaClient, client: OpenAI, model: str, tools: list[Any],
-             max_rounds: int = 8) -> Trace:
+             seen: list[str] | None = None, max_rounds: int = 8) -> Trace:
     """One generation: prompt -> tool calls -> observations -> a case."""
     system = (PROMPTS / f"{PROMPT_VERSION}.md").read_text()
     trace = Trace.start("eval-generator", model, PROMPT_VERSION, "generate one eval case")
+    # Tell it what has already been made, so "pick something further away" is actionable rather
+    # than aspirational — it cannot avoid repeating itself if it cannot see what it produced.
+    avoid = ""
+    if seen:
+        avoid = ("\n\nAlready generated, so pick something structurally further away than any of "
+                 "these:\n" + "\n".join(f"- {entry}" for entry in seen))
     messages: list[dict[str, Any]] = [
-        {"role": "system", "content": system},
-        {"role": "user", "content": "Generate one eval case from this node's real data."},
+        {"role": "system", "content": system + "\n\n" + CATALOGUE},
+        {"role": "user", "content":
+            "Invent one eval profile from scratch. Choose an industry nobody would guess, research "
+            "what its systems and tables are really called, and write the situation and schema."
+            + avoid},
     ]
 
     for _ in range(max_rounds):
@@ -77,8 +97,11 @@ def main() -> int:
     # Read the tool surface from the node rather than trusting a hand-written table.
     tools = derive_tool_specs(zetta)
     try:
+        seen: list[str] = []
         for index in range(args.cases):
-            trace = run_once(zetta, client, args.model, tools)
+            trace = run_once(zetta, client, args.model, tools, seen)
+            if trace.output:
+                seen.append(trace.output.strip().split("\n")[0][:120])
             path = trace.write(args.traces)
             state = "no output" if trace.output is None else "generated"
             print(f"[{index + 1}/{args.cases}] {state}, {len(trace.calls)} tool calls -> {path}")
