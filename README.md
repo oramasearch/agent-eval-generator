@@ -1,0 +1,71 @@
+# agent-eval-generator
+
+**Agent 5** of the Zetta bootstrap scaffold ([zetta#986](https://github.com/oramasearch/zetta/issues/986)).
+Generates the eval cases the other four agents are measured against.
+
+## Why this one is first
+
+Hand-written evals inherit the author's blind spots, and that is measured rather than assumed.
+Twice during the C++-first attempt an acceptance test written around an *already-observed* failure
+passed a model that was plainly bad:
+
+- a three-turn walk asserting only that consecutive replies differ passed a model that answered
+  *"create me a churn project"* with a description of what Studio *can* do, then fabricated
+  *"`list_models` has over 100 entries"*;
+- a campaign test asserting `best_reward > 0` passed a policy that had collapsed to zero by step 3.
+
+Both were caught by reading outputs, not by the tests. Without generated evals the other four
+agents have no honest measure — which is exactly where the previous attempt failed: the engine work
+was fine, and unmeasurable model work consumed the effort.
+
+## What it produces
+
+Per [zetta#986](https://github.com/oramasearch/zetta/issues/986):
+
+1. a random-ish **workspace profile**
+2. a **task option set** for that profile
+3. a **sample for autosuggest selection** — the case an autosuggest agent is scored on
+
+## The rule that makes an eval trustworthy
+
+**Grading is by Zetta's deterministic graders over `/v1`, never by a rubric and never by an LLM
+judge.** A case whose correctness cannot be decided by a check that *runs* is not an eval, it is an
+opinion. The engine already carries the machinery: the graders, `admit_corpus`, and the seven
+correctness profiles (`supervised_core`, `forecast_core`, `unsupervised_core`, `retrieval_core`,
+`decisioning_core`, `perception_core`, `uncertainty_core`).
+
+That is also what makes a recorded trace **verifiable rather than imitated**, which is what
+[zetta#986](https://github.com/oramasearch/zetta/issues/986) step 2 needs when these traces become
+SFT and RLVR data.
+
+## Layout
+
+```
+src/agent_eval_generator/
+  agent.py       the loop: prompt -> tool calls -> observation -> next call
+  tools.py       tool defs; calls go to a live Zetta node over /v1
+  prompts/       versioned - a prompt change is a model change
+traces/          recorded runs; the artifact step 2 consumes
+evals/           generated cases + the grader that scores them
+reports/         dated eval reports - the report is the deliverable
+```
+
+## Running
+
+```sh
+uv sync
+export ZETTA_BASE_URL=http://127.0.0.1:4800
+export ZETTA_TOKEN=<the owner bearer the node prints once>
+export OPENAI_API_KEY=...
+uv run agent-eval-generator --profiles 5
+```
+
+**Tool calls go to a real node, not mocks.** An agent scaffolded against mocks proves nothing about
+whether the platform supports the job — which is the whole question this bootstrap exists to
+answer.
+
+## Known limitations
+
+Nothing has been generated or scored yet. This README will carry the eval numbers and the failure
+modes once it has run; a README listing only intentions is the thing the cards rule exists to
+prevent.
