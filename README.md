@@ -131,8 +131,9 @@ apiculture, and two others with nothing in common.
 
 The Eval Generator is a library agent of lake: a person talks to it (Ask Orama → Talk to, or Ask
 Orama brings it in) and asks for a test case — "a head of collections at a water utility". One turn
-is one `run_once`, steered by the request, against the person's own workspace through lake's
-read-only path (`zetta_base_url`, `zetta_token`), then synthesized and validated as the CLI does.
+is one `run_once`, steered by the request, with **no workspace tools**: a test case invents its own
+systems and tables (given the person's workspace, the model reused their tables), then it is
+synthesized and validated as the CLI does. The summary opens with the situation's first sentence.
 It answers the profile and its tables (row counts, columns, five sample rows each) as
 `{reply, result: {kind: eval_profile, profile, tables, problems}}` and **publishes nothing**; the
 Hugging Face upload stays the CLI's.

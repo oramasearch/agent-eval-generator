@@ -31,9 +31,8 @@ class FakeZetta:
         self.closed = True
 
 
-def test_a_request_steers_one_profile_and_answers_its_tables(tmp_path, monkeypatch):
-    monkeypatch.setattr(service, "derive_tool_specs", lambda zetta: [])
-    client, zetta = Scripted("```json\n" + json.dumps(PROFILE) + "\n```"), FakeZetta()
+def test_a_request_steers_one_profile_and_answers_its_tables(tmp_path):
+    client, zetta = Scripted("```json\n" + json.dumps(PROFILE) + "\n```"), None
     answer = service.run_turn({"request": "collections at a water utility"}, client, zetta,
                               "m", tmp_path)
     assert answer["ok"], answer
@@ -42,14 +41,16 @@ def test_a_request_steers_one_profile_and_answers_its_tables(tmp_path, monkeypat
     assert result["kind"] == "eval_profile" and result["profile"]["profile_id"] == PROFILE["profile_id"]
     assert result["tables"] and all(item["rows"] > 0 for item in result["tables"])
     assert len(result["tables"][0]["sample"]) <= service.SAMPLE_ROWS
-    assert PROFILE["profile_id"] in answer["reply"] and zetta.closed
+    assert PROFILE["profile_id"] in answer["reply"]
+    assert "#" not in answer["reply"].split("\n")[0], "no markdown heading in the summary"
+    assert client.sent[0]["tools"] == [], "a test case invents its own tables"
 
 
-def test_no_profile_is_a_failure_not_a_guess(tmp_path, monkeypatch):
-    monkeypatch.setattr(service, "derive_tool_specs", lambda zetta: [])
-    answer = service.run_turn({"request": "x"}, Scripted("I cannot."), FakeZetta(), "m", tmp_path)
+def test_no_profile_is_a_failure_not_a_guess(tmp_path):
+    answer = service.run_turn({"request": "x"}, Scripted("I cannot."), None, "m", tmp_path)
     assert not answer["ok"] and "no eval profile" in answer["error"]
 
 
-def test_a_turn_needs_a_workspace():
-    assert not service.run_turn({"request": "x"})["ok"]
+def test_the_summary_is_prose_not_a_heading():
+    assert service.first_sentence("### Situation\n\nThe utility bills 40k homes. More.") == \
+        "The utility bills 40k homes."

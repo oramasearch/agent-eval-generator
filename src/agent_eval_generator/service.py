@@ -25,29 +25,29 @@ from agent_eval_generator import lake_bus
 from agent_eval_generator.agent import PROMPT_VERSION, _parse, run_once
 from agent_eval_generator.records import package
 from agent_eval_generator.synth import synthesize
-from agent_eval_generator.tools import ZettaClient, derive_tool_specs
 from agent_eval_generator.validate import validate
 
 SAMPLE_ROWS = 5
+
+
+def first_sentence(situation: str) -> str:
+    """The situation's first line of prose, not a markdown heading, cut at a sentence."""
+    for line in situation.splitlines():
+        text = line.strip().lstrip("-*> ").strip()
+        if text and not text.startswith("#"):
+            end = text.find(". ")
+            return (text if end < 0 else text[:end + 1])[:400]
+    return ""
 
 
 def run_turn(turn: dict[str, Any], client: Any = None, zetta: Any = None,
              model: str | None = None, trace_dir: Path | None = None) -> dict[str, Any]:
     """One eval profile for one request. A failure is an answer, never raised."""
     request = (turn.get("request") or turn.get("message") or "").strip()
-    if zetta is None:
-        base, token = turn.get("zetta_base_url"), turn.get("zetta_token")
-        if not base or not token:
-            return {"ok": False, "error": "no workspace: the turn needs zetta_base_url and "
-                                          "zetta_token"}
-        zetta = ZettaClient(base_url=base, token=token)
     model = model or os.environ.get("EVAL_GEN_MODEL", os.environ.get("AGENT_MODEL", "gpt-4o"))
-    try:
-        trace = run_once(zetta, client or OpenAI(), model, derive_tool_specs(zetta),
-                         request=request)
-    finally:
-        if hasattr(zetta, "close"):
-            zetta.close()
+    # No workspace tools: a test case invents its own systems and tables. Given the person's
+    # workspace to read, the model built its "water utility" on their churn tables (2026-09-27).
+    trace = run_once(zetta, client or OpenAI(), model, [], request=request)
     trace.write(trace_dir or Path(os.environ.get("TRACE_DIR", "/tmp/agent-eval-generator-traces")))
     profile = _parse(trace.output)
     if profile is None:
@@ -67,7 +67,7 @@ def run_turn(turn: dict[str, Any], client: Any = None, zetta: Any = None,
     reply = (f"I wrote an eval profile, **{profile.get('profile_id')}**: "
              f"{profile.get('industry') or 'an industry'}"
              + (f", for {who}" if who else "") + ". "
-             + (profile.get("situation") or "").strip().split("\n")[0][:400]
+             + first_sentence(profile.get("situation") or "")
              + f"\n\nIt has {len(tables)} table(s) and {records:,} records: "
              + ", ".join(f"`{item['table']}` ({item['rows']:,})" for item in summary) + ".")
     if problems:
