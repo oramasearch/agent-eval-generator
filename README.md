@@ -126,3 +126,20 @@ apiculture, and two others with nothing in common.
   graded rather than asserted.
 - **The only dataset on the test node is a 24-row scoring output**, not a training source. Cases
   generated against it are shallow by construction.
+
+## In lake (lake#263)
+
+The Eval Generator is a library agent of lake: a person talks to it (Ask Orama → Talk to, or Ask
+Orama brings it in) and asks for a test case — "a head of collections at a water utility". One turn
+is one `run_once`, steered by the request, against the person's own workspace through lake's
+read-only path (`zetta_base_url`, `zetta_token`), then synthesized and validated as the CLI does.
+It answers the profile and its tables (row counts, columns, five sample rows each) as
+`{reply, result: {kind: eval_profile, profile, tables, problems}}` and **publishes nothing**; the
+Hugging Face upload stays the CLI's.
+
+- `service.py`: `run_turn`, and `agent-eval-generator-serve` (`GET /healthz`, `POST /v1/turn`).
+- `lake_bus.py`: takes the turns from lake's agent bus with this agent's own `AGENT_BUS_TOKEN`
+  (lake `docs/api/agent-bus.md`), publishing progress and the answer.
+- `Dockerfile`: private image `oramasearch/agent-eval-generator`, created private before its first
+  push.
+- Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_lake_bus.py`).

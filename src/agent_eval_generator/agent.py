@@ -60,7 +60,7 @@ S-10 fraud & financial-crime decisioning · S-11 next-best-action · S-12 claims
 
 
 def run_once(zetta: ZettaClient, client: OpenAI, model: str, tools: list[Any],
-             seen: list[str] | None = None, max_rounds: int = 8) -> Trace:
+             seen: list[str] | None = None, max_rounds: int = 8, request: str = "") -> Trace:
     """One generation: prompt -> tool calls -> observations -> a case."""
     system = (PROMPTS / f"{PROMPT_VERSION}.md").read_text()
     trace = Trace.start("eval-generator", model, PROMPT_VERSION, "generate one eval case")
@@ -75,7 +75,10 @@ def run_once(zetta: ZettaClient, client: OpenAI, model: str, tools: list[Any],
         {"role": "user", "content":
             "Invent one eval profile from scratch. Choose an industry nobody would guess, research "
             "what its systems and tables are really called, and write the situation and schema."
-            + avoid},
+            + avoid
+            # A person in lake names what they want (lake#263): their words steer the choice.
+            + (f"\n\nThe person asking wants: {request}\nMake the profile about that." if request
+               else "")},
     ]
 
     for _ in range(max_rounds):
