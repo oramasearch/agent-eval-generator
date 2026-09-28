@@ -1,10 +1,10 @@
 """The Eval Generator as a library agent of lake (lake#263): one profile per turn, on request.
 
 In lake a person talks to it (Ask Orama → Talk to, or through Ask Orama): "a realistic test case
-for a head of collections at a water utility". One turn is one `run_once`, steered by the request,
-against the person's own workspace through lake's read-only path (`zetta_base_url`,
-`zetta_token`), then synthesized and validated exactly as the batch CLI does. It answers the
-profile and its tables; it publishes nothing (the Hugging Face upload stays the CLI's).
+for a head of collections at a water utility". One turn is one `run_once`, steered by the request
+and the caller's methodology snapshot, then synthesized and validated exactly as the batch CLI
+does. It answers the profile and its tables; it publishes nothing (the Hugging Face upload stays
+the CLI's).
 
 Turns arrive on lake's agent bus (lake_bus.py); `POST /v1/turn` answers the same for a direct call.
 Standard library only.
@@ -23,6 +23,7 @@ from openai import OpenAI
 
 from agent_eval_generator import lake_bus
 from agent_eval_generator.agent import PROMPT_VERSION, _parse, run_once
+from agent_eval_generator.methodologies import apply_snapshot, snapshot_for_turn
 from agent_eval_generator.records import package
 from agent_eval_generator.synth import synthesize
 from agent_eval_generator.validate import validate
@@ -36,46 +37,114 @@ def first_sentence(situation: str) -> str:
         text = line.strip().lstrip("-*> ").strip()
         if text and not text.startswith("#"):
             end = text.find(". ")
-            return (text if end < 0 else text[:end + 1])[:400]
+            return (text if end < 0 else text[: end + 1])[:400]
     return ""
 
 
-def run_turn(turn: dict[str, Any], client: Any = None, zetta: Any = None,
-             model: str | None = None, trace_dir: Path | None = None) -> dict[str, Any]:
+def run_turn(
+    turn: dict[str, Any],
+    client: Any = None,
+    zetta: Any = None,
+    model: str | None = None,
+    trace_dir: Path | None = None,
+) -> dict[str, Any]:
     """One eval profile for one request. A failure is an answer, never raised."""
     request = (turn.get("request") or turn.get("message") or "").strip()
-    model = model or os.environ.get("EVAL_GEN_MODEL", os.environ.get("AGENT_MODEL", "gpt-4o"))
-    # No workspace tools: a test case invents its own systems and tables. Given the person's
-    # workspace to read, the model built its "water utility" on their churn tables (2026-09-27).
-    trace = run_once(zetta, client or OpenAI(), model, [], request=request)
-    trace.write(trace_dir or Path(os.environ.get("TRACE_DIR", "/tmp/agent-eval-generator-traces")))
+    model = model or os.environ.get(
+        "EVAL_GEN_MODEL", os.environ.get("AGENT_MODEL", "gpt-4o")
+    )
+    # No model workspace tools: a test case invents its own systems and tables. Lake passes the
+    # current methodology registry as turn context instead.
+    try:
+        snapshot = snapshot_for_turn(turn, zetta)
+    except Exception as error:  # a registry failure is an answer, not a dead worker
+        return {"ok": False, "error": f"methodology registry: {error}"}
+    trace = run_once(
+        zetta,
+        client or OpenAI(),
+        model,
+        [],
+        request=request,
+        methodologies=snapshot.methodologies,
+        legacy_fallback=snapshot.legacy_fallback,
+    )
     profile = _parse(trace.output)
     if profile is None:
+        trace.write(
+            trace_dir
+            or Path(os.environ.get("TRACE_DIR", "/tmp/agent-eval-generator-traces"))
+        )
         return {"ok": False, "error": "no eval profile came back from the model"}
+    try:
+        selected = apply_snapshot(profile, snapshot)
+    except ValueError as error:
+        trace.grade(False, str(error))
+        trace.write(
+            trace_dir
+            or Path(os.environ.get("TRACE_DIR", "/tmp/agent-eval-generator-traces"))
+        )
+        return {"ok": False, "error": f"invalid profile methodology: {error}"}
+    trace.output = json.dumps(profile)
+    trace.write(
+        trace_dir
+        or Path(os.environ.get("TRACE_DIR", "/tmp/agent-eval-generator-traces"))
+    )
     tables = synthesize(profile)
     with tempfile.TemporaryDirectory() as out:
-        directory = package(profile.get("profile_id", "profile"), profile.get("situation", ""),
-                            tables, Path(out))
+        directory = package(
+            profile.get("profile_id", "profile"),
+            profile.get("situation", ""),
+            tables,
+            Path(out),
+        )
         (directory / "profile.json").write_text(json.dumps(profile, indent=2))
         problems = validate(directory)
     records = sum(len(table.rows) for table in tables)
-    summary = [{"table": f"{table.database}.{table.name}", "rows": len(table.rows),
-                "columns": sorted(table.rows[0]) if table.rows else [],
-                "sample": table.rows[:SAMPLE_ROWS]} for table in tables]
+    summary = [
+        {
+            "table": f"{table.database}.{table.name}",
+            "rows": len(table.rows),
+            "columns": sorted(table.rows[0]) if table.rows else [],
+            "sample": table.rows[:SAMPLE_ROWS],
+        }
+        for table in tables
+    ]
     persona = profile.get("persona")
     who = persona.get("role") if isinstance(persona, dict) else persona
-    reply = (f"I wrote an eval profile, **{profile.get('profile_id')}**: "
-             f"{profile.get('industry') or 'an industry'}"
-             + (f", for {who}" if who else "") + ". "
-             + first_sentence(profile.get("situation") or "")
-             + f"\n\nIt has {len(tables)} table(s) and {records:,} records: "
-             + ", ".join(f"`{item['table']}` ({item['rows']:,})" for item in summary) + ".")
+    reply = (
+        f"I wrote an eval profile, **{profile.get('profile_id')}**: "
+        f"{profile.get('industry') or 'an industry'}"
+        + (f", for {who}" if who else "")
+        + ". "
+        + first_sentence(profile.get("situation") or "")
+        + f"\n\nIt has {len(tables)} table(s) and {records:,} records: "
+        + ", ".join(f"`{item['table']}` ({item['rows']:,})" for item in summary)
+        + "."
+    )
     if problems:
-        reply += (f"\n\nIt does not pass validation yet ({len(problems)} problem(s)), so it is not "
-                  "a usable test case: " + problems[0][:200])
-    return {"ok": True, "reply": reply,
-            "result": {"kind": "eval_profile", "profile": profile, "tables": summary,
-                       "problems": problems, "prompt_version": PROMPT_VERSION}}
+        reply += (
+            f"\n\nIt does not pass validation yet ({len(problems)} problem(s)), so it is not "
+            "a usable test case: " + problems[0][:200]
+        )
+    if not profile["runnable"]:
+        reply += (
+            f"\n\nI declined this profile for scoring: {selected['name']} "
+            f"({selected['id']}) is not supported yet: {profile['issue']}."
+        )
+    elif snapshot.legacy_fallback:
+        reply += "\n\nThis workspace predates the methodology registry, so only M-1 is assumed to run."
+    return {
+        "ok": True,
+        "reply": reply,
+        "result": {
+            "kind": "eval_profile",
+            "profile": profile,
+            "tables": summary,
+            "problems": problems,
+            "prompt_version": PROMPT_VERSION,
+            "scoreable": profile["runnable"],
+        },
+    }
 
 
 def serve() -> int:
@@ -92,8 +161,14 @@ def serve() -> int:
 
         def do_GET(self) -> None:  # noqa: N802 (the stdlib's name)
             if self.path == "/healthz":
-                self._send(200, {"ok": True, "agent": "agent-eval-generator",
-                                 "prompt_version": PROMPT_VERSION})
+                self._send(
+                    200,
+                    {
+                        "ok": True,
+                        "agent": "agent-eval-generator",
+                        "prompt_version": PROMPT_VERSION,
+                    },
+                )
                 return
             self._send(404, {"ok": False, "error": "not found"})
 
@@ -105,7 +180,9 @@ def serve() -> int:
                 self._send(401, {"ok": False, "error": "unauthorized"})
                 return
             try:
-                turn = json.loads(self.rfile.read(int(self.headers.get("Content-Length", "0"))))
+                turn = json.loads(
+                    self.rfile.read(int(self.headers.get("Content-Length", "0")))
+                )
             except (json.JSONDecodeError, ValueError):
                 self._send(400, {"ok": False, "error": "the body is not JSON"})
                 return
@@ -116,8 +193,10 @@ def serve() -> int:
             self._send(200 if answer.get("ok") else 422, answer)
 
         def log_message(self, format: str, *args: Any) -> None:
-            print(json.dumps({"agent": "agent-eval-generator", "request": format % args}),
-                  flush=True)
+            print(
+                json.dumps({"agent": "agent-eval-generator", "request": format % args}),
+                flush=True,
+            )
 
     port = int(os.environ.get("PORT", "8080"))
     print(json.dumps({"agent": "agent-eval-generator", "listening": port}), flush=True)
