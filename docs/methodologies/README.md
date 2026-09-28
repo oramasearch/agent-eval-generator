@@ -49,17 +49,18 @@ Every newly generated `profile.json` contains:
 }
 ```
 
-The model selects `solution` and `methodology`. The generator verifies that the selected
-methodology exists and owns the solution in that turn's registry, then overwrites `runnable` and
-`issue` from the registry. This prevents generated prose from claiming support the engine did not
-report.
+The model selects `solution`, `level`, and `methodology`. The generator verifies that the selected
+methodology exists and owns the solution in that turn's methodology registry. It then reads the
+selected solution detail and verifies that the methodology participates at that level. This
+prevents generated prose from claiming a composition the engine did not report.
 
 Runnable profiles omit `issue`. Unrunnable profiles require it and remain valid dataset artifacts
-for later methodology releases. The service returns `result.scoreable: false` for them and says
-which methodology issue blocks scoring. They are not counted as agent failures.
+for later releases. The service returns `result.scoreable: false` for them. A false solution state
+takes precedence over the methodology state and uses the solution's issue. They are not counted as
+agent failures.
 
 ## Validation
 
-Packaging validation requires `solution`, `methodology`, and a boolean `runnable`. An unrunnable
-profile without `issue` is rejected. These checks concern artifact completeness; whether the
-selected methodology is runnable always comes from the per-turn registry snapshot.
+Packaging validation requires `solution`, `level`, `methodology`, the solution checks and policy,
+and a boolean `runnable`. An unrunnable profile without `issue` is rejected. These checks concern
+artifact completeness; run state always comes from the per-turn registry snapshots.

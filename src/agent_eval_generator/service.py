@@ -2,9 +2,9 @@
 
 In lake a person talks to it (Ask Orama → Talk to, or through Ask Orama): "a realistic test case
 for a head of collections at a water utility". One turn is one `run_once`, steered by the request
-and the caller's methodology snapshot, then synthesized and validated exactly as the batch CLI
-does. It answers the profile and its tables; it publishes nothing (the Hugging Face upload stays
-the CLI's).
+and fresh methodology and solution snapshots, then synthesized and validated exactly as the
+batch CLI does. It answers the profile and its tables; it publishes nothing (the Hugging Face
+upload stays the CLI's).
 
 Turns arrive on lake's agent bus (lake_bus.py); `POST /v1/turn` answers the same for a direct call.
 Standard library only.
@@ -25,10 +25,27 @@ from agent_eval_generator import lake_bus
 from agent_eval_generator.agent import PROMPT_VERSION, _parse, run_once
 from agent_eval_generator.methodologies import apply_snapshot, snapshot_for_turn
 from agent_eval_generator.records import package
+from agent_eval_generator.solutions import (
+    apply_solution,
+    snapshot_for_turn as solution_snapshot_for_turn,
+)
 from agent_eval_generator.synth import synthesize
+from agent_eval_generator.tools import LakeWorkspaceClient
 from agent_eval_generator.validate import validate
 
 SAMPLE_ROWS = 5
+
+
+def registry_source(turn: dict[str, Any], injected: Any = None) -> Any:
+    """Use an injected engine client or the lake credential attached to this turn."""
+    if injected is not None:
+        return injected
+    lake_url = turn.get("lake_url") or os.environ.get("LAKE_URL")
+    lake_token = turn.get("lake_token")
+    customer_id = turn.get("customer_id")
+    if lake_url and lake_token and customer_id:
+        return LakeWorkspaceClient(lake_url, lake_token, customer_id)
+    return None
 
 
 def first_sentence(situation: str) -> str:
@@ -53,20 +70,33 @@ def run_turn(
     model = model or os.environ.get(
         "EVAL_GEN_MODEL", os.environ.get("AGENT_MODEL", "gpt-4o")
     )
-    # No model workspace tools: a test case invents its own systems and tables. Lake passes the
-    # current methodology registry as turn context instead.
+    source = registry_source(turn, zetta)
+    # No model workspace tools: a test case invents its own systems and tables. The generator
+    # reads the current registries before asking the model instead.
     try:
-        snapshot = snapshot_for_turn(turn, zetta)
+        snapshot = snapshot_for_turn(turn, source)
     except Exception as error:  # a registry failure is an answer, not a dead worker
         return {"ok": False, "error": f"methodology registry: {error}"}
+    try:
+        solution_snapshot = solution_snapshot_for_turn(source)
+    except Exception as error:
+        return {"ok": False, "error": f"solution registry: {error}"}
+    if not solution_snapshot.deployed or not solution_snapshot.solutions:
+        return {
+            "ok": False,
+            "error": (
+                "solution registry: not deployed yet; no solutions are available"
+            ),
+        }
     trace = run_once(
-        zetta,
+        source,
         client or OpenAI(),
         model,
         [],
         request=request,
         methodologies=snapshot.methodologies,
         legacy_fallback=snapshot.legacy_fallback,
+        solutions=solution_snapshot.solutions,
     )
     profile = _parse(trace.output)
     if profile is None:
@@ -76,14 +106,15 @@ def run_turn(
         )
         return {"ok": False, "error": "no eval profile came back from the model"}
     try:
-        selected = apply_snapshot(profile, snapshot)
-    except ValueError as error:
+        apply_snapshot(profile, snapshot)
+        selected_solution = apply_solution(profile, solution_snapshot, source)
+    except Exception as error:
         trace.grade(False, str(error))
         trace.write(
             trace_dir
             or Path(os.environ.get("TRACE_DIR", "/tmp/agent-eval-generator-traces"))
         )
-        return {"ok": False, "error": f"invalid profile methodology: {error}"}
+        return {"ok": False, "error": f"invalid profile registry selection: {error}"}
     trace.output = json.dumps(profile)
     trace.write(
         trace_dir
@@ -128,8 +159,9 @@ def run_turn(
         )
     if not profile["runnable"]:
         reply += (
-            f"\n\nI declined this profile for scoring: {selected['name']} "
-            f"({selected['id']}) is not supported yet: {profile['issue']}."
+            f"\n\nI declined this profile for scoring: {selected_solution['name']} "
+            f"({selected_solution['id']}) at level {profile['level']} is not supported "
+            f"yet: {profile['issue']}."
         )
     elif snapshot.legacy_fallback:
         reply += "\n\nThis workspace predates the methodology registry, so only M-1 is assumed to run."
