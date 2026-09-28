@@ -32,6 +32,48 @@ def _rows(path: Path, limit: int = 500) -> list[dict[str, Any]]:
     return rows
 
 
+def _solution_contract_problems(profile: dict[str, Any]) -> list[str]:
+    problems: list[str] = []
+    level = profile.get("level")
+    if not isinstance(level, int) or isinstance(level, bool):
+        problems.append("profile.json is missing integer `level`")
+    policy = profile.get("decision_policy")
+    if not isinstance(policy, str) or not policy:
+        problems.append("profile.json is missing `decision_policy`")
+
+    checks = profile.get("solution_checks")
+    if not isinstance(checks, dict):
+        problems.append("profile.json is missing `solution_checks`")
+        return problems
+    required = (
+        "capability_level",
+        "composition",
+        "pipeline_order",
+        "required_data_roles",
+        "measurement_design",
+        "guardrails",
+    )
+    for field in required:
+        if not checks.get(field):
+            problems.append(f"solution_checks is missing `{field}`")
+
+    selected_level = checks.get("capability_level")
+    if isinstance(selected_level, dict) and selected_level.get("level") != level:
+        problems.append("solution_checks capability level does not match profile level")
+    composition = checks.get("composition")
+    if isinstance(composition, list):
+        methodologies = {
+            entry.get("methodology")
+            for entry in composition
+            if isinstance(entry, dict)
+        }
+        if profile.get("methodology") not in methodologies:
+            problems.append(
+                "profile methodology is absent from solution_checks composition"
+            )
+    return problems
+
+
 def validate(directory: Path) -> list[str]:
     """Return the problems found. Empty means publishable."""
     problems: list[str] = []
@@ -50,7 +92,8 @@ def validate(directory: Path) -> list[str]:
     if not isinstance(profile.get("runnable"), bool):
         problems.append("profile.json is missing boolean `runnable`")
     elif not profile["runnable"] and not profile.get("issue"):
-        problems.append("an unrunnable profile must name its methodology issue")
+        problems.append("an unrunnable profile must name its registry issue")
+    problems.extend(_solution_contract_problems(profile))
 
     declared = {
         f"{t.get('database')}.{t.get('name')}" for t in profile.get("tables", [])

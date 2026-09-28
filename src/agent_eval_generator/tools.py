@@ -18,6 +18,37 @@ from typing import Any
 import httpx
 
 
+class LakeWorkspaceClient:
+    """Read a customer's Zetta capabilities through lake's authorized gateway."""
+
+    def __init__(
+        self,
+        base_url: str,
+        token: str,
+        customer_id: str,
+        send: Any = None,
+    ) -> None:
+        self.base_url = base_url.rstrip("/")
+        self.token = token
+        self.customer_id = customer_id
+        self._send = send or httpx.post
+
+    def read(self, capability: str, **params: Any) -> dict[str, Any]:
+        """Call one engine read through ``workspace_query``."""
+        response = self._send(
+            f"{self.base_url}/v1/workspace_query",
+            headers={"Authorization": f"Bearer {self.token}"},
+            json={
+                "customer_id": self.customer_id,
+                "capability": capability,
+                "input": params,
+            },
+            timeout=120.0,
+        )
+        response.raise_for_status()
+        return response.json()
+
+
 class ZettaClient:
     """Thin, honest client. Raises on failure rather than returning a plausible empty result."""
 

@@ -19,6 +19,10 @@ from openai import OpenAI
 
 from agent_eval_generator.methodologies import apply_snapshot, snapshot_for_turn
 from agent_eval_generator.records import package
+from agent_eval_generator.solutions import (
+    apply_solution,
+    snapshot_for_turn as solution_snapshot_for_turn,
+)
 from agent_eval_generator.synth import synthesize
 from agent_eval_generator.tools import ZettaClient, dispatch
 from agent_eval_generator.trace import Trace
@@ -46,19 +50,8 @@ def _parse(output: str | None) -> dict[str, Any] | None:
     return profile if profile.get("profile_id") and profile.get("tables") else None
 
 
-PROMPT_VERSION = "v2"
+PROMPT_VERSION = "v3"
 PROMPTS = Path(__file__).parent / "prompts"
-
-
-# The solutions catalogue, as context rather than as a tool. A profile is INVENTED from an
-# industry, not read off a node — and giving the agent `list_datasets` anchored it completely: the
-# first three runs under the curiosity prompt all produced coffee subscriptions, because that is
-# what happened to be on the node. The agent obeys its tools, not the prose above them.
-CATALOGUE = """Band-A solution modules (inspiration, not a menu to copy):
-S-1 churn & retention · S-2 lead & opportunity scoring · S-3 customer lifetime value
-S-4 collections prioritization · S-5 demand forecasting · S-6 replenishment & inventory action
-S-7 KPI anomaly & driver analysis · S-8 predictive maintenance · S-9 automated outbound
-S-10 fraud & financial-crime decisioning · S-11 next-best-action · S-12 claims triage"""
 
 
 def run_once(
@@ -71,6 +64,7 @@ def run_once(
     request: str = "",
     methodologies: list[dict[str, Any]] | None = None,
     legacy_fallback: bool = False,
+    solutions: list[dict[str, Any]] | None = None,
 ) -> Trace:
     """One generation: prompt -> tool calls -> observations -> a case."""
     system = (PROMPTS / f"{PROMPT_VERSION}.md").read_text()
@@ -98,10 +92,17 @@ def run_once(
         "id and one of that entry's solution ids into the profile. Support status is recorded "
         "after generation from the same snapshot.\n" + registry
     )
+    solution_registry = json.dumps({"solutions": solutions or []}, indent=2)
+    solution_context = (
+        "\n\nThis is the solution registry snapshot for this turn. Choose a catalogue "
+        "solution and one of its declared capability levels only from this snapshot. The "
+        "generator fetches that solution again after generation and records its checks, "
+        "decision policy, run state, and issue.\n" + solution_registry
+    )
     messages: list[dict[str, Any]] = [
         {
             "role": "system",
-            "content": system + "\n\n" + CATALOGUE + methodology_context,
+            "content": system + methodology_context + solution_context,
         },
         {
             "role": "user",
@@ -170,6 +171,14 @@ def main() -> int:
         out = Path("evals/profiles")
         for index in range(args.cases):
             snapshot = snapshot_for_turn({}, zetta)
+            solution_snapshot = solution_snapshot_for_turn(zetta)
+            if not solution_snapshot.deployed or not solution_snapshot.solutions:
+                print(
+                    f"[{index + 1}/{args.cases}] solution registry is not deployed yet; "
+                    "no solutions are available",
+                    flush=True,
+                )
+                continue
             trace = run_once(
                 zetta,
                 client,
@@ -178,6 +187,7 @@ def main() -> int:
                 seen,
                 methodologies=snapshot.methodologies,
                 legacy_fallback=snapshot.legacy_fallback,
+                solutions=solution_snapshot.solutions,
             )
 
             profile = _parse(trace.output)
@@ -186,7 +196,10 @@ def main() -> int:
                 print(f"[{index + 1}/{args.cases}] no parseable profile — skipped")
                 continue
             try:
-                selected = apply_snapshot(profile, snapshot)
+                apply_snapshot(profile, snapshot)
+                selected_solution = apply_solution(
+                    profile, solution_snapshot, zetta
+                )
             except ValueError as error:
                 trace.grade(False, str(error))
                 trace.write(args.traces)
@@ -218,8 +231,9 @@ def main() -> int:
 
             if not profile["runnable"]:
                 print(
-                    f"[{index + 1}/{args.cases}] {selected['name']} "
-                    f"({selected['id']}) is not supported yet: {profile['issue']} · "
+                    f"[{index + 1}/{args.cases}] {selected_solution['name']} "
+                    f"({selected_solution['id']}) at level {profile['level']} "
+                    f"is not supported yet: {profile['issue']} · "
                     "profile will not be scored",
                     flush=True,
                 )

@@ -2,8 +2,70 @@
   "profile_id": "churn-chief-operating-officer-enterprise",
   "version": 1,
   "solution": "S-1",
+  "level": 1,
   "methodology": "M-1",
-  "runnable": true,
+  "runnable": false,
+  "issue": "https://github.com/oramasearch/zetta/issues/1102",
+  "decision_policy": "Risk and treatment tiers with eligibility, contact caps, concession approvals, and a kill switch.",
+  "solution_checks": {
+    "capability_level": {
+      "level": 1,
+      "name": "CL-1",
+      "description": "propensity, reasons, segments, holdout and report"
+    },
+    "composition": [
+      {
+        "methodology": "M-1",
+        "role": "primary",
+        "minimum_level": 1
+      },
+      {
+        "methodology": "M-2",
+        "role": "foundation",
+        "minimum_level": 1
+      },
+      {
+        "methodology": "M-3",
+        "role": "foundation",
+        "minimum_level": 1
+      }
+    ],
+    "pipeline_order": [
+      "M-2",
+      "M-1",
+      "M-3"
+    ],
+    "required_data_roles": [
+      {
+        "role": "entity",
+        "required": true,
+        "description": "customer, account, or household"
+      },
+      {
+        "role": "label",
+        "required": true,
+        "description": "churn event and outcome window"
+      },
+      {
+        "role": "time",
+        "required": true,
+        "description": "feature cutoff and label window"
+      },
+      {
+        "role": "treatment",
+        "required": false,
+        "description": "retention action and no-contact cell"
+      }
+    ],
+    "measurement_design": "Permanent holdout with randomized treatment cells and incremental retention read-back.",
+    "guardrails": [
+      "complaints",
+      "margin",
+      "contact fatigue",
+      "offer fairness",
+      "holdout integrity"
+    ]
+  },
   "industry": "B2B SaaS",
   "persona": {
     "role": "Chief Operating Officer",

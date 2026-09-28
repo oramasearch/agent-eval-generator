@@ -53,18 +53,20 @@ Per [zetta#986](https://github.com/oramasearch/zetta/issues/986):
 2. a **task option set** for that profile
 3. a **sample for autosuggest selection** — the case an autosuggest agent is scored on
 
-## Methodologies determine whether a profile is scored
+## Solutions and methodologies determine whether a profile is scored
 
-Each generated profile records the catalogue `solution`, required engine `methodology`, and the
-`runnable` value reported when it was made. If the methodology is not runnable, the profile also
-records its engine issue and is retained as future coverage with `scoreable: false`; it is not
-scored as a failure of Auto-Suggest or the Project Agent.
+Each generated profile records its catalogue `solution`, capability `level`, required engine
+`methodology`, and the combined `runnable` state reported when it was made. It also copies the
+solution's level-specific composition and pipeline order, required data roles, measurement design,
+guardrails, and decision policy. Those registry-owned facts are the offline correctness contract
+for evaluating the agent's proposed product pipeline.
 
-The lake library agent has no workspace tools. Its caller reads `list_methodologies` at the start
-of the turn and passes the response under `methodologies`. The generator validates the model's
-solution/methodology pair and copies support status from that snapshot. When an older engine
-returns `unknown_capability`, only M-1 tabular supervised learning is assumed to run. See
-[`docs/methodologies/README.md`](docs/methodologies/README.md) for the turn and profile contracts.
+The generator reads `list_solutions` for every turn, then reads `get_solution` for the selected
+entry. It never carries a local solution list. When an engine returns `unknown_capability`, it has
+no solutions and generation stops before the model runs. A solution or methodology that does not
+run is retained as future coverage with `scoreable: false`; it is not scored as a failure of
+Auto-Suggest or the Project Agent. See [`docs/solutions/README.md`](docs/solutions/README.md) and
+[`docs/methodologies/README.md`](docs/methodologies/README.md) for the contracts.
 
 ## The rule that makes an eval trustworthy
 
@@ -100,9 +102,9 @@ export OPENAI_API_KEY=...
 uv run agent-eval-generator --profiles 5
 ```
 
-**The model has no workspace tools.** A test case invents its own systems and tables. The caller
-passes a fresh methodology registry snapshot so the generated case still records what the engine
-can run without exposing a person's workspace to the model.
+**The model has no workspace tools.** A test case invents its own systems and tables. The generator
+passes fresh methodology and solution registry snapshots as context so the generated case records
+what the engine can run without exposing a person's workspace to the model.
 
 ## First runs — what actually happened
 
@@ -131,9 +133,10 @@ apiculture, and two others with nothing in common.
 
 ## Known limitations
 
-- **No grading yet.** Traces record `graded: false`. Until the generated case is scored by Zetta's
-  graders it is a document, not an eval. Profiles whose methodology is not runnable are explicitly
-  excluded from scoring rather than counted as agent failures.
+- **No grading run yet.** Traces record `graded: false`. Profiles now carry the solution's offline
+  checks and decision policy, but until a generated case is scored by Zetta's deterministic
+  graders it remains an unexecuted eval. Profiles whose solution or methodology is not runnable
+  are explicitly excluded from scoring rather than counted as agent failures.
 - **The model claims "supportable since data is captured" with no evidence.** There is no
   capability that reports capture state, so the discovery/capture distinction is stated in the
   prompt and unverifiable by the agent. That needs a capability before the distinction can be
@@ -146,9 +149,10 @@ apiculture, and two others with nothing in common.
 The Eval Generator is a library agent of lake: a person talks to it (Ask Orama → Talk to, or Ask
 Orama brings it in) and asks for a test case — "a head of collections at a water utility". One turn
 is one `run_once`, steered by the request, with **no workspace tools**: a test case invents its own
-systems and tables (given the person's workspace, the model reused their tables). Lake passes the
-fresh `list_methodologies` response as turn context, then the profile is synthesized and validated
-as the CLI does. The summary opens with the situation's first sentence.
+systems and tables (given the person's workspace, the model reused their tables). The generator
+reads fresh methodology and solution registry responses through lake, places them in turn context,
+then synthesizes and validates the profile as the CLI does. The summary opens with the situation's
+first sentence.
 It answers the profile and its tables (row counts, columns, five sample rows each) as
 `{reply, result: {kind: eval_profile, profile, tables, problems}}` and **publishes nothing**; the
 Hugging Face upload stays the CLI's.
