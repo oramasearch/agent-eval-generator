@@ -44,18 +44,30 @@ def validate(directory: Path) -> list[str]:
     except json.JSONDecodeError as error:
         return [f"profile.json is not valid JSON: {error}"]
 
-    for field in ("profile_id", "tables", "persona"):
+    for field in ("profile_id", "tables", "persona", "methodology", "solution"):
         if not profile.get(field):
             problems.append(f"profile.json is missing `{field}`")
+    if not isinstance(profile.get("runnable"), bool):
+        problems.append("profile.json is missing boolean `runnable`")
+    elif not profile["runnable"] and not profile.get("issue"):
+        problems.append("an unrunnable profile must name its methodology issue")
 
-    declared = {f"{t.get('database')}.{t.get('name')}" for t in profile.get("tables", [])}
+    declared = {
+        f"{t.get('database')}.{t.get('name')}" for t in profile.get("tables", [])
+    }
     records = directory / "records"
-    present = {p.name.removesuffix(".jsonl") for p in records.glob("*.jsonl")} if records.exists() else set()
+    present = (
+        {p.name.removesuffix(".jsonl") for p in records.glob("*.jsonl")}
+        if records.exists()
+        else set()
+    )
 
     # THE check that would have caught the coffee-in-agriculture defect: a record file nobody
     # declared is a leftover from another profile, and it is invisible unless you look.
     for stray in sorted(present - declared):
-        problems.append(f"records/{stray}.jsonl is not declared in profile.json (stale file?)")
+        problems.append(
+            f"records/{stray}.jsonl is not declared in profile.json (stale file?)"
+        )
     for missing in sorted(declared - present):
         problems.append(f"table `{missing}` is declared but has no records file")
 
@@ -71,7 +83,11 @@ def validate(directory: Path) -> list[str]:
 
         columns = []
         for column in table.get("columns", []):
-            columns.append({"name": column, "type": "string"} if isinstance(column, str) else column)
+            columns.append(
+                {"name": column, "type": "string"}
+                if isinstance(column, str)
+                else column
+            )
         declared_names = {c["name"] for c in columns}
         actual_names = set(rows[0])
         for extra in sorted(actual_names - declared_names):
@@ -85,23 +101,40 @@ def validate(directory: Path) -> list[str]:
             declared_null = float(column.get("null_fraction") or 0.0)
             if declared_null <= 0.0 or column["name"] not in actual_names:
                 continue
-            observed = sum(1 for row in rows if row.get(column["name"]) is None) / len(rows)
+            observed = sum(1 for row in rows if row.get(column["name"]) is None) / len(
+                rows
+            )
             if abs(observed - declared_null) > 0.15:
                 problems.append(
                     f"`{name}.{column['name']}` declares null_fraction {declared_null:.2f} but "
                     f"{observed:.2f} of sampled rows are null — the awkwardness was described, "
-                    f"not generated")
+                    f"not generated"
+                )
 
         # Placeholder values mean the generator fell back rather than producing something the
         # column could plausibly hold. `"sku": "alpha"` shipped to the Hub before this check.
-        placeholders = {"alpha", "beta", "gamma", "delta", "epsilon", "string", "value", "foo"}
+        placeholders = {
+            "alpha",
+            "beta",
+            "gamma",
+            "delta",
+            "epsilon",
+            "string",
+            "value",
+            "foo",
+        }
         for column_name in sorted(actual_names):
             sample = [row.get(column_name) for row in rows[:60]]
-            hits = sum(1 for value in sample if isinstance(value, str) and value.lower() in placeholders)
+            hits = sum(
+                1
+                for value in sample
+                if isinstance(value, str) and value.lower() in placeholders
+            )
             if hits > len(sample) * 0.5:
                 problems.append(
                     f"`{name}.{column_name}` is mostly placeholder values — a column that carries "
-                    f"no meaning cannot be read, so it teaches nothing")
+                    f"no meaning cannot be read, so it teaches nothing"
+                )
 
         # `rows` is how big the SOURCE is; `records_sampled` is how many were packaged. They are
         # allowed to differ — a 500,000-row source with a 50,000-row sample is honest — but the
@@ -110,18 +143,25 @@ def validate(directory: Path) -> list[str]:
         actual = sum(1 for _ in path.open())
         sampled = table.get("records_sampled")
         if sampled is None:
-            if table.get("rows") and abs(table["rows"] - actual) > max(5, table["rows"] * 0.02):
+            if table.get("rows") and abs(table["rows"] - actual) > max(
+                5, table["rows"] * 0.02
+            ):
                 problems.append(
                     f"`{name}` declares {table['rows']} rows and the file has {actual} — set "
-                    f"`records_sampled` to say the records are a sample of a larger source")
+                    f"`records_sampled` to say the records are a sample of a larger source"
+                )
         elif abs(int(sampled) - actual) > max(5, int(sampled) * 0.02):
-            problems.append(f"`{name}` claims {sampled} sampled records but the file has {actual}")
+            problems.append(
+                f"`{name}` claims {sampled} sampled records but the file has {actual}"
+            )
 
     situation = directory / "situation.md"
     if not situation.exists() or len(situation.read_text().strip()) < 120:
         problems.append("situation.md is missing or too thin to describe a situation")
 
     if not any(c.get("state") == "captured" for c in profile.get("connections", [])):
-        problems.append("no connection is `captured` — nothing here could be trained on")
+        problems.append(
+            "no connection is `captured` — nothing here could be trained on"
+        )
 
     return problems

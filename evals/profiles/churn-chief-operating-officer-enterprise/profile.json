@@ -2,6 +2,8 @@
   "profile_id": "churn-chief-operating-officer-enterprise",
   "version": 1,
   "solution": "S-1",
+  "methodology": "M-1",
+  "runnable": true,
   "industry": "B2B SaaS",
   "persona": {
     "role": "Chief Operating Officer",

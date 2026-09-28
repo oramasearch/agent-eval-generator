@@ -34,9 +34,8 @@ it would have been a memory test rather than a reading-the-data test.
 ## Rules specific to this repo
 
 - **uv, never pip.** `uv sync`, `uv run`, `uv add`.
-- **The tool surface is derived from the node's OpenAPI** (`derive_tool_specs`), never
-  hand-written. The static table in `tools.py` is a fallback for when no node is reachable. The
-  first run failed because a hand-written spec said `name` where the capability required `dataset`.
+- **The model has no workspace tools.** It invents its systems and tables. The process receives a
+  fresh methodology registry snapshot as context, but does not expose it as a callable tool.
 - **A failed tool call is recorded, not swallowed.** The trace is training data, and an agent that
   never sees its own failures cannot learn to avoid them. It is also how we caught the model
   fabricating a schema after a 400.
@@ -53,6 +52,14 @@ it would have been a memory test rather than a reading-the-data test.
 
 `src/agent_eval_generator/prompts/vN.md`. **A prompt change is a model change** — a trace records
 which version it ran under, and traces from different versions are not comparable.
+
+## Methodologies come from the caller
+
+The lake library agent still has no workspace tools. Lake passes the current
+`list_methodologies` result in each turn, and the generator records `solution`, `methodology`, and
+the registry's `runnable` state on the profile. An unrunnable profile names its issue and is not
+scored. `unknown_capability` means the workspace predates the registry, so only M-1 is assumed to
+run. The full contract is in `docs/methodologies/README.md`.
 
 ## Running
 
