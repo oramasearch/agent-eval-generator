@@ -290,3 +290,39 @@ def test_the_summary_is_prose_not_a_heading():
         service.first_sentence("### Situation\n\nThe utility bills 40k homes. More.")
         == "The utility bills 40k homes."
     )
+
+
+def test_a_turn_calls_its_model_through_lakes_gateway_with_the_turns_key(tmp_path, monkeypatch):
+    """lake#248: the model is lake's `/openai/v1`, with the turn's own key, never a provider key."""
+    import httpx
+
+    from agent_eval_generator import model
+
+    profile = deepcopy(PROFILE)
+    profile["solution"] = "S-1"
+    profile["level"] = 1
+    profile["methodology"] = "M-1"
+    seen: list[httpx.Request] = []
+
+    def gateway(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(200, json={
+            "id": "chatcmpl-1", "object": "chat.completion", "created": 0, "model": "m",
+            "choices": [{"index": 0, "finish_reason": "stop", "message": {
+                "role": "assistant", "content": "```json\n" + json.dumps(profile) + "\n```"}}],
+            "usage": {"prompt_tokens": 10, "completion_tokens": 2, "total_tokens": 12}})
+
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.setattr(service, "gateway_client", lambda url, token: model.gateway_client(
+        url, token, http_client=httpx.Client(transport=httpx.MockTransport(gateway))))
+    answer = service.run_turn(
+        {"request": "collections at a water utility", "lake_url": "http://lake:8080",
+         "lake_token": "lat.task.secret"}, None, FakeZetta(), "m", tmp_path)
+    assert answer["ok"], answer
+    assert [str(request.url) for request in seen] == ["http://lake:8080/openai/v1/chat/completions"]
+    assert seen[0].headers["authorization"] == "Bearer lat.task.secret"
+
+    monkeypatch.delenv("LAKE_URL", raising=False)
+    refused = service.run_turn({"request": "x"}, None, FakeZetta(), "m", tmp_path)
+    assert not refused["ok"] and "lake_token" in refused["error"]
+    assert len(seen) == 1

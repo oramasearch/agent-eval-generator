@@ -157,7 +157,14 @@ It answers the profile and its tables (row counts, columns, five sample rows eac
 `{reply, result: {kind: eval_profile, profile, tables, problems}}` and **publishes nothing**; the
 Hugging Face upload stays the CLI's.
 
+**The model is reached through lake** (lake#248, lake `docs/api/model-gateway.md`): in lake every
+call goes to `<lake_url>/openai/v1` with the turn's own `lake_token` as the API key (`model.py`), so
+lake counts its tokens in the turn's workspace and enforces the account's model-token limit. The
+service holds no `OPENAI_API_KEY`, and a turn without a lake credential is refused. Only the command
+line (`Running`, above), which runs for no workspace, calls OpenAI directly with your own key.
+
 - `service.py`: `run_turn`, and `agent-eval-generator-serve` (`GET /healthz`, `POST /v1/turn`).
+- `model.py`: the OpenAI client pointed at lake's model gateway with the turn's credential.
 - `lake_bus.py`: takes the turns from lake's agent bus with this agent's own `AGENT_BUS_TOKEN`
   (lake `docs/api/agent-bus.md`), publishing progress and the answer.
 - `Dockerfile`: private image `oramasearch/agent-eval-generator`, created private before its first
