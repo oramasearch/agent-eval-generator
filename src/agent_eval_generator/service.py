@@ -19,11 +19,10 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
-from openai import OpenAI
-
 from agent_eval_generator import lake_bus
 from agent_eval_generator.agent import PROMPT_VERSION, _parse, run_once
 from agent_eval_generator.methodologies import apply_snapshot, snapshot_for_turn
+from agent_eval_generator.model import gateway_client
 from agent_eval_generator.records import package
 from agent_eval_generator.solutions import (
     apply_solution,
@@ -88,9 +87,18 @@ def run_turn(
                 "solution registry: not deployed yet; no solutions are available"
             ),
         }
+    if client is None:
+        # The model is reached through lake with the turn's own key, which counts its tokens in
+        # the turn's workspace (lake#248); this agent holds no provider key.
+        model_url = turn.get("lake_url") or os.environ.get("LAKE_URL", "")
+        model_key = turn.get("lake_token") or ""
+        if not model_url or not model_key:
+            return {"ok": False, "error": "a turn needs lake_url and its lake_token to reach the "
+                                          "model through lake"}
+        client = gateway_client(model_url, model_key)
     trace = run_once(
         source,
-        client or OpenAI(),
+        client,
         model,
         [],
         request=request,
