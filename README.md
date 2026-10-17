@@ -3,6 +3,8 @@
 **Agent 5** of the Zetta bootstrap scaffold ([zetta#986](https://github.com/oramasearch/zetta/issues/986)).
 Generates the eval cases the other four agents are measured against.
 
+Current release: [v0.1.0](docs/releases/v0.1.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
+
 ## Why this one is first
 
 Hand-written evals inherit the author's blind spots, and that is measured rather than assumed.
@@ -90,6 +92,7 @@ src/agent_eval_generator/
 traces/          recorded runs; the artifact step 2 consumes
 evals/           generated cases + the grader that scores them
 reports/         dated eval reports - the report is the deliverable
+docs/            solutions/, methodologies/ (the registry contracts), releases/ (release notes)
 ```
 
 ## Running
