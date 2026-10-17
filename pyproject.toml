@@ -1,7 +1,7 @@
 [project]
 name = "agent-eval-generator"
 version = "0.1.0"
-description = "Add your description here"
+description = "Eval Generator Agent: generates eval profiles (a situation plus its data) to score Orama's agents, as a Lake library agent and a batch CLI"
 readme = "README.md"
 authors = [
     { name = "Steve Sperandeo", email = "steve.sperandeo@gmail.com" }

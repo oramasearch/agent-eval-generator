@@ -15,6 +15,7 @@ from __future__ import annotations
 import json
 import os
 import tempfile
+from importlib import metadata
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
@@ -33,6 +34,20 @@ from agent_eval_generator.tools import LakeWorkspaceClient
 from agent_eval_generator.validate import validate
 
 SAMPLE_ROWS = 5
+
+
+def health() -> dict[str, Any]:
+    """`GET /healthz`: the agent, its prompt version and the installed package's version."""
+    try:
+        version = metadata.version("agent-eval-generator")
+    except metadata.PackageNotFoundError:
+        version = "unknown"
+    return {
+        "ok": True,
+        "agent": "agent-eval-generator",
+        "version": version,
+        "prompt_version": PROMPT_VERSION,
+    }
 
 
 def registry_source(turn: dict[str, Any], injected: Any = None) -> Any:
@@ -201,14 +216,7 @@ def serve() -> int:
 
         def do_GET(self) -> None:  # noqa: N802 (the stdlib's name)
             if self.path == "/healthz":
-                self._send(
-                    200,
-                    {
-                        "ok": True,
-                        "agent": "agent-eval-generator",
-                        "prompt_version": PROMPT_VERSION,
-                    },
-                )
+                self._send(200, health())
                 return
             self._send(404, {"ok": False, "error": "not found"})
 
