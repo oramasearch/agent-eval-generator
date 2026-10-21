@@ -19,6 +19,7 @@ from importlib import metadata
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from agent_eval_generator import lake_bus
 from agent_eval_generator.agent import PROMPT_VERSION, _parse, run_once
@@ -50,11 +51,26 @@ def health() -> dict[str, Any]:
     }
 
 
+def lakes_url() -> str:
+    """Lake's address from this service's environment (`LAKE_URL`), the only place a turn's
+    credential is ever sent; empty when unset or not an absolute http(s) URL without user info."""
+    lake = os.environ.get("LAKE_URL", "").strip().rstrip("/")
+    try:
+        parts = urlsplit(lake)
+        parts.port  # noqa: B018 (raises on a malformed port)
+    except ValueError:
+        return ""
+    if parts.scheme.lower() not in ("http", "https") or not parts.hostname or "@" in parts.netloc:
+        return ""
+    return lake
+
+
 def registry_source(turn: dict[str, Any], injected: Any = None) -> Any:
-    """Use an injected engine client or the lake credential attached to this turn."""
+    """Use an injected engine client or the lake credential attached to this turn, sent only to
+    this service's `LAKE_URL`; a turn's own `lake_url` is never used (agent-eval-generator#13)."""
     if injected is not None:
         return injected
-    lake_url = turn.get("lake_url") or os.environ.get("LAKE_URL")
+    lake_url = lakes_url()
     lake_token = turn.get("lake_token")
     customer_id = turn.get("customer_id")
     if lake_url and lake_token and customer_id:
@@ -84,6 +100,11 @@ def run_turn(
     model = model or os.environ.get(
         "EVAL_GEN_MODEL", os.environ.get("AGENT_MODEL", "gpt-4o")
     )
+    if (zetta is None or client is None) and not lakes_url():
+        # The turn's credential goes only to Lake at this service's own LAKE_URL, never to an
+        # address the request names (agent-eval-generator#13).
+        return {"ok": False, "error": "LAKE_URL is not set: this agent sends a turn's "
+                                      "credential only to Lake's configured address"}
     source = registry_source(turn, zetta)
     # No model workspace tools: a test case invents its own systems and tables. The generator
     # reads the current registries before asking the model instead.
@@ -104,13 +125,14 @@ def run_turn(
         }
     if client is None:
         # The model is reached through lake with the turn's own key, which counts its tokens in
-        # the turn's workspace (lake#248); this agent holds no provider key.
-        model_url = turn.get("lake_url") or os.environ.get("LAKE_URL", "")
+        # the turn's workspace (lake#248); this agent holds no provider key. The address is this
+        # service's LAKE_URL; the turn's own `lake_url` is never used, so the key cannot be sent
+        # to a host the caller names (agent-eval-generator#13).
         model_key = turn.get("lake_token") or ""
-        if not model_url or not model_key:
-            return {"ok": False, "error": "a turn needs lake_url and its lake_token to reach the "
-                                          "model through lake"}
-        client = gateway_client(model_url, model_key)
+        if not model_key:
+            return {"ok": False, "error": "a turn needs its lake_token to reach the model "
+                                          "through lake"}
+        client = gateway_client(lakes_url(), model_key)
     trace = run_once(
         source,
         client,

@@ -161,10 +161,16 @@ It answers the profile and its tables (row counts, columns, five sample rows eac
 Hugging Face upload stays the CLI's.
 
 **The model is reached through lake** (lake#248, lake `docs/api/model-gateway.md`): in lake every
-call goes to `<lake_url>/openai/v1` with the turn's own `lake_token` as the API key (`model.py`), so
+call goes to `<LAKE_URL>/openai/v1` with the turn's own `lake_token` as the API key (`model.py`), so
 lake counts its tokens in the turn's workspace and enforces the account's model-token limit. The
 service holds no `OPENAI_API_KEY`, and a turn without a lake credential is refused. Only the command
 line (`Running`, above), which runs for no workspace, calls OpenAI directly with your own key.
+
+**A turn's credential goes only to Lake at this service's own `LAKE_URL`** (#13). The registry reads
+(`<LAKE_URL>/v1/workspace_query`) and the model gateway both use `LAKE_URL` from the environment; a
+turn's `lake_url` is ignored, so whoever submits a turn cannot have its bearer sent to a host of their
+choosing. With `LAKE_URL` unset, or not an absolute `http(s)` URL without user info, every turn is
+refused before a request is made.
 
 - `service.py`: `run_turn`, and `agent-eval-generator-serve` (`GET /healthz`, `POST /v1/turn`).
 - `model.py`: the OpenAI client pointed at lake's model gateway with the turn's credential.
