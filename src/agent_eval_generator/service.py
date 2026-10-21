@@ -12,6 +12,7 @@ Standard library only.
 
 from __future__ import annotations
 
+import hmac
 import json
 import os
 import tempfile
@@ -202,8 +203,24 @@ def run_turn(
     }
 
 
-def serve() -> int:
-    token = os.environ.get("AGENT_SERVICE_TOKEN", "")
+def turn_refusal(authorization: str | None, token: str) -> tuple[int, str] | None:
+    """Why `POST /v1/turn` is refused, as `(status, error)`, or None when the caller may proceed.
+
+    The route fails closed: with `AGENT_SERVICE_TOKEN` unset or empty every turn is refused, so a
+    service started without it is never open. The bearer is compared in constant time
+    (`hmac.compare_digest` over bytes), so the comparison's timing says nothing about the token.
+    """
+    if not token:
+        return 503, "AGENT_SERVICE_TOKEN is not set; this service refuses every turn"
+    expected = f"Bearer {token}".encode()
+    supplied = (authorization or "").encode("utf-8", "surrogateescape")
+    if not hmac.compare_digest(supplied, expected):
+        return 401, "unauthorized"
+    return None
+
+
+def make_handler(token: str) -> type[BaseHTTPRequestHandler]:
+    """The HTTP handler for `GET /healthz` and `POST /v1/turn`, requiring `token` as the bearer."""
 
     class Handler(BaseHTTPRequestHandler):
         def _send(self, status: int, body: dict[str, Any]) -> None:
@@ -224,8 +241,10 @@ def serve() -> int:
             if self.path != "/v1/turn":
                 self._send(404, {"ok": False, "error": "not found"})
                 return
-            if token and self.headers.get("Authorization") != f"Bearer {token}":
-                self._send(401, {"ok": False, "error": "unauthorized"})
+            refusal = turn_refusal(self.headers.get("Authorization"), token)
+            if refusal is not None:
+                status, error = refusal
+                self._send(status, {"ok": False, "error": error})
                 return
             try:
                 turn = json.loads(
@@ -246,8 +265,23 @@ def serve() -> int:
                 flush=True,
             )
 
+    return Handler
+
+
+def serve() -> int:
+    token = os.environ.get("AGENT_SERVICE_TOKEN", "")
+    if not token:
+        print(
+            json.dumps(
+                {
+                    "agent": "agent-eval-generator",
+                    "warning": "AGENT_SERVICE_TOKEN is not set; POST /v1/turn refuses every turn",
+                }
+            ),
+            flush=True,
+        )
     port = int(os.environ.get("PORT", "8080"))
     print(json.dumps({"agent": "agent-eval-generator", "listening": port}), flush=True)
     lake_bus.start_from_env(run_turn, "agent-eval-generator")
-    ThreadingHTTPServer(("0.0.0.0", port), Handler).serve_forever()
+    ThreadingHTTPServer(("0.0.0.0", port), make_handler(token)).serve_forever()
     return 0

@@ -167,9 +167,14 @@ service holds no `OPENAI_API_KEY`, and a turn without a lake credential is refus
 line (`Running`, above), which runs for no workspace, calls OpenAI directly with your own key.
 
 - `service.py`: `run_turn`, and `agent-eval-generator-serve` (`GET /healthz`, `POST /v1/turn`).
+  `POST /v1/turn` requires `Authorization: Bearer <AGENT_SERVICE_TOKEN>`, compared in constant
+  time (`401` otherwise). The route fails closed: with `AGENT_SERVICE_TOKEN` unset or empty it
+  refuses every turn with `503` (the operator always sets it; set it yourself for a hand-run
+  service). Turns from lake's bus do not use this token.
 - `model.py`: the OpenAI client pointed at lake's model gateway with the turn's credential.
 - `lake_bus.py`: takes the turns from lake's agent bus with this agent's own `AGENT_BUS_TOKEN`
   (lake `docs/api/agent-bus.md`), publishing progress and the answer.
 - `Dockerfile`: private image `oramasearch/agent-eval-generator`, created private before its first
   push.
-- Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_lake_bus.py`).
+- Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_service_auth.py`,
+  `tests/test_lake_bus.py`).
