@@ -3,7 +3,7 @@
 **Agent 5** of the Zetta bootstrap scaffold ([zetta#986](https://github.com/oramasearch/zetta/issues/986)).
 Generates the eval cases the other four agents are measured against.
 
-Current release: [v0.1.0](docs/releases/v0.1.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
+Current release: [v0.2.0](docs/releases/v0.2.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
 
 ## Why this one is first
 
@@ -90,8 +90,7 @@ src/agent_eval_generator/
   tools.py       tool defs; calls go to a live Zetta node over /v1
   prompts/       versioned - a prompt change is a model change
 traces/          recorded runs; the artifact step 2 consumes
-evals/           generated cases + the grader that scores them
-reports/         dated eval reports - the report is the deliverable
+evals/           generated profiles (profiles/) and drafts (drafts/)
 docs/            solutions/, methodologies/ (the registry contracts), releases/ (release notes)
 ```
 
@@ -102,7 +101,7 @@ uv sync
 export ZETTA_BASE_URL=http://127.0.0.1:4800
 export ZETTA_TOKEN=<the owner bearer the node prints once>
 export OPENAI_API_KEY=...
-uv run agent-eval-generator --profiles 5
+uv run agent-eval-generator --cases 5
 ```
 
 **The model has no workspace tools.** A test case invents its own systems and tables. The generator
@@ -161,15 +160,26 @@ It answers the profile and its tables (row counts, columns, five sample rows eac
 Hugging Face upload stays the CLI's.
 
 **The model is reached through lake** (lake#248, lake `docs/api/model-gateway.md`): in lake every
-call goes to `<lake_url>/openai/v1` with the turn's own `lake_token` as the API key (`model.py`), so
+call goes to `<LAKE_URL>/openai/v1` with the turn's own `lake_token` as the API key (`model.py`), so
 lake counts its tokens in the turn's workspace and enforces the account's model-token limit. The
 service holds no `OPENAI_API_KEY`, and a turn without a lake credential is refused. Only the command
 line (`Running`, above), which runs for no workspace, calls OpenAI directly with your own key.
 
+**A turn's credential goes only to Lake at this service's own `LAKE_URL`** (#13). The registry reads
+(`<LAKE_URL>/v1/workspace_query`) and the model gateway both use `LAKE_URL` from the environment; a
+turn's `lake_url` is ignored, so whoever submits a turn cannot have its bearer sent to a host of their
+choosing. With `LAKE_URL` unset, or not an absolute `http(s)` URL without user info, every turn is
+refused before a request is made.
+
 - `service.py`: `run_turn`, and `agent-eval-generator-serve` (`GET /healthz`, `POST /v1/turn`).
+  `POST /v1/turn` requires `Authorization: Bearer <AGENT_SERVICE_TOKEN>`, compared in constant
+  time (`401` otherwise). The route fails closed: with `AGENT_SERVICE_TOKEN` unset or empty it
+  refuses every turn with `503` (the operator always sets it; set it yourself for a hand-run
+  service). Turns from lake's bus do not use this token.
 - `model.py`: the OpenAI client pointed at lake's model gateway with the turn's credential.
 - `lake_bus.py`: takes the turns from lake's agent bus with this agent's own `AGENT_BUS_TOKEN`
   (lake `docs/api/agent-bus.md`), publishing progress and the answer.
 - `Dockerfile`: private image `oramasearch/agent-eval-generator`, created private before its first
   push.
-- Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_lake_bus.py`).
+- Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_service_auth.py`,
+  `tests/test_lake_bus.py`).

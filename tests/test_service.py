@@ -315,14 +315,21 @@ def test_a_turn_calls_its_model_through_lakes_gateway_with_the_turns_key(tmp_pat
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     monkeypatch.setattr(service, "gateway_client", lambda url, token: model.gateway_client(
         url, token, http_client=httpx.Client(transport=httpx.MockTransport(gateway))))
+    monkeypatch.setenv("LAKE_URL", "http://lake:8080")
+    # The turn's own lake_url is never used: the key goes to this service's LAKE_URL (#13).
     answer = service.run_turn(
-        {"request": "collections at a water utility", "lake_url": "http://lake:8080",
+        {"request": "collections at a water utility", "lake_url": "http://elsewhere:9",
          "lake_token": "lat.task.secret"}, None, FakeZetta(), "m", tmp_path)
     assert answer["ok"], answer
     assert [str(request.url) for request in seen] == ["http://lake:8080/openai/v1/chat/completions"]
     assert seen[0].headers["authorization"] == "Bearer lat.task.secret"
 
-    monkeypatch.delenv("LAKE_URL", raising=False)
     refused = service.run_turn({"request": "x"}, None, FakeZetta(), "m", tmp_path)
     assert not refused["ok"] and "lake_token" in refused["error"]
+    assert len(seen) == 1
+
+    monkeypatch.delenv("LAKE_URL", raising=False)
+    refused = service.run_turn({"request": "x", "lake_url": "http://lake:8080",
+                                "lake_token": "lat.task.secret"}, None, FakeZetta(), "m", tmp_path)
+    assert not refused["ok"] and "LAKE_URL is not set" in refused["error"]
     assert len(seen) == 1
