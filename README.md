@@ -3,7 +3,7 @@
 **Agent 5** of the Zetta bootstrap scaffold ([zetta#986](https://github.com/oramasearch/zetta/issues/986)).
 Generates the eval cases the other four agents are measured against.
 
-Current release: [v0.1.0](docs/releases/v0.1.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
+Current release: [v0.2.0](docs/releases/v0.2.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
 
 ## Why this one is first
 
@@ -90,8 +90,7 @@ src/agent_eval_generator/
   tools.py       tool defs; calls go to a live Zetta node over /v1
   prompts/       versioned - a prompt change is a model change
 traces/          recorded runs; the artifact step 2 consumes
-evals/           generated cases + the grader that scores them
-reports/         dated eval reports - the report is the deliverable
+evals/           generated profiles (profiles/) and drafts (drafts/)
 docs/            solutions/, methodologies/ (the registry contracts), releases/ (release notes)
 ```
 
@@ -102,7 +101,7 @@ uv sync
 export ZETTA_BASE_URL=http://127.0.0.1:4800
 export ZETTA_TOKEN=<the owner bearer the node prints once>
 export OPENAI_API_KEY=...
-uv run agent-eval-generator --profiles 5
+uv run agent-eval-generator --cases 5
 ```
 
 **The model has no workspace tools.** A test case invents its own systems and tables. The generator
