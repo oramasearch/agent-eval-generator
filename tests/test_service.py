@@ -30,7 +30,7 @@ M4 = {
     "solutions": ["S-5"],
     "runnable": False,
     "partial": False,
-    "issue": "https://github.com/oramasearch/zetta/issues/1043",
+    "issue": "https://tracker.example.com/issues/1043",
 }
 S1 = {
     "id": "S-1",
@@ -67,7 +67,7 @@ S5 = {
     "pipeline_order": ["M-4"],
     "decision_policy_template": "Planner-owned exceptions and override reasons.",
     "runnable": False,
-    "issue": "https://github.com/oramasearch/zetta/issues/1102",
+    "issue": "https://tracker.example.com/issues/1102",
 }
 
 

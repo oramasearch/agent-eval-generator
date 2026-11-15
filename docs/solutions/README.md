@@ -30,7 +30,7 @@ A generated profile includes the selection and the registry-owned evaluation fac
   "level": 1,
   "methodology": "M-1",
   "runnable": false,
-  "issue": "https://github.com/oramasearch/zetta/issues/1102",
+  "issue": "",
   "decision_policy": "Risk and treatment tiers with eligibility, contact caps, approvals, and a kill switch.",
   "solution_checks": {
     "capability_level": {"level": 1, "name": "CL-1", "description": "..."},

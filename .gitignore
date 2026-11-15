@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 # Traces and reports are the DELIVERABLE and are committed. Only local scratch is ignored.
 .scratch/
-# The 1.6M records live on HuggingFace (OramaSearch/agent-eval-profiles), which is where a
+# The generated records go to a Hugging Face dataset (EVAL_PROFILES_DATASET), which is where a
 # dataset belongs. profile.json and situation.md are committed so the SITUATIONS are reviewable
 # in a diff; the records are not.
 evals/profiles/*/records/

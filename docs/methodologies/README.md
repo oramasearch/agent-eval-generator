@@ -20,7 +20,7 @@ turn and passes that response in the turn body under `methodologies`:
         "solutions": ["S-5", "S-6"],
         "runnable": false,
         "partial": false,
-        "issue": "https://github.com/oramasearch/zetta/issues/1043"
+        "issue": ""
       }
     ]
   }
@@ -45,7 +45,7 @@ Every newly generated `profile.json` contains:
   "solution": "S-5",
   "methodology": "M-4",
   "runnable": false,
-  "issue": "https://github.com/oramasearch/zetta/issues/1043"
+  "issue": ""
 }
 ```
 

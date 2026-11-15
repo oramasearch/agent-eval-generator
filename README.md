@@ -1,6 +1,6 @@
 # agent-eval-generator
 
-**Agent 5** of the Zetta bootstrap scaffold ([zetta#986](https://github.com/oramasearch/zetta/issues/986)).
+**Agent 5** of the Zetta bootstrap scaffold.
 Generates the eval cases the other four agents are measured against.
 
 Current release: [v0.2.0](docs/releases/v0.2.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
@@ -36,7 +36,9 @@ supportable — and the correct answer is "capture it first", not "cannot be don
 
 ## Profiles are an eval dataset, published to HuggingFace
 
-`OramaSearch/agent-eval-profiles` (private). A profile is a **tool for evaluating models**, not a
+The batch command line uploads each validated profile to the Hugging Face dataset named by
+`EVAL_PROFILES_DATASET` (`<owner>/<name>`, with your own `hf` login). Unset, nothing is uploaded and
+profiles stay in `evals/profiles/`. A profile is a **tool for evaluating models**, not a
 fixture for an engine — it must be scoreable without a running Zetta node.
 
 ```
@@ -49,7 +51,7 @@ Building that loader first, and treating it as the deliverable, was a wrong turn
 
 ## What it produces
 
-Per [zetta#986](https://github.com/oramasearch/zetta/issues/986):
+Per zetta#986:
 
 1. a random-ish **workspace profile**
 2. a **task option set** for that profile
@@ -79,7 +81,7 @@ correctness profiles (`supervised_core`, `forecast_core`, `unsupervised_core`, `
 `decisioning_core`, `perception_core`, `uncertainty_core`).
 
 That is also what makes a recorded trace **verifiable rather than imitated**, which is what
-[zetta#986](https://github.com/oramasearch/zetta/issues/986) step 2 needs when these traces become
+zetta#986 step 2 needs when these traces become
 SFT and RLVR data.
 
 ## Layout
@@ -146,7 +148,7 @@ apiculture, and two others with nothing in common.
 - **The only dataset on the test node is a 24-row scoring output**, not a training source. Cases
   generated against it are shallow by construction.
 
-## In lake (lake#263)
+## In lake
 
 The Eval Generator is a library agent of lake: a person talks to it (Ask Orama → Talk to, or Ask
 Orama brings it in) and asks for a test case — "a head of collections at a water utility". One turn
@@ -165,7 +167,7 @@ lake counts its tokens in the turn's workspace and enforces the account's model-
 service holds no `OPENAI_API_KEY`, and a turn without a lake credential is refused. Only the command
 line (`Running`, above), which runs for no workspace, calls OpenAI directly with your own key.
 
-**A turn's credential goes only to Lake at this service's own `LAKE_URL`** (#13). The registry reads
+**A turn's credential goes only to Lake at this service's own `LAKE_URL`**. The registry reads
 (`<LAKE_URL>/v1/workspace_query`) and the model gateway both use `LAKE_URL` from the environment; a
 turn's `lake_url` is ignored, so whoever submits a turn cannot have its bearer sent to a host of their
 choosing. With `LAKE_URL` unset, or not an absolute `http(s)` URL without user info, every turn is
@@ -179,7 +181,6 @@ refused before a request is made.
 - `model.py`: the OpenAI client pointed at lake's model gateway with the turn's credential.
 - `lake_bus.py`: takes the turns from lake's agent bus with this agent's own `AGENT_BUS_TOKEN`
   (lake `docs/api/agent-bus.md`), publishing progress and the answer.
-- `Dockerfile`: private image `oramasearch/agent-eval-generator`, created private before its first
-  push.
+- `Dockerfile`: the image `oramasearch/agent-eval-generator`.
 - Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_service_auth.py`,
-  `tests/test_lake_bus.py`).
+  `tests/test_lake_bus.py`, `tests/test_upload_target.py`).
