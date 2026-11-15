@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Tool definitions for the eval generator — every call goes to a live Zetta node.
 
 An agent scaffolded against mocks proves nothing about whether the platform supports the job,

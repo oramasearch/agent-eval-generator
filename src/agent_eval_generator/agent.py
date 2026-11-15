@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """The eval generator loop.
 
 Deliberately thin. The value is not in orchestration cleverness — it is in (a) every tool call

@@ -183,3 +183,9 @@ refused before a request is made.
   push.
 - Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_service_auth.py`,
   `tests/test_lake_bus.py`).
+
+## License
+
+MIT, see [LICENSE](LICENSE). Third-party components and their licenses are in
+[THIRD_PARTY_LICENSES](THIRD_PARTY_LICENSES). Contributions are welcome under the Developer
+Certificate of Origin; see [CONTRIBUTING.md](CONTRIBUTING.md).

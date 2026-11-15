@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Trace recording — the artifact, not logging.
 
 zetta#986 step 2 turns these into SFT and RLVR data, so a run that was not recorded did not

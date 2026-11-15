@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Generate the RECORDS a profile comes with, and package it as a portable eval dataset.
 
 A profile is not a description of data that exists elsewhere — it comes with its data. And it is

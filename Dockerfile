@@ -1,4 +1,6 @@
 # syntax=docker/dockerfile:1
+# SPDX-License-Identifier: MIT
+
 # The Eval Generator as a lake library agent (lake#263): private on Docker Hub as
 # oramasearch/agent-eval-generator. It takes turns from lake's agent bus and answers one eval
 # profile per request; the batch CLI and its Hugging Face upload stay outside the image.

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """The Eval Generator as a library agent of lake (lake#263): one profile per turn, on request.
 
 In lake a person talks to it (Ask Orama → Talk to, or through Ask Orama): "a realistic test case
