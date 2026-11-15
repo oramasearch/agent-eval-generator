@@ -1,11 +1,11 @@
 ---
-license: other
+license: mit
 tags: [eval, agent, profile, synthetic]
 ---
 
 # agent-eval-profiles
 
-**Evaluation profiles for Orama Studio's agents.** Private. Internal-confidential.
+**Evaluation profiles for Orama Studio's agents.** Synthetic: every situation, person, company and record is invented.
 
 A **profile is a situation plus its data**: who someone is, what they are responsible for, what
 data they can reach, and the actual schemas and records. It is a *tool for evaluating models*, not

@@ -28,6 +28,29 @@ from agent_eval_generator.tools import ZettaClient, dispatch
 from agent_eval_generator.trace import Trace
 from agent_eval_generator.validate import validate
 
+# The Hugging Face dataset the batch command line uploads each validated profile to, as
+# `<owner>/<name>`. Unset or empty, nothing is uploaded and profiles stay in `evals/profiles/`.
+UPLOAD_DATASET_ENV = "EVAL_PROFILES_DATASET"
+
+
+def upload_dataset() -> str | None:
+    """The configured upload target, or None when no dataset is set."""
+    value = os.environ.get(UPLOAD_DATASET_ENV, "").strip()
+    return value or None
+
+
+def upload_command(dataset: str, directory: Path, profile_id: str, rows: int) -> list[str]:
+    """`hf upload` of one profile folder into `dataset`, under the profile's own folder."""
+    return [
+        "hf",
+        "upload",
+        dataset,
+        str(directory),
+        profile_id,
+        "--repo-type=dataset",
+        f"--commit-message={profile_id}: {rows} records",
+    ]
+
 
 def _parse(output: str | None) -> dict[str, Any] | None:
     """Pull the JSON object out of the reply. Returns None rather than guessing — a profile we
@@ -240,25 +263,21 @@ def main() -> int:
 
             # Upload EACH profile as it finishes. A run that dies at profile 90 should leave 89
             # published, not nothing — one upload at the end is a single failure away from losing
-            # the whole batch.
-            upload = subprocess.run(
-                [
-                    "hf",
-                    "upload",
-                    "OramaSearch/agent-eval-profiles",
-                    str(directory),
-                    profile["profile_id"],
-                    "--repo-type=dataset",
-                    f"--commit-message={profile['profile_id']}: {rows} records",
-                ],
-                capture_output=True,
-                text=True,
-            )
-            state = (
-                "uploaded"
-                if upload.returncode == 0
-                else f"UPLOAD FAILED {upload.stderr[-120:]}"
-            )
+            # the whole batch. With no dataset configured the profile stays on disk only.
+            dataset = upload_dataset()
+            if dataset is None:
+                state = f"kept locally ({UPLOAD_DATASET_ENV} unset)"
+            else:
+                upload = subprocess.run(
+                    upload_command(dataset, directory, profile["profile_id"], rows),
+                    capture_output=True,
+                    text=True,
+                )
+                state = (
+                    "uploaded"
+                    if upload.returncode == 0
+                    else f"UPLOAD FAILED {upload.stderr[-120:]}"
+                )
             print(
                 f"[{index + 1}/{args.cases}] {profile['profile_id']} · "
                 f"{profile.get('industry')} · {rows:,} records · {state}",
