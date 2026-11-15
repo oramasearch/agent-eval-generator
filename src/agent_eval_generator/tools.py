@@ -27,17 +27,21 @@ class LakeWorkspaceClient:
         token: str,
         customer_id: str,
         send: Any = None,
+        headers: dict[str, str] | None = None,
     ) -> None:
         self.base_url = base_url.rstrip("/")
         self.token = token
         self.customer_id = customer_id
         self._send = send or httpx.post
+        # Sent with the token on every read: `X-Lake-Agent-Task` for a bus turn claimed by
+        # reference (lake#871, `lake_bus.task_credentials`), none otherwise.
+        self.headers = dict(headers or {})
 
     def read(self, capability: str, **params: Any) -> dict[str, Any]:
         """Call one engine read through ``workspace_query``."""
         response = self._send(
             f"{self.base_url}/v1/workspace_query",
-            headers={"Authorization": f"Bearer {self.token}"},
+            headers={**self.headers, "Authorization": f"Bearer {self.token}"},
             json={
                 "customer_id": self.customer_id,
                 "capability": capability,

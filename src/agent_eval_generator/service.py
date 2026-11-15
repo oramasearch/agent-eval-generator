@@ -75,7 +75,10 @@ def registry_source(turn: dict[str, Any], injected: Any = None) -> Any:
     lake_token = turn.get("lake_token")
     customer_id = turn.get("customer_id")
     if lake_url and lake_token and customer_id:
-        return LakeWorkspaceClient(lake_url, lake_token, customer_id)
+        # A bus turn claimed by reference carries the bus credential as `lake_token` and names its
+        # task on every call (lake#871); any other turn sends no task header.
+        return LakeWorkspaceClient(lake_url, lake_token, customer_id,
+                                   headers=lake_bus.task_headers(turn))
     return None
 
 
@@ -133,7 +136,7 @@ def run_turn(
         if not model_key:
             return {"ok": False, "error": "a turn needs its lake_token to reach the model "
                                           "through lake"}
-        client = gateway_client(lakes_url(), model_key)
+        client = gateway_client(lakes_url(), model_key, headers=lake_bus.task_headers(turn))
     trace = run_once(
         source,
         client,

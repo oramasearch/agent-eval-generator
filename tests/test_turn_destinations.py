@@ -26,7 +26,8 @@ def sent(monkeypatch):
 
     monkeypatch.setattr(tools.httpx, "post", post)
     monkeypatch.setattr(
-        service, "gateway_client", lambda url, token: pytest.fail(f"model called at {url}")
+        service, "gateway_client",
+        lambda url, token, **kw: pytest.fail(f"model called at {url}")
     )
     return requests
 
@@ -51,7 +52,7 @@ def test_the_model_address_is_lake_url_not_the_turns_lake_url(monkeypatch):
     monkeypatch.setenv("LAKE_URL", LAKE)
     called: list[str] = []
 
-    def gateway(url, token):
+    def gateway(url, token, **kwargs):
         called.append(url)
         raise RuntimeError("stop")
 
