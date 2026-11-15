@@ -89,6 +89,7 @@ src/agent_eval_generator/
   agent.py       the loop: prompt -> tool calls -> observation -> next call
   tools.py       tool defs; calls go to a live Zetta node over /v1
   prompts/       versioned - a prompt change is a model change
+  limits.py      what a model-written profile may contain: safe names, bounded size
 traces/          recorded runs; the artifact step 2 consumes
 evals/           generated profiles (profiles/) and drafts (drafts/)
 docs/            solutions/, methodologies/ (the registry contracts), releases/ (release notes)
@@ -107,6 +108,26 @@ uv run agent-eval-generator --cases 5
 **The model has no workspace tools.** A test case invents its own systems and tables. The generator
 passes fresh methodology and solution registry snapshots as context so the generated case records
 what the engine can run without exposing a person's workspace to the model.
+
+## Limits on a model-written profile
+
+The profile comes from the model, which the person's request steers, and one pod answers turns
+from every workspace. So `limits.check_profile` runs right after the profile is parsed, before
+anything is written or synthesized, in both the service and the batch CLI, and `synthesize()` runs
+it again:
+
+- **Names are single path components** (agent-eval-generator#21). `profile_id` and each table's
+  `database` and `name` must match `^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$`: no `/`, `.`, `..` or
+  absolute path. A missing `database` is `main`; an empty one is refused. `package()` and
+  `Table.write_jsonl()` also resolve every path and refuse one outside the directory they were
+  given, and `package()` removes an old `records/` only when it is a real directory inside `out`,
+  never through a symbolic link.
+- **Size is bounded** (agent-eval-generator#22): at most 12 tables, 64 columns per table, column
+  names of 128 characters, no table declared twice, and 5,000,000 generated cells (rows times
+  columns, after the 50,000-row sample cap) per profile.
+
+A profile outside the limits is answered as `invalid profile: <reason>` and its trace is graded
+failed.
 
 ## First runs — what actually happened
 
