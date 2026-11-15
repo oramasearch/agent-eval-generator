@@ -1,12 +1,8 @@
 # agent-eval-generator — Claude rules
 
-**Agent 5** of the Zetta bootstrap scaffold
-([zetta#986](https://github.com/oramasearch/zetta/issues/986)). Generates the eval cases the other
-four agents are measured against.
-
-**Read [`zetta-bridge/docs/agent-scaffold.md`](../../docs/agent-scaffold.md) first.** It owns the
-definitions this repo implements — what a profile is, discovery vs capture, and the five rules that
-make this a bootstrap rather than a demo. This file carries only what is specific to *this* agent.
+**Agent 5** of the Zetta bootstrap scaffold. Generates the eval cases the other four agents are
+measured against. Read `README.md` first; `AGENTS.md` carries the conventions that apply to every
+change. This file carries only what is specific to *this* agent.
 
 ## Why this agent exists, and why it was built first
 
@@ -70,9 +66,11 @@ fallback. The full contracts are in `docs/solutions/README.md` and
 uv sync
 export ZETTA_BASE_URL=http://127.0.0.1:4800
 export ZETTA_TOKEN=<the owner bearer the node prints once>
-export OPENAI_API_KEY=...        # or: source ~/.zshrc
+export OPENAI_API_KEY=...
 uv run agent-eval-generator --cases 1
 ```
 
 `--listen` sets the node's **peer** port; the API stays on **4800**. Reads are GET, actions are
-POST ([zetta#954](https://github.com/oramasearch/zetta/issues/954)).
+POST.
+
+Tests: `uv run --group dev pytest`.
