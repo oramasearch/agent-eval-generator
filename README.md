@@ -171,6 +171,15 @@ turn's `lake_url` is ignored, so whoever submits a turn cannot have its bearer s
 choosing. With `LAKE_URL` unset, or not an absolute `http(s)` URL without user info, every turn is
 refused before a request is made.
 
+**No task credential reaches this process** (lake#871). Each bus claim asks for `credentials:
+by_reference`: Lake keeps the task's credential and answers the body without it. Every call the
+turn makes to Lake (the registry reads and the model calls through the gateway) then carries this
+agent's bus credential and the header `X-Lake-Agent-Task: <task id>`, which Lake honours only while
+that task is claimed and `Running` on this agent. The bus calls themselves never send the header.
+A Lake from before lake#871 refuses the `credentials` field before claiming anything; the claim is
+then asked again without it, and the body's own `lake_token` is used as before, with no task
+header. Lake removes the in-body mode once every library agent claims by reference.
+
 - `service.py`: `run_turn`, and `agent-eval-generator-serve` (`GET /healthz`, `POST /v1/turn`).
   `POST /v1/turn` requires `Authorization: Bearer <AGENT_SERVICE_TOKEN>`, compared in constant
   time (`401` otherwise). The route fails closed: with `AGENT_SERVICE_TOKEN` unset or empty it
@@ -178,8 +187,11 @@ refused before a request is made.
   service). Turns from lake's bus do not use this token.
 - `model.py`: the OpenAI client pointed at lake's model gateway with the turn's credential.
 - `lake_bus.py`: takes the turns from lake's agent bus with this agent's own `AGENT_BUS_TOKEN`
-  (lake `docs/api/agent-bus.md`), publishing progress and the answer.
+  (lake `docs/api/agent-bus.md`), claiming each by reference (lake#871, `task_credentials`,
+  `task_headers`), publishing progress and the answer.
 - `Dockerfile`: private image `oramasearch/agent-eval-generator`, created private before its first
   push.
 - Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_service_auth.py`,
-  `tests/test_lake_bus.py`).
+  `tests/test_lake_bus.py`, `tests/test_turn_destinations.py`, and `tests/test_by_reference.py`
+  for claims by reference, the fallback on an older Lake, and the task header on every registry read
+  and model call).
