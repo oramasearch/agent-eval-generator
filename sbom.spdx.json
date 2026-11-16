@@ -3,16 +3,16 @@
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
   "name": "agent-eval-generator-v0.3.0",
-  "documentNamespace": "https://github.com/oramasearch/agent-eval-generator/sbom/64b16b2297c13b129f2efd85bab7e13a8ddf1079",
+  "documentNamespace": "https://github.com/oramasearch/agent-eval-generator/sbom/0e9f3ea16c998db92ed1786625700161ebb71de1",
   "creationInfo": {
-    "created": "2026-11-16T07:25:59Z",
+    "created": "2026-11-16T07:32:17Z",
     "creators": [
       "Organization: OramaSearch, Inc.",
       "Tool: tools/sbom.py",
       "Tool: syft"
     ],
     "licenseListVersion": "3.29",
-    "comment": "Made from source commit 64b16b2297c13b129f2efd85bab7e13a8ddf1079 by tools/sbom.py."
+    "comment": "Made from source commit 0e9f3ea16c998db92ed1786625700161ebb71de1 by tools/sbom.py."
   },
   "documentDescribes": [
     "SPDXRef-DocumentRoot"
