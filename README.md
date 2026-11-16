@@ -3,7 +3,7 @@
 **Agent 5** of the Zetta bootstrap scaffold ([zetta#986](https://github.com/oramasearch/zetta/issues/986)).
 Generates the eval cases the other four agents are measured against.
 
-Current release: [v0.2.0](docs/releases/v0.2.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
+Current release: [v0.3.0](docs/releases/v0.3.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
 
 ## Why this one is first
 
