@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Generate the RECORDS a profile comes with, and package it as a portable eval dataset.
 
 A profile is not a description of data that exists elsewhere — it comes with its data. And it is
@@ -28,6 +30,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable
 
+from agent_eval_generator.limits import safe_name, within
 from agent_eval_generator.tools import ZettaClient
 
 
@@ -40,8 +43,12 @@ class Table:
     rows: list[dict[str, Any]]
 
     def write_jsonl(self, directory: Path) -> Path:
+        # database and name come from the model: each must be one safe path component, and the
+        # file must resolve inside `directory` (agent-eval-generator#21).
+        database = safe_name(self.database, "table database")
+        name = safe_name(self.name, "table name")
         directory.mkdir(parents=True, exist_ok=True)
-        path = directory / f"{self.database}.{self.name}.jsonl"
+        path = within(directory, f"{database}.{name}.jsonl")
         with path.open("w") as handle:
             for row in self.rows:
                 handle.write(json.dumps(row) + "\n")
@@ -127,12 +134,21 @@ def package(profile: str, situation: str, tables: list[Table], out: Path) -> Pat
     This is the artifact that goes to HuggingFace. It must be readable and scoreable with no Zetta
     node running — a model being evaluated on it should need nothing but the files.
     """
-    directory = out / profile
+    # `profile` is the model's profile_id: one safe path component, resolved inside `out`, or the
+    # profile is refused before anything is written or deleted (agent-eval-generator#21).
+    out.mkdir(parents=True, exist_ok=True)
+    directory = within(out, safe_name(profile, "profile_id"))
     # Clear records first. Without this a previous profile's files persist in a reused directory
     # and get uploaded under the new name — which put `coffee.inventory_snapshots.jsonl` inside an
-    # agricultural-equipment-rental profile on the Hub.
+    # agricultural-equipment-rental profile on the Hub. Only a real directory inside `out` is
+    # removed, never a symbolic link: the per-turn temporary directory is empty anyway.
     import shutil
-    shutil.rmtree(directory / "records", ignore_errors=True)
+    records = directory / "records"
+    if records.is_symlink():
+        records.unlink()
+    elif records.is_dir():
+        within(out, directory.name, "records")
+        shutil.rmtree(records)
     directory.mkdir(parents=True, exist_ok=True)
     (directory / "situation.md").write_text(situation)
 

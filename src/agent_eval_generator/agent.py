@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """The eval generator loop.
 
 Deliberately thin. The value is not in orchestration cleverness — it is in (a) every tool call
@@ -17,6 +19,7 @@ from typing import Any
 
 from openai import OpenAI
 
+from agent_eval_generator.limits import check_profile
 from agent_eval_generator.methodologies import apply_snapshot, snapshot_for_turn
 from agent_eval_generator.records import package
 from agent_eval_generator.solutions import (
@@ -196,6 +199,8 @@ def main() -> int:
                 print(f"[{index + 1}/{args.cases}] no parseable profile — skipped")
                 continue
             try:
+                # Names become paths and sizes decide memory (agent-eval-generator#21, #22).
+                check_profile(profile)
                 apply_snapshot(profile, snapshot)
                 selected_solution = apply_solution(
                     profile, solution_snapshot, zetta

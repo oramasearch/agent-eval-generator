@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Solution registry snapshots and profile scoring contracts.
 
 The catalogue belongs to Zetta. The generator reads ``list_solutions`` before

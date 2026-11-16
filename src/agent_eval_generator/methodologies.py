@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Methodology snapshots attached to generated eval profiles.
 
 The lake library agent has no workspace tools. Lake therefore passes the latest

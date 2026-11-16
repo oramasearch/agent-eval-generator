@@ -3,7 +3,7 @@
 **Agent 5** of the Zetta bootstrap scaffold ([zetta#986](https://github.com/oramasearch/zetta/issues/986)).
 Generates the eval cases the other four agents are measured against.
 
-Current release: [v0.2.0](docs/releases/v0.2.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
+Current release: [v0.3.0](docs/releases/v0.3.0.md) (all releases: [`docs/releases/`](docs/releases/README.md)).
 
 ## Why this one is first
 
@@ -89,6 +89,7 @@ src/agent_eval_generator/
   agent.py       the loop: prompt -> tool calls -> observation -> next call
   tools.py       tool defs; calls go to a live Zetta node over /v1
   prompts/       versioned - a prompt change is a model change
+  limits.py      what a model-written profile may contain: safe names, bounded size
 traces/          recorded runs; the artifact step 2 consumes
 evals/           generated profiles (profiles/) and drafts (drafts/)
 docs/            solutions/, methodologies/ (the registry contracts), releases/ (release notes)
@@ -107,6 +108,26 @@ uv run agent-eval-generator --cases 5
 **The model has no workspace tools.** A test case invents its own systems and tables. The generator
 passes fresh methodology and solution registry snapshots as context so the generated case records
 what the engine can run without exposing a person's workspace to the model.
+
+## Limits on a model-written profile
+
+The profile comes from the model, which the person's request steers, and one pod answers turns
+from every workspace. So `limits.check_profile` runs right after the profile is parsed, before
+anything is written or synthesized, in both the service and the batch CLI, and `synthesize()` runs
+it again:
+
+- **Names are single path components** (agent-eval-generator#21). `profile_id` and each table's
+  `database` and `name` must match `^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$`: no `/`, `.`, `..` or
+  absolute path. A missing `database` is `main`; an empty one is refused. `package()` and
+  `Table.write_jsonl()` also resolve every path and refuse one outside the directory they were
+  given, and `package()` removes an old `records/` only when it is a real directory inside `out`,
+  never through a symbolic link.
+- **Size is bounded** (agent-eval-generator#22): at most 12 tables, 64 columns per table, column
+  names of 128 characters, no table declared twice, and 5,000,000 generated cells (rows times
+  columns, after the 50,000-row sample cap) per profile.
+
+A profile outside the limits is answered as `invalid profile: <reason>` and its trace is graded
+failed.
 
 ## First runs — what actually happened
 
@@ -181,5 +202,12 @@ refused before a request is made.
   (lake `docs/api/agent-bus.md`), publishing progress and the answer.
 - `Dockerfile`: private image `oramasearch/agent-eval-generator`, created private before its first
   push.
+- The Dockerfile pins its bases by multi-platform index digest (lake#1003): `python:3.12-slim@sha256:5e2bdb1b…` for both stages and `ghcr.io/astral-sh/uv:0.11.7@sha256:240fb85a…`. Moving one is a reviewed change of its digest.
 - Tests: `uv run --group dev pytest` (`tests/test_service.py`, `tests/test_service_auth.py`,
   `tests/test_lake_bus.py`).
+
+## License
+
+MIT, see [LICENSE](LICENSE). Third-party components and their licenses are in
+[THIRD_PARTY_LICENSES](THIRD_PARTY_LICENSES). Contributions are welcome under the
+[Contributor License Agreement](CLA.md); see [CONTRIBUTING.md](CONTRIBUTING.md).

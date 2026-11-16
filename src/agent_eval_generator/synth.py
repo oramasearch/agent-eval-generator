@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Turn an agent-declared schema into real records.
 
 The agent invents the situation and the schema; this makes the rows. Types are inferred from the
@@ -10,6 +12,7 @@ from __future__ import annotations
 import random
 from typing import Any
 
+from agent_eval_generator.limits import check_profile, table_database, table_rows
 from agent_eval_generator.records import Table
 
 
@@ -59,13 +62,18 @@ def _value(column: dict[str, Any], rng: random.Random, row: int) -> Any:
 
 
 def synthesize(profile: dict[str, Any], seed: int = 11) -> list[Table]:
-    """Build one Table per declared table, honouring row counts and null fractions."""
+    """Build one Table per declared table, honouring row counts and null fractions.
+
+    The profile's names and size are checked first (`limits.check_profile`): at most 12 tables,
+    64 columns per table and 5,000,000 generated cells, so one turn cannot exhaust the shared pod
+    (agent-eval-generator#22). Callers check before calling too; this is the last line.
+    """
+    check_profile(profile)
     rng = random.Random(seed)
     tables: list[Table] = []
     for spec in profile.get("tables", []):
         columns = spec.get("columns") or []
-        declared = int(spec.get("rows") or 5_000)
-        count = min(declared, 50_000)
+        declared, count = table_rows(spec)
         # Record the sampling ON the spec. A profile that declares 876,000 rows beside a
         # 50,000-line file misstates the artifact, and a model told a table is 876,000 rows may
         # reason differently about sampling and partitioning than one told it has 50,000. Both
@@ -83,5 +91,5 @@ def synthesize(profile: dict[str, Any], seed: int = 11) -> list[Table]:
                     None if rng.random() < null_fraction else _value(column, rng, index)
                 )
             rows.append(row)
-        tables.append(Table(spec.get("database", "main"), spec["name"], rows))
+        tables.append(Table(table_database(spec), spec["name"], rows))
     return tables
