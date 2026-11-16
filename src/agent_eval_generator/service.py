@@ -24,6 +24,7 @@ from urllib.parse import urlsplit
 
 from agent_eval_generator import lake_bus
 from agent_eval_generator.agent import PROMPT_VERSION, _parse, run_once
+from agent_eval_generator.limits import ProfileRejected, check_profile
 from agent_eval_generator.methodologies import apply_snapshot, snapshot_for_turn
 from agent_eval_generator.model import gateway_client
 from agent_eval_generator.records import package
@@ -151,6 +152,17 @@ def run_turn(
             or Path(os.environ.get("TRACE_DIR", "/tmp/agent-eval-generator-traces"))
         )
         return {"ok": False, "error": "no eval profile came back from the model"}
+    # The model's names become file names and its table and column counts decide memory: both
+    # are checked before anything is written or synthesized (agent-eval-generator#21, #22).
+    try:
+        check_profile(profile)
+    except ProfileRejected as error:
+        trace.grade(False, str(error))
+        trace.write(
+            trace_dir
+            or Path(os.environ.get("TRACE_DIR", "/tmp/agent-eval-generator-traces"))
+        )
+        return {"ok": False, "error": f"invalid profile: {error}"}
     try:
         apply_snapshot(profile, snapshot)
         selected_solution = apply_solution(profile, solution_snapshot, source)
@@ -169,7 +181,7 @@ def run_turn(
     tables = synthesize(profile)
     with tempfile.TemporaryDirectory() as out:
         directory = package(
-            profile.get("profile_id", "profile"),
+            profile["profile_id"],
             profile.get("situation", ""),
             tables,
             Path(out),
