@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Eval Generator Agent — generates the cases the other agents are measured against."""
 
 __all__ = ["main"]

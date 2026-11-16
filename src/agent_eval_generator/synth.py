@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Turn an agent-declared schema into real records.
 
 The agent invents the situation and the schema; this makes the rows. Types are inferred from the

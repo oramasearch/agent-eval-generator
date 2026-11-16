@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Validate a generated profile before it is published.
 
 Two defects reached the Hub before this existed, and both were visible in ten seconds of looking:

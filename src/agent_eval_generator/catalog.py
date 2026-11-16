@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Profiles across the solutions catalogue — SEED MATERIAL, not the generator.
 
 **This module is a cross-product, and a cross-product is not diversity.** Five families x five

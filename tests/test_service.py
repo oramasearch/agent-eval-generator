@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """The Eval Generator as a lake library agent (lake#263): one profile per request, nothing published."""
 
 from __future__ import annotations
