@@ -2,17 +2,17 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "agent-eval-generator-7312d85f77f7",
-  "documentNamespace": "https://github.com/oramasearch/agent-eval-generator/sbom/7312d85f77f710bb6d614930d928267989db7750",
+  "name": "agent-eval-generator-3d820c38a88d",
+  "documentNamespace": "https://github.com/oramasearch/agent-eval-generator/sbom/3d820c38a88d2aadbaf0f1f3c41e70f9a0aefb85",
   "creationInfo": {
-    "created": "2026-11-15T17:25:35Z",
+    "created": "2026-11-16T01:54:11Z",
     "creators": [
       "Organization: OramaSearch, Inc.",
       "Tool: tools/sbom.py",
       "Tool: syft"
     ],
     "licenseListVersion": "3.29",
-    "comment": "Made from source commit 7312d85f77f710bb6d614930d928267989db7750 by tools/sbom.py."
+    "comment": "Made from source commit 3d820c38a88d2aadbaf0f1f3c41e70f9a0aefb85 by tools/sbom.py."
   },
   "documentDescribes": [
     "SPDXRef-DocumentRoot"
@@ -280,7 +280,7 @@
     {
       "name": "agent-eval-generator",
       "SPDXID": "SPDXRef-DocumentRoot",
-      "versionInfo": "7312d85f77f7",
+      "versionInfo": "3d820c38a88d",
       "downloadLocation": "git+https://github.com/oramasearch/agent-eval-generator.git",
       "homepage": "https://github.com/oramasearch/agent-eval-generator",
       "filesAnalyzed": false,
