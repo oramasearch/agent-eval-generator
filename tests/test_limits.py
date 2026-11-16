@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Model-written names stay inside the turn's directory, and profile size is bounded.
 
 agent-eval-generator#21 (profile_id and table names used as paths) and agent-eval-generator#22

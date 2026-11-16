@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:a38c2219-d93b-52b0-9d28-37a512920068",
+  "serialNumber": "urn:uuid:b89b701d-87a9-5fd8-9922-7b9a3c5883b5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-16T01:54:11Z",
+    "timestamp": "2026-11-16T07:25:59Z",
     "tools": {
       "components": [
         {
@@ -24,12 +24,12 @@
   },
   "components": [
     {
-      "bom-ref": "pkg:pypi/agent-eval-generator@0.2.0?package-id=Package-python-agent-eval-generator-2a081ca746629554",
+      "bom-ref": "pkg:pypi/agent-eval-generator@0.3.0?package-id=Package-python-agent-eval-generator-2a8a7ca9dae48c6b",
       "type": "library",
       "name": "agent-eval-generator",
-      "version": "0.2.0",
-      "cpe": "cpe:2.3:a:python-agent-eval-generator:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*",
-      "purl": "pkg:pypi/agent-eval-generator@0.2.0",
+      "version": "0.3.0",
+      "cpe": "cpe:2.3:a:python-agent-eval-generator:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*",
+      "purl": "pkg:pypi/agent-eval-generator@0.3.0",
       "properties": [
         {
           "name": "syft:package:language",
@@ -41,191 +41,191 @@
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent-eval-generator:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent-eval-generator:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent_eval_generator:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent_eval_generator:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent_eval_generator:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent_eval_generator:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent-eval-generator:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent-eval-generator:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent-eval-generator:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent-eval-generator:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent_eval_generator:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent_eval_generator:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent_eval_generator:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent_eval_generator:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent-eval-generator:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent-eval-generator:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent-eval-generator:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent-eval-generator:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent_eval_generator:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent_eval_generator:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent_eval_generator:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent_eval_generator:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent-eval:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent-eval:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent-eval:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent-eval:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent_eval:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent_eval:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent_eval:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent_eval:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent-eval-generator:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent-eval-generator:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent-eval-generator:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent-eval-generator:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent_eval_generator:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent_eval_generator:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent_eval_generator:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent_eval_generator:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent-eval:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent-eval:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent-eval:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent-eval:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent_eval:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent_eval:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent_eval:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent_eval:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent-eval:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent-eval:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent-eval:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent-eval:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent_eval:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent_eval:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent_eval:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent_eval:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python-agent:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python-agent:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python_agent:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python_agent:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent-eval:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent-eval:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent-eval:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent-eval:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent_eval:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent_eval:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent_eval:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent_eval:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:python:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:python:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:agent:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:agent:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         }
       ]
     },
@@ -233,7 +233,7 @@
       "bom-ref": "DocumentRoot",
       "type": "library",
       "name": "agent-eval-generator",
-      "version": "3d820c38a88d",
+      "version": "v0.3.0",
       "licenses": [
         {
           "license": {
@@ -1387,11 +1387,11 @@
       ]
     },
     {
-      "bom-ref": "pkg:docker/python@3.12-slim?package-id=Image-python-3e064d07035dff47",
+      "bom-ref": "pkg:docker/python@sha256%3A5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b?package-id=Image-python-bbeb47b8d77ac77d&tag=3.12-slim",
       "type": "library",
       "name": "python",
-      "version": "3.12-slim",
-      "purl": "pkg:docker/python@3.12-slim",
+      "version": "3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+      "purl": "pkg:docker/python@sha256%3A5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b?tag=3.12-slim",
       "properties": [
         {
           "name": "syft:package:type",
@@ -1812,11 +1812,11 @@
     {
       "ref": "DocumentRoot",
       "dependsOn": [
-        "pkg:docker/python@3.12-slim?package-id=Image-python-3e064d07035dff47"
+        "pkg:docker/python@sha256%3A5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b?package-id=Image-python-bbeb47b8d77ac77d&tag=3.12-slim"
       ]
     },
     {
-      "ref": "pkg:pypi/agent-eval-generator@0.2.0?package-id=Package-python-agent-eval-generator-2a081ca746629554",
+      "ref": "pkg:pypi/agent-eval-generator@0.3.0?package-id=Package-python-agent-eval-generator-2a8a7ca9dae48c6b",
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1?package-id=Package-python-httpx-b8665b7937415e27",
         "pkg:pypi/openai@2.53.0?package-id=Package-python-openai-1181bc5571c73bdc",

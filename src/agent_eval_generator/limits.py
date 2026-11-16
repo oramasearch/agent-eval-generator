@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """What a model-written profile may contain before anything is written or synthesized.
 
 The profile comes from the model, and the person's request and the registry text steer the model.
