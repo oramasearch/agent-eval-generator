@@ -2,17 +2,17 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "agent-eval-generator-3d820c38a88d",
-  "documentNamespace": "https://github.com/oramasearch/agent-eval-generator/sbom/3d820c38a88d2aadbaf0f1f3c41e70f9a0aefb85",
+  "name": "agent-eval-generator-v0.3.0",
+  "documentNamespace": "https://github.com/oramasearch/agent-eval-generator/sbom/64b16b2297c13b129f2efd85bab7e13a8ddf1079",
   "creationInfo": {
-    "created": "2026-11-16T01:54:11Z",
+    "created": "2026-11-16T07:25:59Z",
     "creators": [
       "Organization: OramaSearch, Inc.",
       "Tool: tools/sbom.py",
       "Tool: syft"
     ],
     "licenseListVersion": "3.29",
-    "comment": "Made from source commit 3d820c38a88d2aadbaf0f1f3c41e70f9a0aefb85 by tools/sbom.py."
+    "comment": "Made from source commit 64b16b2297c13b129f2efd85bab7e13a8ddf1079 by tools/sbom.py."
   },
   "documentDescribes": [
     "SPDXRef-DocumentRoot"
@@ -20,8 +20,8 @@
   "packages": [
     {
       "name": "agent-eval-generator",
-      "SPDXID": "SPDXRef-Package-python-agent-eval-generator-2a081ca746629554",
-      "versionInfo": "0.2.0",
+      "SPDXID": "SPDXRef-Package-python-agent-eval-generator-2a8a7ca9dae48c6b",
+      "versionInfo": "0.3.0",
       "supplier": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
@@ -33,254 +33,254 @@
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent-eval-generator:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent-eval-generator:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent-eval-generator:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent-eval-generator:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent_eval_generator:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent_eval_generator:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent_eval_generator:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent_eval_generator:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent-eval-generator:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent-eval-generator:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent-eval-generator:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent-eval-generator:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent_eval_generator:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent_eval_generator:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent_eval_generator:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent_eval_generator:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent-eval-generator:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent-eval-generator:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent-eval-generator:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent-eval-generator:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent_eval_generator:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent_eval_generator:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent_eval_generator:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent_eval_generator:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent-eval:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent-eval:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent-eval:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent-eval:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent_eval:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent_eval:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent_eval:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent_eval:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent-eval-generator:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent-eval-generator:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent-eval-generator:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent-eval-generator:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent_eval_generator:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent_eval_generator:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent_eval_generator:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent_eval_generator:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent-eval:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent-eval:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent-eval:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent-eval:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent_eval:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent_eval:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent_eval:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent_eval:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent-eval:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent-eval:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent-eval:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent-eval:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent_eval:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent_eval:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent_eval:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent_eval:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent:python-agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent:python-agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent:python_agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent:python_agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python-agent:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python-agent:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python_agent:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python_agent:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent-eval:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent-eval:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent-eval:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent-eval:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent_eval:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent_eval:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent_eval:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent_eval:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:python:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:python:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent:agent-eval-generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent:agent-eval-generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "SECURITY",
           "referenceType": "cpe23Type",
-          "referenceLocator": "cpe:2.3:a:agent:agent_eval_generator:0.2.0:*:*:*:*:*:*:*"
+          "referenceLocator": "cpe:2.3:a:agent:agent_eval_generator:0.3.0:*:*:*:*:*:*:*"
         },
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:pypi/agent-eval-generator@0.2.0"
+          "referenceLocator": "pkg:pypi/agent-eval-generator@0.3.0"
         }
       ]
     },
     {
       "name": "agent-eval-generator",
       "SPDXID": "SPDXRef-DocumentRoot",
-      "versionInfo": "3d820c38a88d",
+      "versionInfo": "v0.3.0",
       "downloadLocation": "git+https://github.com/oramasearch/agent-eval-generator.git",
       "homepage": "https://github.com/oramasearch/agent-eval-generator",
       "filesAnalyzed": false,
@@ -1751,8 +1751,8 @@
     },
     {
       "name": "python",
-      "SPDXID": "SPDXRef-Image-python-3e064d07035dff47",
-      "versionInfo": "3.12-slim",
+      "SPDXID": "SPDXRef-Image-python-bbeb47b8d77ac77d",
+      "versionInfo": "3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "supplier": "NOASSERTION",
@@ -1760,12 +1760,12 @@
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "primaryPackagePurpose": "CONTAINER",
-      "comment": "Container base image (python:3.12-slim), FROM in Dockerfile. Its own packages are in the image SBOM of each release image.",
+      "comment": "Container base image (python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b), FROM in Dockerfile. Its own packages are in the image SBOM of each release image.",
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:docker/python@3.12-slim"
+          "referenceLocator": "pkg:docker/python@sha256%3A5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b?tag=3.12-slim"
         }
       ]
     },
@@ -2293,27 +2293,27 @@
       "spdxElementId": "SPDXRef-DOCUMENT"
     },
     {
-      "relatedSpdxElement": "SPDXRef-Image-python-3e064d07035dff47",
+      "relatedSpdxElement": "SPDXRef-Image-python-bbeb47b8d77ac77d",
       "relationshipType": "DEPENDS_ON",
       "spdxElementId": "SPDXRef-DocumentRoot"
     },
     {
-      "relatedSpdxElement": "SPDXRef-Package-python-agent-eval-generator-2a081ca746629554",
+      "relatedSpdxElement": "SPDXRef-Package-python-agent-eval-generator-2a8a7ca9dae48c6b",
       "relationshipType": "CONTAINS",
       "spdxElementId": "SPDXRef-DocumentRoot"
     },
     {
-      "relatedSpdxElement": "SPDXRef-Package-python-agent-eval-generator-2a081ca746629554",
+      "relatedSpdxElement": "SPDXRef-Package-python-agent-eval-generator-2a8a7ca9dae48c6b",
       "relationshipType": "DEPENDENCY_OF",
       "spdxElementId": "SPDXRef-Package-python-httpx-b8665b7937415e27"
     },
     {
-      "relatedSpdxElement": "SPDXRef-Package-python-agent-eval-generator-2a081ca746629554",
+      "relatedSpdxElement": "SPDXRef-Package-python-agent-eval-generator-2a8a7ca9dae48c6b",
       "relationshipType": "DEPENDENCY_OF",
       "spdxElementId": "SPDXRef-Package-python-openai-1181bc5571c73bdc"
     },
     {
-      "relatedSpdxElement": "SPDXRef-Package-python-agent-eval-generator-2a081ca746629554",
+      "relatedSpdxElement": "SPDXRef-Package-python-agent-eval-generator-2a8a7ca9dae48c6b",
       "relationshipType": "DEPENDENCY_OF",
       "spdxElementId": "SPDXRef-Package-python-pydantic-c4a5d5e3e7dc5c66"
     },
